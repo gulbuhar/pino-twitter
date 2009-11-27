@@ -1,0 +1,13 @@
+#!/usr/bin/env python
+
+def build(bld):
+	prog = bld.new_task_gen(
+		'cc', 'program',
+		name = 'pino',
+		target = 'pino',
+		uselib = 'GTK+ GOBJECT LIBXML GEE LIBNOTIFY LIBSOUP WEBKIT GTHREAD',
+		packages = 'gtk+-2.0 gee-1.0 gio-2.0 libnotify libsoup-2.4 libxml-2.0 webkit-1.0',
+		source = bld.path.ant_glob(incl = '*.vala'),
+		threading = True
+	)
+	prog.install_path = '${PREFIX}/bin'
