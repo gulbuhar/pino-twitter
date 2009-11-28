@@ -522,6 +522,7 @@ public class MainWindow : Window {
 				var popup = new Notification(newStatus.user_screen_name,
 					newStatus.text, null, null);
 				popup.set_icon_from_pixbuf(logo);
+				popup.set_timeout(2000); //doesn't working... hm
 				popup.set_urgency(Notify.Urgency.LOW);
 				popup.show();
 			}
