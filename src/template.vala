@@ -74,7 +74,7 @@ class Template : Object {
 	private string making_links(string text) {
 		string result = nicks.replace(text, -1, 0, "@<a class='re_nick' href='http:/twitter.com/\\1'>\\1</a>");
 		//warning("NICK: %s", result);
-		result = tags.replace(result, -1, 0, "<a class='tags' href=''>\\1</a>");
+		result = tags.replace(result, -1, 0, "<a class='tags' href='http:/twitter.com/#search?q=\\1'>\\1</a>");
 		result = urls.replace(result, -1, 0, "<a href='\\0'>\\0</a>");
 		return result;
 	}
