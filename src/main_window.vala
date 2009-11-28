@@ -3,8 +3,8 @@ using WebKit;
 //using Sexy;
 using Notify;
 
-public class MainWindow : Window
-{
+public class MainWindow : Window {
+	
 	private Action updateAct;
 	private StatusIcon tray;
 	
@@ -38,8 +38,7 @@ public class MainWindow : Window
 	
 	private bool focused;
 	
-	public MainWindow()
-	{
+	public MainWindow() {
 		logo = new Gdk.Pixbuf.from_file(LOGO_PATH);
 		
 		//getting settings
@@ -66,7 +65,7 @@ public class MainWindow : Window
 			prefs.top = event.y;
 			
 			return false;
-			});
+		});
 		
 		focus_in_event.connect((w, e) => {
 			focused = true;
@@ -76,6 +75,7 @@ public class MainWindow : Window
 			//last_time_friends = 0;
 			//last_time_mentions = 0;
 		});
+		
 		focus_out_event.connect((w, e) => {
 			focused = false;
 			warning("unfocused");
@@ -168,8 +168,7 @@ public class MainWindow : Window
 		timer.timeout.connect(refresh_action);
 	}
 	
-	private void menu_init()
-	{	
+	private void menu_init() {	
 		var actGroup = new ActionGroup("main");
 		
 		//file menu
@@ -196,48 +195,53 @@ public class MainWindow : Window
 			"Show your timeline", null, 1);
 		showTimelineAct.set_gicon(Icon.new_for_string(TIMELINE_PATH));
 		showTimelineAct.active = true;
+		
 		showTimelineAct.changed.connect((current) => {
-			if(current == showTimelineAct)
-			{
+			if(current == showTimelineAct) {
 				scroll_mentions.hide();
 				scroll_tweets.show();
 			}
 		});
+		
 		var showMentionsAct = new RadioAction("ShowMentionsAct", "Mentions",
 			"Show mentions", null, 2);
 		showMentionsAct.set_gicon(Icon.new_for_string(MENTIONS_PATH));
+		
 		showMentionsAct.changed.connect((current) => {
-			if(current == showMentionsAct)
-			{
+			if(current == showMentionsAct) {
 				scroll_tweets.hide();
 				scroll_mentions.show();
 			}
 		});
+		
 		showMentionsAct.set_group(showTimelineAct.get_group()); //lol
 		
-		var menuAct = new ToggleAction("ViewMenuAct", "Show menu",
-			null, null);
+		var menuAct = new ToggleAction("ViewMenuAct", "Show menu", null, null);
 		menuAct.set_active(true);
+		
 		menuAct.toggled.connect(() => {
 			if(menuAct.active)
 				menubar.show();
 			else
 				menubar.hide();
-			});
+		});
+		
 		var toolbarAct = new ToggleAction("ViewToolbar", "Show toolbar",
 			null, null);
 		toolbarAct.set_active(true);
+		
 		toolbarAct.toggled.connect(() => {
 			if(toolbarAct.active)
 				toolbar.show();
 			else
 				toolbar.hide();
-			});
+		});
 		
 		//help menu
 		var helpMenu = new Action("HelpMenu", "Help", null, null);
 		var aboutAct = new Action("HelpAbout", "About Pino",
 			null, STOCK_ABOUT);
+		
 		aboutAct.activate.connect(() => {
 			var about_dlg = new AboutDialog();
 			about_dlg.set_logo(logo);
@@ -246,11 +250,13 @@ public class MainWindow : Window
 			about_dlg.set_website("http://code.google.com/p/pino-twitter/");
 			about_dlg.set_authors({"Main developer and project owner: troorl <troorl@gmail.com>"});
 			about_dlg.set_copyright("© 2009 troorl");
+			
 			about_dlg.response.connect((resp_id) => {
 				//warning("close! %d", resp_id);
 				if(resp_id == -6)
 					about_dlg.close();
 			});
+			
 			about_dlg.show();
 		});
 		
@@ -326,8 +332,7 @@ public class MainWindow : Window
 		toolbar = ui.get_widget("/ToolBar");
 	}
 	
-	private void run_prefs()
-	{
+	private void run_prefs() {
 		var pref_dialog = new PrefDialog(prefs);
 		pref_dialog.destroy.connect(() => {
 			//timer interval update
@@ -346,16 +351,14 @@ public class MainWindow : Window
 		pref_dialog.show();
 	}
 	
-	private bool tray_actions(Gdk.EventButton event)
-	{
-		if((event.type == Gdk.EventType.BUTTON_PRESS) && (event.button == 3))
-		{
+	private bool tray_actions(Gdk.EventButton event) {
+		if((event.type == Gdk.EventType.BUTTON_PRESS) && (event.button == 3)) {
 			warning("Popup");
 			popup.popup(null, null, null, event.button, event.time);
 			return true;
 		}
-		if((event.type == Gdk.EventType.BUTTON_PRESS) && (event.button == 1))
-		{
+		
+		if((event.type == Gdk.EventType.BUTTON_PRESS) && (event.button == 1)) {
 			if(visible)
 				this.hide();
 			else
@@ -363,28 +366,26 @@ public class MainWindow : Window
 			
 			return true;
 		}
+		
 		return false;
 	}
 	
-	private bool show_popup_menu(Gdk.EventButton event)
-	{
-		if((event.type == Gdk.EventType.BUTTON_PRESS) && (event.button == 3))
-		{
+	private bool show_popup_menu(Gdk.EventButton event) {
+		if((event.type == Gdk.EventType.BUTTON_PRESS) && (event.button == 3)) {
 			warning("Popup");
 			popup.popup(null, null, null, event.button, event.time);
 			return true;
 		}
+		
 		return false;
 	}
 	
-	private bool get_colors(Gdk.Event event)
-	{
+	private bool get_colors(Gdk.Event event) {
 		gtkStyle = new SystemStyle(rc_get_style(this));
 		return true;
 	}
 	
-	private void style_update(Style? prevStyle)
-	{
+	private void style_update(Style? prevStyle) {
 		gtkStyle.updateStyle(rc_get_style(this));
 		tweets.load_string(template.generateFriends(twee.friends, gtkStyle, prefs.login),
 			"text/html", "utf8", "");
@@ -394,15 +395,13 @@ public class MainWindow : Window
 	}
 	
 	private bool link_clicking(WebFrame p0, NetworkRequest request,
-		WebNavigationAction action, WebPolicyDecision decision)
-	{
+		WebNavigationAction action, WebPolicyDecision decision) {
 		if(request.uri == "")
 			return false;
 		
 		var prot = request.uri.split("://")[0];
 		warning("Prot: %s", prot);
-		switch(prot)
-		{
+		switch(prot) {
 			case "nick_to":
 				reTweet.show();
 				reTweet.insert("@" + request.uri.split("://")[1]);
@@ -422,8 +421,7 @@ public class MainWindow : Window
 			case "delete":
 				var status_id = request.uri.split("://")[1];
 				warning(status_id);
-				switch(twee.destroyStatus(status_id))
-				{
+				switch(twee.destroyStatus(status_id)) {
 					case twee.Reply.ERROR_401:
 						statusbar.set_status(statusbar.Status.ERROR_401);
 						break;
@@ -447,20 +445,17 @@ public class MainWindow : Window
 		}
 	}
 	
-	private void show_re_tweet()
-	{
+	private void show_re_tweet() {
 		reTweet.clear();
 		reTweet.is_direct = false;
 		reTweet.show();
 		this.set_focus(reTweet.text_entry);
 	}
 	
-	public void refresh_action()
-	{
+	public void refresh_action() {
 		updateAct.set_sensitive(false);
 		
-		switch(twee.sync_friends(last_time_friends, last_focused_friends))
-		{
+		switch(twee.sync_friends(last_time_friends, last_focused_friends)) {
 			case twee.Reply.ERROR_401:
 				statusbar.set_status(statusbar.Status.ERROR_401);
 				break;
@@ -483,8 +478,7 @@ public class MainWindow : Window
 				break;
 		}
 		
-		switch(twee.sync_mentions(last_time_mentions, last_focused_mentions))
-		{
+		switch(twee.sync_mentions(last_time_mentions, last_focused_mentions)) {
 			case twee.Reply.ERROR_401:
 				statusbar.set_status(statusbar.Status.ERROR_401);
 				break;
@@ -510,11 +504,10 @@ public class MainWindow : Window
 		updateAct.set_sensitive(true);
 	}
 	
-	public void show_popups(Gee.ArrayList<Status> lst)
-	{
+	public void show_popups(Gee.ArrayList<Status> lst) {
 		var tmpList = new GLib.List<Status>(); //list for new statuses
-		foreach(Status status in lst)
-		{
+		
+		foreach(Status status in lst) {
 			if(status.is_new)
 				tmpList.append(status);
 			else
@@ -523,10 +516,9 @@ public class MainWindow : Window
 		tmpList.reverse();
 		
 		//show new statuses in time order
-		foreach(Status newStatus in tmpList)
-		{
-			if(newStatus.user_name != prefs.login)
-			{
+		foreach(Status newStatus in tmpList) {
+			
+			if(newStatus.user_name != prefs.login) {
 				var popup = new Notification(newStatus.user_screen_name,
 					newStatus.text, null, null);
 				popup.set_icon_from_pixbuf(logo);
@@ -534,6 +526,7 @@ public class MainWindow : Window
 				popup.show();
 			}
 		}
+		
 		tmpList = null;
 		//warning("end notification");
 	}
@@ -555,21 +548,17 @@ public class MainWindow : Window
 	}
 	*/
 	
-	private void send_status()
-	{
+	private void send_status() {
 		var answer = twee.Reply.OK;
 		reTweet.set_sensitive(false);
-		if(reTweet.is_direct)
-		{
+		
+		if(reTweet.is_direct) {
 			answer = twee.updateStatus(reTweet.text, reTweet.reply_id);
-		}
-		else
-		{
+		} else {
 			answer = twee.updateStatus(reTweet.text);
 		}
 		
-		switch(answer)
-		{
+		switch(answer) {
 			case twee.Reply.ERROR_401:
 				statusbar.set_status(statusbar.Status.ERROR_401);
 				break;
@@ -589,10 +578,8 @@ public class MainWindow : Window
 		}
 	}
 	
-	private void before_close()
-	{	
+	private void before_close() {	
 		prefs.write();
-		
 		main_quit();
 	}
 }

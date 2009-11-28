@@ -1,21 +1,18 @@
 using Gtk;
 
-public class ReTweet : VBox
-{
+public class ReTweet : VBox {
+	
 	private TextView entry;
-	public TextView text_entry
-	{
+	public TextView text_entry {
 		public get { return entry; }
 	}
 	
 	private bool _is_direct = false;
-	public bool is_direct
-	{
+	public bool is_direct {
 		public get { return _is_direct; }
 		public set {
 			_is_direct = value;
-			if(!value)
-			{
+			if(!value) {
 				_reply_id = "";
 				user_label.set_text("New status:");
 			}
@@ -23,14 +20,12 @@ public class ReTweet : VBox
 	}
 	
 	private string _reply_id;
-	public string reply_id
-	{
+	public string reply_id {
 		public get { return _reply_id; }
 		public set { _reply_id = value; }
 	}
 	
-	public void set_screen_name(string user_name)
-	{
+	public void set_screen_name(string user_name) {
 		user_label.set_text("Reply to <b>%s</b>:".printf(user_name));
 		user_label.set_use_markup(true);
 	}
@@ -38,8 +33,7 @@ public class ReTweet : VBox
 	private Label label;
 	public Label user_label;
 	
-	public string text
-	{
+	public string text {
 		public owned get
 		{ return entry.get_buffer().text; }
 		set
@@ -48,8 +42,7 @@ public class ReTweet : VBox
 	
 	public signal void enter_pressed();
 	
-	public ReTweet()
-	{
+	public ReTweet() {
 		set_homogeneous(false);
 		set_spacing(2);
 		
@@ -73,25 +66,21 @@ public class ReTweet : VBox
 		pack_start(hbox, true, true, 2);
 	}
 	
-	public void clear()
-	{
+	public void clear() {
 		text = "";
 	}
 	
-	public void insert(string str)
-	{
+	public void insert(string str) {
 		entry.get_buffer().insert_at_cursor(str, (int)str.length);
 	}
 	
-	private bool hide_or_send(Gdk.EventKey event)
-	{
-		if(event.hardware_keycode == 36) //return key
-		{
+	private bool hide_or_send(Gdk.EventKey event) {
+		if(event.hardware_keycode == 36) { //return key
 			enter_pressed();
 			return true;
 		}
-		if(event.hardware_keycode == 9) //esc key
-		{
+		
+		if(event.hardware_keycode == 9) { //esc key
 			clear();
 			is_direct = false;
 			hide();
@@ -100,12 +89,11 @@ public class ReTweet : VBox
 		return false;
 	}
 	
-	private void change()
-	{
+	private void change() {
 		int length = (int)text.len();
 		warning("text length: %d, substring length: %d", (int)text.len(), (int)text.substring(0, 140).len());
-		if(length > 140)
-		{
+		
+		if(length > 140) {
 			string t = text.substring(0, 140);
 			//warning(t);
 			text = t;

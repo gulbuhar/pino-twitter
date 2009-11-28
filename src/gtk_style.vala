@@ -1,5 +1,5 @@
-public class SystemStyle : Object
-{
+public class SystemStyle : Object {
+	
 	private string _bg_color;
 	public string bg_color{get{return _bg_color;}}
 	private string _fg_color;
@@ -9,13 +9,11 @@ public class SystemStyle : Object
 	private string _lt_color;
 	public string lt_color{get{return _lt_color;}}
 	
-	public SystemStyle(Gtk.Style style)
-	{
+	public SystemStyle(Gtk.Style style) {
 		updateStyle(style);
 	}
 	
-	public void updateStyle(Gtk.Style style)
-	{
+	public void updateStyle(Gtk.Style style) {
 		_bg_color = rgb_to_hex(style.bg[Gtk.StateType.NORMAL]);
 		_fg_color = rgb_to_hex(style.fg[Gtk.StateType.NORMAL]);
 		_sl_color = rgb_to_hex(style.bg[Gtk.StateType.SELECTED]);
@@ -33,16 +31,14 @@ public class SystemStyle : Object
 		warning("New style");
 	}
 	
-	private uint16 lighter(uint16 color, uint16 delta)
-	{
+	private uint16 lighter(uint16 color, uint16 delta) {
 		if(color + delta > 255*256)
 			return 255*256;
 		else
 			return color + delta; 
 	}
 	
-	private string rgb_to_hex(Gdk.Color color)
-	{
+	private string rgb_to_hex(Gdk.Color color) {
 		string s = "%X%X%X".printf(
 			(int)Math.trunc(color.red / 256.00),
 			(int)Math.trunc(color.green / 256.00),

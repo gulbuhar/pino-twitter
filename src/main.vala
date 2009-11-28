@@ -1,7 +1,7 @@
-public class Main
-{
-  	public static int main (string[] args)
-  	{
+public class Main {
+	
+  	public static int main (string[] args) {
+		
 		Gtk.init(ref args);
 		MainWindow window = new MainWindow();
 		

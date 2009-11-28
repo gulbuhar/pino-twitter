@@ -2,8 +2,8 @@ using Xml;
 using Gee;
 using Soup;
 
-public class Status
-{	
+public class Status {
+		
 	public string id;
 	public string text;
 	public Time created_at = Time();
@@ -15,27 +15,23 @@ public class Status
 	public bool unreaded = false;
 }
 
-public class TwitterInterface : Object
-{
-	public enum Reply
-	{
+public class TwitterInterface : Object {
+	
+	public enum Reply {
 		ERROR_TIMEOUT, ERROR_401, ERROR_UNKNOWN, OK
 	}
 	
-	public enum SyncMethod
-	{
+	public enum SyncMethod {
 		FRIENDS, MENTIONS
 	}
 	
 	private Gee.ArrayList<Status> _friends = new Gee.ArrayList<Status>();
-	public Gee.ArrayList<Status> friends
-	{
+	public Gee.ArrayList<Status> friends {
 		get{ return _friends; }	
 	}
 	
 	private Gee.ArrayList<Status> _mentions = new Gee.ArrayList<Status>();
-	public Gee.ArrayList<Status> mentions
-	{
+	public Gee.ArrayList<Status> mentions {
 		get{ return _mentions; }	
 	}
 	
@@ -54,42 +50,35 @@ public class TwitterInterface : Object
 	
 	public TwitterInterface(){}
 	
-	public TwitterInterface.with_auth(string _login, string _password)
-	{
+	public TwitterInterface.with_auth(string _login, string _password) {
 		set_auth(_login, _password);
 	}
 	
-	public void set_auth(string _login, string _password)
-	{
+	public void set_auth(string _login, string _password) {
 		login = _login;
 		password = _password;
 	}
 	
-	public Reply sync_friends(int last_time, int last_focused)
-	{
+	public Reply sync_friends(int last_time, int last_focused) {
 		return sync(last_time, last_focused, SyncMethod.FRIENDS);
 	}
 	
-	public Reply sync_mentions(int last_time, int last_focused)
-	{
+	public Reply sync_mentions(int last_time, int last_focused) {
 		return sync(last_time, last_focused, SyncMethod.MENTIONS);
 	}
 	
-	public Reply sync(int last_time, int last_focused, SyncMethod type)
-	{
+	public Reply sync(int last_time, int last_focused, SyncMethod type) {
 		updating();
 		
 		string Uri = null;
 		Gee.ArrayList<Status> lst = null;
 		
-		if(type == SyncMethod.FRIENDS)
-		{
+		if(type == SyncMethod.FRIENDS) {
 			Uri = friendsUrl;
 			lst = friends;
 		}
 		
-		if(type == SyncMethod.MENTIONS)
-		{
+		if(type == SyncMethod.MENTIONS) {
 			Uri = mentionsUrl;
 			lst = mentions;
 		}
@@ -107,8 +96,7 @@ public class TwitterInterface : Object
 		//Posix.sleep(10);
         /* send a sync request */
         //warning("STATUS: %d", (int)status);
-        switch(session.send_message(message))
-        {
+        switch(session.send_message(message)) {
         	case 401:
         		return Reply.ERROR_401;
         	case 2:
@@ -123,8 +111,7 @@ public class TwitterInterface : Object
 		//return Reply.OK;
 	}
 	
-	public Reply updateStatus(string status, string reply_id = "")
-	{
+	public Reply updateStatus(string status, string reply_id = "") {
 		send_status();
 		
 		var session = new Soup.SessionAsync();
@@ -146,8 +133,7 @@ public class TwitterInterface : Object
         };
         
         //warning("STATUS: %d", (int)status);
-        switch(session.send_message(message))
-        {
+        switch(session.send_message(message)) {
         	case 401:
         		return Reply.ERROR_401;
         	case 2:
@@ -159,8 +145,7 @@ public class TwitterInterface : Object
         }
 	}
 	
-	public Reply destroyStatus(string status_id)
-	{
+	public Reply destroyStatus(string status_id) {
 		destroying_status();
 		
 		var session = new Soup.SessionAsync();
@@ -177,8 +162,7 @@ public class TwitterInterface : Object
         };
         
         //warning("STATUS: %d", (int)status);
-        switch(session.send_message(message))
-        {
+        switch(session.send_message(message)) {
         	case 401:
         		return Reply.ERROR_401;
         	case 2:
@@ -190,8 +174,7 @@ public class TwitterInterface : Object
         }
 	}
 	
-	private int tz_delta(Time t)
-	{
+	private int tz_delta(Time t) {
 		//getting a time zone delta
 		//VERY DIRTY!!!
 		//var t = Time().mktime();
@@ -201,8 +184,8 @@ public class TwitterInterface : Object
 		return sdelta.to_int() / 100;
 	}
 	
-	private void parse_xml(string data, int last_time, int last_focused, Gee.ArrayList<Status> lst)
-	{	
+	private void parse_xml(string data, int last_time, int last_focused,
+		Gee.ArrayList<Status> lst) {	
 		Xml.Doc* xmlDoc = Parser.parse_memory(data, (int)data.length);
 		Xml.Node* rootNode = xmlDoc->get_root_element();
 		
@@ -212,25 +195,22 @@ public class TwitterInterface : Object
 		
 		lst.clear();
 		
-		for(Xml.Node* iter = rootNode->children; iter != null; iter = iter->next)
-		{
+		for(Xml.Node* iter = rootNode->children; iter != null; iter = iter->next) {
 			if (iter->type != ElementType.ELEMENT_NODE)
                 continue;
             
-            if(iter->name == "status")
-            {
-		        if(iter->children != null)
-		        {
+            if(iter->name == "status") {
+		        
+		        if(iter->children != null) {
 		        	var status = new Status();
 		        	Xml.Node *iter_in;
-				    for(iter_in = iter->children->next; iter_in != null; iter_in = iter_in->next)
-				    {
-				    	if(iter_in->is_text() != 1)
-				    	{
+				    
+				    for(iter_in = iter->children->next; iter_in != null; iter_in = iter_in->next) {
+				    	
+				    	if(iter_in->is_text() != 1) {
 				    		//stdout.printf("%s - %s\n", iter_in->name, iter_in->get_content());
 				    		
-				    		switch(iter_in->name)
-				    		{
+				    		switch(iter_in->name) {
 				    			case "id":
 				    				status.id = iter_in->get_content();
 				    				//warning("ID: %s", status.id);
@@ -253,10 +233,9 @@ public class TwitterInterface : Object
 				    			
 				    			case "user":
 				    				Xml.Node *iter_user;
-				    				for(iter_user = iter_in->children->next; iter_user != null; iter_user = iter_user->next)
-				    				{
-				    					switch(iter_user->name)
-				    					{
+				    				
+				    				for(iter_user = iter_in->children->next; iter_user != null; iter_user = iter_user->next) {
+				    					switch(iter_user->name) {
 				    						case "id":
 				    							break;
 				    						
@@ -281,18 +260,16 @@ public class TwitterInterface : Object
 				    }
 				    delete iter_in;
 				    //checking for new status
-				    if(last_time > 0)
-				    {
+				    if(last_time > 0) {
 				    	//var last_status = _friends.get(0);
-				    	if((int)status.created_at.mktime() > last_time)
-				    	{
+				    	if((int)status.created_at.mktime() > last_time) {
 				    		status.is_new = true;
 				    	}
 				    }
-				    if(last_focused > 0)
-				    {
-				    	if((int)status.created_at.mktime() > last_focused)
-				    	{
+				    
+				    if(last_focused > 0) {
+				    	
+				    	if((int)status.created_at.mktime() > last_focused) {
 				    		status.unreaded = true;
 				    	}
 				    }

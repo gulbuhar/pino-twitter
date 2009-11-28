@@ -1,7 +1,7 @@
 using Gtk;
 
-public class PrefDialog : Dialog
-{
+public class PrefDialog : Dialog {
+	
 	private Notebook tabs;
 	private SpinButton updateInterval;
 	private CheckButton showNotifications;
@@ -9,8 +9,7 @@ public class PrefDialog : Dialog
 	private Entry password;
 	private CheckButton savePass;
 	
-	public PrefDialog(Prefs prefs)
-	{
+	public PrefDialog(Prefs prefs) {
 		this.modal = true;
 		set_title("Preferences");
 		this.has_separator = false;
@@ -50,15 +49,15 @@ public class PrefDialog : Dialog
 		var pasLabel = new Label("Password");
 		password = new Entry();
 		password.visible = 0;
+		
 		password.key_press_event.connect((event) => {
-			if(event.hardware_keycode == 36)
-			{
+			if(event.hardware_keycode == 36) {
 				close();
 				return true;
-			}
-			else
+			} else
 				return false;
 		});
+		
 		pas_box.pack_start(pasLabel, false, true, 10);
 		pas_box.pack_end(password, false, true, 10);
 		
@@ -66,25 +65,28 @@ public class PrefDialog : Dialog
 		var sa_box = new HBox(false, 0);
 		savePass = new CheckButton.with_label("Remember password");
 		savePass.active = true;
+		
 		savePass.toggled.connect(() => {
 			//
 		});
+		
 		sa_box.pack_start(savePass, false, true, 10);
 		
 		ac_box.pack_start(log_box, false, true, 10);
 		ac_box.pack_start(pas_box, false, true, 0);
 		ac_box.pack_start(sa_box, false, true, 10);
 		
-		if(prefs.is_new)
-		{
+		if(prefs.is_new) {
 			var start_box = new HBox(false, 0);
 			var start_button = new Button.with_label("Create new account...");
+			
 			start_button.clicked.connect(() => {
 				GLib.Pid pid;
 				GLib.Process.spawn_async(".", {"/usr/bin/xdg-open",
 					"http://twitter.com/signup"}, null,
 					GLib.SpawnFlags.STDOUT_TO_DEV_NULL, null, out pid);
 			});
+			
 			start_box.pack_start(start_button, false, true, 10);
 			ac_box.pack_start(start_box, false, true, 10);
 		}
@@ -112,8 +114,7 @@ public class PrefDialog : Dialog
 		show_all();
 		
 		//if first start or don't want to remember the password
-		if(prefs.is_new || !prefs.rememberPass)
-		{	
+		if(prefs.is_new || !prefs.rememberPass) {	
 			tabs.set_current_page(1);
 		}
 		
@@ -121,8 +122,7 @@ public class PrefDialog : Dialog
 			set_focus(password);
 	}
 	
-	private void setup_prefs(Prefs prefs)
-	{
+	private void setup_prefs(Prefs prefs) {
 		updateInterval.value = prefs.updateInterval;
 		showNotifications.active = prefs.showNotifications;
 		login.text = prefs.login;
@@ -130,29 +130,30 @@ public class PrefDialog : Dialog
 		savePass.active = prefs.rememberPass;
 	}
 	
-	private void setup_prefs_signals(Prefs prefs)
-	{
+	private void setup_prefs_signals(Prefs prefs) {
 		updateInterval.value_changed.connect(() => {
 			prefs.updateInterval = (int)updateInterval.value;
 		});
+		
 		showNotifications.toggled.connect(() => {
 			prefs.showNotifications = showNotifications.active;
 		});
+		
 		login.changed.connect(() => {
 			prefs.login = login.text;
 		});
+		
 		password.changed.connect(() => {
 			prefs.password = password.text;
 		});
+		
 		savePass.toggled.connect(() => {
 			prefs.rememberPass = savePass.active;
 		});
 	}
 	
-	private void response_acts(int resp_id)
-	{
-		switch(resp_id)
-		{
+	private void response_acts(int resp_id) {
+		switch(resp_id) {
 			case ResponseType.CLOSE:
 				close();
 				break;
