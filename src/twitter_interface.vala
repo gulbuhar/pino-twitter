@@ -38,7 +38,7 @@ public class TwitterInterface : Object {
 	private string login;
 	private string password;
 	
-	private const string friendsUrl = "http://twitter.com/statuses/friends_timeline.xml";
+	private const string friendsUrl = "http://api.twitter.com/1/statuses/home_timeline.xml";
 	private const string statusUpdateUrl = "http://twitter.com/statuses/update.xml";
 	private const string destroyStatusUrl = "http://twitter.com/statuses/destroy/%s.xml";
 	private const string mentionsUrl = "http://twitter.com/statuses/mentions.xml";
