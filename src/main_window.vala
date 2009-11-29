@@ -258,6 +258,7 @@ public class MainWindow : Window {
 			});
 			
 			about_dlg.show();
+			about_dlg.set_transient_for(this);
 		});
 		
 		actGroup.add_action(fileMenu);
@@ -348,7 +349,9 @@ public class MainWindow : Window {
 			
 			prefs.is_new = false;
 		});
+		
 		pref_dialog.show();
+		pref_dialog.set_transient_for(this);
 	}
 	
 	private bool tray_actions(Gdk.EventButton event) {
