@@ -268,9 +268,7 @@ public class TwitterInterface : Object {
 				    							break;
 				    						
 				    						case "text":
-				    							//warning("LOLO: %s", iter_retweet->get_content());
 				    							if(iter_retweet->get_content().substring(0, 3) != "\n  " ) {
-				    								warning("LOLO: %s", iter_retweet->get_content());
 				    								status.re_text = iter_retweet->get_content();
 				    							}
 				    							break;
