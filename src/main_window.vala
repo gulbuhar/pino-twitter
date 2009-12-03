@@ -403,6 +403,9 @@ public class MainWindow : Window {
 			return false;
 		
 		var prot = request.uri.split("://")[0];
+		if(prot == "fake" || prot == "file")
+			return false;
+		
 		warning("Prot: %s", prot);
 		switch(prot) {
 			case "nick_to":

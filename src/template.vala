@@ -6,6 +6,7 @@ class Template : Object {
 	private string mainTemplate;
 	private string statusTemplate;
 	private string statusMeTemplate;
+	//private string statusRetweetTemplate;
 	
 	private Regex nicks;
 	private Regex tags;
@@ -47,13 +48,32 @@ class Template : Object {
 					i.id
 					);
 			} else {
-				content += statusTemplate.printf(i.user_avatar,
+				var re_icon = "";
+				var by_who = "";
+				var user_avatar = i.user_avatar;
+				var name = i.user_name;
+				var screen_name = i.user_screen_name;
+				var text = i.text;
+				
+				if(i.is_retweet) {
+					//re_icon = "<img src='file://%s' />".printf(RETWEET_ICON_PATH);
+					re_icon = "<span class='re'>Rt:</span> ";
+					by_who = "<a class='by_who' href='nick_to://%s'>by %s</a>".printf(i.user_screen_name, i.user_name);
+					name = i.re_user_name;
+					screen_name = i.re_user_screen_name;
+					user_avatar = i.re_user_avatar;
+					text = i.re_text;
+					warning(re_icon);
+				}
+				content += statusTemplate.printf(user_avatar,
 					fresh,
 					i.id,
-					i.user_name,
-					i.user_name,
+					re_icon,
+					screen_name,
+					name,
+					by_who,
 					time,
-					making_links(i.text),
+					making_links(text),
 					i.user_name,
 					i.id,
 					i.user_screen_name,
@@ -67,7 +87,10 @@ class Template : Object {
 			gtkStyle.fg_color, //nick color
 			gtkStyle.lt_color, //date strings color
 			gtkStyle.sl_color, //links color
+			gtkStyle.fg_color, //nick color
 			gtkStyle.lt_color, //reply link
+			gtkStyle.sl_color, //retweet bg
+			gtkStyle.lg_color, //retweet fg
 			content);
 	}
 	
@@ -107,6 +130,7 @@ class Template : Object {
 		mainTemplate = loadTemplate(TEMPLATES_PATH + "/main.tpl");
 		statusTemplate = loadTemplate(TEMPLATES_PATH + "/status.tpl");
 		statusMeTemplate = loadTemplate(TEMPLATES_PATH + "/status_me.tpl");
+		//statusRetweetTemplate = loadTemplate(TEMPLATES_PATH + "/status_retweet.tpl");
 	}
 	
 	private string loadTemplate(string path) {

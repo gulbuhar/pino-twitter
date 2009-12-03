@@ -1,7 +1,7 @@
 <div class="status">
 	<div class="avatar" style="background-image:url('%s');"></div>
 	<div class="content_%s" id="%s">
-		<a class="nick" href="nick_to://%s">%s</a>
+		%s<a class="nick" href="nick_to://%s">%s</a> %s
 		<span class="date">%s</span>
 		<div>
 			%s

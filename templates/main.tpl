@@ -16,9 +16,11 @@ body{background-color:%s;color:%s;font-family:"DejaVu Sans";font-size: 9pt;}
 .content_me .nick{cursor:default;}
 a, a.tags{color:%s;}
 a.tags{text-decoration:none;font-weight:bold;}
-.re_nick{color:#000;font-weight:bold;text-decoration:none;}
-.reply, .delete{text-decoration:none;display:block;text-align:right;font-size:8pt;color:%s;margin-top:5px;}
+.re_nick{color:%s;font-weight:bold;text-decoration:none;}
+.reply, .delete, .by_who{text-decoration:none;display:block;text-align:right;font-size:8pt;color:%s;margin-top:5px;}
 .delete{text-align:left;}
+.by_who{display:inline;text-align:left;}
+.re{background-color:%s;color:%s;-webkit-border-radius:3px;font-weight:bold;padding-left:3px;padding-right:3px;}
 </style>
 </head>
 <body>

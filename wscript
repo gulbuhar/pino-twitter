@@ -64,11 +64,12 @@ def build(bld):
 	bld.install_files('${PREFIX}/share/icons/hicolor/scalable/apps', 'pino.svg')
 	bld.install_files('${PREFIX}/share/icons/hicolor/scalable/actions', 'mentions.svg')
 	bld.install_files('${PREFIX}/share/icons/hicolor/scalable/actions', 'timeline.svg')
+	bld.install_files('${PREFIX}/share/icons/hicolor/16x16/actions', 'retweet.png')
 	bld.install_files('${PREFIX}/share/applications', 'pino.desktop')
 	bld.install_files('${PREFIX}/share/doc/pino', 'COPYING README AUTHORS INSTALL')
 	
-	import subprocess
-	subprocess.Popen(['desktop-file-install', '--rebuild-mime-info-cache', bld.env.PREFIX + '/share/applications/pino.desktop'], stdout=subprocess.PIPE)
+	#import subprocess
+	#subprocess.Popen(['desktop-file-install', '--rebuild-mime-info-cache', bld.env.PREFIX + '/share/applications/pino.desktop'], stdout=subprocess.PIPE)
 
 def shutdown(bld):
 	"""

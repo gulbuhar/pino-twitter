@@ -2,10 +2,16 @@ public class SystemStyle : Object {
 	
 	private string _bg_color;
 	public string bg_color{get{return _bg_color;}}
+	
 	private string _fg_color;
 	public string fg_color{get{return _fg_color;}}
+	
 	private string _sl_color;
 	public string sl_color{get{return _sl_color;}}
+	
+	private string _lg_color;
+	public string lg_color{get{return _lg_color;}}
+	
 	private string _lt_color;
 	public string lt_color{get{return _lt_color;}}
 	
@@ -15,6 +21,7 @@ public class SystemStyle : Object {
 	
 	public void updateStyle(Gtk.Style style) {
 		_bg_color = rgb_to_hex(style.bg[Gtk.StateType.NORMAL]);
+		_lg_color = rgb_to_hex(style.light[Gtk.StateType.NORMAL]);
 		_fg_color = rgb_to_hex(style.fg[Gtk.StateType.NORMAL]);
 		_sl_color = rgb_to_hex(style.bg[Gtk.StateType.SELECTED]);
 		
