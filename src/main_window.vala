@@ -424,23 +424,17 @@ public class MainWindow : Window {
 				this.set_focus(reTweet.text_entry);
 				return true;
 			
+			case "retweet":
+				var status_id = request.uri.split("://")[1];
+				var reply = twee.retweetStatus(status_id);
+				status_actions(reply);
+				return true;
+			
 			case "delete":
 				var status_id = request.uri.split("://")[1];
 				warning(status_id);
-				switch(twee.destroyStatus(status_id)) {
-					case twee.Reply.ERROR_401:
-						statusbar.set_status(statusbar.Status.ERROR_401);
-						break;
-					case twee.Reply.ERROR_TIMEOUT:
-						statusbar.set_status(statusbar.Status.ERROR_TIMEOUT);
-						break;
-					case twee.Reply.ERROR_UNKNOWN:
-						statusbar.set_status(statusbar.Status.ERROR_UNKNOWN);
-						break;
-					case twee.Reply.OK:
-						refresh_action();
-						break;
-				}
+				var reply = twee.destroyStatus(status_id);
+				status_actions(reply); 
 				return true;
 			
 			default:
@@ -448,6 +442,24 @@ public class MainWindow : Window {
 				GLib.Process.spawn_async(".", {"/usr/bin/xdg-open", request.uri}, null,
 					GLib.SpawnFlags.STDOUT_TO_DEV_NULL, null, out pid);
 				return true;
+		}
+	}
+	
+	private void status_actions(TwitterInterface.Reply reply)
+	{
+		switch(reply) {
+			case TwitterInterface.Reply.ERROR_401:
+				statusbar.set_status(statusbar.Status.ERROR_401);
+				break;
+			case TwitterInterface.Reply.ERROR_TIMEOUT:
+				statusbar.set_status(statusbar.Status.ERROR_TIMEOUT);
+				break;
+			case TwitterInterface.Reply.ERROR_UNKNOWN:
+				statusbar.set_status(statusbar.Status.ERROR_UNKNOWN);
+				break;
+			case TwitterInterface.Reply.OK:
+				refresh_action();
+				break;
 		}
 	}
 	

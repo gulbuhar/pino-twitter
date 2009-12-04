@@ -23,7 +23,7 @@ public class Status {
 
 public class TwitterInterface : Object {
 	
-	public enum Reply {
+	public static enum Reply {
 		ERROR_TIMEOUT, ERROR_401, ERROR_UNKNOWN, OK
 	}
 	
@@ -47,6 +47,7 @@ public class TwitterInterface : Object {
 	private const string friendsUrl = "http://api.twitter.com/1/statuses/home_timeline.xml";
 	private const string statusUpdateUrl = "http://twitter.com/statuses/update.xml";
 	private const string destroyStatusUrl = "http://twitter.com/statuses/destroy/%s.xml";
+	private const string retweetStatusUrl = "http://api.twitter.com/1/statuses/retweet/%s.xml";
 	private const string mentionsUrl = "http://twitter.com/statuses/mentions.xml";
 	
 	public signal void updating();
@@ -156,6 +157,35 @@ public class TwitterInterface : Object {
 		
 		var session = new Soup.SessionAsync();
 		var message = new Soup.Message("DELETE", destroyStatusUrl.printf(status_id));
+		
+		/*string req_body = Soup.form_encode("status", status, "user", name);
+		message.set_request("application/x-www-form-urlencoded",
+			Soup.MemoryUse.COPY, req_body, req_body.length);
+		*/
+		session.authenticate += (sess, msg, auth, retrying) => {
+        	if (retrying) return;
+        	//stdout.printf ("Authentication required\n");
+        	auth.authenticate(login, password);
+        };
+        
+        //warning("STATUS: %d", (int)status);
+        switch(session.send_message(message)) {
+        	case 401:
+        		return Reply.ERROR_401;
+        	case 2:
+        		return Reply.ERROR_TIMEOUT;
+        	case 200:
+        		return Reply.OK;
+        	default:
+        		return Reply.ERROR_UNKNOWN;
+        }
+	}
+	
+	public Reply retweetStatus(string status_id) {
+		destroying_status();
+		
+		var session = new Soup.SessionAsync();
+		var message = new Soup.Message("POST", retweetStatusUrl.printf(status_id));
 		
 		/*string req_body = Soup.form_encode("status", status, "user", name);
 		message.set_request("application/x-www-form-urlencoded",

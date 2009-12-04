@@ -74,6 +74,7 @@ class Template : Object {
 					time,
 					making_links(text),
 					by_who,
+					//i.id,
 					i.user_name,
 					i.id,
 					i.user_screen_name,
