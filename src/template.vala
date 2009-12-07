@@ -22,7 +22,7 @@ class Template : Object {
 	}
 	
 	public string generateFriends(Gee.ArrayList<Status> friends,
-		SystemStyle gtkStyle, string nick) {
+		SystemStyle gtkStyle, string nick, int last_focused) {
 		string content = "";
 		
 		var now = get_current_time();
@@ -30,7 +30,7 @@ class Template : Object {
 		foreach(Status i in friends) {
 			//checking for new statuses
 			var fresh = "old";
-			if(i.unreaded)
+			if(last_focused > 0 && (int)i.created_at.mktime() > last_focused)
 				fresh = "fresh";
 			
 			//making human-readable time/date

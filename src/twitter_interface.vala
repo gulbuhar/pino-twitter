@@ -17,14 +17,14 @@ public class Status {
 	public string re_user_avatar;
 	
 	public bool is_retweet = false;
-	public bool is_new = false;
-	public bool unreaded = false;
+	//public bool is_new = false;
+	//public bool unreaded = false;
 }
 
 public class TwitterInterface : Object {
 	
 	public static enum Reply {
-		ERROR_TIMEOUT, ERROR_401, ERROR_UNKNOWN, OK
+		ERROR_TIMEOUT, ERROR_401, ERROR_UNKNOWN, OK, EMPTY
 	}
 	
 	public enum SyncMethod {
@@ -93,6 +93,14 @@ public class TwitterInterface : Object {
 		var session = new Soup.SessionAsync();
 		session.timeout = 10;
         var message = new Soup.Message("GET", Uri);
+        var req_body = Soup.form_encode("count", "20");
+        
+        if(lst.size > 0) { //from what status retrieve 
+        	req_body = Soup.form_encode("since_id", lst.get(0).id, "count", "20");
+        }
+        
+        message.set_request("application/x-www-form-urlencoded",
+				Soup.MemoryUse.COPY, req_body, req_body.length);
 
         /* see if we need HTTP auth */
         session.authenticate += (sess, msg, auth, retrying) => {
@@ -100,18 +108,22 @@ public class TwitterInterface : Object {
         	//stdout.printf ("Authentication required\n");
         	auth.authenticate(login, password);
         };
-		//Posix.sleep(10);
-        /* send a sync request */
-        //warning("STATUS: %d", (int)status);
+		
         switch(session.send_message(message)) {
         	case 401:
         		return Reply.ERROR_401;
         	case 2:
         		return Reply.ERROR_TIMEOUT;
         	case 200:
-				parse_xml(message.response_body.data, last_time, last_focused, lst);
+        		if(message.response_body.data.length > 80) { //if some new tweets
+        			parse_xml(message.response_body.data, last_time, last_focused, lst);
+        			warning("all tweets!");
+        			updated();
+        			return Reply.OK;
+        		}
+				
 				updated();
-        		return Reply.OK;
+        		return Reply.EMPTY; //if reply is empty (no tweets)
         	default:
         		return Reply.ERROR_UNKNOWN;
         }
@@ -175,6 +187,7 @@ public class TwitterInterface : Object {
         	case 2:
         		return Reply.ERROR_TIMEOUT;
         	case 200:
+        		friends.clear();
         		return Reply.OK;
         	default:
         		return Reply.ERROR_UNKNOWN;
@@ -229,7 +242,12 @@ public class TwitterInterface : Object {
 		string currentLocale = GLib.Intl.setlocale(GLib.LocaleCategory.TIME, null);
 		GLib.Intl.setlocale(GLib.LocaleCategory.TIME, "C");
 		
-		lst.clear();
+		//lst.clear();
+		var first_time = true;
+		if(lst.size > 0)
+			first_time = false;
+		
+		int counter = 0; //for index handling
 		
 		for(Xml.Node* iter = rootNode->children; iter != null; iter = iter->next) {
 			if (iter->type != ElementType.ELEMENT_NODE)
@@ -336,22 +354,16 @@ public class TwitterInterface : Object {
 				    	}
 				    }
 				    delete iter_in;
-				    //checking for new status
-				    if(last_time > 0) {
-				    	//var last_status = _friends.get(0);
-				    	if((int)status.created_at.mktime() > last_time) {
-				    		status.is_new = true;
-				    	}
-				    }
 				    
-				    if(last_focused > 0) {
+				    if(first_time) //adding to the end of list
+				    	lst.add(status);
+				    else { //inserting to the start
+				    	lst.insert(counter, status);
+				    	counter++;
 				    	
-				    	if((int)status.created_at.mktime() > last_focused) {
-				    		status.unreaded = true;
-				    	}
+				    	if(lst.size > 20) // removing last tweet
+				    		lst.remove_at(20);
 				    }
-				    
-				    lst.add(status);
 				}
 		    }
 		    delete iter; //memory leak was here >:3
@@ -359,9 +371,5 @@ public class TwitterInterface : Object {
 		
 		//back to normal locale
 		GLib.Intl.setlocale(GLib.LocaleCategory.TIME, currentLocale);
-		//delete rootNode;
-		//_friends.clear();
-		//_friends = null;
-		//_friends = tmpList;
 	}
 }

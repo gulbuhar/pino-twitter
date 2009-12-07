@@ -390,10 +390,10 @@ public class MainWindow : Window {
 	
 	private void style_update(Style? prevStyle) {
 		gtkStyle.updateStyle(rc_get_style(this));
-		tweets.load_string(template.generateFriends(twee.friends, gtkStyle, prefs.login),
-			"text/html", "utf8", "");
-		mentions.load_string(template.generateFriends(twee.mentions, gtkStyle, prefs.login),
-			"text/html", "utf8", "");
+		tweets.load_string(template.generateFriends(twee.friends, gtkStyle, prefs.login, last_focused_friends),
+			"text/html", "utf8", "file:///");
+		mentions.load_string(template.generateFriends(twee.mentions, gtkStyle, prefs.login, last_focused_mentions),
+			"text/html", "utf8", "file:///");
 		//warning("Style changed!");
 	}
 	
@@ -474,59 +474,68 @@ public class MainWindow : Window {
 		updateAct.set_sensitive(false);
 		
 		switch(twee.sync_friends(last_time_friends, last_focused_friends)) {
-			case twee.Reply.ERROR_401:
+			case TwitterInterface.Reply.ERROR_401:
 				statusbar.set_status(statusbar.Status.ERROR_401);
 				break;
-			case twee.Reply.ERROR_TIMEOUT:
+			case TwitterInterface.Reply.ERROR_TIMEOUT:
 				statusbar.set_status(statusbar.Status.ERROR_TIMEOUT);
 				break;
-			case twee.Reply.ERROR_UNKNOWN:
+			case TwitterInterface.Reply.ERROR_UNKNOWN:
 				statusbar.set_status(statusbar.Status.ERROR_UNKNOWN);
 				break;
-			case twee.Reply.OK:
-				tweets.load_string(template.generateFriends(twee.friends, gtkStyle, prefs.login),
-					"text/html", "utf8", "");
+			case TwitterInterface.Reply.OK:
+				tweets.load_string(template.generateFriends(twee.friends, gtkStyle, prefs.login, last_focused_friends),
+					"text/html", "utf8", "file:///");
+				
+				//show new statuses via libnotify
+				if(prefs.showNotifications && last_time_friends > 0)
+					show_popups(twee.friends, last_time_friends);
+				
 				last_time_friends = (int)twee.friends.get(0).created_at.mktime();
 				if(focused || last_focused_friends == -1)
 					last_focused_friends = last_time_friends;
-			
-				//show new statuses via libnotify
-				if(prefs.showNotifications)
-					show_popups(twee.friends);
+				
+				break;
+			case TwitterInterface.Reply.EMPTY:
 				break;
 		}
 		
 		switch(twee.sync_mentions(last_time_mentions, last_focused_mentions)) {
-			case twee.Reply.ERROR_401:
+			case TwitterInterface.Reply.ERROR_401:
 				statusbar.set_status(statusbar.Status.ERROR_401);
 				break;
-			case twee.Reply.ERROR_TIMEOUT:
+			case TwitterInterface.Reply.ERROR_TIMEOUT:
 				statusbar.set_status(statusbar.Status.ERROR_TIMEOUT);
 				break;
-			case twee.Reply.ERROR_UNKNOWN:
+			case TwitterInterface.Reply.ERROR_UNKNOWN:
 				statusbar.set_status(statusbar.Status.ERROR_UNKNOWN);
 				break;
-			case twee.Reply.OK:
-				mentions.load_string(template.generateFriends(twee.mentions, gtkStyle, prefs.login),
-					"text/html", "utf8", "");
+			case TwitterInterface.Reply.OK:
+				mentions.load_string(template.generateFriends(twee.mentions, gtkStyle, prefs.login, last_focused_mentions),
+					"text/html", "utf8", "file:///");
+				
+				//show new statuses via libnotify
+				if(prefs.showNotifications && last_time_mentions > 0)
+					show_popups(twee.mentions, last_time_mentions);
+				
 				last_time_mentions = (int)twee.mentions.get(0).created_at.mktime();
 				if(focused || last_focused_friends == -1)
 					last_focused_mentions = last_time_mentions;
-			
-				//show new statuses via libnotify
-				if(prefs.showNotifications)
-					show_popups(twee.mentions);
+				
+				break;
+			case TwitterInterface.Reply.EMPTY:
 				break;
 		}
 		
 		updateAct.set_sensitive(true);
 	}
 	
-	public void show_popups(Gee.ArrayList<Status> lst) {
+	public void show_popups(Gee.ArrayList<Status> lst, int last_time) {
 		var tmpList = new GLib.List<Status>(); //list for new statuses
 		
 		foreach(Status status in lst) {
-			if(status.is_new)
+			warning("%d ==> %d", (int)status.created_at.mktime(), last_time);
+			if((int)status.created_at.mktime() > last_time)
 				tmpList.append(status);
 			else
 				break;
