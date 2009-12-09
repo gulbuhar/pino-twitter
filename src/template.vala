@@ -6,7 +6,6 @@ class Template : Object {
 	private string mainTemplate;
 	private string statusTemplate;
 	private string statusMeTemplate;
-	//private string statusRetweetTemplate;
 	
 	private Regex nicks;
 	private Regex tags;
@@ -131,7 +130,6 @@ class Template : Object {
 		mainTemplate = loadTemplate(TEMPLATES_PATH + "/main.tpl");
 		statusTemplate = loadTemplate(TEMPLATES_PATH + "/status.tpl");
 		statusMeTemplate = loadTemplate(TEMPLATES_PATH + "/status_me.tpl");
-		//statusRetweetTemplate = loadTemplate(TEMPLATES_PATH + "/status_retweet.tpl");
 	}
 	
 	private string loadTemplate(string path) {

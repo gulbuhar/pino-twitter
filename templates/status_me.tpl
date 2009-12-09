@@ -4,9 +4,8 @@
 		<span class="date">%s</span>
 		<span class="nick">%s</span>
 		<div>
-			%s
-			<br />
-			<a class="delete" title="delete this status" href="delete://%s">Delete</a>
+			%s<br />
+			<span>%s&nbsp;</span><span style="text-align:right;float:right;"><a class="delete" title="delete this status" href="delete://%s">Delete</a></span>
 		</div>
 	</div>
 	<div style="clear:both;"></div> 

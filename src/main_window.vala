@@ -160,8 +160,11 @@ public class MainWindow : Window {
 		Notify.init(APP_NAME);
 		
 		//getting updates
-		if(!prefs.is_new && prefs.rememberPass)
+		if(!prefs.is_new && prefs.rememberPass) {
+			tweets.hide();
 			refresh_action();
+			tweets.show();
+		}
 		
 		//start timer
 		timer = new SmartTimer(prefs.updateInterval * 60);
@@ -402,22 +405,28 @@ public class MainWindow : Window {
 		if(request.uri == "")
 			return false;
 		
-		var prot = request.uri.split("://")[0];
-		if(prot == "fake" || prot == "file")
-			return false;
+		var p = request.uri.split("://");
+		var prot = p[0];
+		var params = p[1];
 		
-		warning("Prot: %s", prot);
+		if(prot == "http" || prot == "https" || prot == "ftp") {
+			GLib.Pid pid;
+			GLib.Process.spawn_async(".", {"/usr/bin/xdg-open", request.uri}, null,
+				GLib.SpawnFlags.STDOUT_TO_DEV_NULL, null, out pid);
+			return true;
+		}
+		
 		switch(prot) {
-			case "nick_to":
+			case "nickto":
 				reTweet.show();
-				reTweet.insert("@" + request.uri.split("://")[1]);
+				reTweet.insert("@" + params);
 				this.set_focus(reTweet.text_entry);
 				return true;
 			
-			case "direct_reply":
-				var screen_name = request.uri.split("://")[1];
+			case "directreply":
+				var screen_name = params;
 				reTweet.is_direct = true;
-				reTweet.set_screen_name(screen_name.split("==")[2]);
+				reTweet.set_screen_name(screen_name.split("==")[1]);
 				reTweet.reply_id = screen_name.split("==")[0];
 				reTweet.show();
 				reTweet.insert("@%s ".printf(screen_name.split("==")[1]));
@@ -425,22 +434,22 @@ public class MainWindow : Window {
 				return true;
 			
 			case "retweet":
-				var status_id = request.uri.split("://")[1];
+				var status_id = params;
 				var reply = twee.retweetStatus(status_id);
 				status_actions(reply);
 				return true;
 			
 			case "delete":
-				var status_id = request.uri.split("://")[1];
+				var status_id = params;
 				warning(status_id);
 				var reply = twee.destroyStatus(status_id);
 				status_actions(reply); 
 				return true;
 			
+			case "file":
+				return false;
+			
 			default:
-				GLib.Pid pid;
-				GLib.Process.spawn_async(".", {"/usr/bin/xdg-open", request.uri}, null,
-					GLib.SpawnFlags.STDOUT_TO_DEV_NULL, null, out pid);
 				return true;
 		}
 	}
