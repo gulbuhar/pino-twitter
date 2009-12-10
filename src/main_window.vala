@@ -376,10 +376,13 @@ public class MainWindow : Window {
 		}
 		
 		if((event.type == Gdk.EventType.BUTTON_PRESS) && (event.button == 1)) {
-			if(visible)
+			if(visible) {
 				this.hide();
-			else
+				visible = false;
+			} else {
 				this.show();
+				visible = true;
+			}
 			
 			return true;
 		}
