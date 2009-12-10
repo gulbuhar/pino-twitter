@@ -342,13 +342,24 @@ public class MainWindow : Window {
 			//timer interval update
 			timer.set_interval(prefs.updateInterval * 60);
 			
+			var old_login = twee.login_public;
+			
 			//auth data update
 			twee.set_auth(prefs.login, prefs.password);
 			
 			prefs.write();
 			
-			if(prefs.is_new)
+			if(prefs.is_new || old_login != prefs.login) { //if new settings or changing login
+				twee.friends.clear();
+				twee.mentions.clear();
+				
+				last_time_friends = 0;
+				last_focused_friends = -1;
+				last_time_mentions = 0;
+				last_focused_mentions = -1;
+				
 				refresh_action();
+			}
 			
 			prefs.is_new = false;
 		});
@@ -516,6 +527,10 @@ public class MainWindow : Window {
 				
 				break;
 			case TwitterInterface.Reply.EMPTY:
+				if(last_time_friends == 0) {
+					tweets.load_string(template.generateFriends(twee.friends, gtkStyle, prefs.login, last_focused_friends),
+					"text/html", "utf8", "file:///");
+				}
 				break;
 		}
 		
@@ -543,6 +558,10 @@ public class MainWindow : Window {
 				
 				break;
 			case TwitterInterface.Reply.EMPTY:
+				if(last_time_mentions == 0) {
+					mentions.load_string(template.generateFriends(twee.mentions, gtkStyle, prefs.login, last_focused_mentions),
+					"text/html", "utf8", "file:///");
+				}
 				break;
 		}
 		

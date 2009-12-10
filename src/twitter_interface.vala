@@ -42,6 +42,9 @@ public class TwitterInterface : Object {
 	}
 	
 	private string login;
+	public string login_public {
+		get { return login; }
+	}
 	private string password;
 	
 	private const string friendsUrl = "http://api.twitter.com/1/statuses/home_timeline.xml";
