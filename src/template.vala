@@ -82,7 +82,7 @@ class Template : Object {
 					);
 			}
 		}
-		
+		warning(content);
 		return mainTemplate.printf(gtkStyle.bg_color, //body background
 			gtkStyle.fg_color, //main text color
 			gtkStyle.fg_color, //nick color
@@ -100,7 +100,7 @@ class Template : Object {
 		//warning("NICK: %s", result);
 		result = tags.replace(result, -1, 0, "<a class='tags' href='http:/twitter.com/#search?q=\\1'>\\1</a>");
 		result = urls.replace(result, -1, 0, "<a href='\\0'>\\0</a>");
-		return result;
+		return result.replace("http:/t", "http://t"); // very dirty
 	}
 	
 	private string time_to_human_delta(Time now, Time t) {
