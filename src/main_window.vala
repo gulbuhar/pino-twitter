@@ -53,9 +53,15 @@ public class MainWindow : Window {
 		
 		set_icon(logo);
 		set_title(APP_NAME);
-		delete_event.connect((event) => {
-			this.hide_on_delete();
-		});
+		
+		// Doesn't works in installed app... strange
+		//delete_event.connect((event) => {
+			//this.hide_on_delete();
+			//visible = false;
+			//focused = false;
+		//});
+		
+		destroy.connect(() => before_close());
 		
 		configure_event.connect((widget, event) => {
 			//saving window size and position
