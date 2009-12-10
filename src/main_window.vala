@@ -440,10 +440,20 @@ public class MainWindow : Window {
 				return true;
 			
 			case "delete":
-				var status_id = params;
-				warning(status_id);
-				var reply = twee.destroyStatus(status_id);
-				status_actions(reply); 
+				var message_dialog = new MessageDialog(this,
+					Gtk.DialogFlags.DESTROY_WITH_PARENT | Gtk.DialogFlags.MODAL,
+					Gtk.MessageType.QUESTION, Gtk.ButtonsType.YES_NO,
+					("Sure you want to delete this tweet?"));
+				
+				var response = message_dialog.run();
+				if(response == ResponseType.YES) {
+					message_dialog.destroy();
+					var status_id = params;
+					warning(status_id);
+					var reply = twee.destroyStatus(status_id);
+					status_actions(reply);
+				}
+				message_dialog.destroy();
 				return true;
 			
 			case "file":

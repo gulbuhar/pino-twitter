@@ -36,6 +36,7 @@ class Template : Object {
 			string time = time_to_human_delta(now, i.created_at);
 			
 			if(i.user_name == nick) {
+				warning("OHOHO %s", i.text);
 				content += statusMeTemplate.printf(i.user_avatar,
 					"me",
 					i.id,
