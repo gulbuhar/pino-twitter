@@ -62,6 +62,7 @@ def build(bld):
 	bld.add_subdirs('templates')
 	
 	bld.install_files('${PREFIX}/share/icons/hicolor/scalable/apps', 'pino.svg')
+	bld.install_files('${PREFIX}/share/icons/hicolor/scalable/apps', 'pino_fresh.svg')
 	bld.install_files('${PREFIX}/share/icons/hicolor/scalable/actions', 'mentions.svg')
 	bld.install_files('${PREFIX}/share/icons/hicolor/scalable/actions', 'timeline.svg')
 	#bld.install_files('${PREFIX}/share/icons/hicolor/16x16/actions', 'retweet.png')

@@ -78,8 +78,9 @@ public class MainWindow : Window {
 			warning("focused");
 			if(last_time_friends > 0)
 				last_focused_friends = last_time_friends;
-			//last_time_friends = 0;
-			//last_time_mentions = 0;
+			
+			//clear tray notification
+			tray.set_from_file(LOGO_PATH);
 		});
 		
 		focus_out_event.connect((w, e) => {
@@ -526,6 +527,13 @@ public class MainWindow : Window {
 				tweets.load_string(template.generateFriends(twee.friends, gtkStyle, prefs.login, last_focused_friends),
 					"text/html", "utf8", "file:///");
 				
+				//tray notification
+				if(last_time_friends > 0 &&
+					last_time_friends < (int)twee.friends.get(0).created_at.mktime() &&
+					!focused) {
+					tray.set_from_file(LOGO_FRESH_PATH);
+				}
+				
 				//show new statuses via libnotify
 				if(prefs.showNotifications && last_time_friends > 0)
 					show_popups(twee.friends, last_time_friends);
@@ -554,6 +562,13 @@ public class MainWindow : Window {
 			case TwitterInterface.Reply.OK:
 				mentions.load_string(template.generateFriends(twee.mentions, gtkStyle, prefs.login, last_focused_mentions),
 					"text/html", "utf8", "file:///");
+				
+				//tray notification
+				if(last_time_mentions > 0 &&
+					last_time_mentions < (int)twee.mentions.get(0).created_at.mktime() &&
+					!focused) {
+					tray.set_from_file(LOGO_FRESH_PATH);
+				}
 				
 				//show new statuses via libnotify
 				if(prefs.showNotifications && last_time_mentions > 0)
