@@ -6,6 +6,8 @@ using Notify;
 public class MainWindow : Window {
 	
 	private Action updateAct;
+	private ToggleAction menuAct;
+	private ToggleAction toolbarAct;
 	private StatusIcon tray;
 	
 	private Gdk.Pixbuf logo;
@@ -166,6 +168,12 @@ public class MainWindow : Window {
 		//libnotify init
 		Notify.init(APP_NAME);
 		
+		//hide menubar and toolbar if needed
+		if(!prefs.menuShow)
+			menuAct.set_active(false);
+		if(!prefs.toolbarShow)
+			toolbarAct.set_active(false);
+		
 		//getting updates
 		if(!prefs.is_new && prefs.rememberPass) {
 			tweets.hide();
@@ -226,7 +234,7 @@ public class MainWindow : Window {
 		
 		showMentionsAct.set_group(showTimelineAct.get_group()); //lol
 		
-		var menuAct = new ToggleAction("ViewMenuAct", "Show menu", null, null);
+		menuAct = new ToggleAction("ViewMenuAct", "Show menu", null, null);
 		menuAct.set_active(true);
 		
 		menuAct.toggled.connect(() => {
@@ -236,7 +244,7 @@ public class MainWindow : Window {
 				menubar.hide();
 		});
 		
-		var toolbarAct = new ToggleAction("ViewToolbar", "Show toolbar",
+		toolbarAct = new ToggleAction("ViewToolbar", "Show toolbar",
 			null, null);
 		toolbarAct.set_active(true);
 		
@@ -664,7 +672,10 @@ public class MainWindow : Window {
 		}
 	}
 	
-	private void before_close() {	
+	private void before_close() {
+		prefs.menuShow = menubar.visible;
+		prefs.toolbarShow = toolbar.visible;
+		
 		prefs.write();
 		main_quit();
 	}

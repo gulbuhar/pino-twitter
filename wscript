@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-VERSION = "0.1.0b"
+VERSION = "0.1.0b2"
 VERSION_MAJOR_MINOR =  ".".join(VERSION.split(".")[0:2])
 APPNAME = "pino"
 

@@ -62,6 +62,18 @@ public class Prefs : Object {
 		set{ _top = value; }
 	}
 	
+	private bool _menuShow = true;
+	public bool menuShow {
+		get{ return _menuShow; }
+		set{ _menuShow = value; }
+	}
+	
+	private bool _toolbarShow = true;
+	public bool toolbarShow {
+		get{ return _toolbarShow; }
+		set{ _toolbarShow = value; }
+	}
+	
 	public enum LoadStatus { OK, EMPTY, ERROR }
 	public enum WriteStatus { OK, ERROR }
 	
@@ -157,6 +169,14 @@ public class Prefs : Object {
 				case "top":
 					_top = iter->get_content().to_int();
 					break;
+				
+				case "menuShow":
+					_menuShow = iter->get_content().to_bool();
+					break;
+				
+				case "toolbarShow":
+					_toolbarShow = iter->get_content().to_bool();
+					break;
 			}
 		}
 		
@@ -193,6 +213,10 @@ public class Prefs : Object {
         root->new_text_child(ns, "left", _left.to_string());
         root->add_content("\n");
         root->new_text_child(ns, "top", _top.to_string());
+        root->add_content("\n");
+        root->new_text_child(ns, "menuShow", _menuShow.to_string());
+        root->add_content("\n");
+        root->new_text_child(ns, "toolbarShow", _toolbarShow.to_string());
         root->add_content("\n");
 		
 		//write this document to the pref file
