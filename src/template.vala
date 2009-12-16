@@ -26,6 +26,9 @@ class Template : Object {
 		
 		var now = get_current_time();
 		
+		var reply_text = _("Reply");
+		var delete_text = _("Delete");
+		
 		foreach(Status i in friends) {
 			//checking for new statuses
 			var fresh = "old";
@@ -45,7 +48,8 @@ class Template : Object {
 					//i.user_name,
 					i.user_name,
 					making_links(i.text),
-					i.id
+					i.id,
+					delete_text
 					);
 			} else {
 				var re_icon = "";
@@ -78,7 +82,8 @@ class Template : Object {
 					i.user_name,
 					i.id,
 					i.user_screen_name,
-					i.user_name
+					i.user_name,
+					reply_text
 					);
 			}
 		}
@@ -106,15 +111,15 @@ class Template : Object {
 	private string time_to_human_delta(Time now, Time t) {
 		var delta = (int)(now.mktime() - t.mktime());
 		if(delta < 30)
-			return "a few seconds ago";
+			return _("a few seconds ago");
 		if(delta < 120)
-			return "1 minute ago";
+			return _("1 minute ago");
 		if(delta < 3600)
-			return "%i minutes ago".printf(delta / 60);
+			return _("%i minutes ago").printf(delta / 60);
 		if(delta < 7200)
-			return "about 1 hour ago";
+			return _("about 1 hour ago");
 		if(delta < 86400)
-			return "about %i hours ago".printf(delta / 3600);
+			return _("about %i hours ago").printf(delta / 3600);
 		
 		return t.format("%k:%M %b %d %Y");
 	}
@@ -128,9 +133,9 @@ class Template : Object {
 	
 	public void reload() {
 		//load templates
-		mainTemplate = loadTemplate(TEMPLATES_PATH + "/main.tpl");
-		statusTemplate = loadTemplate(TEMPLATES_PATH + "/status.tpl");
-		statusMeTemplate = loadTemplate(TEMPLATES_PATH + "/status_me.tpl");
+		mainTemplate = loadTemplate(Config.TEMPLATES_PATH + "/main.tpl");
+		statusTemplate = loadTemplate(Config.TEMPLATES_PATH + "/status.tpl");
+		statusMeTemplate = loadTemplate(Config.TEMPLATES_PATH + "/status_me.tpl");
 	}
 	
 	private string loadTemplate(string path) {

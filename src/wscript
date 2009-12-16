@@ -6,8 +6,10 @@ def build(bld):
 		name = 'pino',
 		target = 'pino',
 		uselib = 'GTK+ GOBJECT LIBXML GEE LIBNOTIFY LIBSOUP WEBKIT GTHREAD',
-		packages = 'gtk+-2.0 gee-1.0 gio-2.0 libnotify libsoup-2.4 libxml-2.0 webkit-1.0',
-		source = bld.path.ant_glob(incl = '*.vala'),
+		packages = 'gtk+-2.0 gee-1.0 gio-2.0 libnotify libsoup-2.4 libxml-2.0 webkit-1.0 config',
+		ccflags = ['-include', 'config.h', '-DYAML_DECLARE_STATIC'],
+		vapi_dirs = 'vapi/',
+		source = bld.path.ant_glob(incl = '*.vala vapi/*.c'),
 		threading = True
 	)
 	prog.install_path = '${PREFIX}/bin'

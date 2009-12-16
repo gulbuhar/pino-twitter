@@ -25,27 +25,27 @@ public class StatusbarSmart : Statusbar {
 		switch(status) {
 			case Status.UPDATED:
 				statusImg.set_from_stock("gtk-apply", Gtk.IconSize.MENU);
-				statusLabel.set_text("updated ");
+				statusLabel.set_text(_("updated "));
 				break;
 			case Status.UPDATING:
 				statusImg.set_from_stock("gtk-refresh", Gtk.IconSize.MENU);
-				statusLabel.set_text("updating... ");
+				statusLabel.set_text(_("updating... "));
 				break;
 			case Status.SEND_STATUS:
 				statusImg.set_from_stock("gtk-edit", Gtk.IconSize.MENU);
-				statusLabel.set_text("sending status... ");
+				statusLabel.set_text(_("sending status... "));
 				break;
 			case Status.ERROR_401:
 				statusImg.set_from_stock("gtk-stop", Gtk.IconSize.MENU);
-				statusLabel.set_text("wrong login or password ");
+				statusLabel.set_text(_("wrong login or password "));
 				break;
 			case Status.ERROR_TIMEOUT:
 				statusImg.set_from_stock("gtk-stop", Gtk.IconSize.MENU);
-				statusLabel.set_text("problems with connection ");
+				statusLabel.set_text(_("problems with connection "));
 				break;
 			case Status.ERROR_UNKNOWN:
 				statusImg.set_from_stock("gtk-stop", Gtk.IconSize.MENU);
-				statusLabel.set_text("some strange error ");
+				statusLabel.set_text(_("some strange error "));
 				break;
 		}
 	}

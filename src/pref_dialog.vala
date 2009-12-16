@@ -21,14 +21,14 @@ public class PrefDialog : Dialog {
 		
 		//update interval
 		var upd_box = new HBox(false, 0);
-		var updateLabel = new Label("Update interval");
+		var updateLabel = new Label(_("Update interval"));
 		updateInterval = new SpinButton.with_range(1, 60, 1);
 		upd_box.pack_start(updateLabel, false, true, 10);
 		upd_box.pack_start(updateInterval, true, true, 10);
 		
 		//show notifications
 		var not_box = new HBox(false, 0);
-		showNotifications = new CheckButton.with_label("Show notifications");
+		showNotifications = new CheckButton.with_label(_("Show notifications"));
 		not_box.pack_start(showNotifications, false, true, 10);
 		
 		main_box.pack_start(upd_box, false, true, 10);
@@ -39,14 +39,14 @@ public class PrefDialog : Dialog {
 		
 		//login
 		var log_box = new HBox(false, 0);
-		var logLabel = new Label("Login");
+		var logLabel = new Label(_("Login"));
 		login = new Entry();
 		log_box.pack_start(logLabel, false, true, 10);
 		log_box.pack_end(login, false, true, 10);
 		
 		//password
 		var pas_box = new HBox(false, 0);
-		var pasLabel = new Label("Password");
+		var pasLabel = new Label(_("Password"));
 		password = new Entry();
 		password.visible = 0;
 		
@@ -63,7 +63,7 @@ public class PrefDialog : Dialog {
 		
 		//save password
 		var sa_box = new HBox(false, 0);
-		savePass = new CheckButton.with_label("Remember password");
+		savePass = new CheckButton.with_label(_("Remember password"));
 		savePass.active = true;
 		
 		savePass.toggled.connect(() => {
@@ -78,7 +78,7 @@ public class PrefDialog : Dialog {
 		
 		if(prefs.is_new) {
 			var start_box = new HBox(false, 0);
-			var start_button = new Button.with_label("Create new account...");
+			var start_button = new Button.with_label(_("Create new account..."));
 			
 			start_button.clicked.connect(() => {
 				GLib.Pid pid;
@@ -91,8 +91,8 @@ public class PrefDialog : Dialog {
 			ac_box.pack_start(start_box, false, true, 10);
 		}
 		
-		tabs.append_page(main_box, new Label("Main"));
-		tabs.append_page(ac_box, new Label("Account"));
+		tabs.append_page(main_box, new Label(_("Main")));
+		tabs.append_page(ac_box, new Label(_("Account")));
 		
 		var hor_box = new HBox(false, 0);
 		hor_box.pack_start(tabs, true, true, 10);

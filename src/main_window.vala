@@ -41,7 +41,7 @@ public class MainWindow : Window {
 	private bool focused;
 	
 	public MainWindow() {
-		logo = new Gdk.Pixbuf.from_file(LOGO_PATH);
+		logo = new Gdk.Pixbuf.from_file(Config.LOGO_PATH);
 		
 		//getting settings
 		prefs = new Prefs();
@@ -54,7 +54,7 @@ public class MainWindow : Window {
 			move(prefs.left, prefs.top);
 		
 		set_icon(logo);
-		set_title(APP_NAME);
+		set_title(Config.APPNAME);
 		
 		// Doesn't works in installed app... strange
 		//delete_event.connect((event) => {
@@ -82,7 +82,7 @@ public class MainWindow : Window {
 				last_focused_friends = last_time_friends;
 			
 			//clear tray notification
-			tray.set_from_file(LOGO_PATH);
+			tray.set_from_file(Config.LOGO_PATH);
 		});
 		
 		focus_out_event.connect((w, e) => {
@@ -99,7 +99,7 @@ public class MainWindow : Window {
 		//tray setup
 		tray = new StatusIcon.from_pixbuf(logo);
 		tray.button_press_event.connect(tray_actions);
-		tray.set_tooltip_text("%s - a twitter client".printf(APP_NAME));
+		tray.set_tooltip_text(_("%s - a twitter client").printf(Config.APPNAME));
 		
 		//widgets setup
 		/*	
@@ -166,7 +166,7 @@ public class MainWindow : Window {
 		scroll_mentions.hide();
 		
 		//libnotify init
-		Notify.init(APP_NAME);
+		Notify.init(Config.APPNAME);
 		
 		//hide menubar and toolbar if needed
 		if(!prefs.menuShow)
@@ -190,28 +190,28 @@ public class MainWindow : Window {
 		var actGroup = new ActionGroup("main");
 		
 		//file menu
-		var fileMenu = new Action("FileMenu", "Twitter", null, null);
-		var createAct = new Action("FileCreate", "New status",
-			"Create new status", STOCK_EDIT);
+		var fileMenu = new Action("FileMenu", _("Twitter"), null, null);
+		var createAct = new Action("FileCreate", _("New status"),
+			_("Create new status"), STOCK_EDIT);
 		createAct.activate.connect(show_re_tweet);
-		updateAct = new Action("FileUpdate", "Update timeline",
+		updateAct = new Action("FileUpdate", _("Update timeline"),
 			null, STOCK_REFRESH);
 		updateAct.activate.connect(refresh_action);
-		var quitAct = new Action("FileQuit", "Quit",
+		var quitAct = new Action("FileQuit", _("Quit"),
 			null, STOCK_QUIT);
 		quitAct.activate.connect(before_close);
 		
 		//edit menu
-		var editMenu = new Action("EditMenu", "Edit", null, null);
-		var prefAct = new Action("EditPref", "Preferences",
+		var editMenu = new Action("EditMenu", _("Edit"), null, null);
+		var prefAct = new Action("EditPref", _("Preferences"),
 			null, STOCK_PREFERENCES);
 		prefAct.activate.connect(run_prefs);
 		
 		//view menu
-		var viewMenu = new Action("ViewMenu", "View", null, null);
-		var showTimelineAct = new RadioAction("ShowTimelineAct", "Timeline",
-			"Show your timeline", null, 1);
-		showTimelineAct.set_gicon(Icon.new_for_string(TIMELINE_PATH));
+		var viewMenu = new Action("ViewMenu", _("View"), null, null);
+		var showTimelineAct = new RadioAction("ShowTimelineAct", _("Timeline"),
+			_("Show your timeline"), null, 1);
+		showTimelineAct.set_gicon(Icon.new_for_string(Config.TIMELINE_PATH));
 		showTimelineAct.active = true;
 		
 		showTimelineAct.changed.connect((current) => {
@@ -221,9 +221,9 @@ public class MainWindow : Window {
 			}
 		});
 		
-		var showMentionsAct = new RadioAction("ShowMentionsAct", "Mentions",
-			"Show mentions", null, 2);
-		showMentionsAct.set_gicon(Icon.new_for_string(MENTIONS_PATH));
+		var showMentionsAct = new RadioAction("ShowMentionsAct", _("Mentions"),
+			_("Show mentions"), null, 2);
+		showMentionsAct.set_gicon(Icon.new_for_string(Config.MENTIONS_PATH));
 		
 		showMentionsAct.changed.connect((current) => {
 			if(current == showMentionsAct) {
@@ -234,7 +234,7 @@ public class MainWindow : Window {
 		
 		showMentionsAct.set_group(showTimelineAct.get_group()); //lol
 		
-		menuAct = new ToggleAction("ViewMenuAct", "Show menu", null, null);
+		menuAct = new ToggleAction("ViewMenuAct", _("Show menu"), null, null);
 		menuAct.set_active(true);
 		
 		menuAct.toggled.connect(() => {
@@ -244,7 +244,7 @@ public class MainWindow : Window {
 				menubar.hide();
 		});
 		
-		toolbarAct = new ToggleAction("ViewToolbar", "Show toolbar",
+		toolbarAct = new ToggleAction("ViewToolbar", _("Show toolbar"),
 			null, null);
 		toolbarAct.set_active(true);
 		
@@ -256,17 +256,17 @@ public class MainWindow : Window {
 		});
 		
 		//help menu
-		var helpMenu = new Action("HelpMenu", "Help", null, null);
-		var aboutAct = new Action("HelpAbout", "About Pino",
+		var helpMenu = new Action("HelpMenu", _("Help"), null, null);
+		var aboutAct = new Action("HelpAbout", _("About %s").printf(Config.APPNAME),
 			null, STOCK_ABOUT);
 		
 		aboutAct.activate.connect(() => {
 			var about_dlg = new AboutDialog();
 			about_dlg.set_logo(logo);
-			about_dlg.set_program_name(APP_NAME);
-			about_dlg.set_version(APP_VERSION);
+			about_dlg.set_program_name(Config.APPNAME);
+			about_dlg.set_version(Config.APP_VERSION);
 			about_dlg.set_website("http://code.google.com/p/pino-twitter/");
-			about_dlg.set_authors({"Main developer and project owner: troorl <troorl@gmail.com>"});
+			about_dlg.set_authors({_("Main developer and project owner:") + " troorl <troorl@gmail.com>"});
 			about_dlg.set_copyright("© 2009 troorl");
 			
 			about_dlg.response.connect((resp_id) => {
@@ -472,7 +472,7 @@ public class MainWindow : Window {
 				var message_dialog = new MessageDialog(this,
 					Gtk.DialogFlags.DESTROY_WITH_PARENT | Gtk.DialogFlags.MODAL,
 					Gtk.MessageType.QUESTION, Gtk.ButtonsType.YES_NO,
-					("Sure you want to delete this tweet?"));
+					(_("Sure you want to delete this tweet?")));
 				
 				var response = message_dialog.run();
 				if(response == ResponseType.YES) {
@@ -539,7 +539,7 @@ public class MainWindow : Window {
 				if(last_time_friends > 0 &&
 					last_time_friends < (int)twee.friends.get(0).created_at.mktime() &&
 					!focused) {
-					tray.set_from_file(LOGO_FRESH_PATH);
+					tray.set_from_file(Config.LOGO_FRESH_PATH);
 				}
 				
 				//show new statuses via libnotify
@@ -575,7 +575,7 @@ public class MainWindow : Window {
 				if(last_time_mentions > 0 &&
 					last_time_mentions < (int)twee.mentions.get(0).created_at.mktime() &&
 					!focused) {
-					tray.set_from_file(LOGO_FRESH_PATH);
+					tray.set_from_file(Config.LOGO_FRESH_PATH);
 				}
 				
 				//show new statuses via libnotify

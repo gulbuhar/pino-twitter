@@ -14,7 +14,7 @@ public class ReTweet : VBox {
 			_is_direct = value;
 			if(!value) {
 				_reply_id = "";
-				user_label.set_text("New status:");
+				user_label.set_text(_("New status:"));
 			}
 		}
 	}
@@ -26,7 +26,7 @@ public class ReTweet : VBox {
 	}
 	
 	public void set_screen_name(string user_name) {
-		user_label.set_text("Reply to <b>%s</b>:".printf(user_name));
+		user_label.set_text(_("Reply to <b>%s</b>:").printf(user_name));
 		user_label.set_use_markup(true);
 	}
 	
@@ -47,7 +47,7 @@ public class ReTweet : VBox {
 		set_spacing(2);
 		
 		var l_box = new HBox(false, 2);
-		user_label = new Label("New status:");
+		user_label = new Label(_("New status:"));
 		l_box.pack_start(user_label, false, false, 2);
 		
 		entry = new TextView();

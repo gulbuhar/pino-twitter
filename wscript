@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
-VERSION = "0.1.0b2"
+import intltool
+
+VERSION = "0.1.0b3"
 VERSION_MAJOR_MINOR =  ".".join(VERSION.split(".")[0:2])
 APPNAME = "pino"
 
@@ -12,8 +14,7 @@ def set_options(opt):
 	opt.tool_options('gnu_dirs')
 
 def configure(conf):
-	conf.check_tool('compiler_cc vala gnu_dirs')
-
+	conf.check_tool('compiler_cc vala gnu_dirs intltool')
 	conf.check_cfg(package='glib-2.0', uselib_store='GLIB',
 			atleast_version='2.14.0', mandatory=True, args='--cflags --libs')
 	conf.check_cfg(package='gobject-2.0', uselib_store='GOBJECT',
@@ -40,9 +41,17 @@ def configure(conf):
 	conf.define('PACKAGE_STRING', APPNAME + '-' + VERSION)
 	conf.define('PACKAGE_VERSION', APPNAME + '-' + VERSION)
 
-	conf.define('VERSION', VERSION)
+	conf.define('APP_VERSION', VERSION)
+	conf.define('LOGO_PATH', conf.env.PREFIX + '/share/icons/hicolor/scalable/apps/pino.svg')
+	conf.define('LOGO_FRESH_PATH', conf.env.PREFIX + '/share/icons/hicolor/scalable/apps/pino_fresh.svg')
+	conf.define('MENTIONS_PATH', conf.env.PREFIX + '/share/icons/hicolor/scalable/actions/mentions.svg')
+	conf.define('TIMELINE_PATH', conf.env.PREFIX + '/share/icons/hicolor/scalable/actions/timeline.svg')
+	conf.define('TEMPLATES_PATH', conf.env.PREFIX + '/share/pino/templates')
 	conf.define('VERSION_MAJOR_MINOR', VERSION_MAJOR_MINOR)
-	
+	conf.define ('LOCALE_DIR', conf.env.PREFIX + '/share/locale/')
+	conf.define ('GETTEXT_PACKAGE', APPNAME)
+	conf.define ('APPNAME', APPNAME)
+	conf.write_config_header("config.h")
 	init_defs(conf.env.PREFIX)
 
 def init_defs(prefix):
@@ -60,6 +69,7 @@ def init_defs(prefix):
 def build(bld):
 	bld.add_subdirs('src')
 	bld.add_subdirs('templates')
+	bld.add_subdirs('po')
 	
 	bld.install_files('${PREFIX}/share/icons/hicolor/scalable/apps', 'pino.svg')
 	bld.install_files('${PREFIX}/share/icons/hicolor/scalable/apps', 'pino_fresh.svg')
