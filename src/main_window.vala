@@ -265,8 +265,8 @@ public class MainWindow : Window {
 			about_dlg.set_logo(logo);
 			about_dlg.set_program_name(Config.APPNAME);
 			about_dlg.set_version(Config.APP_VERSION);
-			about_dlg.set_website("http://code.google.com/p/pino-twitter/");
-			about_dlg.set_authors({_("Main developer and project owner:") + " troorl <troorl@gmail.com>"});
+			about_dlg.set_website("http://pino-app.appspot.com/");
+			about_dlg.set_authors({Config.AUTHORS});
 			about_dlg.set_copyright("© 2009 troorl");
 			
 			about_dlg.response.connect((resp_id) => {

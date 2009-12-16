@@ -48,23 +48,31 @@ def configure(conf):
 	conf.define('TIMELINE_PATH', conf.env.PREFIX + '/share/icons/hicolor/scalable/actions/timeline.svg')
 	conf.define('TEMPLATES_PATH', conf.env.PREFIX + '/share/pino/templates')
 	conf.define('VERSION_MAJOR_MINOR', VERSION_MAJOR_MINOR)
-	conf.define ('LOCALE_DIR', conf.env.PREFIX + '/share/locale/')
-	conf.define ('GETTEXT_PACKAGE', APPNAME)
-	conf.define ('APPNAME', APPNAME)
+	conf.define('LOCALE_DIR', conf.env.PREFIX + '/share/locale/')
+	conf.define('GETTEXT_PACKAGE', APPNAME)
+	conf.define('APPNAME', APPNAME)
+	
+	# AUTHORS --> About dialog
+	f = open('AUTHORS', 'r')
+	data = f.read()
+	f.close()
+	import re
+	data = re.sub(r'\n', r'\\n', data)
+	conf.define('AUTHORS', data)
+	#end
+	
 	conf.write_config_header("config.h")
 	init_defs(conf.env.PREFIX)
 
 def init_defs(prefix):
-	f = open('src/defs.vala', 'r')
-	data = f.read()
-	f.close()
-	
+	"""
 	import re
 	data = re.sub(r'string PREFIX = \"(.*)\";', 'string PREFIX = "' + prefix + '";', data)
 	
 	f = open('src/defs.vala', 'w')
 	f.write(data)
 	f.close()
+	"""
 
 def build(bld):
 	bld.add_subdirs('src')
