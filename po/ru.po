@@ -128,12 +128,12 @@ msgstr "Учетная запись"
 
 #: src/re_tweet.vala:17 src/re_tweet.vala:50
 msgid "New status:"
-msgstr "Новый статус"
+msgstr "Новый статус:"
 
 #: src/re_tweet.vala:29
 #, c-format
 msgid "Reply to <b>%s</b>:"
-msgstr "Ответить <b>%s</b>"
+msgstr "Ответить <b>%s</b>:"
 
 #: src/status_bar_smart.vala:28
 msgid "updated "
