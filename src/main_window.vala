@@ -56,12 +56,13 @@ public class MainWindow : Window {
 		set_icon(logo);
 		set_title(Config.APPNAME);
 		
-		// Doesn't works in installed app... strange
-		//delete_event.connect((event) => {
-			//this.hide_on_delete();
-			//visible = false;
-			//focused = false;
-		//});
+		//hiding on closing main window
+		delete_event.connect((event) => {
+			this.hide_on_delete();
+			visible = false;
+			focused = false;
+			return true;
+		});
 		
 		destroy.connect(() => before_close());
 		
@@ -161,6 +162,7 @@ public class MainWindow : Window {
 		
 		//show window
 		show_all();
+		
 		//searchEntry.hide();
 		reTweet.hide();
 		scroll_mentions.hide();
