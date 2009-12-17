@@ -611,7 +611,7 @@ public class MainWindow : Window {
 		//show new statuses in time order
 		foreach(Status newStatus in tmpList) {
 			
-			if(newStatus.user_name != prefs.login) {
+			if(newStatus.user_screen_name != prefs.login) {
 				var popup = new Notification(newStatus.user_screen_name,
 					newStatus.text, null, null);
 				popup.set_icon_from_pixbuf(logo);
