@@ -87,7 +87,7 @@ class Template : Object {
 					);
 			}
 		}
-		warning(content);
+		//warning(content);
 		return mainTemplate.printf(gtkStyle.bg_color, //body background
 			gtkStyle.fg_color, //main text color
 			gtkStyle.fg_color, //nick color
@@ -101,11 +101,26 @@ class Template : Object {
 	}
 	
 	private string making_links(string text) {
-		string result = nicks.replace(text, -1, 0, "@<a class='re_nick' href='http:/twitter.com/\\1'>\\1</a>");
-		//warning("NICK: %s", result);
-		result = tags.replace(result, -1, 0, "<a class='tags' href='http:/twitter.com/#search?q=\\1'>\\1</a>");
-		result = urls.replace(result, -1, 0, "<a href='\\0'>\\0</a>");
-		return result.replace("http:/t", "http://t"); // very dirty
+		string result = text;
+		
+		//url cutting
+		MatchInfo match_info;
+		bool bingo = urls.match_full(text, -1, 0, GLib.RegexMatchFlags.NEWLINE_ANY, out match_info);
+		if(bingo) {
+			foreach(string s in match_info.fetch_all()) {
+				if(s.length > 30) {
+					result = result.replace(s, "<a href='%s' title='%s'>%s...</a>".printf(s, s, s.substring(0, 30)));
+				} else {
+					result = result.replace(s, "<a href='%s'>%s</a>".printf(s, s));
+				}
+				break;
+			}
+		}
+		
+		//var result = urls.replace(text, -1, 0, "<a href='\\0'>\\0</a>");
+		result = nicks.replace(result, -1, 0, "@<a class='re_nick' href='http://twitter.com/\\1'>\\1</a>");
+		result = tags.replace(result, -1, 0, "<a class='tags' href='http://twitter.com/#search?q=\\1'>\\1</a>");
+		return result;//.replace("http:/t", "http://t"); // very dirty
 	}
 	
 	private string time_to_human_delta(Time now, Time t) {
