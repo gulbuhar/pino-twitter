@@ -5,6 +5,7 @@ public class PrefDialog : Dialog {
 	private Notebook tabs;
 	private SpinButton updateInterval;
 	private CheckButton showNotifications;
+	private CheckButton roundedAvatars;
 	private Entry login;
 	private Entry password;
 	private CheckButton savePass;
@@ -31,8 +32,14 @@ public class PrefDialog : Dialog {
 		showNotifications = new CheckButton.with_label(_("Show notifications"));
 		not_box.pack_start(showNotifications, false, true, 10);
 		
+		//rounded userpics
+		var ava_box = new HBox(false, 0);
+		roundedAvatars = new CheckButton.with_label(_("Rounded userpics"));
+		ava_box.pack_start(roundedAvatars, false, true, 10);
+		
 		main_box.pack_start(upd_box, false, true, 10);
 		main_box.pack_start(not_box, false, true, 0);
+		main_box.pack_start(ava_box, false, true, 0);
 		
 		//account page
 		var ac_box = new VBox(false, 0);
@@ -125,6 +132,7 @@ public class PrefDialog : Dialog {
 	private void setup_prefs(Prefs prefs) {
 		updateInterval.value = prefs.updateInterval;
 		showNotifications.active = prefs.showNotifications;
+		roundedAvatars.active = prefs.roundedAvatars;
 		login.text = prefs.login;
 		password.text = prefs.password;
 		savePass.active = prefs.rememberPass;
@@ -133,6 +141,10 @@ public class PrefDialog : Dialog {
 	private void setup_prefs_signals(Prefs prefs) {
 		updateInterval.value_changed.connect(() => {
 			prefs.updateInterval = (int)updateInterval.value;
+		});
+		
+		roundedAvatars.toggled.connect(() => {
+			prefs.roundedAvatars = roundedAvatars.active;
 		});
 		
 		showNotifications.toggled.connect(() => {

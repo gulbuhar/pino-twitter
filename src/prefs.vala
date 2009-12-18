@@ -17,6 +17,12 @@ public class Prefs : Object {
 		set{ _showNotifications = value; }
 	}
 	
+	private bool _roundedAvatars = true;
+	public bool roundedAvatars {
+		get{ return _roundedAvatars; }
+		set{ _roundedAvatars = value; }
+	}
+	
 	private string _login = "";
 	public string login {
 		get{ return _login; }
@@ -140,6 +146,10 @@ public class Prefs : Object {
 					_showNotifications = iter->get_content().to_bool();
 					break;
 				
+				case "roundedAvatars":
+					_roundedAvatars = iter->get_content().to_bool();
+					break;
+				
 				case "login":
 					_login = iter->get_content();
 					break;
@@ -196,6 +206,8 @@ public class Prefs : Object {
         root->new_text_child(ns, "updateInterval", _updateInterval.to_string());
         root->add_content("\n");
         root->new_text_child(ns, "showNotifications", _showNotifications.to_string());
+        root->add_content("\n");
+        root->new_text_child(ns, "roundedAvatars", _roundedAvatars.to_string());
         root->add_content("\n");
         root->new_text_child(ns, "login", _login);
         root->add_content("\n");

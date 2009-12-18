@@ -21,13 +21,18 @@ class Template : Object {
 	}
 	
 	public string generateFriends(Gee.ArrayList<Status> friends,
-		SystemStyle gtkStyle, string nick, int last_focused) {
+		SystemStyle gtkStyle, Prefs prefs, int last_focused) {
 		string content = "";
 		
 		var now = get_current_time();
 		
 		var reply_text = _("Reply");
 		var delete_text = _("Delete");
+		
+		//rounded userpics
+		string rounded = "";
+		if(prefs.roundedAvatars)
+			rounded = "-webkit-border-radius:5px;";
 		
 		foreach(Status i in friends) {
 			//checking for new statuses
@@ -38,7 +43,7 @@ class Template : Object {
 			//making human-readable time/date
 			string time = time_to_human_delta(now, i.created_at);
 			
-			if(i.user_name == nick) {
+			if(i.user_name == prefs.login) {
 				warning("OHOHO %s", i.text);
 				content += statusMeTemplate.printf(i.user_avatar,
 					"me",
@@ -91,6 +96,7 @@ class Template : Object {
 		return mainTemplate.printf(gtkStyle.bg_color, //body background
 			gtkStyle.fg_color, //main text color
 			gtkStyle.fg_color, //nick color
+			rounded, //rounded userpics
 			gtkStyle.lt_color, //date strings color
 			gtkStyle.sl_color, //links color
 			gtkStyle.fg_color, //nick color

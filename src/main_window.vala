@@ -424,9 +424,9 @@ public class MainWindow : Window {
 	
 	private void style_update(Style? prevStyle) {
 		gtkStyle.updateStyle(rc_get_style(this));
-		tweets.load_string(template.generateFriends(twee.friends, gtkStyle, prefs.login, last_focused_friends),
+		tweets.load_string(template.generateFriends(twee.friends, gtkStyle, prefs, last_focused_friends),
 			"text/html", "utf8", "file:///");
-		mentions.load_string(template.generateFriends(twee.mentions, gtkStyle, prefs.login, last_focused_mentions),
+		mentions.load_string(template.generateFriends(twee.mentions, gtkStyle, prefs, last_focused_mentions),
 			"text/html", "utf8", "file:///");
 		//warning("Style changed!");
 	}
@@ -534,7 +534,7 @@ public class MainWindow : Window {
 				statusbar.set_status(statusbar.Status.ERROR_UNKNOWN);
 				break;
 			case TwitterInterface.Reply.OK:
-				tweets.load_string(template.generateFriends(twee.friends, gtkStyle, prefs.login, last_focused_friends),
+				tweets.load_string(template.generateFriends(twee.friends, gtkStyle, prefs, last_focused_friends),
 					"text/html", "utf8", "file:///");
 				
 				//tray notification
@@ -554,7 +554,7 @@ public class MainWindow : Window {
 				
 				break;
 			case TwitterInterface.Reply.EMPTY:
-				tweets.load_string(template.generateFriends(twee.friends, gtkStyle, prefs.login, last_focused_friends),
+				tweets.load_string(template.generateFriends(twee.friends, gtkStyle, prefs, last_focused_friends),
 					"text/html", "utf8", "file:///");
 				break;
 		}
@@ -570,7 +570,7 @@ public class MainWindow : Window {
 				statusbar.set_status(statusbar.Status.ERROR_UNKNOWN);
 				break;
 			case TwitterInterface.Reply.OK:
-				mentions.load_string(template.generateFriends(twee.mentions, gtkStyle, prefs.login, last_focused_mentions),
+				mentions.load_string(template.generateFriends(twee.mentions, gtkStyle, prefs, last_focused_mentions),
 					"text/html", "utf8", "file:///");
 				
 				//tray notification
@@ -590,7 +590,7 @@ public class MainWindow : Window {
 				
 				break;
 			case TwitterInterface.Reply.EMPTY:
-				mentions.load_string(template.generateFriends(twee.mentions, gtkStyle, prefs.login, last_focused_mentions),
+				mentions.load_string(template.generateFriends(twee.mentions, gtkStyle, prefs, last_focused_mentions),
 					"text/html", "utf8", "file:///");
 				break;
 		}
