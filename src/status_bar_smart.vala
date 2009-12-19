@@ -1,10 +1,6 @@
 using Gtk;
 
-public class StatusbarSmart : Statusbar {
-	
-	private Image statusImg;
-	private Label statusLabel;
-	
+public class StatusbarSmart : VBox {
 	public enum Status {
 		UPDATED,
 		UPDATING,
@@ -14,38 +10,52 @@ public class StatusbarSmart : Statusbar {
 		ERROR_UNKNOWN
 	}
 	
+	private HSeparator sep;
+	private Image img;
+	private Label label;
+	
 	public StatusbarSmart() {
-		statusImg = new Image();
-		this.pack_start(statusImg, false, false, 0);
-		statusLabel = new Label("");
-		this.pack_start(statusLabel, false, false, 0);
+		sep = new HSeparator();
+		img = new Image();
+		label = new Label("");
+		
+		var hbox = new HBox(false, 5);
+		hbox.pack_start(img, false, false, 0);
+		hbox.pack_start(label, false, false, 0);
+		
+		pack_start(sep, false, false, 0);
+		pack_start(hbox, false, false, 0);
+	}
+	
+	private void push(string icon, string text) {
+		img.set_from_stock(icon, Gtk.IconSize.MENU);
+		label.set_label(text);
 	}
 	
 	public void set_status(Status status) {
 		switch(status) {
 			case Status.UPDATED:
-				statusImg.set_from_stock("gtk-apply", Gtk.IconSize.MENU);
-				statusLabel.set_text(_("updated "));
+				push("gtk-apply", _("updated "));
 				break;
+			
 			case Status.UPDATING:
-				statusImg.set_from_stock("gtk-refresh", Gtk.IconSize.MENU);
-				statusLabel.set_text(_("updating... "));
+				push("gtk-refresh", _("updating... "));
 				break;
+			
 			case Status.SEND_STATUS:
-				statusImg.set_from_stock("gtk-edit", Gtk.IconSize.MENU);
-				statusLabel.set_text(_("sending status... "));
+				push("gtk-edit", _("sending status... "));
 				break;
+			
 			case Status.ERROR_401:
-				statusImg.set_from_stock("gtk-stop", Gtk.IconSize.MENU);
-				statusLabel.set_text(_("wrong login or password "));
+				push("gtk-stop", _("wrong login or password "));
 				break;
+			
 			case Status.ERROR_TIMEOUT:
-				statusImg.set_from_stock("gtk-stop", Gtk.IconSize.MENU);
-				statusLabel.set_text(_("problems with connection "));
+				push("gtk-stop", _("problems with connection "));
 				break;
+			
 			case Status.ERROR_UNKNOWN:
-				statusImg.set_from_stock("gtk-stop", Gtk.IconSize.MENU);
-				statusLabel.set_text(_("some strange error "));
+				push("gtk-stop", _("some strange error "));
 				break;
 		}
 	}
