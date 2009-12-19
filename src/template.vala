@@ -97,6 +97,7 @@ class Template : Object {
 			gtkStyle.fg_color, //main text color
 			gtkStyle.fg_color, //nick color
 			rounded, //rounded userpics
+			rounded, //rounded tweets
 			gtkStyle.lt_color, //date strings color
 			gtkStyle.sl_color, //links color
 			gtkStyle.fg_color, //nick color

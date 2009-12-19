@@ -45,6 +45,12 @@ public class MainWindow : Window {
 		
 		//getting settings
 		prefs = new Prefs();
+		prefs.roundedAvatarsChanged.connect(() => {
+			tweets.load_string(template.generateFriends(twee.friends, gtkStyle, prefs, last_focused_friends),
+				"text/html", "utf8", "file:///");
+			mentions.load_string(template.generateFriends(twee.mentions, gtkStyle, prefs, last_focused_mentions),
+				"text/html", "utf8", "file:///");
+		});
 		
 		set_default_size (prefs.width, prefs.height);
 		set_size_request(350, 100);

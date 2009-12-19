@@ -3,7 +3,7 @@ using Xml;
 
 public class Prefs : Object {
 	
-	string prefFilePath;
+	private string prefFilePath;
 	
 	private int _updateInterval = 5; //minutes
 	public int updateInterval {
@@ -17,10 +17,16 @@ public class Prefs : Object {
 		set{ _showNotifications = value; }
 	}
 	
+	public signal void roundedAvatarsChanged();
 	private bool _roundedAvatars = true;
 	public bool roundedAvatars {
 		get{ return _roundedAvatars; }
-		set{ _roundedAvatars = value; }
+		set{
+			if(_roundedAvatars != value) {
+				_roundedAvatars = value;
+				roundedAvatarsChanged();
+			}
+		}
 	}
 	
 	private string _login = "";
