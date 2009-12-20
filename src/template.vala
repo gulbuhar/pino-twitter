@@ -110,24 +110,31 @@ class Template : Object {
 	private string making_links(string text) {
 		string result = text;
 		
-		//url cutting
-		MatchInfo match_info;
-		bool bingo = urls.match_full(text, -1, 0, GLib.RegexMatchFlags.NEWLINE_ANY, out match_info);
-		if(bingo) {
-			foreach(string s in match_info.fetch_all()) {
-				if(s.length > 30) {
-					result = result.replace(s, "<a href='%s' title='%s'>%s...</a>".printf(s, s, s.substring(0, 30)));
-				} else {
-					result = result.replace(s, "<a href='%s'>%s</a>".printf(s, s));
+		//result = urls.replace(text, -1, 0, "<a href='\\0'>\\0</a>");
+		
+		//I hate glib regex......
+		int pos = 0;
+		while(true) {
+			//url cutting
+			MatchInfo match_info;
+			bool bingo = urls.match_all_full(text, -1, pos, GLib.RegexMatchFlags.NEWLINE_ANY, out match_info);
+			if(bingo) {
+				foreach(string s in match_info.fetch_all()) {
+					if(s.length > 30) {
+						result = result.replace(s, "<a href='%s' title='%s'>%s...</a>".printf(s, s, s.substring(0, 30)));
+					} else {
+						result = result.replace(s, "<a href='%s'>%s</a>".printf(s, s));
+					}
+					
+					match_info.fetch_pos(0, null, out pos);
+					break;
 				}
-				break;
-			}
+			} else break;
 		}
 		
-		//var result = urls.replace(text, -1, 0, "<a href='\\0'>\\0</a>");
 		result = nicks.replace(result, -1, 0, "@<a class='re_nick' href='http://twitter.com/\\1'>\\1</a>");
 		result = tags.replace(result, -1, 0, "<a class='tags' href='http://twitter.com/#search?q=\\1'>\\1</a>");
-		return result;//.replace("http:/t", "http://t"); // very dirty
+		return result;
 	}
 	
 	private string time_to_human_delta(Time now, Time t) {
