@@ -53,7 +53,7 @@ public class MainWindow : Window {
 		});
 		
 		set_default_size (prefs.width, prefs.height);
-		set_size_request(350, 100);
+		set_size_request(350, 300);
 		
 		//set window position
 		if(prefs.left >= 0 && prefs.top >= 0)
@@ -141,6 +141,15 @@ public class MainWindow : Window {
 		
 		reTweet = new ReTweet();
 		reTweet.enter_pressed.connect(send_status);
+		reTweet.empty_pressed.connect(() => {
+			var message_dialog = new MessageDialog(this,
+				Gtk.DialogFlags.DESTROY_WITH_PARENT | Gtk.DialogFlags.MODAL,
+				Gtk.MessageType.INFO, Gtk.ButtonsType.OK,
+				(_("Type something first")));
+			
+			message_dialog.run();
+			message_dialog.destroy();
+		});
 		
 		statusbar = new StatusbarSmart();
 		
@@ -149,11 +158,11 @@ public class MainWindow : Window {
 		VBox vbox = new VBox(false, 0);
 		vbox.pack_start(menubar, false, false, 0);
 		vbox.pack_start(toolbar, false, false, 0);
-		vbox.pack_start(sbox, false, false, 0);
+		//vbox.pack_start(sbox, false, false, 0);
 		vbox.pack_start(scroll_tweets, true, true, 0);
 		vbox.pack_start(scroll_mentions, true, true, 0);
 		vbox.pack_end(statusbar, false, false, 0);
-		vbox.pack_end(reTweet, false, false, 4);
+		vbox.pack_end(reTweet, false, false, 0);
 		
 		this.add(vbox);
 		

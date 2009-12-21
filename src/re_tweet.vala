@@ -41,8 +41,11 @@ public class ReTweet : VBox {
 	}
 	
 	public signal void enter_pressed();
+	public signal void empty_pressed();
 	
 	public ReTweet() {
+		border_width = 0;
+		
 		set_homogeneous(false);
 		set_spacing(2);
 		
@@ -51,19 +54,28 @@ public class ReTweet : VBox {
 		l_box.pack_start(user_label, false, false, 2);
 		
 		entry = new TextView();
+		entry.set_size_request(-1, 50);
+		entry.cursor_visible = true;
 		entry.set_wrap_mode(Gtk.WrapMode.WORD);
 		entry.key_press_event.connect(hide_or_send);
 		entry.get_buffer().changed.connect(change);
 		
+		var scroll = new ScrolledWindow(null, null);
+        scroll.set_policy(PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);
+        scroll.add(entry);
+		
 		label = new Label("<b>140</b>");
 		label.set_use_markup(true);
 		
-		var hbox = new HBox(false, 2);
-		hbox.pack_start(entry, true, true, 0);
-		hbox.pack_start(label, false, false, 10);
+		var hbox = new HBox(false, 1);
+		hbox.pack_start(scroll, true, true, 2);
+		hbox.pack_start(label, false, false, 2);
 		
-		pack_start(l_box, false, false, 2);
-		pack_start(hbox, true, true, 2);
+		var sep = new HSeparator();
+		
+		pack_start(sep, false, false, 0);
+		pack_start(l_box, false, false, 0);
+		pack_start(hbox, false, true, 5);
 	}
 	
 	public void clear() {
@@ -76,7 +88,10 @@ public class ReTweet : VBox {
 	
 	private bool hide_or_send(Gdk.EventKey event) {
 		if(event.hardware_keycode == 36) { //return key
-			enter_pressed();
+			if(text.length > 0)
+				enter_pressed();
+			else
+				empty_pressed();
 			return true;
 		}
 		
