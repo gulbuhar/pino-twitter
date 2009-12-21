@@ -10,7 +10,7 @@ public class PrefDialog : Dialog {
 	private Entry password;
 	private CheckButton savePass;
 	
-	public PrefDialog(Prefs prefs) {
+	public PrefDialog(Prefs prefs, Window parent) {
 		this.modal = true;
 		set_title("Preferences");
 		this.has_separator = false;
@@ -119,6 +119,7 @@ public class PrefDialog : Dialog {
 		setup_prefs_signals(prefs);
 		
 		show_all();
+		set_transient_for(parent);
 		
 		//if first start or don't want to remember the password
 		if(prefs.is_new || !prefs.rememberPass) {	

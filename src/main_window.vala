@@ -360,7 +360,7 @@ public class MainWindow : Window {
 	}
 	
 	private void run_prefs() {
-		var pref_dialog = new PrefDialog(prefs);
+		var pref_dialog = new PrefDialog(prefs, this);
 		pref_dialog.destroy.connect(() => {
 			//timer interval update
 			timer.set_interval(prefs.updateInterval * 60);
@@ -387,8 +387,8 @@ public class MainWindow : Window {
 			prefs.is_new = false;
 		});
 		
-		pref_dialog.show();
 		pref_dialog.set_transient_for(this);
+		pref_dialog.show();
 	}
 	
 	private bool tray_actions(Gdk.EventButton event) {
