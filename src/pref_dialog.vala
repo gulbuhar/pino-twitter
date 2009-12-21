@@ -34,7 +34,7 @@ public class PrefDialog : Dialog {
 		
 		//rounded userpics
 		var ava_box = new HBox(false, 0);
-		roundedAvatars = new CheckButton.with_label(_("Rounded userpics"));
+		roundedAvatars = new CheckButton.with_label(_("Rounded corners"));
 		ava_box.pack_start(roundedAvatars, false, true, 10);
 		
 		main_box.pack_start(upd_box, false, true, 10);
