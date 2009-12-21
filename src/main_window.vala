@@ -286,14 +286,9 @@ public class MainWindow : Window {
 			about_dlg.set_authors({Config.AUTHORS});
 			about_dlg.set_copyright("© 2009 troorl");
 			
-			about_dlg.response.connect((resp_id) => {
-				//warning("close! %d", resp_id);
-				if(resp_id == -6)
-					about_dlg.close();
-			});
-			
-			about_dlg.show();
 			about_dlg.set_transient_for(this);
+			about_dlg.run();
+			about_dlg.hide();
 		});
 		
 		actGroup.add_action(fileMenu);
