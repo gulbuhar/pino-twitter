@@ -2,7 +2,7 @@
 
 import intltool
 
-VERSION = "0.1.0rc1"
+VERSION = "0.1.0rc2"
 VERSION_MAJOR_MINOR =  ".".join(VERSION.split(".")[0:2])
 APPNAME = "pino"
 

@@ -51,7 +51,12 @@ public class ReTweet : VBox {
 		
 		var l_box = new HBox(false, 2);
 		user_label = new Label(_("New status:"));
+		
+		label = new Label("<b>140</b>");
+		label.set_use_markup(true);
+		
 		l_box.pack_start(user_label, false, false, 2);
+		l_box.pack_end(label, false, false, 2);
 		
 		entry = new TextView();
 		entry.set_size_request(-1, 50);
@@ -64,12 +69,12 @@ public class ReTweet : VBox {
         scroll.set_policy(PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);
         scroll.add(entry);
 		
-		label = new Label("<b>140</b>");
-		label.set_use_markup(true);
+		var frame = new Frame(null);
+		frame.add(scroll);
 		
 		var hbox = new HBox(false, 1);
-		hbox.pack_start(scroll, true, true, 2);
-		hbox.pack_start(label, false, false, 2);
+		hbox.pack_start(frame, true, true, 0);
+		//hbox.pack_start(label, false, false, 2);
 		
 		var sep = new HSeparator();
 		
