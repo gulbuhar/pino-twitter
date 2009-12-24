@@ -84,9 +84,12 @@ public class MainWindow : Window {
 		
 		focus_in_event.connect((w, e) => {
 			focused = true;
-			warning("focused");
+			//warning("focused");
 			if(last_time_friends > 0)
 				last_focused_friends = last_time_friends;
+			
+			if(last_time_mentions > 0)
+				last_focused_mentions = last_time_mentions;
 			
 			//clear tray notification
 			tray.set_from_file(Config.LOGO_PATH);
@@ -94,10 +97,12 @@ public class MainWindow : Window {
 		
 		focus_out_event.connect((w, e) => {
 			focused = false;
-			warning("unfocused");
+			//warning("unfocused");
 			if(last_time_friends > 0)
 				last_focused_friends = last_time_friends;
-			//last_time_mentions = 0;
+			
+			if(last_time_mentions > 0)
+				last_focused_mentions = last_time_mentions;
 		});
 		
 		this.map_event.connect(get_colors);

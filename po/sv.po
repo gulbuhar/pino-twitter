@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-12-21 21:34+0200\n"
-"PO-Revision-Date: 2009-12-18 22:48+0100\n"
+"PO-Revision-Date: 2009-12-22 16:53+0100\n"
 "Last-Translator: Philip Johnsson <philip.johnsson@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,7 @@ msgstr "%s - en twitterklient"
 
 #: src/main_window.vala:148
 msgid "Type something first"
-msgstr ""
+msgstr "Skriv något först"
 
 #: src/main_window.vala:210
 msgid "Twitter"
@@ -105,7 +105,7 @@ msgstr "Visa meddelande"
 
 #: src/pref_dialog.vala:37
 msgid "Rounded corners"
-msgstr ""
+msgstr "Rundade hörn"
 
 #: src/pref_dialog.vala:49
 msgid "Login"
@@ -131,7 +131,8 @@ msgstr "Allmänt"
 msgid "Account"
 msgstr "Konto"
 
-#: src/re_tweet.vala:17 src/re_tweet.vala:53
+#: src/re_tweet.vala:17
+#: src/re_tweet.vala:53
 msgid "New status:"
 msgstr "Ny status:"
 
@@ -146,7 +147,7 @@ msgstr "uppdaterad"
 
 #: src/status_bar_smart.vala:42
 msgid "updating... "
-msgstr "uppdaterar"
+msgstr "uppdaterar..."
 
 #: src/status_bar_smart.vala:46
 msgid "sending status... "
@@ -196,3 +197,4 @@ msgstr "omkring %i timmar sedan"
 
 #~ msgid "Main developer and project owner:"
 #~ msgstr "Головний розробник і власник проекту:"
+
