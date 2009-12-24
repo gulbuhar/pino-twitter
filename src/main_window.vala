@@ -629,7 +629,7 @@ public class MainWindow : Window {
 		foreach(Status newStatus in tmpList) {
 			
 			if(newStatus.user_screen_name != prefs.login) {
-				var popup = new Notification(newStatus.user_screen_name,
+				var popup = new Notification(newStatus.user_name,
 					newStatus.text, null, null);
 				popup.set_icon_from_pixbuf(logo);
 				popup.set_timeout(2000); //doesn't working... hm
