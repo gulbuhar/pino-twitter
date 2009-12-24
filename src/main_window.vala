@@ -617,7 +617,6 @@ public class MainWindow : Window {
 		var tmpList = new GLib.List<Status>(); //list for new statuses
 		
 		foreach(Status status in lst) {
-			warning("%d ==> %d", (int)status.created_at.mktime(), last_time);
 			if((int)status.created_at.mktime() > last_time)
 				tmpList.append(status);
 			else

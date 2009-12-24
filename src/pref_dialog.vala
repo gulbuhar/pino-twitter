@@ -12,7 +12,7 @@ public class PrefDialog : Dialog {
 	
 	public PrefDialog(Prefs prefs, Window parent) {
 		this.modal = true;
-		set_title("Preferences");
+		set_title(_("Preferences"));
 		this.has_separator = false;
 		
 		tabs = new Notebook();
@@ -21,38 +21,36 @@ public class PrefDialog : Dialog {
 		var main_box = new VBox(false, 10);
 		
 		//update interval
-		var upd_box = new HBox(false, 0);
 		var updateLabel = new Label(_("Update interval"));
 		updateInterval = new SpinButton.with_range(1, 60, 1);
-		upd_box.pack_start(updateLabel, false, true, 10);
-		upd_box.pack_start(updateInterval, true, true, 10);
 		
 		//show notifications
-		var not_box = new HBox(false, 0);
 		showNotifications = new CheckButton.with_label(_("Show notifications"));
-		not_box.pack_start(showNotifications, false, true, 10);
 		
-		//rounded userpics
-		var ava_box = new HBox(false, 0);
+		//rounded corners
 		roundedAvatars = new CheckButton.with_label(_("Rounded corners"));
-		ava_box.pack_start(roundedAvatars, false, true, 10);
 		
-		main_box.pack_start(upd_box, false, true, 10);
-		main_box.pack_start(not_box, false, true, 0);
-		main_box.pack_start(ava_box, false, true, 0);
+		var table_int = new HigTable(_("Time interval"));
+		table_int.add_two_widgets(updateLabel, updateInterval);
+		
+		var table_not = new HigTable(_("Notification"));
+		table_not.add_widget(showNotifications);
+		
+		var table_app = new HigTable(_("Appearance"));
+		table_app.add_widget(roundedAvatars);
+		
+		main_box.pack_start(table_int, false, true, 5);
+		main_box.pack_start(table_not, false, true, 5);
+		main_box.pack_start(table_app, false, true, 5);
 		
 		//account page
 		var ac_box = new VBox(false, 0);
 		
 		//login
-		var log_box = new HBox(false, 0);
 		var logLabel = new Label(_("Login"));
 		login = new Entry();
-		log_box.pack_start(logLabel, false, true, 10);
-		log_box.pack_end(login, false, true, 10);
 		
 		//password
-		var pas_box = new HBox(false, 0);
 		var pasLabel = new Label(_("Password"));
 		password = new Entry();
 		password.visible = 0;
@@ -65,11 +63,7 @@ public class PrefDialog : Dialog {
 				return false;
 		});
 		
-		pas_box.pack_start(pasLabel, false, true, 10);
-		pas_box.pack_end(password, false, true, 10);
-		
 		//save password
-		var sa_box = new HBox(false, 0);
 		savePass = new CheckButton.with_label(_("Remember password"));
 		savePass.active = true;
 		
@@ -77,11 +71,12 @@ public class PrefDialog : Dialog {
 			//
 		});
 		
-		sa_box.pack_start(savePass, false, true, 10);
+		var table_auth = new HigTable(_("Authorization"));
+		table_auth.add_two_widgets(logLabel, login);
+		table_auth.add_two_widgets(pasLabel, password);
+		table_auth.add_widget(savePass);
 		
-		ac_box.pack_start(log_box, false, true, 10);
-		ac_box.pack_start(pas_box, false, true, 0);
-		ac_box.pack_start(sa_box, false, true, 10);
+		ac_box.pack_start(table_auth, false, true, 10);
 		
 		if(prefs.is_new) {
 			var start_box = new HBox(false, 0);
