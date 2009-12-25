@@ -43,7 +43,7 @@ class Template : Object {
 			//making human-readable time/date
 			string time = time_to_human_delta(now, i.created_at);
 			
-			if(i.user_name == prefs.login) {
+			if(i.user_screen_name == prefs.login) {
 				warning("OHOHO %s", i.text);
 				content += statusMeTemplate.printf(i.user_avatar,
 					"me",
