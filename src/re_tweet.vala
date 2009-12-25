@@ -81,6 +81,8 @@ public class ReTweet : VBox {
 		pack_start(sep, false, false, 0);
 		pack_start(l_box, false, false, 0);
 		pack_start(hbox, false, true, 5);
+		
+		
 	}
 	
 	public void clear() {
@@ -93,6 +95,10 @@ public class ReTweet : VBox {
 	
 	private bool hide_or_send(Gdk.EventKey event) {
 		if(event.hardware_keycode == 36) { //return key
+			if(event.state == 1) { //shift + enter
+				entry.get_buffer().insert_at_cursor("\n", (int)"\n".length);
+				return true;
+			}
 			if(text.length > 0)
 				enter_pressed();
 			else
@@ -111,7 +117,6 @@ public class ReTweet : VBox {
 	
 	private void change() {
 		int length = (int)text.len();
-		warning("text length: %d, substring length: %d", (int)text.len(), (int)text.substring(0, 140).len());
 		
 		if(length > 140) {
 			string t = text.substring(0, 140);
