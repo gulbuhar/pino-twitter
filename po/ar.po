@@ -2,12 +2,12 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: pino 0.1.0b4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-22 20:17+0200\n"
+"POT-Creation-Date: 2009-12-26 15:48+0200\n"
 "PO-Revision-Date: 2009-12-17 21:56+0300\n"
 "Last-Translator: Shaiee AlGhofily <alghofily@mail.net.sa>\n"
 "Language-Team: MaXeR <mmaxer@gmail.com>\n"
@@ -16,187 +16,210 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Arabic\n"
 
-#: ../src/template.vala:29
-msgid "Reply"
-msgstr "رد"
-
-#: ../src/template.vala:30
-msgid "Delete"
-msgstr "حذف"
-
-#: ../src/template.vala:143
-msgid "a few seconds ago"
-msgstr "منذ ثوانٍ مضت"
-
-#: ../src/template.vala:145
-msgid "1 minute ago"
-msgstr "منذ دقيقة"
-
-#: ../src/template.vala:147
-#, c-format
-msgid "%i minutes ago"
-msgstr "%i من الدقائق"
-
-#: ../src/template.vala:149
-msgid "about 1 hour ago"
-msgstr "منذ حوالي ساعة"
-
-#: ../src/template.vala:151
-#, c-format
-msgid "about %i hours ago"
-msgstr "منذ حوالي %i من الساعات"
-
-#: ../src/re_tweet.vala:17 ../src/re_tweet.vala:53
-msgid "New status:"
-msgstr "حالة جديدة:"
-
-#: ../src/re_tweet.vala:29
-#, c-format
-msgid "Reply to <b>%s</b>:"
-msgstr "رد لـ <b>%s</b>"
-
-#: ../src/status_bar_smart.vala:38
-msgid "updated "
-msgstr "مُحدّث"
-
-#: ../src/status_bar_smart.vala:42
-msgid "updating... "
-msgstr "تحديث... "
-
-#: ../src/status_bar_smart.vala:46
-msgid "sending status... "
-msgstr "إرسال الحالة... "
-
-#: ../src/status_bar_smart.vala:50
-msgid "wrong login or password "
-msgstr "اسم مستخدم أو كلمة مرور خاطئة"
-
-#: ../src/status_bar_smart.vala:54
-msgid "problems with connection "
-msgstr "مشاكل مع الاتصال"
-
-#: ../src/status_bar_smart.vala:58
-msgid "some strange error "
-msgstr "بعض الأخطاء الغريبة"
-
-#: ../src/pref_dialog.vala:25
-msgid "Update interval"
-msgstr "فارق التحديث"
-
-#: ../src/pref_dialog.vala:32
-msgid "Show notifications"
-msgstr "إظهار التنبيهات"
-
-#: ../src/pref_dialog.vala:37
-msgid "Rounded corners"
-msgstr "زوايا دائرية"
-
-#: ../src/pref_dialog.vala:49
-msgid "Login"
-msgstr "دخول"
-
-#: ../src/pref_dialog.vala:56
-msgid "Password"
-msgstr "كلمة المرور"
-
-#: ../src/pref_dialog.vala:73
-msgid "Remember password"
-msgstr "تذكّر كلمة المرور"
-
-#: ../src/pref_dialog.vala:88
-msgid "Create new account..."
-msgstr "إنشاء حساب جديد..."
-
-#: ../src/pref_dialog.vala:101
-msgid "Main"
-msgstr "الرئيسية"
-
-#: ../src/pref_dialog.vala:102
-msgid "Account"
-msgstr "الحساب"
-
-#: ../src/main_window.vala:109
+#: src/main_window.vala:114
 #, c-format
 msgid "%s - a twitter client"
 msgstr "%s - عميل تويتر"
 
-#: ../src/main_window.vala:148
+#: src/main_window.vala:153
 msgid "Type something first"
 msgstr "اُكتب شيئاً أولاً"
 
-#. file menu
-#: ../src/main_window.vala:210
+#: src/main_window.vala:215
 msgid "Twitter"
 msgstr "Twitter"
 
-#: ../src/main_window.vala:211
+#: src/main_window.vala:216
 msgid "New status"
 msgstr "تحديث جديد"
 
-#: ../src/main_window.vala:212
+#: src/main_window.vala:217
 msgid "Create new status"
 msgstr "إنشاء حالة جديدة"
 
-#: ../src/main_window.vala:214
+#: src/main_window.vala:219
 msgid "Update timeline"
 msgstr "تحديث خط الزمن"
 
-#: ../src/main_window.vala:217
+#: src/main_window.vala:222
 msgid "Quit"
 msgstr "خروج"
 
-#. edit menu
-#: ../src/main_window.vala:222
+#: src/main_window.vala:227
 msgid "Edit"
 msgstr "تحرير"
 
-#: ../src/main_window.vala:223
+#: src/main_window.vala:228 src/pref_dialog.vala:16
 msgid "Preferences"
 msgstr "خصائص"
 
-#. view menu
-#: ../src/main_window.vala:228
+#: src/main_window.vala:233
 msgid "View"
 msgstr "عرض"
 
-#: ../src/main_window.vala:229
+#: src/main_window.vala:234
 msgid "Timeline"
 msgstr "خط الزمن"
 
-#: ../src/main_window.vala:230
+#: src/main_window.vala:235
 msgid "Show your timeline"
 msgstr "إظهار خط الزمن"
 
-#: ../src/main_window.vala:241
+#: src/main_window.vala:246
 msgid "Mentions"
 msgstr "الردود"
 
-#: ../src/main_window.vala:242
+#: src/main_window.vala:247
 msgid "Show mentions"
 msgstr "إظهار الردود"
 
-#. lol
-#: ../src/main_window.vala:254
+#: src/main_window.vala:259
 msgid "Show menu"
 msgstr "إظهار القائمة"
 
-#: ../src/main_window.vala:264
+#: src/main_window.vala:269
 msgid "Show toolbar"
 msgstr "إظهار شريط الأدوات"
 
-#. help menu
-#: ../src/main_window.vala:276
+#: src/main_window.vala:281
 msgid "Help"
 msgstr "المساعدة"
 
-#: ../src/main_window.vala:277
+#: src/main_window.vala:282
 #, c-format
 msgid "About %s"
 msgstr "حول %s"
 
-#: ../src/main_window.vala:487
+#: src/main_window.vala:492
 msgid "Sure you want to delete this tweet?"
 msgstr "متأكد أنك تريد حذف هذه الحالة؟"
+
+#: src/pref_dialog.vala:25
+msgid "Update interval"
+msgstr "فارق التحديث"
+
+#: src/pref_dialog.vala:29
+#, fuzzy
+msgid "For timeline"
+msgstr "إظهار خط الزمن"
+
+#: src/pref_dialog.vala:30
+#, fuzzy
+msgid "For mentions"
+msgstr "إظهار الردود"
+
+#: src/pref_dialog.vala:32
+#, fuzzy
+msgid "Time interval"
+msgstr "فارق التحديث"
+
+#: src/pref_dialog.vala:35
+#, fuzzy
+msgid "Notification"
+msgstr "إظهار التنبيهات"
+
+#: src/pref_dialog.vala:46
+msgid "Login"
+msgstr "دخول"
+
+#: src/pref_dialog.vala:50
+msgid "Password"
+msgstr "كلمة المرور"
+
+#: src/pref_dialog.vala:63
+msgid "Remember password"
+msgstr "تذكّر كلمة المرور"
+
+#: src/pref_dialog.vala:70
+msgid "Authorization"
+msgstr ""
+
+#: src/pref_dialog.vala:79
+msgid "Create new account..."
+msgstr "إنشاء حساب جديد..."
+
+#: src/pref_dialog.vala:95
+msgid "Tweets"
+msgstr ""
+
+#: src/pref_dialog.vala:98
+msgid "Rounded corners"
+msgstr "زوايا دائرية"
+
+#: src/pref_dialog.vala:104
+msgid "Main"
+msgstr "الرئيسية"
+
+#: src/pref_dialog.vala:105
+msgid "Account"
+msgstr "الحساب"
+
+#: src/pref_dialog.vala:106
+msgid "Appearance"
+msgstr ""
+
+#: src/re_tweet.vala:17 src/re_tweet.vala:53
+msgid "New status:"
+msgstr "حالة جديدة:"
+
+#: src/re_tweet.vala:29
+#, c-format
+msgid "Reply to <b>%s</b>:"
+msgstr "رد لـ <b>%s</b>"
+
+#: src/status_bar_smart.vala:38
+msgid "updated "
+msgstr "مُحدّث"
+
+#: src/status_bar_smart.vala:42
+msgid "updating... "
+msgstr "تحديث... "
+
+#: src/status_bar_smart.vala:46
+msgid "sending status... "
+msgstr "إرسال الحالة... "
+
+#: src/status_bar_smart.vala:50
+msgid "wrong login or password "
+msgstr "اسم مستخدم أو كلمة مرور خاطئة"
+
+#: src/status_bar_smart.vala:54
+msgid "problems with connection "
+msgstr "مشاكل مع الاتصال"
+
+#: src/status_bar_smart.vala:58
+msgid "some strange error "
+msgstr "بعض الأخطاء الغريبة"
+
+#: src/template.vala:29
+msgid "Reply"
+msgstr "رد"
+
+#: src/template.vala:30
+msgid "Delete"
+msgstr "حذف"
+
+#: src/template.vala:143
+msgid "a few seconds ago"
+msgstr "منذ ثوانٍ مضت"
+
+#: src/template.vala:145
+msgid "1 minute ago"
+msgstr "منذ دقيقة"
+
+#: src/template.vala:147
+#, c-format
+msgid "%i minutes ago"
+msgstr "%i من الدقائق"
+
+#: src/template.vala:149
+msgid "about 1 hour ago"
+msgstr "منذ حوالي ساعة"
+
+#: src/template.vala:151
+#, c-format
+msgid "about %i hours ago"
+msgstr "منذ حوالي %i من الساعات"
 
 #~ msgid "Main developer and project owner:"
 #~ msgstr "Desenvolvedor principal e dono do projecto:"

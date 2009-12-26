@@ -4,7 +4,8 @@ public class PrefDialog : Dialog {
 	
 	private Notebook tabs;
 	private SpinButton updateInterval;
-	private CheckButton showNotifications;
+	private CheckButton showTimelineNotify;
+	private CheckButton showMentionsNotify;
 	private CheckButton roundedAvatars;
 	private Entry login;
 	private Entry password;
@@ -25,23 +26,18 @@ public class PrefDialog : Dialog {
 		updateInterval = new SpinButton.with_range(1, 60, 1);
 		
 		//show notifications
-		showNotifications = new CheckButton.with_label(_("Show notifications"));
-		
-		//rounded corners
-		roundedAvatars = new CheckButton.with_label(_("Rounded corners"));
+		showTimelineNotify = new CheckButton.with_label(_("For timeline"));
+		showMentionsNotify = new CheckButton.with_label(_("For mentions"));
 		
 		var table_int = new HigTable(_("Time interval"));
 		table_int.add_two_widgets(updateLabel, updateInterval);
 		
 		var table_not = new HigTable(_("Notification"));
-		table_not.add_widget(showNotifications);
+		table_not.add_widget(showTimelineNotify);
+		table_not.add_widget(showMentionsNotify);
 		
-		var table_app = new HigTable(_("Appearance"));
-		table_app.add_widget(roundedAvatars);
-		
-		main_box.pack_start(table_int, false, true, 5);
-		main_box.pack_start(table_not, false, true, 5);
-		main_box.pack_start(table_app, false, true, 5);
+		main_box.pack_start(table_int, false, true, 10);
+		main_box.pack_start(table_not, false, true, 10);
 		
 		//account page
 		var ac_box = new VBox(false, 0);
@@ -93,8 +89,21 @@ public class PrefDialog : Dialog {
 			ac_box.pack_start(start_box, false, true, 10);
 		}
 		
+		//Appearance tab
+		var app_box = new VBox(false, 0);
+		
+		var table_tweets = new HigTable(_("Tweets"));
+		
+		//rounded corners
+		roundedAvatars = new CheckButton.with_label(_("Rounded corners"));
+		
+		table_tweets.add_widget(roundedAvatars);
+		
+		app_box.pack_start(table_tweets, false, true, 10);
+		
 		tabs.append_page(main_box, new Label(_("Main")));
 		tabs.append_page(ac_box, new Label(_("Account")));
+		tabs.append_page(app_box, new Label(_("Appearance")));
 		
 		var hor_box = new HBox(false, 0);
 		hor_box.pack_start(tabs, true, true, 10);
@@ -127,7 +136,8 @@ public class PrefDialog : Dialog {
 	
 	private void setup_prefs(Prefs prefs) {
 		updateInterval.value = prefs.updateInterval;
-		showNotifications.active = prefs.showNotifications;
+		showTimelineNotify.active = prefs.showTimelineNotify;
+		showMentionsNotify.active = prefs.showMentionsNotify;
 		roundedAvatars.active = prefs.roundedAvatars;
 		login.text = prefs.login;
 		password.text = prefs.password;
@@ -143,8 +153,12 @@ public class PrefDialog : Dialog {
 			prefs.roundedAvatars = roundedAvatars.active;
 		});
 		
-		showNotifications.toggled.connect(() => {
-			prefs.showNotifications = showNotifications.active;
+		showTimelineNotify.toggled.connect(() => {
+			prefs.showTimelineNotify = showTimelineNotify.active;
+		});
+		
+		showMentionsNotify.toggled.connect(() => {
+			prefs.showMentionsNotify = showMentionsNotify.active;
 		});
 		
 		login.changed.connect(() => {

@@ -11,10 +11,16 @@ public class Prefs : Object {
 		set{ _updateInterval = value; }
 	}
 	
-	private bool _showNotifications = true;
-	public bool showNotifications {
-		get{ return _showNotifications; }
-		set{ _showNotifications = value; }
+	private bool _showTimelineNotify = true;
+	public bool showTimelineNotify {
+		get{ return _showTimelineNotify; }
+		set{ _showTimelineNotify = value; }
+	}
+	
+	private bool _showMentionsNotify = true;
+	public bool showMentionsNotify {
+		get{ return _showMentionsNotify; }
+		set{ _showMentionsNotify = value; }
 	}
 	
 	public signal void roundedAvatarsChanged();
@@ -148,8 +154,12 @@ public class Prefs : Object {
 					_updateInterval = iter->get_content().to_int();
 					break;
 				
-				case "showNotifications":
-					_showNotifications = iter->get_content().to_bool();
+				case "showTimelineNotify":
+					_showTimelineNotify = iter->get_content().to_bool();
+					break;
+				
+				case "showMentionsNotify":
+					_showMentionsNotify = iter->get_content().to_bool();
 					break;
 				
 				case "roundedAvatars":
@@ -211,7 +221,9 @@ public class Prefs : Object {
         root->add_content("\n");
         root->new_text_child(ns, "updateInterval", _updateInterval.to_string());
         root->add_content("\n");
-        root->new_text_child(ns, "showNotifications", _showNotifications.to_string());
+        root->new_text_child(ns, "showTimelineNotify", _showTimelineNotify.to_string());
+        root->add_content("\n");
+        root->new_text_child(ns, "showMentionsNotify", _showMentionsNotify.to_string());
         root->add_content("\n");
         root->new_text_child(ns, "roundedAvatars", _roundedAvatars.to_string());
         root->add_content("\n");

@@ -560,7 +560,7 @@ public class MainWindow : Window {
 				}
 				
 				//show new statuses via libnotify
-				if(prefs.showNotifications && last_time_friends > 0)
+				if(prefs.showTimelineNotify && last_time_friends > 0)
 					show_popups(twee.friends, last_time_friends);
 				
 				last_time_friends = (int)twee.friends.get(0).created_at.mktime();
@@ -596,7 +596,7 @@ public class MainWindow : Window {
 				}
 				
 				//show new statuses via libnotify
-				if(prefs.showNotifications && last_time_mentions > 0)
+				if(prefs.showMentionsNotify && last_time_mentions > 0)
 					show_popups(twee.mentions, last_time_mentions);
 				
 				last_time_mentions = (int)twee.mentions.get(0).created_at.mktime();
