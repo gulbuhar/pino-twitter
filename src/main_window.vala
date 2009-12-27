@@ -110,7 +110,8 @@ public class MainWindow : Window {
 		
 		//tray setup
 		tray = new StatusIcon.from_pixbuf(logo);
-		tray.button_press_event.connect(tray_actions);
+		tray.activate.connect(tray_activate);
+		tray.popup_menu.connect(tray_popup);
 		tray.set_tooltip_text(_("%s - a twitter client").printf(Config.APPNAME));
 		
 		//widgets setup
@@ -400,26 +401,18 @@ public class MainWindow : Window {
 		pref_dialog.show();
 	}
 	
-	private bool tray_actions(Gdk.EventButton event) {
-		if((event.type == Gdk.EventType.BUTTON_PRESS) && (event.button == 3)) {
-			warning("Popup");
-			popup.popup(null, null, null, event.button, event.time);
-			return true;
+	private void tray_activate() {
+		if(visible) {
+			this.hide();
+			visible = false;
+		} else {
+			this.show();
+			visible = true;
 		}
-		
-		if((event.type == Gdk.EventType.BUTTON_PRESS) && (event.button == 1)) {
-			if(visible) {
-				this.hide();
-				visible = false;
-			} else {
-				this.show();
-				visible = true;
-			}
-			
-			return true;
-		}
-		
-		return false;
+	}
+	
+	private void tray_popup(uint button, uint activate_time) {
+		popup.popup(null, null, null, button, activate_time);
 	}
 	
 	private bool show_popup_menu(Gdk.EventButton event) {
