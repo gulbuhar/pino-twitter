@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Athasiri Laohavanich <athasiri@gmail.com>, 2009.
-#
-#
+# 
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-26 15:48+0200\n"
+"POT-Creation-Date: 2009-12-26 15:50+0200\n"
 "PO-Revision-Date: 2009-12-19 12:14+0700\n"
 "Last-Translator: Athasiri Laohavanich <athasiri@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -99,24 +99,20 @@ msgid "Update interval"
 msgstr "ช่วงเวลาอัพเดตข้อมูล"
 
 #: src/pref_dialog.vala:29
-#, fuzzy
 msgid "For timeline"
-msgstr "แสดงตามเส้นเวลา"
+msgstr "สำหรับเส้นเวลา"
 
 #: src/pref_dialog.vala:30
-#, fuzzy
 msgid "For mentions"
-msgstr "แสดงตามการกล่าวถึง"
+msgstr "สำหรับการกล่าวถึง"
 
 #: src/pref_dialog.vala:32
-#, fuzzy
 msgid "Time interval"
-msgstr "ช่วงเวลาอัพเดตข้อมูล"
+msgstr "ช่วงเวลา"
 
 #: src/pref_dialog.vala:35
-#, fuzzy
 msgid "Notification"
-msgstr "แสดงการแจ้งเตือน"
+msgstr "การแจ้งเตือน"
 
 #: src/pref_dialog.vala:46
 msgid "Login"
@@ -132,7 +128,7 @@ msgstr "จำรหัสผ่าน"
 
 #: src/pref_dialog.vala:70
 msgid "Authorization"
-msgstr ""
+msgstr "การอนุญาต"
 
 #: src/pref_dialog.vala:79
 msgid "Create new account..."
@@ -140,7 +136,7 @@ msgstr "สร้างบัญชีใหม่..."
 
 #: src/pref_dialog.vala:95
 msgid "Tweets"
-msgstr ""
+msgstr "Tweets"
 
 #: src/pref_dialog.vala:98
 msgid "Rounded corners"
@@ -156,7 +152,7 @@ msgstr "บัญชีผู้ใช้"
 
 #: src/pref_dialog.vala:106
 msgid "Appearance"
-msgstr ""
+msgstr "ลักษณะ"
 
 #: src/re_tweet.vala:17 src/re_tweet.vala:53
 msgid "New status:"

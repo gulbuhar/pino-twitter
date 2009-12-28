@@ -2,12 +2,12 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-26 15:48+0200\n"
+"POT-Creation-Date: 2009-12-26 15:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,24 +98,20 @@ msgid "Update interval"
 msgstr "Actualizar intervalo"
 
 #: src/pref_dialog.vala:29
-#, fuzzy
 msgid "For timeline"
-msgstr "Mostrar tu lista"
+msgstr "Para lista"
 
 #: src/pref_dialog.vala:30
-#, fuzzy
 msgid "For mentions"
-msgstr "Mostrar menciones"
+msgstr "Para menciones"
 
 #: src/pref_dialog.vala:32
-#, fuzzy
 msgid "Time interval"
-msgstr "Actualizar intervalo"
+msgstr "Intervalo de tiempo"
 
 #: src/pref_dialog.vala:35
-#, fuzzy
 msgid "Notification"
-msgstr "Mostrar notificaciones"
+msgstr "Notificación"
 
 #: src/pref_dialog.vala:46
 msgid "Login"
@@ -131,7 +127,7 @@ msgstr "Recordar contraseña"
 
 #: src/pref_dialog.vala:70
 msgid "Authorization"
-msgstr ""
+msgstr "Autorización"
 
 #: src/pref_dialog.vala:79
 msgid "Create new account..."
@@ -139,7 +135,7 @@ msgstr "Crear nueva cuenta..."
 
 #: src/pref_dialog.vala:95
 msgid "Tweets"
-msgstr ""
+msgstr "Tweets"
 
 #: src/pref_dialog.vala:98
 msgid "Rounded corners"
@@ -155,7 +151,7 @@ msgstr "Cuenta"
 
 #: src/pref_dialog.vala:106
 msgid "Appearance"
-msgstr ""
+msgstr "Apariencia"
 
 #: src/re_tweet.vala:17 src/re_tweet.vala:53
 msgid "New status:"

@@ -1,16 +1,16 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+# FIRST AUTHOR <sospartan@gmail.com>, 2009.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-26 15:50+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2009-12-26 10:50+0900\n"
+"PO-Revision-Date: 2009-12-27 18:24+0900\n"
+"Last-Translator: Kang Bundo <bundo@bundo.biz>\n"
+"Language-Team: UBUNTU-KO <bundo@bundo.biz>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,203 +18,206 @@ msgstr ""
 #: src/main_window.vala:114
 #, c-format
 msgid "%s - a twitter client"
-msgstr "%s - твиттер клиент"
+msgstr "%s - 트위터 클라이언트"
 
 #: src/main_window.vala:153
 msgid "Type something first"
-msgstr "Введите что-нибудь сначала"
+msgstr "처음으로 먼가를 쓰다"
 
 #: src/main_window.vala:215
 msgid "Twitter"
-msgstr "Твиттер"
+msgstr "트위터"
 
 #: src/main_window.vala:216
 msgid "New status"
-msgstr "Новый статус"
+msgstr "트윗 쓰기"
 
 #: src/main_window.vala:217
 msgid "Create new status"
-msgstr "Создать новый статус"
+msgstr "새 트윗 보내기"
 
 #: src/main_window.vala:219
 msgid "Update timeline"
-msgstr "Обновить ленту сообщений"
+msgstr "타임라인 갱신"
 
 #: src/main_window.vala:222
 msgid "Quit"
-msgstr "Выйти"
+msgstr "종료"
 
 #: src/main_window.vala:227
 msgid "Edit"
-msgstr "Правка"
+msgstr "편집"
 
-#: src/main_window.vala:228 src/pref_dialog.vala:16
+#: src/main_window.vala:228
+#: src/pref_dialog.vala:16
 msgid "Preferences"
-msgstr "Параметры"
+msgstr "설정"
 
 #: src/main_window.vala:233
 msgid "View"
-msgstr "Вид"
+msgstr "보기"
 
 #: src/main_window.vala:234
 msgid "Timeline"
-msgstr "Лента сообщений"
+msgstr "타임라인"
 
 #: src/main_window.vala:235
 msgid "Show your timeline"
-msgstr "Показать вашу ленту сообщений"
+msgstr "내 타임라인 순으로 트윗 보기"
 
 #: src/main_window.vala:246
 msgid "Mentions"
-msgstr "Упоминания"
+msgstr "댓글(RT)"
 
 #: src/main_window.vala:247
 msgid "Show mentions"
-msgstr "Показать упоминания"
+msgstr "댓글 내용 보기"
 
 #: src/main_window.vala:259
 msgid "Show menu"
-msgstr "Показать меню"
+msgstr "메뉴표시"
 
 #: src/main_window.vala:269
 msgid "Show toolbar"
-msgstr "Показать панель инструментов"
+msgstr "도구 표시"
 
 #: src/main_window.vala:281
 msgid "Help"
-msgstr "Справка"
+msgstr "도움말"
 
 #: src/main_window.vala:282
 #, c-format
 msgid "About %s"
-msgstr "О %s"
+msgstr "%s 정보"
 
 #: src/main_window.vala:492
 msgid "Sure you want to delete this tweet?"
-msgstr "Уверены, что хотите удалить этот твит?"
+msgstr "정말로 이 트윗을 지우겠습니까?"
 
 #: src/pref_dialog.vala:25
 msgid "Update interval"
-msgstr "Интервал обновления"
+msgstr "갱신 주기"
 
 #: src/pref_dialog.vala:29
 msgid "For timeline"
-msgstr "Для ленты сообщений"
+msgstr "새 트윗글"
 
 #: src/pref_dialog.vala:30
 msgid "For mentions"
-msgstr "Для упоминаний"
+msgstr "댓글(RT)"
 
 #: src/pref_dialog.vala:32
 msgid "Time interval"
-msgstr "Интервал обновления"
+msgstr "수신 간격"
 
 #: src/pref_dialog.vala:35
 msgid "Notification"
-msgstr "Уведомления"
+msgstr "알림 통보"
 
 #: src/pref_dialog.vala:46
 msgid "Login"
-msgstr "Логин"
+msgstr "아이디"
 
 #: src/pref_dialog.vala:50
 msgid "Password"
-msgstr "Пароль"
+msgstr "비밀번호"
 
 #: src/pref_dialog.vala:63
 msgid "Remember password"
-msgstr "Запомнить пароль"
+msgstr "비밀번호 기억"
 
 #: src/pref_dialog.vala:70
 msgid "Authorization"
-msgstr "Автоиризация"
+msgstr "인증"
 
 #: src/pref_dialog.vala:79
 msgid "Create new account..."
-msgstr "Создать новую учетную запись..."
+msgstr "새 계정만들기..."
 
 #: src/pref_dialog.vala:95
 msgid "Tweets"
-msgstr "Твиты"
+msgstr "트윗 보기 모양"
 
 #: src/pref_dialog.vala:98
 msgid "Rounded corners"
-msgstr "Закругленные углы"
+msgstr "모서리를 둥글게"
 
 #: src/pref_dialog.vala:104
 msgid "Main"
-msgstr "Главные настройки"
+msgstr "메인"
 
 #: src/pref_dialog.vala:105
 msgid "Account"
-msgstr "Учетная запись"
+msgstr "계정"
 
 #: src/pref_dialog.vala:106
 msgid "Appearance"
-msgstr "Внешний вид"
+msgstr "모양"
 
-#: src/re_tweet.vala:17 src/re_tweet.vala:53
+#: src/re_tweet.vala:17
+#: src/re_tweet.vala:53
 msgid "New status:"
-msgstr "Новый статус:"
+msgstr "새 트윗 글 수:"
 
 #: src/re_tweet.vala:29
 #, c-format
 msgid "Reply to <b>%s</b>:"
-msgstr "Ответить <b>%s</b>:"
+msgstr "댓글을 <b>%s</b>:"
 
 #: src/status_bar_smart.vala:38
 msgid "updated "
-msgstr "обновлено "
+msgstr "갱신"
 
 #: src/status_bar_smart.vala:42
 msgid "updating... "
-msgstr "обновление..."
+msgstr "갱신중..."
 
 #: src/status_bar_smart.vala:46
 msgid "sending status... "
-msgstr "отправка статуса..."
+msgstr "보내기... "
 
 #: src/status_bar_smart.vala:50
 msgid "wrong login or password "
-msgstr "неверный логин или пароль "
+msgstr "아이디 또는 비밀번호 오류"
 
 #: src/status_bar_smart.vala:54
 msgid "problems with connection "
-msgstr "проблемы с соединением "
+msgstr "네트웍 연결 문제"
 
 #: src/status_bar_smart.vala:58
 msgid "some strange error "
-msgstr "какая-то странная ошибка "
+msgstr "알수 없는 오류"
 
 #: src/template.vala:29
 msgid "Reply"
-msgstr "Ответить"
+msgstr "답글"
 
 #: src/template.vala:30
 msgid "Delete"
-msgstr "Удалить"
+msgstr "삭제"
 
 #: src/template.vala:143
 msgid "a few seconds ago"
-msgstr "пару секунд назад"
+msgstr "몇초전"
 
 #: src/template.vala:145
 msgid "1 minute ago"
-msgstr "минуту назад"
+msgstr "1분전"
 
 #: src/template.vala:147
 #, c-format
 msgid "%i minutes ago"
-msgstr "%i минут назад"
+msgstr "%i 분전"
 
 #: src/template.vala:149
 msgid "about 1 hour ago"
-msgstr "где-то час назад"
+msgstr "약 1시간 전"
 
 #: src/template.vala:151
 #, c-format
 msgid "about %i hours ago"
-msgstr "где-то %i часов назад"
+msgstr "약 %i 시간 전에"
 
 #~ msgid "Main developer and project owner:"
-#~ msgstr "Главный разработчик и владелец проекта:"
+#~ msgstr "메인 개발자와 프로젝트 주인:"
+
