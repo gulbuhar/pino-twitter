@@ -24,6 +24,8 @@ using GLib;
 
 class Template : Object {
 	
+	public Cache cache;
+	
 	private string mainTemplate;
 	private string statusTemplate;
 	private string statusMeTemplate;
@@ -39,6 +41,8 @@ class Template : Object {
 		nicks = new Regex("@([A-Za-z0-9_]+)");
 		tags = new Regex("(\\#[A-Za-z0-9_]+)");
 		urls = new Regex("((http|https|ftp)://([\\S]+))"); //need something better
+		
+		cache = new Cache();
 	}
 	
 	public string generateFriends(Gee.ArrayList<Status> friends,
@@ -66,7 +70,7 @@ class Template : Object {
 			
 			if(i.user_screen_name == prefs.login) {
 				warning("OHOHO %s", i.text);
-				content += statusMeTemplate.printf(i.user_avatar,
+				content += statusMeTemplate.printf(cache.get_or_download(i.user_avatar, Cache.Method.ASYNC),
 					"me",
 					i.id,
 					time,
@@ -95,7 +99,7 @@ class Template : Object {
 					text = i.re_text;
 					warning(re_icon);
 				}
-				content += statusTemplate.printf(user_avatar,
+				content += statusTemplate.printf(cache.get_or_download(user_avatar, Cache.Method.ASYNC),
 					fresh,
 					i.id,
 					re_icon,

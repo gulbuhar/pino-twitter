@@ -644,7 +644,13 @@ public class MainWindow : Window {
 			if(newStatus.user_screen_name != prefs.login) {
 				var popup = new Notification(newStatus.user_name,
 					newStatus.text, null, null);
-				popup.set_icon_from_pixbuf(logo);
+				
+				string av_path = template.cache.get_or_download(newStatus.user_avatar, Cache.Method.ASYNC);
+				if(av_path == newStatus.user_avatar)
+					popup.set_icon_from_pixbuf(logo);
+				else {
+					popup.set_icon_from_pixbuf(new Gdk.Pixbuf.from_file(av_path));
+				}
 				popup.set_timeout(2000); //doesn't working... hm
 				popup.set_urgency(Notify.Urgency.NORMAL);
 				popup.show();
