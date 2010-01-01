@@ -23,6 +23,8 @@ using Gtk;
 
 public class ReTweet : VBox {
 	
+	private Image userpic;
+	
 	private TextView entry;
 	public TextView text_entry {
 		public get { return entry; }
@@ -80,7 +82,7 @@ public class ReTweet : VBox {
 		l_box.pack_end(label, false, false, 2);
 		
 		entry = new TextView();
-		entry.set_size_request(-1, 50);
+		entry.set_size_request(-1, 48);
 		entry.cursor_visible = true;
 		entry.set_wrap_mode(Gtk.WrapMode.WORD);
 		entry.key_press_event.connect(hide_or_send);
@@ -90,20 +92,32 @@ public class ReTweet : VBox {
         scroll.set_policy(PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);
         scroll.add(entry);
 		
-		var frame = new Frame(null);
-		frame.add(scroll);
+		userpic = new Image();
+		userpic.set_size_request(48, 48);
 		
 		var hbox = new HBox(false, 1);
-		hbox.pack_start(frame, true, true, 0);
+		hbox.pack_start(scroll, true, true, 0);
+		hbox.pack_start(userpic, false, false, 0);
 		//hbox.pack_start(label, false, false, 2);
+		
+		var frame = new Frame(null);
+		frame.set_size_request(-1, 48);
+		frame.add(hbox);
 		
 		var sep = new HSeparator();
 		
 		pack_start(sep, false, false, 0);
 		pack_start(l_box, false, false, 0);
-		pack_start(hbox, false, true, 5);
+		pack_start(frame, false, true, 0);
+	}
+	
+	public void set_userpic(string path) {
+		var buf = new Gdk.Pixbuf.from_file(path);
 		
+		if(buf.width > 48 || buf.height > 48)
+			buf = buf.scale_simple(48, 48, Gdk.InterpType.BILINEAR);
 		
+		userpic.set_from_pixbuf(buf);
 	}
 	
 	public void clear() {

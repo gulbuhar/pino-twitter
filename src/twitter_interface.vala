@@ -73,11 +73,14 @@ public class TwitterInterface : Object {
 	private const string destroyStatusUrl = "http://twitter.com/statuses/destroy/%s.xml";
 	private const string retweetStatusUrl = "http://api.twitter.com/1/statuses/retweet/%s.xml";
 	private const string mentionsUrl = "http://twitter.com/statuses/mentions.xml";
+	private const string userUrl = "http://twitter.com/users/show/%s.xml";
 	
 	public signal void updating();
 	public signal void send_status();
 	public signal void updated();
 	public signal void destroying_status();
+	
+	public signal void userpic_url_done(string username, string url);
 	
 	public TwitterInterface(){}
 	
@@ -88,6 +91,49 @@ public class TwitterInterface : Object {
 	public void set_auth(string _login, string _password) {
 		login = _login;
 		password = _password;
+	}
+	
+	public Reply showUserPicUrl(string username) {
+		var session = new Soup.SessionAsync();
+		session.timeout = 10;
+        var message = new Soup.Message("GET", userUrl.printf(username));
+        
+        session.authenticate += (sess, msg, auth, retrying) => {
+        	if(retrying) return;
+        	auth.authenticate(login, password);
+        };
+        
+        switch(session.send_message(message)) {
+        	case 401:
+        		return Reply.ERROR_401;
+        	case 2:
+        		return Reply.ERROR_TIMEOUT;
+        	case 200:
+        		string result = parse_userpic_xml(message.response_body.data);
+        		userpic_url_done(username, result);
+        		return Reply.OK;
+        	default:
+        		return Reply.ERROR_UNKNOWN;
+        }
+	}
+	
+	private string parse_userpic_xml(string data) {
+		Xml.Doc* xmlDoc = Parser.parse_memory(data, (int)data.length);
+		Xml.Node* rootNode = xmlDoc->get_root_element();
+		
+		string result = "";
+		
+		Xml.Node* iter;
+		for(iter = rootNode->children; iter != null; iter = iter->next) {
+			if (iter->type != ElementType.ELEMENT_NODE)
+                continue;
+			if(iter->name == "profile_image_url") {
+				result = iter->get_content();
+				break;
+			}
+		} delete iter;
+		
+		return result;
 	}
 	
 	public Reply sync_friends(int last_time, int last_focused) {
