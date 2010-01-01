@@ -69,8 +69,7 @@ class Template : Object {
 			string time = time_to_human_delta(now, i.created_at);
 			
 			if(i.user_screen_name == prefs.login) {
-				warning("OHOHO %s", i.text);
-				content += statusMeTemplate.printf(cache.get_or_download(i.user_avatar, Cache.Method.ASYNC),
+				content += statusMeTemplate.printf(cache.get_or_download(i.user_avatar, Cache.Method.ASYNC, false),
 					"me",
 					i.id,
 					time,
@@ -99,7 +98,7 @@ class Template : Object {
 					text = i.re_text;
 					warning(re_icon);
 				}
-				content += statusTemplate.printf(cache.get_or_download(user_avatar, Cache.Method.ASYNC),
+				content += statusTemplate.printf(cache.get_or_download(user_avatar, Cache.Method.ASYNC, false),
 					fresh,
 					i.id,
 					re_icon,

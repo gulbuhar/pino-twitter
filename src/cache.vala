@@ -25,6 +25,8 @@ public class Cache : Object {
 	
 	public enum Method {SYNC, ASYNC}
 	
+	public signal void pic_downloaded(string url, string path);
+	
 	string cache_path;
 	
 	private HashMap<string, string> map;
@@ -34,7 +36,7 @@ public class Cache : Object {
 		check_cache_dir();
 	}
 	
-	public string get_or_download(string url, Method method) {
+	public string get_or_download(string url, Method method, bool need_emit) {
 		//first look in hash
 		var quick_response = map.get(url);
 		if(quick_response != null)
@@ -53,7 +55,7 @@ public class Cache : Object {
 		
 		//and then try to download
 		if(method == Method.ASYNC) {
-			download_async.begin(url, save_name);
+			download_async.begin(url, save_name, need_emit);
 			return url;
 		}
 		
@@ -73,7 +75,7 @@ public class Cache : Object {
 		}
 	}
 	
-	private async void download_async(string url, string save_name) {
+	private async void download_async(string url, string save_name, bool need_emit) {
 		var enc_name = Soup.form_encode("", save_name).split("=")[1];
 		
 		var pick = File.new_for_uri(url.replace(save_name, enc_name));
@@ -82,6 +84,9 @@ public class Cache : Object {
 		if(!pick_file.query_exists(null)) {
 			yield pick.copy_async(pick_file, FileCopyFlags.NONE, 1, null, null);
 		}
+		
+		if(need_emit)
+			pic_downloaded(url, cache_path + "/" + save_name);
 	}
 	
 	private void check_cache_dir() {

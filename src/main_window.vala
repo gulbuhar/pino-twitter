@@ -202,6 +202,8 @@ public class MainWindow : Window {
 		if(prefs.is_new || !prefs.rememberPass)
 			run_prefs();
 		
+		get_my_userpic();
+		
 		//show window
 		show_all();
 		
@@ -432,6 +434,25 @@ public class MainWindow : Window {
 		}
 	}
 	
+	public void get_my_userpic() {
+		twee.userpic_url_done.connect((username, result) => {
+			if(username == prefs.login) {
+				template.cache.pic_downloaded.connect((url, path) => {
+					if(url == result) {
+						reTweet.set_userpic(path);
+					}
+				});
+				
+				string path = template.cache.get_or_download(result, Cache.Method.ASYNC, true);
+				if(path != result) {
+					reTweet.set_userpic(path);
+				}
+			}
+		});
+		
+		twee.showUserPicUrl(prefs.login);
+	}
+	
 	private void tray_popup(uint button, uint activate_time) {
 		popup.popup(null, null, null, button, activate_time);
 	}
@@ -645,7 +666,7 @@ public class MainWindow : Window {
 				var popup = new Notification(newStatus.user_name,
 					newStatus.text, null, null);
 				
-				string av_path = template.cache.get_or_download(newStatus.user_avatar, Cache.Method.ASYNC);
+				string av_path = template.cache.get_or_download(newStatus.user_avatar, Cache.Method.ASYNC, false);
 				if(av_path == newStatus.user_avatar)
 					popup.set_icon_from_pixbuf(logo);
 				else {
