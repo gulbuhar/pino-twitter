@@ -2,12 +2,12 @@
 # Copyright (C) 2009 the Free Software Foundation, Inc.
 # This file is distributed under the same license as the pino package.
 # Daniele Napolitano <dnax88@gmail.com>, 2009.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: pino\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-26 15:48+0200\n"
+"POT-Creation-Date: 2009-12-26 15:50+0200\n"
 "PO-Revision-Date: 2009-12-21 01:11+0100\n"
 "Last-Translator: Daniele Napolitano <dnax88@gmail.com>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
@@ -98,24 +98,20 @@ msgid "Update interval"
 msgstr "Intervallo di aggiornamento"
 
 #: src/pref_dialog.vala:29
-#, fuzzy
 msgid "For timeline"
-msgstr "Mostra la propria timeline"
+msgstr "Per la timeline"
 
 #: src/pref_dialog.vala:30
-#, fuzzy
 msgid "For mentions"
-msgstr "Mostra citazioni"
+msgstr "Per le citazioni"
 
 #: src/pref_dialog.vala:32
-#, fuzzy
 msgid "Time interval"
-msgstr "Intervallo di aggiornamento"
+msgstr "Intervallo di tempo"
 
 #: src/pref_dialog.vala:35
-#, fuzzy
 msgid "Notification"
-msgstr "Mostra notifiche"
+msgstr "Notifiche"
 
 #: src/pref_dialog.vala:46
 msgid "Login"
@@ -131,7 +127,7 @@ msgstr "Ricorda password"
 
 #: src/pref_dialog.vala:70
 msgid "Authorization"
-msgstr ""
+msgstr "Autorizzazione"
 
 #: src/pref_dialog.vala:79
 msgid "Create new account..."
@@ -139,7 +135,7 @@ msgstr "Crea un nuovo account..."
 
 #: src/pref_dialog.vala:95
 msgid "Tweets"
-msgstr ""
+msgstr "Tweet"
 
 #: src/pref_dialog.vala:98
 msgid "Rounded corners"
@@ -155,7 +151,7 @@ msgstr "Account"
 
 #: src/pref_dialog.vala:106
 msgid "Appearance"
-msgstr ""
+msgstr "Aspetto"
 
 #: src/re_tweet.vala:17 src/re_tweet.vala:53
 msgid "New status:"
