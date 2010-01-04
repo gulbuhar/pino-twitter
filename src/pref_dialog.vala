@@ -27,10 +27,13 @@ public class PrefDialog : Dialog {
 	private SpinButton updateInterval;
 	private CheckButton showTimelineNotify;
 	private CheckButton showMentionsNotify;
+	private Button deleteCache;
 	private CheckButton roundedAvatars;
 	private Entry login;
 	private Entry password;
 	private CheckButton savePass;
+	
+	public signal void delete_cache();
 	
 	public PrefDialog(Prefs prefs, Window parent) {
 		this.modal = true;
@@ -50,6 +53,14 @@ public class PrefDialog : Dialog {
 		showTimelineNotify = new CheckButton.with_label(_("For timeline"));
 		showMentionsNotify = new CheckButton.with_label(_("For mentions"));
 		
+		//delete cache
+		deleteCache = new Button.with_label(_("Clear now"));
+		var del_img = new Image.from_icon_name("gtk-clear", IconSize.BUTTON);
+		deleteCache.set_image(del_img);
+		deleteCache.clicked.connect(() => {
+			delete_cache();
+		});
+		
 		var table_int = new HigTable(_("Time interval"));
 		table_int.add_two_widgets(updateLabel, updateInterval);
 		
@@ -57,8 +68,12 @@ public class PrefDialog : Dialog {
 		table_not.add_widget(showTimelineNotify);
 		table_not.add_widget(showMentionsNotify);
 		
+		var table_cache = new HigTable(_("Cache"));
+		table_cache.add_widget(deleteCache);
+		
 		main_box.pack_start(table_int, false, true, 10);
 		main_box.pack_start(table_not, false, true, 10);
+		main_box.pack_start(table_cache, false, true, 10);
 		
 		//account page
 		var ac_box = new VBox(false, 0);
