@@ -43,7 +43,7 @@ public class Cache : Object {
 			return quick_response;
 		
 		//get a file name
-		string save_name = url.split("/")[5];
+		string save_name = url.split("/")[4];
 		
 		//then look on disk
 		string file_path = cache_path + "/" + save_name;
@@ -96,5 +96,19 @@ public class Cache : Object {
 		var cache_dir = File.new_for_path(cache_path);
 		if(!cache_dir.query_exists(null))
 			cache_dir.make_directory(null);
+	}
+	
+	public void delete_cache() {
+		var cache_dir = File.new_for_path(cache_path);
+		var en = cache_dir.enumerate_children(FILE_ATTRIBUTE_STANDARD_NAME, 0, null);
+		
+		FileInfo file_info;
+		while((file_info = en.next_file(null)) != null) {
+			var d_file = File.new_for_path(cache_path + "/" + file_info.get_name ());
+			d_file.delete(null);
+		}
+		
+		//clear hash
+		map.clear();
 	}
 }

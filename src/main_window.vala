@@ -394,6 +394,11 @@ public class MainWindow : Window {
 	
 	private void run_prefs() {
 		var pref_dialog = new PrefDialog(prefs, this);
+		
+		pref_dialog.delete_cache.connect(() => {
+			template.cache.delete_cache();
+		});
+		
 		pref_dialog.destroy.connect(() => {
 			//timer interval update
 			timer.set_interval(prefs.updateInterval * 60);
@@ -413,6 +418,8 @@ public class MainWindow : Window {
 				last_focused_friends = -1;
 				last_time_mentions = 0;
 				last_focused_mentions = -1;
+				
+				get_my_userpic();
 				
 				refresh_action();
 			}
