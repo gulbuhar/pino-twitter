@@ -90,7 +90,7 @@ class Template : Object {
 				if(i.to_user != "") { // in reply to
 					string to_user = i.to_user;
 					if(to_user == prefs.login)
-						to_user = "you";
+						to_user = _("you");
 					by_who = "<a class='by_who' href='http://twitter.com/%s/status/%s'>%s %s</a>".printf(i.to_user, i.to_status_id, _("in reply to"), to_user);
 				}
 				
