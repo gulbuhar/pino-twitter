@@ -37,6 +37,9 @@ public class Status {
 	public string re_user_screen_name;
 	public string re_user_avatar;
 	
+	public string to_user = "";
+	public string to_status_id = "";
+	
 	public bool is_retweet = false;
 	//public bool is_new = false;
 	//public bool unreaded = false;
@@ -355,10 +358,16 @@ public class TwitterInterface : Object {
 				    				status.text = iter_in->get_content();
 				    				break;
 				    			
+				    			case "in_reply_to_screen_name":
+				    				status.to_user = iter_in->get_content();
+				    				break;
+				    			
+				    			case "in_reply_to_status_id":
+				    				status.to_status_id = iter_in->get_content();
+				    				break;
+				    			
 				    			case "retweeted_status":
 				    				status.is_retweet = true;
-				    				if(status.is_retweet)
-				    					warning("Holy shit! This is retweet!");
 				    				
 				    				Xml.Node *iter_retweet;
 				    				

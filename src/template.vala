@@ -86,6 +86,14 @@ class Template : Object {
 			} else {
 				var re_icon = "";
 				var by_who = "";
+				
+				if(i.to_user != "") { // in reply to
+					string to_user = i.to_user;
+					if(to_user == prefs.login)
+						to_user = "you";
+					by_who = "<a class='by_who' href='http://twitter.com/%s/status/%s'>in reply to %s</a>".printf(i.to_user, i.to_status_id, to_user);
+				}
+				
 				var user_avatar = i.user_avatar;
 				var name = i.user_name;
 				var screen_name = i.user_screen_name;
