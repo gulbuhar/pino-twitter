@@ -202,7 +202,7 @@ public class MainWindow : Window {
 		if(prefs.is_new || !prefs.rememberPass)
 			run_prefs();
 		
-		get_my_userpic();
+		get_my_userpic.begin();
 		
 		//show window
 		show_all();
@@ -419,6 +419,8 @@ public class MainWindow : Window {
 				last_time_mentions = 0;
 				last_focused_mentions = -1;
 				
+				//refreshing userpic
+				prefs.userpicUrl = "";
 				get_my_userpic();
 				
 				refresh_action();
@@ -441,12 +443,29 @@ public class MainWindow : Window {
 		}
 	}
 	
-	public void get_my_userpic() {
+	public async void get_my_userpic() {
+		//if already have url
+		if(prefs.userpicUrl != "") {
+			template.cache.pic_downloaded.connect((url, path) => {
+				if(url == prefs.userpicUrl) {
+					reTweet.set_userpic(path);
+				}
+			});
+			
+			string path = template.cache.get_or_download(prefs.userpicUrl, Cache.Method.ASYNC, true);
+			if(path != prefs.userpicUrl)
+				reTweet.set_userpic(path);
+			
+			return;
+		}
+		
 		twee.userpic_url_done.connect((username, result) => {
 			if(username == prefs.login) {
+				prefs.userpicUrl = result;
+				
 				template.cache.pic_downloaded.connect((url, path) => {
 					if(url == result) {
-						reTweet.set_userpic(path);
+						reTweet.set_userpic(path); 
 					}
 				});
 				
