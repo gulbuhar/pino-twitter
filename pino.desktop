@@ -1,0 +1,15 @@
+[Desktop Entry]
+Exec=pino
+Name=Pino Twitter Client
+Name[ua]=Twitter клієнт Pino
+Name[ru]=Twitter клиент Pino
+Icon=pino
+Type=Application
+Categories=GTK;Network;InstantMessaging;
+Comment=Fast, easy, and free Twitter client
+Comment[ua]=Швидкий, простий та вільний Twitter клієнт
+Comment[ru]=Быстрый, простой и свободный Twitter клиент
+GenericName=Twitter Client
+GenericName[ua]=Twitter клієнт
+GenericName[ru]=Twitter клиент
+Terminal=false

@@ -1,0 +1,48 @@
+--- !Project
+path: /home/troorl/Desktop/apps/pino
+name: pino
+author: troorl
+version: 0.1.0
+license: GPL-2.0
+builder: Native
+builder-options: !NativeBuilderOptions
+  debug: false
+  thread: false
+  disable-assert: false
+  disable-checking: false
+  disable-non-null: false
+  save-temps: false
+  quiet: false
+  other: 
+executable-options:
+  program: 
+  arguments: 
+  working-dir: /home/troorl/Desktop/apps/pino
+  environment: []
+files:
+- path: src/vapi/config.vapi
+- path: src/timer.vala
+- path: src/pref_dialog.vala
+- path: COPYING
+- path: src/main.vala
+- path: src/main_window.vala
+- path: src/template.vala
+- path: src/twitter_interface.vala
+- path: src/status_bar_smart.vala
+- path: src/gtk_style.vala
+- path: src/re_tweet.vala
+- path: src/prefs.vala
+- path: src/hig_table.vala
+- path: src/cache.vala
+packages:
+- name: posix
+- name: gee-1.0
+- name: gio-2.0
+- name: gtk+-2.0
+- name: libnotify
+- name: libsexy
+- name: libsoup-2.4
+- name: libxml-2.0
+- name: webkit-1.0
+vapi_dir:
+- path: /home/troorl/Desktop/apps/pino/vapi
