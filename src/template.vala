@@ -91,7 +91,7 @@ class Template : Object {
 					string to_user = i.to_user;
 					if(to_user == prefs.login)
 						to_user = "you";
-					by_who = "<a class='by_who' href='http://twitter.com/%s/status/%s'>in reply to %s</a>".printf(i.to_user, i.to_status_id, to_user);
+					by_who = "<a class='by_who' href='http://twitter.com/%s/status/%s'>%s %s</a>".printf(i.to_user, i.to_status_id, _("in reply to"), to_user);
 				}
 				
 				var user_avatar = i.user_avatar;
