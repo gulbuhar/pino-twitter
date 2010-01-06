@@ -1,11 +1,11 @@
 <div class="status">
-	<div class="avatar" style="background-image:url('%s');"></div>
-	<div class="content_%s" id="%s">
-		%s<a class="nick" href="nickto://%s">%s</a>
-		<span class="date">%s</span>
+	<div class="avatar" style="background-image:url('{{avatar}}');"></div>
+	<div class="content_{{fresh}}" id="{{id}}">
+		{{re_icon}}<a class="nick" href="nickto://{{screen_name}}">{{name}}</a>
+		<span class="date">{{time}}</span>
 		<div>
-			%s<br />
-			<span>%s&nbsp;</span><span style="text-align:right;float:right;"><a class="reply" title="reply to %s" href="directreply://%s==%s==%s">%s</a></span>
+			{{content}}<br />
+			<span>{{bywho}}&nbsp;</span><span style="text-align:right;float:right;"><a class="reply" title="reply to {{name}}" href="directreply://{{id}}=={{screen_name}}=={{name}}">{{reply_text}}</a></span>
 		</div>
 	</div>
 	<div style="clear:both;"></div> 

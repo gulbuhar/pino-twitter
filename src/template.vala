@@ -59,6 +59,10 @@ class Template : Object {
 		if(prefs.roundedAvatars)
 			rounded = "-webkit-border-radius:5px;";
 		
+		var h = new HashMap<string, string>();
+		h["var"] = "troorl";
+		render("", h);
+		
 		foreach(Status i in friends) {
 			//checking for new statuses
 			var fresh = "old";
@@ -68,18 +72,17 @@ class Template : Object {
 			//making human-readable time/date
 			string time = time_to_human_delta(now, i.created_at);
 			
-			if(i.user_screen_name == prefs.login) {
-				content += statusMeTemplate.printf(cache.get_or_download(i.user_avatar, Cache.Method.ASYNC, false),
-					"me",
-					i.id,
-					time,
-					//i.user_screen_name,
-					//i.user_name,
-					i.user_name,
-					making_links(i.text),
-					i.id,
-					delete_text
-					);
+			if(i.user_screen_name == prefs.login) { //your own status
+				var map = new HashMap<string, string>();
+				map["avatar"] = cache.get_or_download(i.user_avatar, Cache.Method.ASYNC, false);
+				map["me"] = "me";
+				map["id"] = i.id;
+				map["time"] = time;
+				map["name"] = i.user_name;
+				map["content"] = making_links(i.text);
+				map["delete_text"] = delete_text;
+				content += render(statusMeTemplate, map);
+				
 			} else {
 				var re_icon = "";
 				var by_who = "";
@@ -89,46 +92,50 @@ class Template : Object {
 				var text = i.text;
 				
 				if(i.is_retweet) {
-					//re_icon = "<img src='file://%s' />".printf(RETWEET_ICON_PATH);
 					re_icon = "<span class='re'>Rt:</span> ";
 					by_who = "<a class='by_who' href='nickto://%s'>by %s</a>".printf(i.user_screen_name, i.user_name);
 					name = i.re_user_name;
 					screen_name = i.re_user_screen_name;
 					user_avatar = i.re_user_avatar;
 					text = i.re_text;
-					warning(re_icon);
 				}
-				content += statusTemplate.printf(cache.get_or_download(user_avatar, Cache.Method.ASYNC, false),
-					fresh,
-					i.id,
-					re_icon,
-					screen_name,
-					name,
-					time,
-					making_links(text),
-					by_who,
-					//i.id,
-					i.user_name,
-					i.id,
-					i.user_screen_name,
-					i.user_name,
-					reply_text
-					);
+				
+				var map = new HashMap<string, string>();
+				map["avatar"] = cache.get_or_download(user_avatar, Cache.Method.ASYNC, false);
+				map["fresh"] = fresh;
+				map["id"] = i.id;
+				map["re_icon"] = re_icon;
+				map["screen_name"] = screen_name;
+				map["name"] = name;
+				map["time"] = time;
+				map["content"] = making_links(text);
+				map["bywho"] = by_who;
+				map["reply_text"] = reply_text;
+				content += render(statusTemplate, map);
 			}
 		}
-		//warning(content);
-		return mainTemplate.printf(gtkStyle.bg_color, //body background
-			gtkStyle.fg_color, //main text color
-			gtkStyle.fg_color, //nick color
-			rounded, //rounded userpics
-			rounded, //rounded tweets
-			gtkStyle.lt_color, //date strings color
-			gtkStyle.sl_color, //links color
-			gtkStyle.fg_color, //nick color
-			gtkStyle.lt_color, //reply link
-			gtkStyle.sl_color, //retweet bg
-			gtkStyle.lg_color, //retweet fg
-			content);
+		
+		var map = new HashMap<string, string>();
+		map["bg_color"] = gtkStyle.bg_color;
+		map["fg_color"] = gtkStyle.fg_color;
+		map["rounded"] = rounded;
+		map["lt_color"] = gtkStyle.lt_color;
+		map["sl_color"] = gtkStyle.sl_color;
+		map["lg_color"] = gtkStyle.lg_color;
+		map["main_content"] = content;
+		
+		return render(mainTemplate, map);
+	}
+	
+	private string render(string text, HashMap<string, string> map) {
+		string result = text;
+		
+		foreach(string key in map.keys) {
+			var pat = new Regex("{{" + key + "}}");
+			result = pat.replace(result, -1, 0, map[key]);
+		}
+		
+		return result;
 	}
 	
 	private string making_links(string text) {
