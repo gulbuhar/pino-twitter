@@ -72,20 +72,7 @@ class Template : Object {
 			//making human-readable time/date
 			string time = time_to_human_delta(now, i.created_at);
 			
-			if(i.user_screen_name == prefs.login) { //your own status
-				var map = new HashMap<string, string>();
-				map["avatar"] = cache.get_or_download(i.user_avatar, Cache.Method.ASYNC, false);
-				map["me"] = "me";
-				map["id"] = i.id;
-				map["time"] = time;
-				map["name"] = i.user_name;
-				map["content"] = making_links(i.text);
-				map["delete_text"] = delete_text;
-				content += render(statusMeTemplate, map);
-				
-			} else {
-				var re_icon = "";
-				var by_who = "";
+			var by_who = "";
 				
 				if(i.to_user != "") { // in reply to
 					string to_user = i.to_user;
@@ -93,6 +80,21 @@ class Template : Object {
 						to_user = _("you");
 					by_who = "<a class='by_who' href='http://twitter.com/%s/status/%s'>%s %s</a>".printf(i.to_user, i.to_status_id, _("in reply to"), to_user);
 				}
+			
+			if(i.user_screen_name == prefs.login) { //your own status
+				var map = new HashMap<string, string>();
+				map["avatar"] = cache.get_or_download(i.user_avatar, Cache.Method.ASYNC, false);
+				map["me"] = "me";
+				map["id"] = i.id;
+				map["time"] = time;
+				map["by_who"] = by_who;
+				map["name"] = i.user_name;
+				map["content"] = making_links(i.text);
+				map["delete_text"] = delete_text;
+				content += render(statusMeTemplate, map);
+				
+			} else {
+				var re_icon = "";
 				
 				var user_avatar = i.user_avatar;
 				var name = i.user_name;
@@ -117,7 +119,7 @@ class Template : Object {
 				map["name"] = name;
 				map["time"] = time;
 				map["content"] = making_links(text);
-				map["bywho"] = by_who;
+				map["by_who"] = by_who;
 				map["reply_text"] = reply_text;
 				content += render(statusTemplate, map);
 			}
