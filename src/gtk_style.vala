@@ -36,6 +36,9 @@ public class SystemStyle : Object {
 	private string _lt_color;
 	public string lt_color{get{return _lt_color;}}
 	
+	private string _dr_color;
+	public string dr_color{get{return _dr_color;}}
+	
 	public SystemStyle(Gtk.Style style) {
 		updateStyle(style);
 	}
@@ -55,7 +58,16 @@ public class SystemStyle : Object {
 			_lt_color = rgb_to_hex(light_color);
 			
 		}
-		warning("lt_color: %s", lt_color);
+		
+		// working on dr_color
+		{
+			var dark_color = Gdk.Color();
+			dark_color.red = darker(style.bg[Gtk.StateType.NORMAL].red, 20*256);
+			dark_color.green = darker(style.bg[Gtk.StateType.NORMAL].green, 20*256);
+			dark_color.blue = darker(style.bg[Gtk.StateType.NORMAL].blue, 20*256);
+			_dr_color = rgb_to_hex(dark_color);
+		}
+		
 		warning("New style");
 	}
 	
@@ -64,6 +76,13 @@ public class SystemStyle : Object {
 			return 255*256;
 		else
 			return color + delta; 
+	}
+	
+	private uint16 darker(uint16 color, uint16 delta) {
+		if(color - delta < 0)
+			return 0;
+		else
+			return color - delta; 
 	}
 	
 	private string rgb_to_hex(Gdk.Color color) {
