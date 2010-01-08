@@ -132,6 +132,8 @@ class Template : Object {
 		map["lt_color"] = gtkStyle.lt_color;
 		map["sl_color"] = gtkStyle.sl_color;
 		map["lg_color"] = gtkStyle.lg_color;
+		map["dr_color"] = gtkStyle.dr_color;
+		map["tweets_opacity"] = prefs.opacityTweets;
 		map["main_content"] = content;
 		
 		return render(mainTemplate, map);

@@ -56,6 +56,18 @@ public class Prefs : Object {
 		}
 	}
 	
+	public signal void opacityTweetsChanged();
+	private string _opacityTweets = "0.4";
+	public string opacityTweets {
+		get{ return _opacityTweets; }
+		set{
+			if(_opacityTweets != value) {
+				_opacityTweets = value;
+				opacityTweetsChanged();
+			}
+		}
+	}
+	
 	private string _login = "";
 	public string login {
 		get{ return _login; }
@@ -193,6 +205,10 @@ public class Prefs : Object {
 					_roundedAvatars = iter->get_content().to_bool();
 					break;
 				
+				case "opacityTweets":
+					_opacityTweets = iter->get_content();
+					break;
+				
 				case "login":
 					_login = iter->get_content();
 					break;
@@ -257,6 +273,8 @@ public class Prefs : Object {
         root->new_text_child(ns, "showMentionsNotify", _showMentionsNotify.to_string());
         root->add_content("\n");
         root->new_text_child(ns, "roundedAvatars", _roundedAvatars.to_string());
+        root->add_content("\n");
+        root->new_text_child(ns, "opacityTweets", _opacityTweets);
         root->add_content("\n");
         root->new_text_child(ns, "login", _login);
         root->add_content("\n");

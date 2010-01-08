@@ -29,6 +29,7 @@ public class PrefDialog : Dialog {
 	private CheckButton showMentionsNotify;
 	private Button deleteCache;
 	private CheckButton roundedAvatars;
+	private HScale opacityTweets;
 	private Entry login;
 	private Entry password;
 	private CheckButton savePass;
@@ -133,7 +134,13 @@ public class PrefDialog : Dialog {
 		//rounded corners
 		roundedAvatars = new CheckButton.with_label(_("Rounded corners"));
 		
+		//opacity for tweets
+		var opacityTweetsLabel = new Label(_("Opacity"));
+		opacityTweets = new HScale.with_range(0, 100, 1);
+		opacityTweets.set_size_request(100, -1);
+		
 		table_tweets.add_widget(roundedAvatars);
+		table_tweets.add_two_widgets(opacityTweetsLabel, opacityTweets);
 		
 		app_box.pack_start(table_tweets, false, true, 10);
 		
@@ -170,11 +177,24 @@ public class PrefDialog : Dialog {
 			set_focus(password);
 	}
 	
+	private bool opacityTweetsChanged(Prefs prefs) {
+		string str_val = (opacityTweets.get_value() / 100).to_string();
+		
+		if(str_val != "1" && str_val != "0")
+			str_val = str_val.substring(1, 3);
+		
+		prefs.opacityTweets = str_val;
+		
+		warning("New value %s", str_val);
+		return false;
+	}
+	
 	private void setup_prefs(Prefs prefs) {
 		updateInterval.value = prefs.updateInterval;
 		showTimelineNotify.active = prefs.showTimelineNotify;
 		showMentionsNotify.active = prefs.showMentionsNotify;
 		roundedAvatars.active = prefs.roundedAvatars;
+		opacityTweets.set_value((int)(prefs.opacityTweets.to_double() * 100));
 		login.text = prefs.login;
 		password.text = prefs.password;
 		savePass.active = prefs.rememberPass;
@@ -187,6 +207,13 @@ public class PrefDialog : Dialog {
 		
 		roundedAvatars.toggled.connect(() => {
 			prefs.roundedAvatars = roundedAvatars.active;
+		});
+		
+		opacityTweets.button_release_event.connect((event) => {
+			return opacityTweetsChanged(prefs);
+		});
+		opacityTweets.key_release_event.connect((event) => {
+			return opacityTweetsChanged(prefs);
 		});
 		
 		showTimelineNotify.toggled.connect(() => {
