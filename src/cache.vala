@@ -76,9 +76,10 @@ public class Cache : Object {
 	}
 	
 	private async void download_async(string url, string save_name, bool need_emit) {
-		var enc_name = Soup.form_encode("", save_name).split("=")[1];
+		var utf_name = url.split("/")[5];
+		var enc_name = Soup.form_encode("", utf_name).split("=")[1];
 		
-		var pick = File.new_for_uri(url.replace(save_name, enc_name));
+		var pick = File.new_for_uri(url.replace(utf_name, enc_name));
 		var pick_file = File.new_for_path(cache_path + "/" + save_name);
 		
 		if(!pick_file.query_exists(null)) {
