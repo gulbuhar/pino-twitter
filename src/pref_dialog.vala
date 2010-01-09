@@ -177,18 +177,6 @@ public class PrefDialog : Dialog {
 			set_focus(password);
 	}
 	
-	private bool opacityTweetsChanged(Prefs prefs) {
-		string str_val = (opacityTweets.get_value() / 100).to_string();
-		
-		if(str_val != "1" && str_val != "0")
-			str_val = str_val.substring(1, 3);
-		
-		prefs.opacityTweets = str_val;
-		
-		warning("New value %s", str_val);
-		return false;
-	}
-	
 	private void setup_prefs(Prefs prefs) {
 		updateInterval.value = prefs.updateInterval;
 		showTimelineNotify.active = prefs.showTimelineNotify;
@@ -215,12 +203,14 @@ public class PrefDialog : Dialog {
 			
 			string str_val = (new_value / 100).to_string();
 		
-			if(str_val != "1" && str_val != "0")
-				str_val = str_val.substring(1, 3);
+			if(str_val != "1" && str_val != "0") {
+				if(str_val.length < 4)
+					str_val = str_val.substring(1, 2);
+				else
+					str_val = str_val.substring(1, 3);
+			}
 		
 			prefs.opacityTweets = str_val;
-		
-			warning("New value %s - %d", str_val, (int)new_value);
 			return false;
 		});
 		
