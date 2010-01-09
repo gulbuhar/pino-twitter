@@ -121,7 +121,7 @@ public class TwitterInterface : Object {
 	}
 	
 	private string parse_userpic_xml(string data) {
-		Xml.Doc* xmlDoc = Parser.parse_memory(data, (int)data.length);
+		Xml.Doc* xmlDoc = Parser.parse_memory(data, (int)data.size());
 		Xml.Node* rootNode = xmlDoc->get_root_element();
 		
 		string result = "";
@@ -308,7 +308,7 @@ public class TwitterInterface : Object {
 	
 	private void parse_xml(string data, int last_time, int last_focused,
 		Gee.ArrayList<Status> lst) {	
-		Xml.Doc* xmlDoc = Parser.parse_memory(data, (int)data.length);
+		Xml.Doc* xmlDoc = Parser.parse_memory(data, (int)data.size());
 		Xml.Node* rootNode = xmlDoc->get_root_element();
 		
 		//changing locale to C
