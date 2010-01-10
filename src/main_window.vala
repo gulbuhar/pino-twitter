@@ -67,17 +67,17 @@ public class MainWindow : Window {
 		//getting settings
 		prefs = new Prefs();
 		prefs.roundedAvatarsChanged.connect(() => {
-			tweets.load_string(template.generateFriends(twee.friends, gtkStyle, prefs, last_focused_friends),
-				"text/html", "utf8", "file:///");
-			mentions.load_string(template.generateFriends(twee.mentions, gtkStyle, prefs, last_focused_mentions),
-				"text/html", "utf8", "file:///");
+			tweets.load_html_string(template.generateFriends(twee.friends, gtkStyle, prefs, last_focused_friends),
+				"file:///");
+			mentions.load_html_string(template.generateFriends(twee.mentions, gtkStyle, prefs, last_focused_mentions),
+				"file:///");
 		});
 		
 		prefs.opacityTweetsChanged.connect(() => {
-			tweets.load_string(template.generateFriends(twee.friends, gtkStyle, prefs, last_focused_friends),
-				"text/html", "utf8", "file:///");
-			mentions.load_string(template.generateFriends(twee.mentions, gtkStyle, prefs, last_focused_mentions),
-				"text/html", "utf8", "file:///");
+			tweets.load_html_string(template.generateFriends(twee.friends, gtkStyle, prefs, last_focused_friends),
+				"file:///");
+			mentions.load_html_string(template.generateFriends(twee.mentions, gtkStyle, prefs, last_focused_mentions),
+				"file:///");
 		});
 		
 		set_default_size (prefs.width, prefs.height);
@@ -157,6 +157,7 @@ public class MainWindow : Window {
 		
 		//timeline
 		tweets = new WebView();
+		tweets.set_maintains_back_forward_list(false);
 		tweets.can_go_back_or_forward(0);
 		tweets.navigation_policy_decision_requested.connect(link_clicking);
 		tweets.button_press_event.connect(show_popup_menu);
@@ -166,6 +167,7 @@ public class MainWindow : Window {
 		
 		//mentions
 		mentions = new WebView();
+		mentions.set_maintains_back_forward_list(false);
 		mentions.can_go_back_or_forward(0);
 		mentions.navigation_policy_decision_requested.connect(link_clicking);
 		mentions.button_press_event.connect(show_popup_menu);
