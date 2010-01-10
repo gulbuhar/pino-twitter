@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -30,11 +30,11 @@ msgstr "Twitter"
 
 #: src/main_window.vala:247
 msgid "New status"
-msgstr "Nuevo estado"
+msgstr "Actualizar estado"
 
 #: src/main_window.vala:248
 msgid "Create new status"
-msgstr "Crear nuevo estado"
+msgstr "Actualizar estado"
 
 #: src/main_window.vala:250
 msgid "Update timeline"
@@ -62,7 +62,7 @@ msgstr "Lista"
 
 #: src/main_window.vala:266
 msgid "Show your timeline"
-msgstr "Mostrar tu lista"
+msgstr "Mostrar lista de amigos"
 
 #: src/main_window.vala:277
 msgid "Mentions"
@@ -107,7 +107,7 @@ msgstr "Para menciones"
 
 #: src/pref_dialog.vala:58
 msgid "Clear now"
-msgstr ""
+msgstr "Limpiar"
 
 #: src/pref_dialog.vala:65
 msgid "Time interval"
@@ -119,7 +119,7 @@ msgstr "Notificación"
 
 #: src/pref_dialog.vala:72
 msgid "Cache"
-msgstr ""
+msgstr "Caché"
 
 #: src/pref_dialog.vala:83
 msgid "Login"
@@ -151,7 +151,7 @@ msgstr "Esquinas redondeadas"
 
 #: src/pref_dialog.vala:138
 msgid "Opacity"
-msgstr ""
+msgstr "Opacidad"
 
 #: src/pref_dialog.vala:147
 msgid "Main"
@@ -208,11 +208,11 @@ msgstr "Eliminar"
 
 #: src/template.vala:80
 msgid "you"
-msgstr ""
+msgstr "tu"
 
 #: src/template.vala:81
 msgid "in reply to"
-msgstr ""
+msgstr "en respuesta a"
 
 #: src/template.vala:186
 msgid "a few seconds ago"
