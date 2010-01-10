@@ -211,7 +211,7 @@ public class MainWindow : Window {
 		if(prefs.is_new || !prefs.rememberPass)
 			run_prefs();
 		
-		get_my_userpic.begin();
+		get_my_userpic();
 		
 		//show window
 		show_all();
@@ -452,7 +452,7 @@ public class MainWindow : Window {
 		}
 	}
 	
-	public async void get_my_userpic() {
+	public void get_my_userpic() {
 		//if already have url
 		if(prefs.userpicUrl != "") {
 			template.cache.pic_downloaded.connect((url, path) => {
