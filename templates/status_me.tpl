@@ -5,7 +5,7 @@
 			<span class="date">{{time}}</span>
 			<span class="nick">{{name}}</span>
 		</div>
-		<div>
+		<div class="{{rtl_class}}">
 			{{content}}
 		</div>
 		<div class="footer">

@@ -68,6 +68,12 @@ public class Prefs : Object {
 		}
 	}
 	
+	private bool _rtlSupport = false;
+	public bool rtlSupport {
+		get{ return _rtlSupport; }
+		set{ _rtlSupport = value; }
+	}
+	
 	private string _login = "";
 	public string login {
 		get{ return _login; }
@@ -209,6 +215,10 @@ public class Prefs : Object {
 					_opacityTweets = iter->get_content();
 					break;
 				
+				case "rtlSupport":
+					_rtlSupport = iter->get_content().to_bool();
+					break;
+				
 				case "login":
 					_login = iter->get_content();
 					break;
@@ -275,6 +285,8 @@ public class Prefs : Object {
         root->new_text_child(ns, "roundedAvatars", _roundedAvatars.to_string());
         root->add_content("\n");
         root->new_text_child(ns, "opacityTweets", _opacityTweets);
+        root->add_content("\n");
+        root->new_text_child(ns, "rtlSupport", _rtlSupport.to_string());
         root->add_content("\n");
         root->new_text_child(ns, "login", _login);
         root->add_content("\n");

@@ -22,6 +22,7 @@ a.tags{text-decoration: none; font-weight: bold;}
 .re{background-color: {{sl_color}}; color: {{lg_color}}; -webkit-border-radius: 3px; font-weight: bold; padding-left: 3px; padding-right: 3px;}
 .header {margin-bottom: 4px;}
 .footer {margin-top: 4px;}
+.rtl-notice {direction: rtl; text-align: right;}
 </style>
 </head>
 <body>

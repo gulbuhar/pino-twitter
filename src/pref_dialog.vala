@@ -30,6 +30,7 @@ public class PrefDialog : Dialog {
 	private Button deleteCache;
 	private CheckButton roundedAvatars;
 	private HScale opacityTweets;
+	private CheckButton rtlSupport;
 	private Entry login;
 	private Entry password;
 	private CheckButton savePass;
@@ -139,8 +140,12 @@ public class PrefDialog : Dialog {
 		opacityTweets = new HScale.with_range(0, 100, 5);
 		opacityTweets.set_size_request(150, -1);
 		
+		//rtl support
+		rtlSupport = new CheckButton.with_label(_("Right-to-left languages detection"));
+		
 		table_tweets.add_widget(roundedAvatars);
 		table_tweets.add_two_widgets(opacityTweetsLabel, opacityTweets);
+		table_tweets.add_widget(rtlSupport);
 		
 		app_box.pack_start(table_tweets, false, true, 10);
 		
@@ -183,6 +188,7 @@ public class PrefDialog : Dialog {
 		showMentionsNotify.active = prefs.showMentionsNotify;
 		roundedAvatars.active = prefs.roundedAvatars;
 		opacityTweets.set_value((int)(prefs.opacityTweets.to_double() * 100));
+		rtlSupport.active = prefs.rtlSupport;
 		login.text = prefs.login;
 		password.text = prefs.password;
 		savePass.active = prefs.rememberPass;
@@ -212,6 +218,10 @@ public class PrefDialog : Dialog {
 		
 			prefs.opacityTweets = str_val;
 			return false;
+		});
+		
+		rtlSupport.toggled.connect(() => {
+			prefs.rtlSupport = rtlSupport.active;
 		});
 		
 		showTimelineNotify.toggled.connect(() => {

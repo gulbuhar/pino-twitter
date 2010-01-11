@@ -22,7 +22,7 @@ def configure(conf):
 	conf.check_cfg(package='gtk+-2.0', uselib_store='GTK+',
 			atleast_version='2.10.0', mandatory=True, args='--cflags --libs')
 	conf.check_cfg(package='gee-1.0', uselib_store='GEE',
-			atleast_version='0.3.0', mandatory=True, args='--cflags --libs')
+			atleast_version='0.5.0', mandatory=True, args='--cflags --libs')
 	conf.check_cfg(package='gio-2.0', uselib_store='GIO',
 			atleast_version='2.0', mandatory=True, args='--cflags --libs')
 	conf.check_cfg(package='libnotify', uselib_store='LIBNOTIFY',
