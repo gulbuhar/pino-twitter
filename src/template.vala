@@ -33,6 +33,7 @@ class Template : Object {
 	private Regex nicks;
 	private Regex tags;
 	private Regex urls;
+	private Regex clearNotice;
 	
 	public Template() {
 		reload();
@@ -41,6 +42,9 @@ class Template : Object {
 		nicks = new Regex("@([A-Za-z0-9_]+)");
 		tags = new Regex("(\\#[A-Za-z0-9_]+)");
 		urls = new Regex("((http|https|ftp)://([\\S]+))"); //need something better
+		
+		// characters must be cleared to know direction of text
+		clearNotice = new Regex("[: \n\t\r♻♺]+|@[^ ]+");
 		
 		cache = new Cache();
 	}
@@ -90,6 +94,12 @@ class Template : Object {
 				map["by_who"] = by_who;
 				map["name"] = i.user_name;
 				map["content"] = making_links(i.text);
+
+				if(prefs.rtlSupport && isRTL(clearNotice.replace(i.text, -1, 0, "")))
+					map["rtl_class"] = "rtl-notice";
+				else
+					map["rtl_class"] = "";
+				
 				map["delete_text"] = delete_text;
 				content += render(statusMeTemplate, map);
 				
@@ -119,6 +129,12 @@ class Template : Object {
 				map["name"] = name;
 				map["time"] = time;
 				map["content"] = making_links(text);
+				
+				if(prefs.rtlSupport && isRTL(clearNotice.replace(i.text, -1, 0, "")))
+					map["rtl_class"] = "rtl-notice";
+				else
+					map["rtl_class"] = "";
+				
 				map["by_who"] = by_who;
 				map["reply_text"] = reply_text;
 				content += render(statusTemplate, map);
@@ -227,5 +243,29 @@ class Template : Object {
 		tmp = null;
 		in_stream = null;
 		return result;
+	}
+	
+	/* Right-to-left languages detection by Behrooz Shabani <everplays@gmail.com> */
+	private bool isRTL(string inStr){
+		unichar cc = inStr[0]; // first character code
+		if(cc>=1536 && cc<=1791) // arabic, persian, ...
+			return true;
+		if(cc>=65136 && cc<=65279) // arabic peresent 2
+			return true;
+		if(cc>=64336 && cc<=65023) // arabic peresent 1
+			return true;
+		if(cc>=1424 && cc<=1535) // hebrew
+			return true;
+		if(cc>=64256 && cc<=64335) // hebrew peresent
+			return true;
+		if(cc>=1792 && cc<=1871) // Syriac
+			return true;
+		if(cc>=1920 && cc<=1983) // Thaana
+			return true;
+		if(cc>=1984 && cc<=2047) // NKo
+			return true;
+		if(cc>=11568 && cc<=11647) // Tifinagh
+			return true;
+		return false;
 	}
 }

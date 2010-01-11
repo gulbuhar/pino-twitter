@@ -5,7 +5,7 @@
 			{{re_icon}}<a class="nick" href="nickto://{{screen_name}}">{{name}}</a>
 			<span class="date">{{time}}</span>
 		</div>
-		<div>
+		<div class="{{rtl_class}}">
 			{{content}}
 		</div>
 		<div class="footer" style="margin-top: 5px;">
