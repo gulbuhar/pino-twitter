@@ -23,6 +23,8 @@ using Gtk;
 
 public class ReTweet : VBox {
 	
+	public static enum Style { CLASSIC, UNI, VIA }
+	
 	private Image userpic;
 	
 	private TextView entry;
@@ -126,6 +128,31 @@ public class ReTweet : VBox {
 	
 	public void insert(string str) {
 		entry.get_buffer().insert_at_cursor(str, (int)str.length);
+	}
+	
+	public void set_retweet(Status tweet, ReTweet.Style style) {
+		user_label.set_text(_("Retweet:"));
+		
+		switch(style) {
+			case ReTweet.Style.UNI:
+				text = "♺ @%s: %s".printf(tweet.user_screen_name, tweet.text);
+				break;
+			
+			case ReTweet.Style.CLASSIC:
+				text = "RT @%s: %s".printf(tweet.user_screen_name, tweet.text);
+				break;
+			
+			case ReTweet.Style.VIA:
+				var msg = tweet.text;
+				var via = " via @%s".printf(tweet.user_screen_name);
+				
+				if(msg.length > (140 - via.length))
+					msg = msg.substring(0, 140 - via.length);
+				
+				text = msg + via;
+				break;
+		}
+		
 	}
 	
 	private bool hide_or_send(Gdk.EventKey event) {

@@ -267,6 +267,20 @@ public class TwitterInterface : Object {
         }
 	}
 	
+	public Status get_status(string id) {
+		foreach(Status status in _friends) {
+			if(status.id == id)
+				return status;
+		}
+		
+		foreach(Status status in _mentions) {
+			if(status.id == id)
+				return status;
+		}
+		
+		return null;
+	}
+	
 	public Reply retweetStatus(string status_id) {
 		destroying_status();
 		

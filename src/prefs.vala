@@ -44,6 +44,44 @@ public class Prefs : Object {
 		set{ _showMentionsNotify = value; }
 	}
 	
+	private string _retweetStyle = "UNI";
+	public ReTweet.Style retweetStyle {
+		get{
+			switch(_retweetStyle) {
+				case "CLASSIC":
+					return ReTweet.Style.CLASSIC;
+				
+				case "UNI":
+					return ReTweet.Style.UNI;
+				
+				case "VIA":
+					return ReTweet.Style.VIA;
+				
+				default:
+					return ReTweet.Style.UNI;
+			}
+		}
+		set{
+			switch(value) {
+				case ReTweet.Style.CLASSIC:
+					_retweetStyle = "CLASSIC";
+					break;
+				
+				case ReTweet.Style.UNI:
+					_retweetStyle = "UNI";
+					break;
+				
+				case ReTweet.Style.VIA:
+					_retweetStyle = "VIA";
+					break;
+				
+				default:
+					_retweetStyle = "UNI";
+					break;
+			}
+		}
+	}
+	
 	public signal void roundedAvatarsChanged();
 	private bool _roundedAvatars = true;
 	public bool roundedAvatars {
@@ -207,6 +245,10 @@ public class Prefs : Object {
 					_showMentionsNotify = iter->get_content().to_bool();
 					break;
 				
+				case "retweetStyle":
+					_retweetStyle = iter->get_content();
+					break;
+				
 				case "roundedAvatars":
 					_roundedAvatars = iter->get_content().to_bool();
 					break;
@@ -281,6 +323,8 @@ public class Prefs : Object {
         root->new_text_child(ns, "showTimelineNotify", _showTimelineNotify.to_string());
         root->add_content("\n");
         root->new_text_child(ns, "showMentionsNotify", _showMentionsNotify.to_string());
+        root->add_content("\n");
+        root->new_text_child(ns, "retweetStyle", _retweetStyle);
         root->add_content("\n");
         root->new_text_child(ns, "roundedAvatars", _roundedAvatars.to_string());
         root->add_content("\n");

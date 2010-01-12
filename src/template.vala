@@ -57,6 +57,7 @@ class Template : Object {
 		
 		var reply_text = _("Reply");
 		var delete_text = _("Delete");
+		var retweet_text = _("Retweet");
 		
 		//rounded userpics
 		string rounded = "";
@@ -136,6 +137,7 @@ class Template : Object {
 					map["rtl_class"] = "";
 				
 				map["by_who"] = by_who;
+				map["retweet_text"] = retweet_text;
 				map["reply_text"] = reply_text;
 				content += render(statusTemplate, map);
 			}
