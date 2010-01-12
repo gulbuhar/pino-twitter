@@ -615,6 +615,8 @@ public class MainWindow : Window {
 	public void refresh_action() {
 		updateAct.set_sensitive(false);
 		
+		Gee.ArrayList<string> exclude = new Gee.ArrayList<string>();
+		
 		switch(twee.sync_friends(last_time_friends, last_focused_friends)) {
 			case TwitterInterface.Reply.ERROR_401:
 				statusbar.set_status(statusbar.Status.ERROR_401);
@@ -638,7 +640,7 @@ public class MainWindow : Window {
 				
 				//show new statuses via libnotify
 				if(prefs.showTimelineNotify && last_time_friends > 0)
-					show_popups(twee.friends, last_time_friends);
+					exclude = show_popups(twee.friends, last_time_friends, exclude);
 				
 				last_time_friends = (int)twee.friends.get(0).created_at.mktime();
 				if(focused || last_focused_friends == -1)
@@ -674,7 +676,7 @@ public class MainWindow : Window {
 				
 				//show new statuses via libnotify
 				if(prefs.showMentionsNotify && last_time_mentions > 0)
-					show_popups(twee.mentions, last_time_mentions);
+					show_popups(twee.mentions, last_time_mentions, exclude);
 				
 				last_time_mentions = (int)twee.mentions.get(0).created_at.mktime();
 				if(focused || last_focused_friends == -1)
@@ -690,7 +692,7 @@ public class MainWindow : Window {
 		updateAct.set_sensitive(true);
 	}
 	
-	public void show_popups(Gee.ArrayList<Status> lst, int last_time) {
+	public Gee.ArrayList<string> show_popups(Gee.ArrayList<Status> lst, int last_time, owned Gee.ArrayList<string> exclude) {
 		var tmpList = new GLib.List<Status>(); //list for new statuses
 		
 		foreach(Status status in lst) {
@@ -702,26 +704,30 @@ public class MainWindow : Window {
 		tmpList.reverse();
 		
 		//show new statuses in time order
-		foreach(Status newStatus in tmpList) {
-			
-			if(newStatus.user_screen_name != prefs.login) {
-				var popup = new Notification(newStatus.user_name,
-					newStatus.text, null, null);
+		foreach(Status new_status in tmpList) {
+			if(!(new_status.id in exclude)) { //if not in exclude list
+				exclude.add(new_status.id);
 				
-				string av_path = template.cache.get_or_download(newStatus.user_avatar, Cache.Method.ASYNC, false);
-				if(av_path == newStatus.user_avatar)
-					popup.set_icon_from_pixbuf(logo);
-				else {
-					popup.set_icon_from_pixbuf(new Gdk.Pixbuf.from_file(av_path));
+				if(new_status.user_screen_name != prefs.login) {
+					var popup = new Notification(new_status.user_name,
+						new_status.text, null, null);
+				
+					string av_path = template.cache.get_or_download(new_status.user_avatar, Cache.Method.ASYNC, false);
+					if(av_path == new_status.user_avatar)
+						popup.set_icon_from_pixbuf(logo);
+					else {
+						popup.set_icon_from_pixbuf(new Gdk.Pixbuf.from_file(av_path));
+					}
+					popup.set_timeout(2000); //doesn't working... hm
+					popup.set_urgency(Notify.Urgency.NORMAL);
+					popup.show();
 				}
-				popup.set_timeout(2000); //doesn't working... hm
-				popup.set_urgency(Notify.Urgency.NORMAL);
-				popup.show();
 			}
 		}
 		
 		tmpList = null;
-		//warning("end notification");
+		
+		return exclude;
 	}
 	
 	/*
