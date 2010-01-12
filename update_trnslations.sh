@@ -8,4 +8,5 @@ for p in $(ls po/ | grep ".po"); do
 	msgmerge po/$p messages.po -o po/$p
 done
 
-rm messages.po
+rm po/pino.pot
+mv messages.po po/pino.pot
