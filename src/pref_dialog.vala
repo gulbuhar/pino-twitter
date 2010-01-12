@@ -147,17 +147,17 @@ public class PrefDialog : Dialog {
 		//rounded corners
 		roundedAvatars = new CheckButton.with_label(_("Rounded corners"));
 		
+		//rtl support
+		rtlSupport = new CheckButton.with_label(_("Right-to-left languages detection"));
+		
 		//opacity for tweets
 		var opacityTweetsLabel = new Label(_("Opacity"));
 		opacityTweets = new HScale.with_range(0, 100, 5);
 		opacityTweets.set_size_request(150, -1);
 		
-		//rtl support
-		rtlSupport = new CheckButton.with_label(_("Right-to-left languages detection"));
-		
 		table_tweets.add_widget(roundedAvatars);
-		table_tweets.add_two_widgets(opacityTweetsLabel, opacityTweets);
 		table_tweets.add_widget(rtlSupport);
+		table_tweets.add_two_widgets(opacityTweetsLabel, opacityTweets);
 		
 		app_box.pack_start(table_tweets, false, true, 10);
 		
