@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-08 22:30+0200\n"
+"POT-Creation-Date: 2010-01-12 21:29+0200\n"
 "PO-Revision-Date: 2009-12-23 16:34-0200\n"
 "Last-Translator: Diego Búrigo Zacarão <diegobz@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <fedora-trans-pt_br@redhat.com>\n"
@@ -21,163 +21,179 @@ msgstr ""
 msgid "%s - a twitter client"
 msgstr "%s - Um cliente para o Twitter"
 
-#: src/main_window.vala:182
+#: src/main_window.vala:184
 msgid "Type something first"
 msgstr "Escreva algo primeiro"
 
-#: src/main_window.vala:246
+#: src/main_window.vala:248
 msgid "Twitter"
 msgstr "Twitter"
 
-#: src/main_window.vala:247
+#: src/main_window.vala:249
 msgid "New status"
 msgstr "Novo status"
 
-#: src/main_window.vala:248
+#: src/main_window.vala:250
 msgid "Create new status"
 msgstr "Criar novo status"
 
-#: src/main_window.vala:250
+#: src/main_window.vala:252
 msgid "Update timeline"
 msgstr "Atualizar linha do tempo"
 
-#: src/main_window.vala:253
+#: src/main_window.vala:255
 msgid "Quit"
 msgstr "Sair"
 
-#: src/main_window.vala:258
+#: src/main_window.vala:260
 msgid "Edit"
 msgstr "Editar"
 
-#: src/main_window.vala:259 src/pref_dialog.vala:41
+#: src/main_window.vala:261 src/pref_dialog.vala:43
 msgid "Preferences"
 msgstr "Preferências"
 
-#: src/main_window.vala:264
+#: src/main_window.vala:266
 msgid "View"
 msgstr "Ver"
 
-#: src/main_window.vala:265
+#: src/main_window.vala:267
 msgid "Timeline"
 msgstr "Linha de tempo"
 
-#: src/main_window.vala:266
+#: src/main_window.vala:268
 msgid "Show your timeline"
 msgstr "Mostrar a sua linha de tempo"
 
-#: src/main_window.vala:277
+#: src/main_window.vala:279
 msgid "Mentions"
 msgstr "Menções"
 
-#: src/main_window.vala:278
+#: src/main_window.vala:280
 msgid "Show mentions"
 msgstr "Mostrar menções"
 
-#: src/main_window.vala:290
+#: src/main_window.vala:292
 msgid "Show menu"
 msgstr "Mostrar menu"
 
-#: src/main_window.vala:300
+#: src/main_window.vala:302
 msgid "Show toolbar"
 msgstr "Mostrar barra de ferramentas"
 
-#: src/main_window.vala:312
+#: src/main_window.vala:314
 msgid "Help"
 msgstr "Ajuda"
 
-#: src/main_window.vala:313
+#: src/main_window.vala:315
 #, c-format
 msgid "About %s"
 msgstr "Sobre %s"
 
-#: src/main_window.vala:560
+#: src/main_window.vala:569
 msgid "Sure you want to delete this tweet?"
 msgstr "Você tem certeza que deseja apagar este tweet?"
 
-#: src/pref_dialog.vala:50
+#: src/pref_dialog.vala:52
 msgid "Update interval"
 msgstr "Intervalo de atualização"
 
-#: src/pref_dialog.vala:54
+#: src/pref_dialog.vala:56
 #, fuzzy
 msgid "For timeline"
 msgstr "Mostrar a sua linha de tempo"
 
-#: src/pref_dialog.vala:55
+#: src/pref_dialog.vala:57
 #, fuzzy
 msgid "For mentions"
 msgstr "Mostrar menções"
 
-#: src/pref_dialog.vala:58
+#: src/pref_dialog.vala:60
+msgid "Retweets style"
+msgstr ""
+
+#: src/pref_dialog.vala:67
 msgid "Clear now"
 msgstr ""
 
-#: src/pref_dialog.vala:65
+#: src/pref_dialog.vala:74
 #, fuzzy
 msgid "Time interval"
 msgstr "Intervalo de atualização"
 
-#: src/pref_dialog.vala:68
+#: src/pref_dialog.vala:77
 #, fuzzy
 msgid "Notification"
 msgstr "Mostrar notificações"
 
-#: src/pref_dialog.vala:72
+#: src/pref_dialog.vala:81
+msgid "Retweets"
+msgstr ""
+
+#: src/pref_dialog.vala:84
 msgid "Cache"
 msgstr ""
 
-#: src/pref_dialog.vala:83
+#: src/pref_dialog.vala:96
 msgid "Login"
 msgstr "Nome de usuário"
 
-#: src/pref_dialog.vala:87
+#: src/pref_dialog.vala:100
 msgid "Password"
 msgstr "Senha"
 
-#: src/pref_dialog.vala:100
+#: src/pref_dialog.vala:113
 msgid "Remember password"
 msgstr "Lembrar senha"
 
-#: src/pref_dialog.vala:107
+#: src/pref_dialog.vala:120
 msgid "Authorization"
 msgstr ""
 
-#: src/pref_dialog.vala:116
+#: src/pref_dialog.vala:129
 msgid "Create new account..."
 msgstr "Criar Nova Conta..."
 
-#: src/pref_dialog.vala:132
+#: src/pref_dialog.vala:145
 msgid "Tweets"
 msgstr ""
 
-#: src/pref_dialog.vala:135
+#: src/pref_dialog.vala:148
 msgid "Rounded corners"
 msgstr "Cantos arredondados"
 
-#: src/pref_dialog.vala:138
+#: src/pref_dialog.vala:151
+msgid "Right-to-left languages detection"
+msgstr ""
+
+#: src/pref_dialog.vala:154
 msgid "Opacity"
 msgstr ""
 
-#: src/pref_dialog.vala:147
+#: src/pref_dialog.vala:164
 msgid "Main"
 msgstr "Principal"
 
-#: src/pref_dialog.vala:148
+#: src/pref_dialog.vala:165
 msgid "Account"
 msgstr "Conta"
 
-#: src/pref_dialog.vala:149
+#: src/pref_dialog.vala:166
 msgid "Appearance"
 msgstr ""
 
-#: src/re_tweet.vala:40 src/re_tweet.vala:76
+#: src/re_tweet.vala:42 src/re_tweet.vala:78
 msgid "New status:"
 msgstr "Novo status:"
 
-#: src/re_tweet.vala:52
+#: src/re_tweet.vala:54
 #, c-format
 msgid "Reply to <b>%s</b>:"
 msgstr "Responder a <b>%s</b>"
+
+#: src/re_tweet.vala:134
+msgid "Retweet:"
+msgstr ""
 
 #: src/status_bar_smart.vala:59
 msgid "updated "
@@ -203,40 +219,44 @@ msgstr "problemas com a conexão "
 msgid "some strange error "
 msgstr "algum erro estranho "
 
-#: src/template.vala:54
+#: src/template.vala:58
 msgid "Reply"
 msgstr "Responder"
 
-#: src/template.vala:55
+#: src/template.vala:59
 msgid "Delete"
 msgstr "Apagar"
 
-#: src/template.vala:80
+#: src/template.vala:60
+msgid "Retweet"
+msgstr ""
+
+#: src/template.vala:85
 msgid "you"
 msgstr ""
 
-#: src/template.vala:81
+#: src/template.vala:86
 msgid "in reply to"
 msgstr ""
 
-#: src/template.vala:186
+#: src/template.vala:204
 msgid "a few seconds ago"
 msgstr "há alguns segundos"
 
-#: src/template.vala:188
+#: src/template.vala:206
 msgid "1 minute ago"
 msgstr "há 1 minuto"
 
-#: src/template.vala:190
+#: src/template.vala:208
 #, c-format
 msgid "%i minutes ago"
 msgstr "há %i minutos"
 
-#: src/template.vala:192
+#: src/template.vala:210
 msgid "about 1 hour ago"
 msgstr "há cerca de uma hora atrás"
 
-#: src/template.vala:194
+#: src/template.vala:212
 #, c-format
 msgid "about %i hours ago"
 msgstr "há cerca de %i horas atrás"
