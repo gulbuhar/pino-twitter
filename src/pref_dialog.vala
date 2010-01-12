@@ -27,6 +27,7 @@ public class PrefDialog : Dialog {
 	private SpinButton updateInterval;
 	private CheckButton showTimelineNotify;
 	private CheckButton showMentionsNotify;
+	private ComboBox retweetStyle;
 	private Button deleteCache;
 	private CheckButton roundedAvatars;
 	private HScale opacityTweets;
@@ -55,6 +56,13 @@ public class PrefDialog : Dialog {
 		showTimelineNotify = new CheckButton.with_label(_("For timeline"));
 		showMentionsNotify = new CheckButton.with_label(_("For mentions"));
 		
+		//retweet style
+		var reLabel = new Label(_("Retweets style"));
+		retweetStyle = new ComboBox.text();
+		retweetStyle.append_text("RT @username: message");
+		retweetStyle.append_text("♺ @username: message");
+		retweetStyle.append_text("message via @username");
+		
 		//delete cache
 		deleteCache = new Button.with_label(_("Clear now"));
 		var del_img = new Image.from_icon_name("gtk-clear", IconSize.BUTTON);
@@ -70,11 +78,15 @@ public class PrefDialog : Dialog {
 		table_not.add_widget(showTimelineNotify);
 		table_not.add_widget(showMentionsNotify);
 		
+		var table_re = new HigTable(_("Retweets"));
+		table_re.add_two_widgets(reLabel, retweetStyle);
+		
 		var table_cache = new HigTable(_("Cache"));
 		table_cache.add_widget(deleteCache);
 		
 		main_box.pack_start(table_int, false, true, 10);
 		main_box.pack_start(table_not, false, true, 10);
+		main_box.pack_start(table_re, false, true, 10);
 		main_box.pack_start(table_cache, false, true, 10);
 		
 		//account page
@@ -182,10 +194,27 @@ public class PrefDialog : Dialog {
 			set_focus(password);
 	}
 	
+	private void setup_retweet(Prefs prefs) {
+		switch(prefs.retweetStyle) {
+			case ReTweet.Style.CLASSIC:
+				retweetStyle.set_active(0);
+				break;
+			
+			case ReTweet.Style.UNI:
+				retweetStyle.set_active(1);
+				break;
+			
+			case ReTweet.Style.VIA:
+				retweetStyle.set_active(2);
+				break;
+		}
+	}
+	
 	private void setup_prefs(Prefs prefs) {
 		updateInterval.value = prefs.updateInterval;
 		showTimelineNotify.active = prefs.showTimelineNotify;
 		showMentionsNotify.active = prefs.showMentionsNotify;
+		setup_retweet(prefs);
 		roundedAvatars.active = prefs.roundedAvatars;
 		opacityTweets.set_value((int)(prefs.opacityTweets.to_double() * 100));
 		rtlSupport.active = prefs.rtlSupport;
@@ -230,6 +259,22 @@ public class PrefDialog : Dialog {
 		
 		showMentionsNotify.toggled.connect(() => {
 			prefs.showMentionsNotify = showMentionsNotify.active;
+		});
+		
+		retweetStyle.changed.connect(() => {
+			switch(retweetStyle.get_active()) {
+				case 0:
+					prefs.retweetStyle = ReTweet.Style.CLASSIC;
+					break;
+				
+				case 1:
+					prefs.retweetStyle = ReTweet.Style.UNI;
+					break;
+				
+				case 2:
+					prefs.retweetStyle = ReTweet.Style.VIA;
+					break;
+			}
 		});
 		
 		login.changed.connect(() => {
