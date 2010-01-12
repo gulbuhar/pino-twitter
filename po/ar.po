@@ -1,15 +1,15 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Arabic translation for pino package.
+# Copyright (C) 2009 the Free Software Foundation, Inc.
+# This file is distributed under the same license as the pino package.
+# MaXeR <mmaxer@gmail.com>, 2009.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: pino 0.1.0b4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-01-08 22:30+0200\n"
-"PO-Revision-Date: 2009-12-17 21:56+0300\n"
-"Last-Translator: Shaiee AlGhofily <alghofily@mail.net.sa>\n"
+"PO-Revision-Date: 2010-01-12 20:22+0300\n"
+"Last-Translator: MaXeR <mmaxer@gmail.com>\n"
 "Language-Team: MaXeR <mmaxer@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -49,7 +49,8 @@ msgstr "خروج"
 msgid "Edit"
 msgstr "تحرير"
 
-#: src/main_window.vala:259 src/pref_dialog.vala:41
+#: src/main_window.vala:259
+#: src/pref_dialog.vala:41
 msgid "Preferences"
 msgstr "خصائص"
 
@@ -108,11 +109,11 @@ msgstr "إظهار الردود"
 
 #: src/pref_dialog.vala:58
 msgid "Clear now"
-msgstr ""
+msgstr "نظّف الآن"
 
 #: src/pref_dialog.vala:65
 msgid "Time interval"
-msgstr "فارق التحديث"
+msgstr "فارق الوقت"
 
 #: src/pref_dialog.vala:68
 msgid "Notification"
@@ -120,7 +121,7 @@ msgstr "إظهار التنبيهات"
 
 #: src/pref_dialog.vala:72
 msgid "Cache"
-msgstr ""
+msgstr "ذاكرة مؤقتة"
 
 #: src/pref_dialog.vala:83
 msgid "Login"
@@ -152,7 +153,7 @@ msgstr "زوايا دائرية"
 
 #: src/pref_dialog.vala:138
 msgid "Opacity"
-msgstr ""
+msgstr "الشفافية"
 
 #: src/pref_dialog.vala:147
 msgid "Main"
@@ -166,7 +167,8 @@ msgstr "الحساب"
 msgid "Appearance"
 msgstr "المظهر"
 
-#: src/re_tweet.vala:40 src/re_tweet.vala:76
+#: src/re_tweet.vala:40
+#: src/re_tweet.vala:76
 msgid "New status:"
 msgstr "حالة جديدة:"
 
@@ -209,11 +211,11 @@ msgstr "حذف"
 
 #: src/template.vala:80
 msgid "you"
-msgstr ""
+msgstr "أنت"
 
 #: src/template.vala:81
 msgid "in reply to"
-msgstr ""
+msgstr "في رد على"
 
 #: src/template.vala:186
 msgid "a few seconds ago"
@@ -239,3 +241,4 @@ msgstr "منذ حوالي %i من الساعات"
 
 #~ msgid "Main developer and project owner:"
 #~ msgstr "Desenvolvedor principal e dono do projecto:"
+
