@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -109,7 +109,7 @@ msgstr "Mentions anzeigen"
 
 #: src/pref_dialog.vala:58
 msgid "Clear now"
-msgstr ""
+msgstr "Jetzt leeren"
 
 #: src/pref_dialog.vala:65
 #, fuzzy
@@ -121,8 +121,9 @@ msgid "Notification"
 msgstr "Benachrichtigungen anzeigen"
 
 #: src/pref_dialog.vala:72
+#, fuzzy
 msgid "Cache"
-msgstr ""
+msgstr "Zwischenspeicher"
 
 #: src/pref_dialog.vala:83
 msgid "Login"
@@ -137,7 +138,6 @@ msgid "Remember password"
 msgstr "Passwort speichern"
 
 #: src/pref_dialog.vala:107
-#, fuzzy
 msgid "Authorization"
 msgstr "Anmeldedaten"
 
@@ -155,8 +155,9 @@ msgid "Rounded corners"
 msgstr "Abgerunde Ecken"
 
 #: src/pref_dialog.vala:138
+#, fuzzy
 msgid "Opacity"
-msgstr ""
+msgstr "Sichtbarkeit"
 
 #: src/pref_dialog.vala:147
 msgid "Main"
@@ -212,12 +213,13 @@ msgid "Delete"
 msgstr "Löschen"
 
 #: src/template.vala:80
+#, fuzzy
 msgid "you"
-msgstr ""
+msgstr "dich"
 
 #: src/template.vala:81
 msgid "in reply to"
-msgstr ""
+msgstr "als Antwort auf"
 
 #: src/template.vala:186
 msgid "a few seconds ago"
