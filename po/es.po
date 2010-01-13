@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -107,7 +107,7 @@ msgstr "Para menciones"
 
 #: src/pref_dialog.vala:60
 msgid "Retweets style"
-msgstr ""
+msgstr "Estilo de los retweets"
 
 #: src/pref_dialog.vala:67
 msgid "Clear now"
@@ -122,9 +122,8 @@ msgid "Notification"
 msgstr "Notificación"
 
 #: src/pref_dialog.vala:81
-#, fuzzy
 msgid "Retweets"
-msgstr "Tweets"
+msgstr "Retweets"
 
 #: src/pref_dialog.vala:84
 msgid "Cache"
@@ -160,7 +159,7 @@ msgstr "Esquinas redondeadas"
 
 #: src/pref_dialog.vala:151
 msgid "Right-to-left languages detection"
-msgstr ""
+msgstr "Detección de escritura de derecha a izquierda"
 
 #: src/pref_dialog.vala:154
 msgid "Opacity"
@@ -189,7 +188,7 @@ msgstr "Responder a <b>%s</b>:"
 
 #: src/re_tweet.vala:134
 msgid "Retweet:"
-msgstr ""
+msgstr "Retweet:"
 
 #: src/status_bar_smart.vala:59
 msgid "updated "
@@ -224,9 +223,8 @@ msgid "Delete"
 msgstr "Eliminar"
 
 #: src/template.vala:60
-#, fuzzy
 msgid "Retweet"
-msgstr "Tweets"
+msgstr "Retweet"
 
 #: src/template.vala:85
 msgid "you"

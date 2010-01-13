@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -107,7 +107,7 @@ msgstr "Для згадок"
 
 #: src/pref_dialog.vala:60
 msgid "Retweets style"
-msgstr ""
+msgstr "Стиль ретвітів"
 
 #: src/pref_dialog.vala:67
 msgid "Clear now"
@@ -122,9 +122,8 @@ msgid "Notification"
 msgstr "Повідомлення"
 
 #: src/pref_dialog.vala:81
-#, fuzzy
 msgid "Retweets"
-msgstr "Твіти"
+msgstr "Ретвіти"
 
 #: src/pref_dialog.vala:84
 msgid "Cache"
@@ -160,7 +159,7 @@ msgstr "Закруглені кути"
 
 #: src/pref_dialog.vala:151
 msgid "Right-to-left languages detection"
-msgstr ""
+msgstr "Розпізнавання RTL (зправа наліво) мов"
 
 #: src/pref_dialog.vala:154
 msgid "Opacity"
@@ -189,7 +188,7 @@ msgstr "Відповісти <b>%s</b>:"
 
 #: src/re_tweet.vala:134
 msgid "Retweet:"
-msgstr ""
+msgstr "Ретвіт:"
 
 #: src/status_bar_smart.vala:59
 msgid "updated "
@@ -224,9 +223,8 @@ msgid "Delete"
 msgstr "Видалити"
 
 #: src/template.vala:60
-#, fuzzy
 msgid "Retweet"
-msgstr "Твіти"
+msgstr "Ретвіт"
 
 #: src/template.vala:85
 msgid "you"
