@@ -29,9 +29,10 @@ public class MainWindow : Window {
 	private Action updateAct;
 	private ToggleAction menuAct;
 	private ToggleAction toolbarAct;
-	private StatusIcon tray;
+	private TrayIcon tray;
 	
 	private Gdk.Pixbuf logo;
+	private Gdk.Pixbuf logo_fresh;
 	
 	private Widget menubar;
 	private Widget toolbar;
@@ -63,22 +64,12 @@ public class MainWindow : Window {
 	
 	public MainWindow() {
 		logo = new Gdk.Pixbuf.from_file(Config.LOGO_PATH);
+		logo_fresh = new Gdk.Pixbuf.from_file(Config.LOGO_FRESH_PATH);
 		
 		//getting settings
 		prefs = new Prefs();
-		prefs.roundedAvatarsChanged.connect(() => {
-			tweets.load_html_string(template.generateFriends(twee.friends, gtkStyle, prefs, last_focused_friends),
-				"file:///");
-			mentions.load_html_string(template.generateFriends(twee.mentions, gtkStyle, prefs, last_focused_mentions),
-				"file:///");
-		});
-		
-		prefs.opacityTweetsChanged.connect(() => {
-			tweets.load_html_string(template.generateFriends(twee.friends, gtkStyle, prefs, last_focused_friends),
-				"file:///");
-			mentions.load_html_string(template.generateFriends(twee.mentions, gtkStyle, prefs, last_focused_mentions),
-				"file:///");
-		});
+		prefs.roundedAvatarsChanged.connect(() => style_update(style));
+		prefs.opacityTweetsChanged.connect(() => style_update(style));
 		
 		set_default_size (prefs.width, prefs.height);
 		set_size_request(350, 300);
@@ -133,24 +124,23 @@ public class MainWindow : Window {
 				last_focused_mentions = last_time_mentions;
 		});
 		
-		this.map_event.connect(get_colors);
+		this.map_event.connect((event) => {
+			gtkStyle = new SystemStyle(rc_get_style(this));
+			return true;
+		});
 		this.style_set.connect(style_update);
 		
-		//tray setup
-		tray = new StatusIcon.from_pixbuf(logo);
-		tray.activate.connect(tray_activate);
-		tray.popup_menu.connect(tray_popup);
-		tray.set_tooltip_text(_("%s - a twitter client").printf(Config.APPNAME));
+		menu_init();
 		
-		//widgets setup
-		/*	
-		searchEntry = new IconEntry();
-		searchEntry.key_press_event.connect(search_hide_action);
-		searchEntry.set_icon(IconEntryPosition.PRIMARY,
-			new Gtk.Image.from_stock("gtk-find", Gtk.IconSize.SMALL_TOOLBAR));
-		sbox = new HBox(false, 0);
-		sbox.pack_end(searchEntry, false, false, 0);
-		*/
+		//tray setup
+		tray = new TrayIcon(logo, logo_fresh);
+		tray.popup = popup;
+		tray.activate.connect(() => {
+			if(visible)
+				this.hide();
+			else
+				this.show();
+		});
 		
 		//template setup
 		template = new Template();
@@ -189,7 +179,7 @@ public class MainWindow : Window {
 		
 		statusbar = new StatusbarSmart();
 		
-		menu_init();
+		
 		
 		VBox vbox = new VBox(false, 0);
 		vbox.pack_start(menubar, false, false, 0);
@@ -442,16 +432,6 @@ public class MainWindow : Window {
 		pref_dialog.show();
 	}
 	
-	private void tray_activate() {
-		if(visible) {
-			this.hide();
-			visible = false;
-		} else {
-			this.show();
-			visible = true;
-		}
-	}
-	
 	public void get_my_userpic() {
 		//if already have url
 		if(prefs.userpicUrl != "") {
@@ -494,17 +474,11 @@ public class MainWindow : Window {
 	
 	private bool show_popup_menu(Gdk.EventButton event) {
 		if((event.type == Gdk.EventType.BUTTON_PRESS) && (event.button == 3)) {
-			warning("Popup");
 			popup.popup(null, null, null, event.button, event.time);
 			return true;
 		}
 		
 		return false;
-	}
-	
-	private bool get_colors(Gdk.Event event) {
-		gtkStyle = new SystemStyle(rc_get_style(this));
-		return true;
 	}
 	
 	private void style_update(Style? prevStyle) {
@@ -513,7 +487,6 @@ public class MainWindow : Window {
 			"text/html", "utf8", "file:///");
 		mentions.load_string(template.generateFriends(twee.mentions, gtkStyle, prefs, last_focused_mentions),
 			"text/html", "utf8", "file:///");
-		//warning("Style changed!");
 	}
 	
 	private bool link_clicking(WebFrame p0, NetworkRequest request,
@@ -729,23 +702,6 @@ public class MainWindow : Window {
 		
 		return exclude;
 	}
-	
-	/*
-	private void search_show_action()
-	{
-		searchEntry.show();
-		this.set_focus(searchEntry);
-	}
-	
-	private bool search_hide_action(Gdk.EventKey event)
-	{
-		if(event.hardware_keycode == 9) //esc key
-		{
-			searchEntry.hide();
-		}
-		return false;
-	}
-	*/
 	
 	private void send_status() {
 		var answer = twee.Reply.OK;
