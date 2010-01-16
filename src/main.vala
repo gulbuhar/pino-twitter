@@ -19,6 +19,8 @@
  * 	troorl <troorl@gmail.com>
  */
 
+using RestAPI;
+
 public class Main {
 	
   	public static int main (string[] args) {
@@ -27,8 +29,14 @@ public class Main {
 		
 		Intl.bindtextdomain(Config.GETTEXT_PACKAGE, Config.LOCALE_DIR);
     	Intl.bind_textdomain_codeset(Config.GETTEXT_PACKAGE, "UTF-8");
-		
-		MainWindow window = new MainWindow();
+    	var urls = new TwitterUrls(); 
+		var t = new RestAPITimeline(urls, TimelineType.HOME);
+		try {
+			t.get_timeline(2);
+		} catch(RestError e) {
+			warning(e.message);
+		}
+		//MainWindow window = new MainWindow();
 		
 		Gtk.main();
 		return 0;
