@@ -526,12 +526,12 @@ public class MainWindow : Window {
 				var status_id = params;
 				var tweet = twee.get_status(status_id);
 				
-				if(tweet != null) {
+				
 					reTweet.clear();
 					reTweet.show();
 					reTweet.set_retweet(tweet, prefs.retweetStyle);
 					this.set_focus(reTweet.text_entry);
-				}
+				
 				
 				return true;
 			
