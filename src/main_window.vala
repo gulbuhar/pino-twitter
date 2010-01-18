@@ -23,6 +23,7 @@ using Gtk;
 using WebKit;
 //using Sexy;
 using Notify;
+using RestAPI;
 
 public class MainWindow : Window {
 	
@@ -40,16 +41,16 @@ public class MainWindow : Window {
 	//private IconEntry searchEntry;
 	private HBox sbox;
 	
-	private SystemStyle gtkStyle;
+	private SystemStyle gtk_style;
 	
-	private WebView tweets;
-	ScrolledWindow scroll_tweets;
-	private WebView mentions;
+	private TimelineList home;
+	ScrolledWindow scroll_home;
+	private TimelineList mentions;
 	ScrolledWindow scroll_mentions;
 	private ReTweet reTweet;
 	private StatusbarSmart statusbar;
 	
-	private TwitterInterface twee;
+	//private TwitterInterface twee;
 	private Template template;
 	
 	private Prefs prefs;
@@ -62,6 +63,463 @@ public class MainWindow : Window {
 	
 	private bool focused;
 	
+	public MainWindow() {
+		logo = new Gdk.Pixbuf.from_file(Config.LOGO_PATH);
+		logo_fresh = new Gdk.Pixbuf.from_file(Config.LOGO_FRESH_PATH);
+		
+		//getting settings
+		prefs = new Prefs();
+		
+		set_default_size (prefs.width, prefs.height);
+		set_size_request(350, 300);
+		
+		//set window position
+		if(prefs.left >= 0 && prefs.top >= 0)
+			move(prefs.left, prefs.top);
+		
+		configure_event.connect((widget, event) => {
+			//saving window size and position
+			prefs.width = event.width;
+			prefs.height = event.height;
+			prefs.left = event.x;
+			prefs.top = event.y;
+			
+			return false;
+		});
+		
+		set_icon(logo);
+		set_title(Config.APPNAME);
+		
+		//hiding on closing main window
+		delete_event.connect((event) => {
+			this.hide_on_delete();
+			visible = false;
+			focused = false;
+			return true;
+		});
+		
+		destroy.connect(() => before_close());
+		
+		focus_in_event.connect((w, e) => {
+			focused = true;
+			//warning("focused");
+			if(last_time_friends > 0)
+				last_focused_friends = last_time_friends;
+			
+			if(last_time_mentions > 0)
+				last_focused_mentions = last_time_mentions;
+			
+			//clear tray notification
+			tray.set_from_file(Config.LOGO_PATH);
+		});
+		
+		focus_out_event.connect((w, e) => {
+			focused = false;
+			//warning("unfocused");
+			if(last_time_friends > 0)
+				last_focused_friends = last_time_friends;
+			
+			if(last_time_mentions > 0)
+				last_focused_mentions = last_time_mentions;
+		});
+		
+		gtk_style = new SystemStyle(rc_get_style(this));
+		this.map_event.connect((event) => {
+			gtk_style = new SystemStyle(rc_get_style(this));
+			return true;
+		});
+		
+		menu_init();
+		
+		//tray setup
+		tray = new TrayIcon(logo, logo_fresh);
+		tray.popup = popup;
+		tray.activate.connect(() => {
+			if(visible)
+				this.hide();
+			else
+				this.show();
+		});
+		
+		//template setup
+		template = new Template(prefs, gtk_style);
+		
+		//home timeline
+		home = new TimelineList({prefs.login, prefs.password}, TimelineType.HOME,
+			new TwitterUrls(), template, 20);
+		scroll_home = new ScrolledWindow(null, null);
+        scroll_home.set_policy(PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);
+        scroll_home.add(home);
+		
+		//mentions
+		mentions = new TimelineList({prefs.login, prefs.password}, TimelineType.MENTIONS,
+			new TwitterUrls(), template, 20);
+		scroll_mentions = new ScrolledWindow(null, null);
+        scroll_mentions.set_policy(PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);
+        scroll_mentions.add(mentions);
+		
+		//retweet widget
+		reTweet = new ReTweet();
+		//reTweet.enter_pressed.connect(send_status);
+		reTweet.empty_pressed.connect(() => {
+			var message_dialog = new MessageDialog(this,
+				Gtk.DialogFlags.DESTROY_WITH_PARENT | Gtk.DialogFlags.MODAL,
+				Gtk.MessageType.INFO, Gtk.ButtonsType.OK,
+				(_("Type something first")));
+			
+			message_dialog.run();
+			message_dialog.destroy();
+		});
+		
+		statusbar = new StatusbarSmart();
+		
+		VBox vbox = new VBox(false, 0);
+		vbox.pack_start(menubar, false, false, 0);
+		vbox.pack_start(toolbar, false, false, 0);
+		//vbox.pack_start(sbox, false, false, 0);
+		vbox.pack_start(scroll_home, true, true, 0);
+		vbox.pack_start(scroll_mentions, true, true, 0);
+		vbox.pack_end(statusbar, false, false, 0);
+		vbox.pack_end(reTweet, false, false, 0);
+		
+		this.add(vbox);
+		
+		/*
+		//twetter interface setup
+		twee = new TwitterInterface.with_auth(prefs.login, prefs.password);
+		twee.updating.connect(() => {statusbar.set_status(statusbar.Status.UPDATING);});
+		twee.send_status.connect(() => {statusbar.set_status(statusbar.Status.SEND_STATUS);});
+		twee.updated.connect(() => {statusbar.set_status(statusbar.Status.UPDATED);});
+		*/
+		
+		if(prefs.is_new || !prefs.rememberPass)
+			run_prefs();
+		
+		//get_my_userpic();
+		
+		//show window
+		show_all();
+		
+		//searchEntry.hide();
+		reTweet.hide();
+		scroll_mentions.hide();
+		
+		//libnotify init
+		Notify.init(Config.APPNAME);
+		
+		//hide menubar and toolbar if needed
+		if(!prefs.menuShow)
+			menuAct.set_active(false);
+		if(!prefs.toolbarShow)
+			toolbarAct.set_active(false);
+		
+		//getting updates
+		if(!prefs.is_new && prefs.rememberPass) {
+			home.hide();
+			refresh_action();
+			home.show();
+		}
+	}
+	
+	private void menu_init() {	
+		var actGroup = new ActionGroup("main");
+		
+		//file menu
+		var fileMenu = new Action("FileMenu", _("Twitter"), null, null);
+		var createAct = new Action("FileCreate", _("New status"),
+			_("Create new status"), STOCK_EDIT);
+		createAct.activate.connect(show_re_tweet);
+		updateAct = new Action("FileUpdate", _("Update timeline"),
+			null, STOCK_REFRESH);
+		updateAct.activate.connect(refresh_action);
+		var quitAct = new Action("FileQuit", _("Quit"),
+			null, STOCK_QUIT);
+		quitAct.activate.connect(before_close);
+		
+		//edit menu
+		var editMenu = new Action("EditMenu", _("Edit"), null, null);
+		var prefAct = new Action("EditPref", _("Preferences"),
+			null, STOCK_PREFERENCES);
+		prefAct.activate.connect(run_prefs);
+		
+		//view menu
+		var viewMenu = new Action("ViewMenu", _("View"), null, null);
+		var showTimelineAct = new RadioAction("ShowTimelineAct", _("Timeline"),
+			_("Show your timeline"), null, 1);
+		showTimelineAct.set_gicon(Icon.new_for_string(Config.TIMELINE_PATH));
+		showTimelineAct.active = true;
+		
+		showTimelineAct.changed.connect((current) => {
+			if(current == showTimelineAct) {
+				scroll_mentions.hide();
+				scroll_home.show();
+			}
+		});
+		
+		var showMentionsAct = new RadioAction("ShowMentionsAct", _("Mentions"),
+			_("Show mentions"), null, 2);
+		showMentionsAct.set_gicon(Icon.new_for_string(Config.MENTIONS_PATH));
+		
+		showMentionsAct.changed.connect((current) => {
+			if(current == showMentionsAct) {
+				scroll_home.hide();
+				scroll_mentions.show();
+			}
+		});
+		
+		showMentionsAct.set_group(showTimelineAct.get_group()); //lol
+		
+		menuAct = new ToggleAction("ViewMenuAct", _("Show menu"), null, null);
+		menuAct.set_active(true);
+		
+		menuAct.toggled.connect(() => {
+			if(menuAct.active)
+				menubar.show();
+			else
+				menubar.hide();
+		});
+		
+		toolbarAct = new ToggleAction("ViewToolbar", _("Show toolbar"),
+			null, null);
+		toolbarAct.set_active(true);
+		
+		toolbarAct.toggled.connect(() => {
+			if(toolbarAct.active)
+				toolbar.show();
+			else
+				toolbar.hide();
+		});
+		
+		//help menu
+		var helpMenu = new Action("HelpMenu", _("Help"), null, null);
+		var aboutAct = new Action("HelpAbout", _("About %s").printf(Config.APPNAME),
+			null, STOCK_ABOUT);
+		
+		aboutAct.activate.connect(() => {
+			var about_dlg = new AboutDialog();
+			about_dlg.set_logo(logo);
+			about_dlg.set_program_name(Config.APPNAME);
+			about_dlg.set_version(Config.APP_VERSION);
+			about_dlg.set_website("http://pino-app.appspot.com/");
+			about_dlg.set_authors({Config.AUTHORS});
+			about_dlg.set_copyright("© 2009 troorl");
+			
+			about_dlg.set_transient_for(this);
+			about_dlg.run();
+			about_dlg.hide();
+		});
+		
+		actGroup.add_action(fileMenu);
+		actGroup.add_action_with_accel(createAct, "<Ctrl>N");
+		actGroup.add_action_with_accel(updateAct, "<Ctrl>R");
+		actGroup.add_action_with_accel(quitAct, "<Ctrl>Q");
+		actGroup.add_action(editMenu);
+		actGroup.add_action_with_accel(prefAct, "<Ctrl>P");
+		actGroup.add_action(viewMenu);
+		actGroup.add_action(showTimelineAct);
+		actGroup.add_action(showMentionsAct);
+		actGroup.add_action_with_accel(menuAct, "<Ctrl>M");
+		actGroup.add_action(toolbarAct);
+		actGroup.add_action(helpMenu);
+		actGroup.add_action(aboutAct);
+		
+		var ui = new UIManager();
+		ui.insert_action_group(actGroup, 0);
+		this.add_accel_group(ui.get_accel_group());
+		
+		var uiString = """
+		<ui>
+			<menubar name="MenuBar">
+				<menu action="FileMenu">
+					<menuitem action="FileCreate" />
+					<menuitem action="FileUpdate" />
+					<separator />
+					<menuitem action="FileQuit" />
+				</menu>
+				<menu action="EditMenu">
+					<menuitem action="EditPref" />
+				</menu>
+				<menu action="ViewMenu">
+					<menuitem action="ShowTimelineAct" />
+					<menuitem action="ShowMentionsAct" />
+					<separator />
+					<menuitem action="ViewMenuAct" />
+					<menuitem action="ViewToolbar" />
+				</menu>
+				<menu action="HelpMenu">
+					<menuitem action="HelpAbout" />
+				</menu>
+			</menubar>
+			<popup name="MenuPopup">
+				<menuitem action="FileCreate" />
+				<menuitem action="FileUpdate" />
+				<separator />
+				<menuitem action="EditPref" />
+				<separator />
+				<menuitem action="ViewMenuAct" />
+				<menuitem action="ViewToolbar" />
+				<separator />
+				<menuitem action="HelpAbout" />
+				<menuitem action="FileQuit" />
+			</popup>
+			<toolbar name="ToolBar">
+				<toolitem action="FileCreate" />
+				<toolitem action="FileUpdate" />
+				<separator />
+				<toolitem action="EditPref" />
+				<separator />
+				<toolitem action="ShowTimelineAct" />
+				<toolitem action="ShowMentionsAct" />
+			</toolbar>
+		</ui>
+		""";
+		
+		ui.add_ui_from_string(uiString, uiString.length);
+		
+		menubar = ui.get_widget("/MenuBar");
+		popup = (Menu)ui.get_widget("/MenuPopup");
+		toolbar = ui.get_widget("/ToolBar");
+	}
+	
+	private void show_re_tweet() {
+		reTweet.clear();
+		reTweet.is_direct = false;
+		reTweet.show();
+		this.set_focus(reTweet.text_entry);
+	}
+	
+	public void refresh_action() {
+		updateAct.set_sensitive(false);
+		home.update();
+		/*
+		Gee.ArrayList<string> exclude = new Gee.ArrayList<string>();
+		
+		switch(twee.sync_friends(last_time_friends, last_focused_friends)) {
+			case TwitterInterface.Reply.ERROR_401:
+				statusbar.set_status(statusbar.Status.ERROR_401);
+				break;
+			case TwitterInterface.Reply.ERROR_TIMEOUT:
+				statusbar.set_status(statusbar.Status.ERROR_TIMEOUT);
+				break;
+			case TwitterInterface.Reply.ERROR_UNKNOWN:
+				statusbar.set_status(statusbar.Status.ERROR_UNKNOWN);
+				break;
+			case TwitterInterface.Reply.OK:
+				tweets.load_string(template.generate_timeline(twee.friends, gtkStyle, prefs, last_focused_friends),
+					"text/html", "utf8", "file:///");
+				
+				//tray notification
+				if(last_time_friends > 0 &&
+					last_time_friends < (int)twee.friends.get(0).created_at.mktime() &&
+					!focused) {
+					tray.set_from_file(Config.LOGO_FRESH_PATH);
+				}
+				
+				//show new statuses via libnotify
+				if(prefs.showTimelineNotify && last_time_friends > 0)
+					exclude = show_popups(twee.friends, last_time_friends, exclude);
+				
+				last_time_friends = (int)twee.friends.get(0).created_at.mktime();
+				if(focused || last_focused_friends == -1)
+					last_focused_friends = last_time_friends;
+				
+				break;
+			case TwitterInterface.Reply.EMPTY:
+				tweets.load_string(template.generate_timeline(twee.friends, gtkStyle, prefs, last_focused_friends),
+					"text/html", "utf8", "file:///");
+				break;
+		}
+		
+		switch(twee.sync_mentions(last_time_mentions, last_focused_mentions)) {
+			case TwitterInterface.Reply.ERROR_401:
+				statusbar.set_status(statusbar.Status.ERROR_401);
+				break;
+			case TwitterInterface.Reply.ERROR_TIMEOUT:
+				statusbar.set_status(statusbar.Status.ERROR_TIMEOUT);
+				break;
+			case TwitterInterface.Reply.ERROR_UNKNOWN:
+				statusbar.set_status(statusbar.Status.ERROR_UNKNOWN);
+				break;
+			case TwitterInterface.Reply.OK:
+				mentions.load_string(template.generate_timeline(twee.mentions, gtkStyle, prefs, last_focused_mentions),
+					"text/html", "utf8", "file:///");
+				
+				//tray notification
+				if(last_time_mentions > 0 &&
+					last_time_mentions < (int)twee.mentions.get(0).created_at.mktime() &&
+					!focused) {
+					tray.set_from_file(Config.LOGO_FRESH_PATH);
+				}
+				
+				//show new statuses via libnotify
+				if(prefs.showMentionsNotify && last_time_mentions > 0)
+					show_popups(twee.mentions, last_time_mentions, exclude);
+				
+				last_time_mentions = (int)twee.mentions.get(0).created_at.mktime();
+				if(focused || last_focused_friends == -1)
+					last_focused_mentions = last_time_mentions;
+				
+				break;
+			case TwitterInterface.Reply.EMPTY:
+				mentions.load_string(template.generate_timeline(twee.mentions, gtkStyle, prefs, last_focused_mentions),
+					"text/html", "utf8", "file:///");
+				break;
+		}
+		*/
+		updateAct.set_sensitive(true);
+	}
+	
+	private void run_prefs() {
+		var pref_dialog = new PrefDialog(prefs, this);
+		/*
+		pref_dialog.delete_cache.connect(() => {
+			template.cache.delete_cache();
+		});
+		
+		pref_dialog.destroy.connect(() => {
+			//timer interval update
+			timer.set_interval(prefs.updateInterval * 60);
+			
+			var old_login = twee.login_public;
+			
+			//auth data update
+			twee.set_auth(prefs.login, prefs.password);
+			
+			prefs.write();
+			
+			if(prefs.is_new || old_login != prefs.login) { //if new settings or changing login
+				twee.friends.clear();
+				twee.mentions.clear();
+				
+				last_time_friends = 0;
+				last_focused_friends = -1;
+				last_time_mentions = 0;
+				last_focused_mentions = -1;
+				
+				//refreshing userpic
+				prefs.userpicUrl = "";
+				get_my_userpic();
+				
+				refresh_action();
+			}
+			
+			prefs.is_new = false;
+		});
+		*/
+		pref_dialog.set_transient_for(this);
+		pref_dialog.show();
+	}
+	
+	/* saving settings */
+	private void before_close() {
+		prefs.menuShow = menubar.visible;
+		prefs.toolbarShow = toolbar.visible;
+		
+		prefs.write();
+		main_quit();
+	}
+	
+	/*
 	public MainWindow() {
 		logo = new Gdk.Pixbuf.from_file(Config.LOGO_PATH);
 		logo_fresh = new Gdk.Pixbuf.from_file(Config.LOGO_FRESH_PATH);
@@ -483,9 +941,9 @@ public class MainWindow : Window {
 	
 	private void style_update(Style? prevStyle) {
 		gtkStyle.updateStyle(rc_get_style(this));
-		tweets.load_string(template.generateFriends(twee.friends, gtkStyle, prefs, last_focused_friends),
+		tweets.load_string(template.generate_timeline(twee.friends, gtkStyle, prefs, last_focused_friends),
 			"text/html", "utf8", "file:///");
-		mentions.load_string(template.generateFriends(twee.mentions, gtkStyle, prefs, last_focused_mentions),
+		mentions.load_string(template.generate_timeline(twee.mentions, gtkStyle, prefs, last_focused_mentions),
 			"text/html", "utf8", "file:///");
 	}
 	
@@ -601,7 +1059,7 @@ public class MainWindow : Window {
 				statusbar.set_status(statusbar.Status.ERROR_UNKNOWN);
 				break;
 			case TwitterInterface.Reply.OK:
-				tweets.load_string(template.generateFriends(twee.friends, gtkStyle, prefs, last_focused_friends),
+				tweets.load_string(template.generate_timeline(twee.friends, gtkStyle, prefs, last_focused_friends),
 					"text/html", "utf8", "file:///");
 				
 				//tray notification
@@ -621,7 +1079,7 @@ public class MainWindow : Window {
 				
 				break;
 			case TwitterInterface.Reply.EMPTY:
-				tweets.load_string(template.generateFriends(twee.friends, gtkStyle, prefs, last_focused_friends),
+				tweets.load_string(template.generate_timeline(twee.friends, gtkStyle, prefs, last_focused_friends),
 					"text/html", "utf8", "file:///");
 				break;
 		}
@@ -637,7 +1095,7 @@ public class MainWindow : Window {
 				statusbar.set_status(statusbar.Status.ERROR_UNKNOWN);
 				break;
 			case TwitterInterface.Reply.OK:
-				mentions.load_string(template.generateFriends(twee.mentions, gtkStyle, prefs, last_focused_mentions),
+				mentions.load_string(template.generate_timeline(twee.mentions, gtkStyle, prefs, last_focused_mentions),
 					"text/html", "utf8", "file:///");
 				
 				//tray notification
@@ -657,7 +1115,7 @@ public class MainWindow : Window {
 				
 				break;
 			case TwitterInterface.Reply.EMPTY:
-				mentions.load_string(template.generateFriends(twee.mentions, gtkStyle, prefs, last_focused_mentions),
+				mentions.load_string(template.generate_timeline(twee.mentions, gtkStyle, prefs, last_focused_mentions),
 					"text/html", "utf8", "file:///");
 				break;
 		}
@@ -740,4 +1198,5 @@ public class MainWindow : Window {
 		prefs.write();
 		main_quit();
 	}
+	*/
 }

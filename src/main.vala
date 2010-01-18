@@ -20,6 +20,7 @@
  */
 
 using RestAPI;
+using Gee;
 
 public class Main {
 	
@@ -29,14 +30,8 @@ public class Main {
 		
 		Intl.bindtextdomain(Config.GETTEXT_PACKAGE, Config.LOCALE_DIR);
     	Intl.bind_textdomain_codeset(Config.GETTEXT_PACKAGE, "UTF-8");
-    	var urls = new TwitterUrls(); 
-		var t = new RestAPITimeline(urls, TimelineType.HOME);
-		try {
-			t.get_timeline(2);
-		} catch(RestError e) {
-			warning(e.message);
-		}
-		//MainWindow window = new MainWindow();
+    	
+		MainWindow window = new MainWindow();
 		
 		Gtk.main();
 		return 0;

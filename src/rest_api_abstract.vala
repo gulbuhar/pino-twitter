@@ -22,18 +22,17 @@ public class Status : Object {
 	public bool is_retweet = false;
 }
 
+public struct AuthData {
+	public string login = "";
+	public string password = "";
+} 
+
 errordomain RestError {
 	CODE
 }
 
-public static enum ReplyType {
-	ERROR_TIMEOUT,
-	ERROR_401,
-	ERROR_403,
-	ERROR_407,
-	ERROR_UNKNOWN,
-	OK,
-	EMPTY
+errordomain ParseError {
+	CODE
 }
 
 public static enum TimelineType {
@@ -44,15 +43,19 @@ public static enum TimelineType {
 public abstract class RestAPIAbstract : Object {
 	
 	protected IRestUrls urls;
-	protected TimelineType timeline_type;
+	public AuthData auth_data;
+	
+	public RestAPIAbstract(IRestUrls _urls, AuthData _auth_data) {
+		this.urls = _urls;
+		this.auth_data = _auth_data;
+	}
+	
+	public void set_auth(AuthData _auth_data) {
+		auth_data = _auth_data;
+	}
 	
 	public abstract ArrayList<Status> get_timeline(int count = 20,
-		string since_id = "") throws RestError; //for timelines (home, mentions, public etc.)
-	
-	public RestAPIAbstract(IRestUrls _urls, TimelineType _timeline_type) {
-		this.urls = _urls;
-		this.timeline_type = _timeline_type;
-	}
+		string since_id = "") throws RestError, ParseError;
 	
 	protected void reply_tracking(int status_code) throws RestError {
 		switch(status_code) {
@@ -65,24 +68,27 @@ public abstract class RestAPIAbstract : Object {
 			case 403:
 				throw new RestError.CODE("%d Forbidden: the server understood the request, but is refusing to fulfill it.".printf(status_code));
 			
+			case 404:
+				throw new RestError.CODE("%d Not Found: The server has not found anything matching the Request-URI.".printf(status_code));
+			
 			case 407:
 				throw new RestError.CODE("%d Proxy Authentication Required: the request requires user authentication.".printf(status_code));
 			
 			default:
-				throw new RestError.CODE("%d Unknown Error: ".printf(status_code));
-				break;
+				throw new RestError.CODE("%d Unknown Error");
 		}
 	}
 	
 	protected string make_request(owned string req_url, string method,
-		HashTable<string, string> params, int retry = 3) throws RestError {
+		HashTable<string, string> params = new HashTable<string, string>(null, null),
+		int retry = 3) throws RestError {
 		if(method == "GET") { //set get-parameters
 			string query = "";
 		
 			if(params.size() > 0) {
 				query = "?";
 				
-				//Very dirty. HashTable.loockup doesn't work. Bug?
+				//Very dirty. HashTable.loockup() doesn't work. Bug?
 				int tmp_iter = 0;
 				foreach(string key in params.get_keys()) {
 					int tmp_iter2 = 0;
@@ -113,7 +119,7 @@ public abstract class RestAPIAbstract : Object {
 		//Basic HTTP authorization
         session.authenticate += (sess, msg, auth, retrying) => {
 			if (retrying) return;
-			auth.authenticate("testo_", "");
+			auth.authenticate(auth_data.login, auth_data.password);
 		};
 		
 		int status_code = 0;
@@ -127,6 +133,12 @@ public abstract class RestAPIAbstract : Object {
 			reply_tracking(status_code);
 		
 		return message.response_body.data;
+	}
+	
+	protected int tz_delta(Time t) {
+		string sdelta = t.format("%z");
+		
+		return sdelta.to_int() / 100;
 	}
 }
 

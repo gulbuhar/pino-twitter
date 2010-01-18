@@ -22,7 +22,8 @@
 using Xml;
 using Gee;
 using Soup;
-
+using RestAPI;
+/*
 public class Status {
 		
 	public string id;
@@ -44,7 +45,7 @@ public class Status {
 	//public bool is_new = false;
 	//public bool unreaded = false;
 }
-
+*/
 public class TwitterInterface : Object {
 	
 	public static enum Reply {
@@ -311,10 +312,6 @@ public class TwitterInterface : Object {
 	}
 	
 	private int tz_delta(Time t) {
-		//getting a time zone delta
-		//VERY DIRTY!!!
-		//var t = Time().mktime();
-		//var time = Time.local(t);
 		string sdelta = t.format("%z");
 		
 		return sdelta.to_int() / 100;
