@@ -20,6 +20,7 @@
  */
 
 using Gtk;
+using RestAPI;
 
 public class ReTweet : VBox {
 	
