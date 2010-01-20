@@ -16,6 +16,10 @@ public class TwitterUrls : Object, IRestUrls {
 		get { return "http://twitter.com/statuses/mentions.xml"; }
 	}
 	
+	public string direct_in {
+		get { return "http://twitter.com/direct_messages.xml"; }
+	}
+		
 	public string user {
 		get { return "http://twitter.com/users/show/%s.xml"; }
 	}

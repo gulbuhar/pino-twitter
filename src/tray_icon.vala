@@ -11,9 +11,13 @@ public class TrayIcon : StatusIcon {
 		set{ _popup = value; }
 	}
 	
-	public TrayIcon(Gdk.Pixbuf logo, Gdk.Pixbuf logo_fresh) {
+	public TrayIcon(Gdk.Pixbuf _logo, Gdk.Pixbuf _logo_fresh) {
 		base;
+		
+		logo = _logo;
+		logo_fresh = _logo_fresh;
 		set_from_pixbuf(logo);
+		
 		set_tooltip_text(_("%s - a twitter client").printf(Config.APPNAME));
 		
 		popup_menu.connect((button, activate_time) => {

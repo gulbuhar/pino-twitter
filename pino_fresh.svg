@@ -14,8 +14,8 @@
    height="64px"
    id="svg3493"
    sodipodi:version="0.32"
-   inkscape:version="0.47pre4 r22446"
-   sodipodi:docname="pino_fresh.svg"
+   inkscape:version="0.47 r22583"
+   sodipodi:docname="pino.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    version="1.1">
   <defs
@@ -76,6 +76,44 @@
        id="radialGradient2849"
        xlink:href="#linearGradient3601"
        inkscape:collect="always" />
+    <inkscape:perspective
+       id="perspective2877"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <radialGradient
+       r="10.349472"
+       fy="50.179276"
+       fx="21.148922"
+       cy="50.179276"
+       cx="21.148922"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient2847"
+       xlink:href="#linearGradient3601-9"
+       inkscape:collect="always" />
+    <linearGradient
+       id="linearGradient3601-9">
+      <stop
+         style="stop-color:#a6ff6a;stop-opacity:0.83417088;"
+         offset="0"
+         id="stop3603-8" />
+      <stop
+         style="stop-color:#1c7e00;stop-opacity:1;"
+         offset="1"
+         id="stop3605-4" />
+    </linearGradient>
+    <radialGradient
+       r="10.349472"
+       fy="50.179276"
+       fx="21.148922"
+       cy="50.179276"
+       cx="21.148922"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient2886"
+       xlink:href="#linearGradient3601-9"
+       inkscape:collect="always" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -85,7 +123,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="5.6568542"
-     inkscape:cx="3.3851261"
+     inkscape:cx="-20.656505"
      inkscape:cy="32.755397"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -163,13 +201,13 @@
        id="path3432" />
     <path
        sodipodi:type="arc"
-       style="fill:url(#radialGradient2849);fill-opacity:1;stroke:#225500;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       style="fill:url(#radialGradient2886);fill-opacity:1;stroke:#225500;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
        id="path2827"
        sodipodi:cx="21.148922"
        sodipodi:cy="50.179276"
        sodipodi:rx="10.349472"
        sodipodi:ry="10.349472"
        d="m 31.498394,50.179276 a 10.349472,10.349472 0 1 1 -20.698944,0 10.349472,10.349472 0 1 1 20.698944,0 z"
-       transform="matrix(1.1552795,0,0,1.1552795,24.645141,-10.532641)" />
+       transform="matrix(1.1552795,0,0,1.1552795,27.610551,-5.9276212)" />
   </g>
 </svg>

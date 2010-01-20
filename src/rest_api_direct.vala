@@ -4,34 +4,20 @@ using Xml;
 
 namespace RestAPI {
 
-public class RestAPITimeline : RestAPIAbstract {
+public class RestAPIDirect : RestAPIAbstract {
 	
-	private TimelineType timeline_type;
-	
-	public RestAPITimeline(IRestUrls _urls, AuthData _auth_data,
-		TimelineType _timeline_type) {
+	public 	RestAPIDirect(IRestUrls _urls, AuthData _auth_data) {
 		base(_urls, _auth_data);
-		this.timeline_type = _timeline_type;
 	}
 	
-	public override ArrayList<Status> get_direct(int count = 0,
+	public override ArrayList<Status> get_timeline(int count = 0,
 		string since_id = "") throws RestError, ParseError {
 		return null;
 	}
 	
-	/* for timelines (home, mentions, public etc.) */
-	public override ArrayList<Status> get_timeline(int count = 0,
+	/* get direct messages (inbox) */
+	public override ArrayList<Status> get_direct(int count = 0,
 		string since_id = "") throws RestError, ParseError {
-		string req_url = "";
-		
-		switch(timeline_type) {
-			case TimelineType.HOME:
-				req_url = urls.home;
-				break;
-			case TimelineType.MENTIONS:
-				req_url = urls.mentions;
-				break;
-		}
 		
 		var map = new HashTable<string, string>(null, null);
 		if(count != 0)
@@ -39,13 +25,13 @@ public class RestAPITimeline : RestAPIAbstract {
 		if(since_id != "")
 			map.insert("since_id", since_id);
 		
-		string data = make_request(req_url, "GET", map);
+		string data = make_request(urls.direct_in, "GET", map);
 		
-		return parse_timeline(data);
+		return parse_direct(data);
 	}
 	
-	/* parsing timeline */
-	private ArrayList<Status> parse_timeline(string data) throws ParseError {
+	/* parsing direct messages */
+	private ArrayList<Status> parse_direct(string data) {
 		Xml.Doc* xmlDoc = Parser.parse_memory(data, (int)data.size());
 		Xml.Node* rootNode = xmlDoc->get_root_element();
 		
@@ -59,7 +45,7 @@ public class RestAPITimeline : RestAPIAbstract {
 			if(iter->type != ElementType.ELEMENT_NODE)
 				continue;
 			
-			if(iter->name == "status") {
+			if(iter->name == "direct_message") {
 				
 				if(iter->children != null) {
 		        	Status status = new Status();
@@ -89,54 +75,7 @@ public class RestAPITimeline : RestAPIAbstract {
 				    				status.text = iter_in->get_content();
 				    				break;
 				    			
-				    			case "in_reply_to_screen_name":
-				    				status.to_user = iter_in->get_content();
-				    				break;
-				    			
-				    			case "in_reply_to_status_id":
-				    				status.to_status_id = iter_in->get_content();
-				    				break;
-				    			
-				    			case "retweeted_status":
-				    				status.is_retweet = true;
-				    				
-				    				Xml.Node *iter_retweet;
-				    				
-				    				for(iter_retweet = iter_in->children->next; iter_retweet != null; iter_retweet = iter_retweet->next) {
-				    					switch(iter_retweet->name) {
-				    						case "user":
-				    							Xml.Node *iter_re_user;
-				    							
-				    							for(iter_re_user = iter_retweet->children->next; iter_re_user != null; iter_re_user = iter_re_user->next) {
-				    								switch(iter_re_user->name) {
-				    									case "name":
-				    										status.re_user_name = iter_re_user->get_content();
-				    										break;
-				    									
-				    									case "screen_name":
-				    										status.re_user_screen_name = iter_re_user->get_content();
-				    										break;
-				    									
-				    									case "profile_image_url":
-				    										status.re_user_avatar = iter_re_user->get_content();
-				    										break;
-				    								}
-				    							}
-				    							delete iter_re_user;
-				    							break;
-				    						
-				    						case "text":
-				    							if(iter_retweet->get_content().substring(0, 3) != "\n  " ) {
-				    								status.re_text = iter_retweet->get_content();
-				    							}
-				    							break;
-				    					}
-				    				}
-				    				
-				    				delete iter_retweet;
-				    				break;
-				    			
-				    			case "user":
+				    			case "sender":
 				    				Xml.Node *iter_user;
 				    				
 									for(iter_user = iter_in->children->next; iter_user != null; iter_user = iter_user->next) {
@@ -171,16 +110,11 @@ public class RestAPITimeline : RestAPIAbstract {
 		    delete iter; //memory leak was here >:3
 		}
 		
+		
 		//back to the normal locale
 		GLib.Intl.setlocale(GLib.LocaleCategory.TIME, currentLocale);
 		
 		return lst;
-	}
-	
-	/* delete status with some id */
-	public void destroy_status(string status_id) throws RestError {
-		string req_url = urls.destroy_status.printf(status_id);
-		make_request(req_url, "DELETE");
 	}
 }
 

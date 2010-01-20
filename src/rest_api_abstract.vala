@@ -54,7 +54,10 @@ public abstract class RestAPIAbstract : Object {
 		auth_data = _auth_data;
 	}
 	
-	public abstract ArrayList<Status> get_timeline(int count = 20,
+	public abstract ArrayList<Status> get_timeline(int count = 0,
+		string since_id = "") throws RestError, ParseError;
+	
+	public abstract ArrayList<Status> get_direct(int count = 0,
 		string since_id = "") throws RestError, ParseError;
 	
 	protected void reply_tracking(int status_code) throws RestError {
@@ -109,6 +112,11 @@ public abstract class RestAPIAbstract : Object {
         SessionAsync session = new SessionAsync();
         Message message = new Message(method, req_url);
         message.set_http_version (HTTPVersion.1_1);
+        
+        MessageHeaders headers = new MessageHeaders(MessageHeadersType.MULTIPART);
+        headers.append("User-Agent", "%s/%s".printf(Config.APPNAME, Config.APP_VERSION));
+        
+        message.request_headers = headers;
         
         if(method != "GET") { //set post/delete-parameters
         	string body = form_encode_hash(params);
