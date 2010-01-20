@@ -27,6 +27,8 @@ using RestAPI;
 
 public class MainWindow : Window {
 	
+	unowned SList<RadioAction> list_group;
+	
 	private Action updateAct;
 	private ToggleAction menuAct;
 	private ToggleAction toolbarAct;
@@ -44,9 +46,8 @@ public class MainWindow : Window {
 	private SystemStyle gtk_style;
 	
 	private TimelineList home;
-	ScrolledWindow scroll_home;
 	private TimelineList mentions;
-	ScrolledWindow scroll_mentions;
+	private TimelineDirectList direct;
 	private ReTweet reTweet;
 	private StatusbarSmart statusbar;
 	
@@ -109,8 +110,8 @@ public class MainWindow : Window {
 			if(last_time_mentions > 0)
 				last_focused_mentions = last_time_mentions;
 			
-			//clear tray notification
-			tray.set_from_file(Config.LOGO_PATH);
+			home.parent_focus = true;
+			mentions.parent_focus = true;
 		});
 		
 		focus_out_event.connect((w, e) => {
@@ -121,6 +122,9 @@ public class MainWindow : Window {
 			
 			if(last_time_mentions > 0)
 				last_focused_mentions = last_time_mentions;
+			
+			home.parent_focus = false;
+			mentions.parent_focus = false;
 		});
 		
 		gtk_style = new SystemStyle(rc_get_style(this));
@@ -129,34 +133,50 @@ public class MainWindow : Window {
 			return true;
 		});
 		
-		menu_init();
-		
 		//tray setup
 		tray = new TrayIcon(logo, logo_fresh);
-		tray.popup = popup;
+		/*tray.popup = popup;
 		tray.activate.connect(() => {
 			if(visible)
 				this.hide();
 			else
 				this.show();
-		});
+		});*/
 		
 		//template setup
 		template = new Template(prefs, gtk_style);
 		
 		//home timeline
 		home = new TimelineList({prefs.login, prefs.password}, TimelineType.HOME,
-			new TwitterUrls(), template, 20);
-		scroll_home = new ScrolledWindow(null, null);
-        scroll_home.set_policy(PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);
-        scroll_home.add(home);
+			new TwitterUrls(), template, 22, Icon.new_for_string(Config.TIMELINE_PATH),
+			Icon.new_for_string(Config.TIMELINE_FRESH_PATH), "HomeAct", _("Home timeline"),
+			_("Show your home timeline"), true);
 		
 		//mentions
 		mentions = new TimelineList({prefs.login, prefs.password}, TimelineType.MENTIONS,
-			new TwitterUrls(), template, 20);
-		scroll_mentions = new ScrolledWindow(null, null);
-        scroll_mentions.set_policy(PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);
-        scroll_mentions.add(mentions);
+			new TwitterUrls(), template, 20, Icon.new_for_string(Config.MENTIONS_PATH),
+			Icon.new_for_string(Config.MENTIONS_FRESH_PATH), "MentionsAct", _("Mentions"),
+			_("Show mentions"));
+		
+		//mentions
+		direct = new TimelineDirectList({prefs.login, prefs.password}, new TwitterUrls(),
+			template, 20, Icon.new_for_string(Config.DIRECT_PATH),
+			Icon.new_for_string(Config.DIRECT_FRESH_PATH), "DirectAct", _("Direct messages"),
+			_("Show direct messages"));
+		
+		home.fresh.connect(() => tray.new_tweets(true));
+		mentions.fresh.connect(() => tray.new_tweets(true));
+		direct.fresh.connect(() => tray.new_tweets(true));
+		home.no_fresh.connect(() => check_fresh());
+		mentions.no_fresh.connect(() => check_fresh());
+		direct.no_fresh.connect(() => check_fresh());
+		
+		//group for lists
+		list_group = home.act.get_group();
+		mentions.act.set_group(home.act.get_group());
+		direct.act.set_group(home.act.get_group());
+		
+		menu_init();
 		
 		//retweet widget
 		reTweet = new ReTweet();
@@ -177,8 +197,9 @@ public class MainWindow : Window {
 		vbox.pack_start(menubar, false, false, 0);
 		vbox.pack_start(toolbar, false, false, 0);
 		//vbox.pack_start(sbox, false, false, 0);
-		vbox.pack_start(scroll_home, true, true, 0);
-		vbox.pack_start(scroll_mentions, true, true, 0);
+		vbox.pack_start(home, true, true, 0);
+		vbox.pack_start(mentions, true, true, 0);
+		vbox.pack_start(direct, true, true, 0);
 		vbox.pack_end(statusbar, false, false, 0);
 		vbox.pack_end(reTweet, false, false, 0);
 		
@@ -202,7 +223,8 @@ public class MainWindow : Window {
 		
 		//searchEntry.hide();
 		reTweet.hide();
-		scroll_mentions.hide();
+		mentions.hide();
+		direct.hide();
 		
 		//libnotify init
 		Notify.init(Config.APPNAME);
@@ -244,6 +266,7 @@ public class MainWindow : Window {
 		
 		//view menu
 		var viewMenu = new Action("ViewMenu", _("View"), null, null);
+		/*
 		var showTimelineAct = new RadioAction("ShowTimelineAct", _("Timeline"),
 			_("Show your timeline"), null, 1);
 		showTimelineAct.set_gicon(Icon.new_for_string(Config.TIMELINE_PATH));
@@ -251,23 +274,23 @@ public class MainWindow : Window {
 		
 		showTimelineAct.changed.connect((current) => {
 			if(current == showTimelineAct) {
-				scroll_mentions.hide();
-				scroll_home.show();
+				mentions.hide();
+				home.show();
 			}
 		});
 		
 		var showMentionsAct = new RadioAction("ShowMentionsAct", _("Mentions"),
-			_("Show mentions"), null, 2);
+			_("Show mentions"), null, 1);
 		showMentionsAct.set_gicon(Icon.new_for_string(Config.MENTIONS_PATH));
 		
 		showMentionsAct.changed.connect((current) => {
 			if(current == showMentionsAct) {
-				scroll_home.hide();
-				scroll_mentions.show();
+				home.hide();
+				mentions.show();
 			}
 		});
-		
-		showMentionsAct.set_group(showTimelineAct.get_group()); //lol
+		*/
+		//showMentionsAct.set_group(showTimelineAct.get_group()); //lol
 		
 		menuAct = new ToggleAction("ViewMenuAct", _("Show menu"), null, null);
 		menuAct.set_active(true);
@@ -316,8 +339,11 @@ public class MainWindow : Window {
 		actGroup.add_action(editMenu);
 		actGroup.add_action_with_accel(prefAct, "<Ctrl>P");
 		actGroup.add_action(viewMenu);
-		actGroup.add_action(showTimelineAct);
-		actGroup.add_action(showMentionsAct);
+		actGroup.add_action(home.act);
+		actGroup.add_action(mentions.act);
+		actGroup.add_action(direct.act);
+		//actGroup.add_action(showTimelineAct);
+		//actGroup.add_action(showMentionsAct);
 		actGroup.add_action_with_accel(menuAct, "<Ctrl>M");
 		actGroup.add_action(toolbarAct);
 		actGroup.add_action(helpMenu);
@@ -340,8 +366,9 @@ public class MainWindow : Window {
 					<menuitem action="EditPref" />
 				</menu>
 				<menu action="ViewMenu">
-					<menuitem action="ShowTimelineAct" />
-					<menuitem action="ShowMentionsAct" />
+					<menuitem action="HomeAct" />
+					<menuitem action="MentionsAct" />
+					<menuitem action="DirectAct" />
 					<separator />
 					<menuitem action="ViewMenuAct" />
 					<menuitem action="ViewToolbar" />
@@ -368,8 +395,9 @@ public class MainWindow : Window {
 				<separator />
 				<toolitem action="EditPref" />
 				<separator />
-				<toolitem action="ShowTimelineAct" />
-				<toolitem action="ShowMentionsAct" />
+				<toolitem action="HomeAct" />
+				<toolitem action="MentionsAct" />
+				<toolitem action="DirectAct" />
 			</toolbar>
 		</ui>
 		""";
@@ -391,6 +419,8 @@ public class MainWindow : Window {
 	public void refresh_action() {
 		updateAct.set_sensitive(false);
 		home.update();
+		mentions.update();
+		direct.update();
 		/*
 		Gee.ArrayList<string> exclude = new Gee.ArrayList<string>();
 		
@@ -517,6 +547,11 @@ public class MainWindow : Window {
 		
 		prefs.write();
 		main_quit();
+	}
+	
+	private void check_fresh() {
+		if(!(home.have_fresh || mentions.have_fresh || direct.have_fresh))
+			tray.new_tweets(false);
 	}
 	
 	/*
