@@ -9,7 +9,7 @@
 			{{content}}
 		</div>
 		<div class="footer">
-			<span>&nbsp;</span><span class="footer-right"><a class="reply" title="reply to {{name}}" href="directreply://{{id}}=={{screen_name}}=={{name}}"><img src="{{direct_reply}}" /></a>&nbsp;&nbsp;<a class="reply" title="{{delete_text}}" href="deletedirect://{{id}}"><img src="{{delete}}" /></a></span>
+			<span>&nbsp;</span><span class="footer-right"><a class="reply" title="reply to {{name}}" href="directreply://{{id}}=={{screen_name}}=={{name}}"><img src="{{direct_reply}}" /></a>&nbsp;&nbsp;<a class="reply" title="{{delete_text}}" href="delete://{{id}}"><img src="{{delete}}" /></a></span>
 		</div>
 	</div>
 </div>
