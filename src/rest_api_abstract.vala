@@ -63,6 +63,8 @@ public abstract class RestAPIAbstract : Object {
 	public abstract ArrayList<Status> get_direct(int count = 0,
 		string since_id = "", string max_id = "") throws RestError, ParseError;
 	
+	public virtual void destroy_status(string id) throws RestError {}
+	
 	protected void reply_tracking(int status_code) throws RestError {
 		switch(status_code) {
 			case 2:

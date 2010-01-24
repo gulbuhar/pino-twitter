@@ -20,6 +20,12 @@ public class RestAPITimeline : RestAPIAbstract {
 		return null;
 	}
 	
+	/* destroy status */
+	public override void destroy_status(string id) throws RestError {
+		string req_url = urls.destroy_status.printf(id);
+		make_request(req_url, "DELETE");
+	}
+	
 	/* for timelines (home, mentions, public etc.) */
 	public override ArrayList<Status> get_timeline(int count = 0,
 		string since_id = "", string max_id = "") throws RestError, ParseError {
@@ -178,12 +184,6 @@ public class RestAPITimeline : RestAPIAbstract {
 		GLib.Intl.setlocale(GLib.LocaleCategory.TIME, currentLocale);
 		
 		return lst;
-	}
-	
-	/* delete status with some id */
-	public void destroy_status(string status_id) throws RestError {
-		string req_url = urls.destroy_status.printf(status_id);
-		make_request(req_url, "DELETE");
 	}
 }
 

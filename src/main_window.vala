@@ -101,34 +101,6 @@ public class MainWindow : Window {
 		
 		destroy.connect(() => before_close());
 		
-		focus_in_event.connect((w, e) => {
-			focused = true;
-			//warning("focused");
-			if(last_time_friends > 0)
-				last_focused_friends = last_time_friends;
-			
-			if(last_time_mentions > 0)
-				last_focused_mentions = last_time_mentions;
-			
-			home.parent_focus = true;
-			mentions.parent_focus = true;
-			direct.parent_focus = true;
-		});
-		
-		focus_out_event.connect((w, e) => {
-			focused = false;
-			//warning("unfocused");
-			if(last_time_friends > 0)
-				last_focused_friends = last_time_friends;
-			
-			if(last_time_mentions > 0)
-				last_focused_mentions = last_time_mentions;
-			
-			home.parent_focus = false;
-			mentions.parent_focus = false;
-			direct.parent_focus = false;
-		});
-		
 		gtk_style = new SystemStyle(rc_get_style(this));
 		this.map_event.connect((event) => {
 			gtk_style = new SystemStyle(rc_get_style(this));
@@ -149,19 +121,19 @@ public class MainWindow : Window {
 		template = new Template(prefs, gtk_style);
 		
 		//home timeline
-		home = new TimelineList({prefs.login, prefs.password}, TimelineType.HOME,
+		home = new TimelineList(this, {prefs.login, prefs.password}, TimelineType.HOME,
 			new TwitterUrls(), template, 20, Icon.new_for_string(Config.TIMELINE_PATH),
 			Icon.new_for_string(Config.TIMELINE_FRESH_PATH), "HomeAct", _("Home timeline"),
 			_("Show your home timeline"), true);
 		
 		//mentions
-		mentions = new TimelineList({prefs.login, prefs.password}, TimelineType.MENTIONS,
+		mentions = new TimelineList(this, {prefs.login, prefs.password}, TimelineType.MENTIONS,
 			new TwitterUrls(), template, 20, Icon.new_for_string(Config.MENTIONS_PATH),
 			Icon.new_for_string(Config.MENTIONS_FRESH_PATH), "MentionsAct", _("Mentions"),
 			_("Show mentions"));
 		
 		//mentions
-		direct = new TimelineDirectList({prefs.login, prefs.password}, new TwitterUrls(),
+		direct = new TimelineDirectList(this, {prefs.login, prefs.password}, new TwitterUrls(),
 			template, 20, Icon.new_for_string(Config.DIRECT_PATH),
 			Icon.new_for_string(Config.DIRECT_FRESH_PATH), "DirectAct", _("Direct messages"),
 			_("Show direct messages"));

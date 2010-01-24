@@ -30,6 +30,8 @@ public abstract class TimelineListAbstract : HBox {
 	//protected bool focused;
 	protected int last_focused = 0; //time of the last readed status
 	
+	protected Window parent;
+	
 	public signal void start_update(string req);
 	public signal void finish_update();
 	public signal void updating_error(string msg);
@@ -43,7 +45,7 @@ public abstract class TimelineListAbstract : HBox {
 		}
 	}
 	
-	public TimelineListAbstract(AuthData auth_data, TimelineType timeline_type,
+	public TimelineListAbstract(Window _parent, AuthData auth_data, TimelineType timeline_type,
 		IRestUrls urls, Template _template, int __items_count, Icon _icon,
 		string fname, string icon_name, string icon_desc, bool _active = false) {
 		
@@ -90,6 +92,13 @@ public abstract class TimelineListAbstract : HBox {
 		template = _template;
 		lst = new ArrayList<RestAPI.Status>();
 		_items_count = __items_count;
+		parent = _parent;
+		parent.focus_in_event.connect((w, e) => {
+			parent_focus = true;
+		});
+		parent.focus_out_event.connect((w, e) => {
+			parent_focus = false;
+		});
 		
 		//create new action
 		icon = _icon;
@@ -128,6 +137,8 @@ public abstract class TimelineListAbstract : HBox {
 		
 		view.load_string(content, "text/html", "utf8", "file:///");
 	}
+	
+	protected virtual void destroy_status(string id) {}
 	
 	protected abstract void get_older();
 	
@@ -191,22 +202,20 @@ public abstract class TimelineListAbstract : HBox {
 				return true;
 			
 			case "delete":
-				/*
-				var message_dialog = new MessageDialog(this,
+				var message_dialog = new MessageDialog(parent,
 					Gtk.DialogFlags.DESTROY_WITH_PARENT | Gtk.DialogFlags.MODAL,
 					Gtk.MessageType.QUESTION, Gtk.ButtonsType.YES_NO,
-					(_("Sure you want to delete this tweet?")));
+					(_("Sure you want to delete this status?")));
 				
 				var response = message_dialog.run();
 				if(response == ResponseType.YES) {
 					message_dialog.destroy();
 					var status_id = params;
 					warning(status_id);
-					var reply = twee.destroyStatus(status_id);
-					status_actions(reply);
+					destroy_status(status_id);
 				}
 				message_dialog.destroy();
-				*/
+				
 				return true;
 			
 			case "file":

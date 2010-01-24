@@ -4,12 +4,12 @@ using Gtk;
 
 public class TimelineDirectList : TimelineList {
 	
-	public TimelineDirectList(AuthData auth_data, IRestUrls urls,
+	public TimelineDirectList(Window _parent, AuthData auth_data, IRestUrls urls,
 		Template _template, int __items_count, Icon _icon, Icon _icon_fresh,
 		string fname, string icon_name, string icon_desc, bool _active = false) {
 		
-		base(auth_data, TimelineType.HOME, urls, _template, __items_count, _icon,
-			_icon_fresh, fname, icon_name, icon_desc, _active);
+		base(_parent, auth_data, TimelineType.HOME, urls, _template, __items_count,
+			_icon, _icon_fresh, fname, icon_name, icon_desc, _active);
 		
 		api = new RestAPIDirect(urls, auth_data);
 		api.request.connect((req) => start_update(req));
@@ -97,5 +97,25 @@ public class TimelineDirectList : TimelineList {
 		finish_update(); //send signal
 		
 		more.set_enabled(true);
+	}
+	
+	/* delete direct message with some id */
+	protected override void destroy_status(string id) {
+		try {
+			api.destroy_status(id);
+		} catch(RestError e) {
+			updating_error(e.message);
+			return;
+		}
+		
+		//delete status from the list
+		foreach(Status status in lst) {
+			if(status.id == id) {
+				lst.remove(status);
+				break;
+			}
+		}
+		
+		refresh();
 	}
 }

@@ -16,6 +16,12 @@ public class RestAPIDirect : RestAPIAbstract {
 		return null;
 	}
 	
+	/* destroy direct message */
+	public override void destroy_status(string id) throws RestError {
+		string req_url = urls.destroy_direct.printf(id);
+		make_request(req_url, "DELETE");
+	}
+	
 	/* get direct messages (inbox) */
 	public override ArrayList<Status> get_direct(int count = 0,
 		string since_id = "", string max_id = "") throws RestError, ParseError {

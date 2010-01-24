@@ -44,13 +44,13 @@ public class TimelineList : TimelineListAbstract {
 	public signal void fresh();
 	public signal void no_fresh();
 	
-	public TimelineList(AuthData auth_data, TimelineType timeline_type,
+	public TimelineList(Window _parent, AuthData auth_data, TimelineType timeline_type,
 		IRestUrls urls, Template _template, int __items_count, Icon _icon,
 		Icon _icon_fresh, string fname, string icon_name, string icon_desc,
 		bool _active = false) {
 		
-		base(auth_data, timeline_type, urls, _template, __items_count, _icon,
-		fname, icon_name, icon_desc, _active);
+		base(_parent, auth_data, timeline_type, urls, _template, __items_count, 
+			_icon, fname, icon_name, icon_desc, _active);
 		
 		icon_fresh = _icon_fresh;
 	}
@@ -109,6 +109,26 @@ public class TimelineList : TimelineListAbstract {
 		}
 		
 		finish_update(); //send signal
+	}
+	
+	/* delete status with some id */
+	protected override void destroy_status(string id) {
+		try {
+			api.destroy_status(id);
+		} catch(RestError e) {
+			updating_error(e.message);
+			return;
+		}
+		
+		//delete status from the list
+		foreach(Status status in lst) {
+			if(status.id == id) {
+				lst.remove(status);
+				break;
+			}
+		}
+		
+		refresh();
 	}
 	
 	/* refresh timeline */

@@ -12,6 +12,10 @@ public class TwitterUrls : Object, IRestUrls {
 		get { return "http://twitter.com/statuses/destroy/%s.xml"; }
 	}
 	
+	public string destroy_direct {
+		get { return "http://twitter.com/direct_messages/destroy/%s.xml"; }
+	}
+	
 	public string mentions {
 		get { return "http://twitter.com/statuses/mentions.xml"; }
 	}
