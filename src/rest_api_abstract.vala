@@ -1,5 +1,6 @@
 using Gee;
 using Soup;
+using TimeUtils;
 
 namespace RestAPI {
 
@@ -54,11 +55,13 @@ public abstract class RestAPIAbstract : Object {
 		auth_data = _auth_data;
 	}
 	
+	public signal void request(string req);
+	
 	public abstract ArrayList<Status> get_timeline(int count = 0,
-		string since_id = "") throws RestError, ParseError;
+		string since_id = "", string max_id = "") throws RestError, ParseError;
 	
 	public abstract ArrayList<Status> get_direct(int count = 0,
-		string since_id = "") throws RestError, ParseError;
+		string since_id = "", string max_id = "") throws RestError, ParseError;
 	
 	protected void reply_tracking(int status_code) throws RestError {
 		switch(status_code) {
@@ -78,7 +81,7 @@ public abstract class RestAPIAbstract : Object {
 				throw new RestError.CODE("%d Proxy Authentication Required: the request requires user authentication.".printf(status_code));
 			
 			default:
-				throw new RestError.CODE("%d Unknown Error");
+				throw new RestError.CODE("%d Unknown Error".printf(status_code));
 		}
 	}
 	
@@ -108,7 +111,9 @@ public abstract class RestAPIAbstract : Object {
 			req_url += query;
 		}
 		
-        warning("%s: %s", method, req_url);
+		//send signal about all requests
+        request("%s: %s".printf(method, req_url));
+        
         SessionAsync session = new SessionAsync();
         Message message = new Message(method, req_url);
         message.set_http_version (HTTPVersion.1_1);
@@ -131,9 +136,9 @@ public abstract class RestAPIAbstract : Object {
 		};
 		
 		int status_code = 0;
-		for(int i = 0; i < 3; i++) {
+		for(int i = 0; i < retry; i++) {
 			status_code = (int)session.send_message(message);
-			if(status_code == 200)
+			if(status_code == 200 || status_code == 401)
 				break;
 		}
 		
@@ -141,12 +146,6 @@ public abstract class RestAPIAbstract : Object {
 			reply_tracking(status_code);
 		
 		return message.response_body.data;
-	}
-	
-	protected int tz_delta(Time t) {
-		string sdelta = t.format("%z");
-		
-		return sdelta.to_int() / 100;
 	}
 }
 

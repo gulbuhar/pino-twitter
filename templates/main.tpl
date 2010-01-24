@@ -21,8 +21,12 @@ a.tags{text-decoration: none; font-weight: bold;}
 .by_who{display: inline; text-align: left;}
 .re{background-color: {{sl_color}}; color: {{lg_color}}; -webkit-border-radius: 3px; font-weight: bold; padding-left: 3px; padding-right: 3px;}
 .header {margin-bottom: 3px;}
-.footer {margin-top: 3px;}
+.footer {margin-top: 4px;}
+.footer-right {text-align:right;float:right;}
+.footer img {margin-left: 8px;}
 .rtl-notice {direction: rtl; text-align: right;}
+h2 {color: {{lt_color}}; position: fixed; top: 50%; left: 50%; margin-top: -50px; margin-left: -50px;}
+
 </style>
 </head>
 <body>

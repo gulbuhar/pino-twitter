@@ -1,6 +1,7 @@
 using Soup;
 using Gee;
 using Xml;
+using TimeUtils;
 
 namespace RestAPI {
 
@@ -15,13 +16,13 @@ public class RestAPITimeline : RestAPIAbstract {
 	}
 	
 	public override ArrayList<Status> get_direct(int count = 0,
-		string since_id = "") throws RestError, ParseError {
+		string since_id = "", string max_id = "") throws RestError, ParseError {
 		return null;
 	}
 	
 	/* for timelines (home, mentions, public etc.) */
 	public override ArrayList<Status> get_timeline(int count = 0,
-		string since_id = "") throws RestError, ParseError {
+		string since_id = "", string max_id = "") throws RestError, ParseError {
 		string req_url = "";
 		
 		switch(timeline_type) {
@@ -38,6 +39,8 @@ public class RestAPITimeline : RestAPIAbstract {
 			map.insert("count", count.to_string());
 		if(since_id != "")
 			map.insert("since_id", since_id);
+		if(max_id != "")
+			map.insert("max_id", max_id);
 		
 		string data = make_request(req_url, "GET", map);
 		

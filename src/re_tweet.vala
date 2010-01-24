@@ -26,6 +26,7 @@ public class ReTweet : VBox {
 	
 	public static enum Style { CLASSIC, UNI, VIA }
 	
+	private RestAPIRe api;
 	private Image userpic;
 	
 	private TextView entry;
@@ -51,20 +52,15 @@ public class ReTweet : VBox {
 		public set { _reply_id = value; }
 	}
 	
-	public void set_screen_name(string user_name) {
-		user_label.set_text(_("Reply to <b>%s</b>:").printf(user_name));
-		user_label.set_use_markup(true);
-	}
-	
-	private Label label;
-	public Label user_label;
-	
 	public string text {
 		public owned get
 		{ return entry.get_buffer().text; }
 		set
 		{ entry.get_buffer().set_text(value, (int)value.size()); }
 	}
+	
+	private Label label;
+	public Label user_label;
 	
 	public signal void enter_pressed();
 	public signal void empty_pressed();
@@ -112,6 +108,11 @@ public class ReTweet : VBox {
 		pack_start(sep, false, false, 0);
 		pack_start(l_box, false, false, 0);
 		pack_start(frame, false, true, 0);
+	}
+	
+	public void set_screen_name(string user_name) {
+		user_label.set_text(_("Reply to <b>%s</b>:").printf(user_name));
+		user_label.set_use_markup(true);
 	}
 	
 	public void set_userpic(string path) {

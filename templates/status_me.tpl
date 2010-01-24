@@ -9,7 +9,7 @@
 			{{content}}
 		</div>
 		<div class="footer">
-			<span>{{by_who}}&nbsp;</span><span style="text-align:right;float:right;"><a class="delete" title="delete this status" href="delete://{{id}}">{{delete_text}}</a></span>
+			<span>{{by_who}}&nbsp;</span><span class="footer-right"><a class="delete" title="{{delete_text}}" href="delete://{{id}}"><img src="{{delete}}" /></a></span>
 		</div>
 	</div>
 </div>

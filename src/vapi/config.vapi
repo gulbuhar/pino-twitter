@@ -34,6 +34,11 @@ namespace Config
 	public const string TIMELINE_FRESH_PATH;
 	public const string DIRECT_PATH;
 	public const string DIRECT_FRESH_PATH;
+	public const string PROGRESS_PATH;
+	public const string DIRECT_REPLY_PATH;
+	public const string REPLY_PATH;
+	public const string RETWEET_PATH;
+	public const string DELETE_PATH;
 	public const string TEMPLATES_PATH;
 	public const string AUTHORS;
 }

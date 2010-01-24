@@ -112,6 +112,7 @@ public class MainWindow : Window {
 			
 			home.parent_focus = true;
 			mentions.parent_focus = true;
+			direct.parent_focus = true;
 		});
 		
 		focus_out_event.connect((w, e) => {
@@ -125,6 +126,7 @@ public class MainWindow : Window {
 			
 			home.parent_focus = false;
 			mentions.parent_focus = false;
+			direct.parent_focus = false;
 		});
 		
 		gtk_style = new SystemStyle(rc_get_style(this));
@@ -148,7 +150,7 @@ public class MainWindow : Window {
 		
 		//home timeline
 		home = new TimelineList({prefs.login, prefs.password}, TimelineType.HOME,
-			new TwitterUrls(), template, 22, Icon.new_for_string(Config.TIMELINE_PATH),
+			new TwitterUrls(), template, 20, Icon.new_for_string(Config.TIMELINE_PATH),
 			Icon.new_for_string(Config.TIMELINE_FRESH_PATH), "HomeAct", _("Home timeline"),
 			_("Show your home timeline"), true);
 		
@@ -191,7 +193,17 @@ public class MainWindow : Window {
 			message_dialog.destroy();
 		});
 		
+		//setup logging
 		statusbar = new StatusbarSmart();
+		home.start_update.connect((req) => statusbar.logging(req));
+		mentions.start_update.connect((req) => statusbar.logging(req));
+		direct.start_update.connect((req) => statusbar.logging(req));
+		home.finish_update.connect(() => statusbar.logging(_("updated ")));
+		mentions.finish_update.connect(() => statusbar.logging(_("updated ")));
+		direct.finish_update.connect(() => statusbar.logging(_("updated ")));
+		home.updating_error.connect((msg) => statusbar.log_warning(msg));
+		mentions.updating_error.connect((msg) => statusbar.log_warning(msg));
+		direct.updating_error.connect((msg) => statusbar.log_warning(msg));
 		
 		VBox vbox = new VBox(false, 0);
 		vbox.pack_start(menubar, false, false, 0);
@@ -213,13 +225,13 @@ public class MainWindow : Window {
 		twee.updated.connect(() => {statusbar.set_status(statusbar.Status.UPDATED);});
 		*/
 		
-		if(prefs.is_new || !prefs.rememberPass)
-			run_prefs();
-		
 		//get_my_userpic();
 		
 		//show window
 		show_all();
+		
+		if(prefs.is_new || !prefs.rememberPass)
+			run_prefs();
 		
 		//searchEntry.hide();
 		reTweet.hide();
@@ -237,9 +249,7 @@ public class MainWindow : Window {
 		
 		//getting updates
 		if(!prefs.is_new && prefs.rememberPass) {
-			home.hide();
 			refresh_action();
-			home.show();
 		}
 	}
 	
@@ -418,9 +428,14 @@ public class MainWindow : Window {
 	
 	public void refresh_action() {
 		updateAct.set_sensitive(false);
+		
+		statusbar.set_status(StatusbarSmart.StatusType.UPDATING);
+		
 		home.update();
 		mentions.update();
 		direct.update();
+		
+		statusbar.set_status(StatusbarSmart.StatusType.FINISH_OK);
 		/*
 		Gee.ArrayList<string> exclude = new Gee.ArrayList<string>();
 		

@@ -9,11 +9,13 @@ public abstract class TimelineListAbstract : HBox {
 	protected WebView view;
 	protected ScrolledWindow scroll;
 	
+	protected MoreWindow more;
+	
 	protected Template template;
 	protected RestAPIAbstract api;
 	protected ArrayList<RestAPI.Status> lst;
 	
-	private double current_scroll_pos;
+	protected double current_scroll_pos;
 	
 	/* statuses in list */
 	protected int _items_count;
@@ -28,9 +30,18 @@ public abstract class TimelineListAbstract : HBox {
 	//protected bool focused;
 	protected int last_focused = 0; //time of the last readed status
 	
-	public signal void start_update();
+	public signal void start_update(string req);
 	public signal void finish_update();
 	public signal void updating_error(string msg);
+	
+	//focus of the main window
+	public virtual bool parent_focus {
+		get { return false; }
+		set {
+			if(!value)
+				more.hide();
+		}
+	}
 	
 	public TimelineListAbstract(AuthData auth_data, TimelineType timeline_type,
 		IRestUrls urls, Template _template, int __items_count, Icon _icon,
@@ -44,6 +55,9 @@ public abstract class TimelineListAbstract : HBox {
 			((VScrollbar)scroll.get_vscrollbar()).set_value(current_scroll_pos);
 		});
 		
+		more = new MoreWindow();
+		more.moar_event.connect(get_older);
+		
 		scroll = new ScrolledWindow(null, null);
 		scroll.set_policy(PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);
 		scroll.add(view);
@@ -51,9 +65,28 @@ public abstract class TimelineListAbstract : HBox {
 		vbox = new VBox(false, 0);
 		vbox.pack_end(scroll, true, true, 0);
 		
-		this.pack_start(vbox, true, true, 0);
+		var event_view = new EventBox();
+		event_view.add(vbox);
+		event_view.set_events(Gdk.EventMask.BUTTON_MOTION_MASK);
+		event_view.motion_notify_event.connect((event) => {
+			int height = allocation.height;
+			if(height - event.y > 20 && height - event.y < 60 && event.x > 20 && event.x < 60) {
+				int ax = (int)(event.x_root - event.x + 20);
+				int ay = (int)(event.y_root + height - event.y - 60);
+				more.show_at(ax, ay);
+				//warning("motion: %fx%f", ax, ay);
+				//warning("root: %fx%f", event.x_root, event.y_root);
+			} else {
+				if(more.visible)
+					more.hide();
+			}
+		});
+		
+		this.pack_start(event_view, true, true, 0);
+		//this.pack_start(fixed, true, true, 0);
 		
 		api = new RestAPITimeline(urls, auth_data, timeline_type);
+		api.request.connect((req) => start_update(req));
 		template = _template;
 		lst = new ArrayList<RestAPI.Status>();
 		_items_count = __items_count;
@@ -69,6 +102,8 @@ public abstract class TimelineListAbstract : HBox {
 			else
 				hide_smart();
 		});
+		
+		start_screen();
 	}
 	
 	public void set_auth(AuthData auth_data) {
@@ -84,11 +119,24 @@ public abstract class TimelineListAbstract : HBox {
 		hide();
 	}
 	
-	protected void update_content() {
+	protected void start_screen() {
+		update_content(template.generate_message(_("Connecting...")));
+	}
+	
+	protected virtual void update_content(string content) {
 		current_scroll_pos = ((VScrollbar)scroll.get_vscrollbar()).get_value();
 		
-		view.load_string(template.generate_timeline(lst, last_focused),
-			"text/html", "utf8", "file:///");
+		view.load_string(content, "text/html", "utf8", "file:///");
+	}
+	
+	protected abstract void get_older();
+	
+	public abstract void refresh();
+	
+	/* removing extra statuses or messages */
+	protected void delete_extra() {
+		while(lst.size > _items_count)
+			lst.remove_at(lst.size - 1);
 	}
 	
 	private bool link_clicking(WebFrame p0, NetworkRequest request,
