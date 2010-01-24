@@ -9,7 +9,7 @@
 			{{content}}
 		</div>
 		<div class="footer">
-			<span>{{by_who}}&nbsp;</span><span style="text-align:right;float:right;"><a class="reply" title="reply to {{name}}" href="directreply://{{id}}=={{screen_name}}=={{name}}">{{reply_text}}</a>&nbsp;&nbsp;<a class="reply" href="retweet://{{id}}">{{retweet_text}}</a></span>
+			<span>{{by_who}}&nbsp;</span><span class="footer-right"><a href="directreply://{{screen_name}}"><img src="{{direct_reply}}" /></a><a class="reply" title="{{reply_text}}" href="replyto://{{id}}=={{screen_name}}=={{name}}"><img src="{{reply}}" /></a><a class="reply" title="{{retweet_text}}" href="retweet://{{id}}"><img src="{{re_tweet}}" /></a></span>
 		</div>
 	</div>
 </div>

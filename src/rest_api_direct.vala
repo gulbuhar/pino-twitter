@@ -1,6 +1,7 @@
 using Soup;
 using Gee;
 using Xml;
+using TimeUtils;
 
 namespace RestAPI {
 
@@ -11,19 +12,21 @@ public class RestAPIDirect : RestAPIAbstract {
 	}
 	
 	public override ArrayList<Status> get_timeline(int count = 0,
-		string since_id = "") throws RestError, ParseError {
+		string since_id = "", string max_id = "") throws RestError, ParseError {
 		return null;
 	}
 	
 	/* get direct messages (inbox) */
 	public override ArrayList<Status> get_direct(int count = 0,
-		string since_id = "") throws RestError, ParseError {
+		string since_id = "", string max_id = "") throws RestError, ParseError {
 		
 		var map = new HashTable<string, string>(null, null);
 		if(count != 0)
 			map.insert("count", count.to_string());
 		if(since_id != "")
 			map.insert("since_id", since_id);
+		if(max_id != "")
+			map.insert("max_id", max_id);
 		
 		string data = make_request(urls.direct_in, "GET", map);
 		

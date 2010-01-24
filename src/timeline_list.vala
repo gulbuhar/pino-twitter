@@ -10,7 +10,7 @@ public class TimelineList : TimelineListAbstract {
 	
 	//focus of the main window
 	protected bool _parent_focus = true;
-	public bool parent_focus {
+	public override bool parent_focus {
 		get { return _parent_focus; }
 		set {
 			_parent_focus = value;
@@ -20,6 +20,9 @@ public class TimelineList : TimelineListAbstract {
 				if(lst.size > 0)
 					last_focused = (int)lst.get(0).created_at.mktime();
 			}
+			
+			if(!value)
+				more.hide();
 		}
 	}
 	
@@ -67,7 +70,6 @@ public class TimelineList : TimelineListAbstract {
 	public virtual void update() {
 		ArrayList<RestAPI.Status> result;
 		string since_id = "";
-		bool first_time = true;
 		
 		if(lst.size > 0)
 			since_id = lst.get(0).id;
@@ -93,18 +95,57 @@ public class TimelineList : TimelineListAbstract {
 					lst.insert(i, status);
 					i++;
 				}
-				
-				while(lst.size > _items_count) //removing extra statuses 
-					lst.remove_at(lst.size - 1);
 			}
 		}
+		
+		delete_extra();
 		warning("SIZE: %d", lst.size);
 		
-		update_content();
+		refresh();
 		
 		if((act.active && _parent_focus) || last_focused == 0) {
 			if(lst.size > 0)
 				last_focused = (int)lst.get(0).created_at.mktime();
 		}
+		
+		finish_update(); //send signal
+	}
+	
+	/* refresh timeline */
+	public override void refresh() {
+		if(lst.size == 0)
+			update_content(template.generate_message(_("Empty")));
+		else
+			update_content(template.generate_timeline(lst, last_focused));
+	}
+	
+	/* get older statuses */
+	protected override void get_older() {
+		if(lst.size < 1)
+			return;
+		
+		more.set_enabled(false);
+		
+		ArrayList<RestAPI.Status> result;
+		string max_id = lst.get(lst.size - 1).id;
+		
+		try {
+			result = api.get_timeline(_items_count, "", max_id);
+		} catch(RestError e) {
+			more.set_enabled(true);
+			updating_error(e.message);
+			return;
+		}
+		
+		if(result.size < 2) {
+			more.set_enabled(true);
+			return;
+		}
+		
+		lst.add_all(result.slice(1, result.size -1));
+		refresh();
+		finish_update(); //send signal
+		
+		more.set_enabled(true);
 	}
 }
