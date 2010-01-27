@@ -58,14 +58,7 @@ public class RestAPIRe : RestAPIAbstract {
 					break;
 				
 				case "created_at":
-					var tmpTime = Time();
-					tmpTime.strptime(iter->get_content(), "%a %b %d %T +0000 %Y");
-					var tt = tmpTime.mktime();
-					var tmp = Time.local(tt);
-					int delta = tz_delta(tmp);
-					int int_t = (int)tt + delta * 3600;
-				
-					status.created_at = Time.local((time_t)int_t);
+					status.created_at = str_to_time(iter->get_content());
 					break;
 				
 				case "text":
