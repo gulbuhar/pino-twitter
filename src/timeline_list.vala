@@ -111,6 +111,16 @@ public class TimelineList : TimelineListAbstract {
 		finish_update(); //send signal
 	}
 	
+	/* insert new status */
+	public void insert_status(Status status) {
+		lst.insert(0, status);
+		delete_extra();
+		
+		last_focused = (int)lst.get(0).created_at.mktime();
+		
+		refresh();
+	}
+	
 	/* delete status with some id */
 	protected override void destroy_status(string id) {
 		try {
@@ -127,6 +137,8 @@ public class TimelineList : TimelineListAbstract {
 				break;
 			}
 		}
+		
+		last_focused = (int)lst.get(0).created_at.mktime();
 		
 		refresh();
 	}

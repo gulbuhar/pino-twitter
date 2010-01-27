@@ -36,6 +36,10 @@ public abstract class TimelineListAbstract : HBox {
 	public signal void finish_update();
 	public signal void updating_error(string msg);
 	
+	public signal void replyto(Status status);
+	public signal void retweet(Status status);
+	public signal void directreply(string screen_name);
+	
 	//focus of the main window
 	public virtual bool parent_focus {
 		get { return false; }
@@ -176,29 +180,18 @@ public abstract class TimelineListAbstract : HBox {
 				return true;
 			
 			case "directreply":
-				/*
-				var screen_name = params;
-				reTweet.is_direct = true;
-				reTweet.set_screen_name(screen_name.split("==")[1]);
-				reTweet.reply_id = screen_name.split("==")[0];
-				reTweet.show();
-				reTweet.insert("@%s ".printf(screen_name.split("==")[1]));
-				this.set_focus(reTweet.text_entry);
-				*/
+				string screen_name = params;
+				directreply(screen_name);
+				return true;
+			
+			case "replyto":
+				string status_id = params;
+				replyto(find_status(status_id));
 				return true;
 			
 			case "retweet":
-				/*
-				var status_id = params;
-				var tweet = twee.get_status(status_id);
-				
-				
-					reTweet.clear();
-					reTweet.show();
-					reTweet.set_retweet(tweet, prefs.retweetStyle);
-					this.set_focus(reTweet.text_entry);
-				
-				*/
+				string status_id = params;
+				retweet(find_status(status_id));
 				return true;
 			
 			case "delete":
@@ -224,5 +217,17 @@ public abstract class TimelineListAbstract : HBox {
 			default:
 				return true;
 		}
+	}
+	
+	/* get status by id */
+	private Status find_status(string id) {
+		Status st = null;
+		foreach(Status _status in lst) {
+			if(_status.id == id) {
+				st = _status;
+				break;
+			}
+		}
+		return st;
 	}
 }
