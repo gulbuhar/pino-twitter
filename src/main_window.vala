@@ -48,10 +48,11 @@ public class MainWindow : Window {
 	private TimelineList home;
 	private TimelineList mentions;
 	private TimelineDirectList direct;
-	private ReTweet reTweet;
+	private ReTweet re_tweet;
 	private StatusbarSmart statusbar;
 	
 	//private TwitterInterface twee;
+	private Cache cache;
 	private Template template;
 	
 	private Prefs prefs;
@@ -117,8 +118,9 @@ public class MainWindow : Window {
 				this.show();
 		});*/
 		
+		cache = new Cache();
 		//template setup
-		template = new Template(prefs, gtk_style);
+		template = new Template(prefs, gtk_style, cache);
 		
 		//home timeline
 		home = new TimelineList(this, {prefs.login, prefs.password}, TimelineType.HOME,
@@ -153,16 +155,31 @@ public class MainWindow : Window {
 		menu_init();
 		
 		//retweet widget
-		reTweet = new ReTweet();
-		//reTweet.enter_pressed.connect(send_status);
-		reTweet.empty_pressed.connect(() => {
-			var message_dialog = new MessageDialog(this,
-				Gtk.DialogFlags.DESTROY_WITH_PARENT | Gtk.DialogFlags.MODAL,
-				Gtk.MessageType.INFO, Gtk.ButtonsType.OK,
-				(_("Type something first")));
-			
-			message_dialog.run();
-			message_dialog.destroy();
+		re_tweet = new ReTweet(this, prefs);
+		re_tweet.status_updated.connect((status) => {
+			home.insert_status(status);
+		});
+		
+		home.retweet.connect((status) => {
+			re_tweet.set_state_retweet(status);
+		});
+		mentions.retweet.connect((status) => {
+			re_tweet.set_state_retweet(status);
+		});
+		home.directreply.connect((screen_name) => {
+			re_tweet.set_state_directreply(screen_name);
+		});
+		mentions.directreply.connect((screen_name) => {
+			re_tweet.set_state_directreply(screen_name);
+		});
+		direct.directreply.connect((screen_name) => {
+			re_tweet.set_state_directreply(screen_name);
+		});
+		home.replyto.connect((status) => {
+			re_tweet.set_state_reply(status);
+		});
+		mentions.replyto.connect((status) => {
+			re_tweet.set_state_reply(status);
 		});
 		
 		//setup logging
@@ -185,17 +202,9 @@ public class MainWindow : Window {
 		vbox.pack_start(mentions, true, true, 0);
 		vbox.pack_start(direct, true, true, 0);
 		vbox.pack_end(statusbar, false, false, 0);
-		vbox.pack_end(reTweet, false, false, 0);
+		vbox.pack_end(re_tweet, false, false, 0);
 		
 		this.add(vbox);
-		
-		/*
-		//twetter interface setup
-		twee = new TwitterInterface.with_auth(prefs.login, prefs.password);
-		twee.updating.connect(() => {statusbar.set_status(statusbar.Status.UPDATING);});
-		twee.send_status.connect(() => {statusbar.set_status(statusbar.Status.SEND_STATUS);});
-		twee.updated.connect(() => {statusbar.set_status(statusbar.Status.UPDATED);});
-		*/
 		
 		//get_my_userpic();
 		
@@ -206,7 +215,7 @@ public class MainWindow : Window {
 			run_prefs();
 		
 		//searchEntry.hide();
-		reTweet.hide();
+		re_tweet.hide();
 		mentions.hide();
 		direct.hide();
 		
@@ -232,7 +241,7 @@ public class MainWindow : Window {
 		var fileMenu = new Action("FileMenu", _("Twitter"), null, null);
 		var createAct = new Action("FileCreate", _("New status"),
 			_("Create new status"), STOCK_EDIT);
-		createAct.activate.connect(show_re_tweet);
+		createAct.activate.connect(() => { re_tweet.set_state_new(); });
 		updateAct = new Action("FileUpdate", _("Update timeline"),
 			null, STOCK_REFRESH);
 		updateAct.activate.connect(refresh_action);
@@ -391,12 +400,14 @@ public class MainWindow : Window {
 		toolbar = ui.get_widget("/ToolBar");
 	}
 	
+	/*
 	private void show_re_tweet() {
 		reTweet.clear();
 		reTweet.is_direct = false;
 		reTweet.show();
 		this.set_focus(reTweet.text_entry);
 	}
+	*/
 	
 	public void refresh_action() {
 		updateAct.set_sensitive(false);

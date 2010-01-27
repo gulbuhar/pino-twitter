@@ -19,7 +19,7 @@ a.tags{text-decoration: none; font-weight: bold;}
 .reply, .delete, .by_who{text-decoration: none; text-align: right; font-size: 8pt; color: {{lt_color}};}
 .delete{text-align: left;}
 .by_who{display: inline; text-align: left;}
-.re{background-color: {{sl_color}}; color: {{lg_color}}; -webkit-border-radius: 3px; font-weight: bold; padding-left: 3px; padding-right: 3px;}
+.re{background-color: {{sl_color}}; color: {{bg_color}}; -webkit-border-radius: 3px; font-weight: bold; padding-left: 3px; padding-right: 3px;}
 .header {margin-bottom: 3px;}
 .footer {margin-top: 4px;}
 .footer-right {text-align:right;float:right;}

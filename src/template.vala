@@ -28,7 +28,7 @@ public class Template : Object {
 	
 	private Prefs prefs;
 	private SystemStyle gtk_style;
-	public Cache cache;
+	private Cache cache;
 	
 	private string main_template;
 	private string status_template;
@@ -40,9 +40,10 @@ public class Template : Object {
 	private Regex urls;
 	private Regex clear_notice;
 	
-	public Template(Prefs _prefs, SystemStyle _gtk_style) {
+	public Template(Prefs _prefs, SystemStyle _gtk_style, Cache _cache) {
 		prefs = _prefs;
 		gtk_style = _gtk_style;
+		cache = _cache;
 		reload();
 		
 		//compile regex
@@ -52,8 +53,6 @@ public class Template : Object {
 		
 		// characters must be cleared to know direction of text
 		clear_notice = new Regex("[: \n\t\r♻♺]+|@[^ ]+");
-		
-		cache = new Cache();
 	}
 	
 	private string generate(string content) {
@@ -196,7 +195,7 @@ public class Template : Object {
 				
 				if(i.is_retweet) {
 					re_icon = "<span class='re'>Rt:</span> ";
-					by_who = "<a class='by_who' href='nickto://%s'>by %s</a>".printf(i.user_screen_name, i.user_name);
+					by_who = "<a class='by_who' href='nickto://%s'>by %s</a>".printf(i.user_screen_name, i.user_screen_name);
 					name = i.re_user_name;
 					screen_name = i.re_user_screen_name;
 					user_avatar = i.re_user_avatar;
