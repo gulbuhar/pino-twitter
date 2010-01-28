@@ -106,10 +106,16 @@ public class Prefs : Object {
 		}
 	}
 	
+	public signal void rtlChanged();
 	private bool _rtlSupport = false;
 	public bool rtlSupport {
 		get{ return _rtlSupport; }
-		set{ _rtlSupport = value; }
+		set{
+			if(_rtlSupport != value) {
+				_rtlSupport = value;
+				rtlChanged();
+			}
+		}
 	}
 	
 	private string _login = "";

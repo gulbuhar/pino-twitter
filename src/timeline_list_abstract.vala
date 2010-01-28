@@ -27,6 +27,11 @@ public abstract class TimelineListAbstract : HBox {
 	public Icon icon;
 	public RadioAction act;
 	
+	private Menu _popup;
+	public Menu popup {
+		set { _popup = value; }
+	}
+	
 	//protected bool focused;
 	protected int last_focused = 0; //time of the last readed status
 	
@@ -94,6 +99,7 @@ public abstract class TimelineListAbstract : HBox {
 		api = new RestAPITimeline(urls, auth_data, timeline_type);
 		api.request.connect((req) => start_update(req));
 		template = _template;
+		template.emit_for_refresh.connect(() => refresh());
 		lst = new ArrayList<RestAPI.Status>();
 		_items_count = __items_count;
 		parent = _parent;
@@ -115,6 +121,9 @@ public abstract class TimelineListAbstract : HBox {
 			else
 				hide_smart();
 		});
+		
+		//popup menu actions
+		view.button_press_event.connect(show_popup_menu);
 		
 		start_screen();
 	}
@@ -225,5 +234,17 @@ public abstract class TimelineListAbstract : HBox {
 			}
 		}
 		return st;
+	}
+	
+	/* show popup menu */
+	private bool show_popup_menu(Gdk.EventButton event) {
+		if((event.type == Gdk.EventType.BUTTON_PRESS) && (event.button == 3)) {
+			if(_popup != null)
+				_popup.popup(null, null, null, event.button, event.time);
+			
+			return true;
+		}
+		
+		return false;
 	}
 }

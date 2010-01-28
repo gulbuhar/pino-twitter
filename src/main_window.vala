@@ -143,6 +143,11 @@ public class MainWindow : Window {
 		
 		menu_init();
 		
+		//set popup menu to the views
+		home.popup = popup;
+		mentions.popup = popup;
+		direct.popup = popup;
+		
 		//tray setup
 		tray = new TrayIcon(this, logo, logo_fresh);
 		tray.popup = popup;
@@ -502,9 +507,6 @@ public class MainWindow : Window {
 			var old_login = auth_data.login;
 			
 			auth_data = { prefs.login, prefs.password };
-			
-			//auth data update
-			//twee.set_auth(prefs.login, prefs.password);
 			
 			prefs.write();
 			
@@ -911,55 +913,6 @@ public class MainWindow : Window {
 		
 		pref_dialog.set_transient_for(this);
 		pref_dialog.show();
-	}
-	
-	public void get_my_userpic() {
-		//if already have url
-		if(prefs.userpicUrl != "") {
-			template.cache.pic_downloaded.connect((url, path) => {
-				if(url == prefs.userpicUrl) {
-					reTweet.set_userpic(path);
-				}
-			});
-			
-			string path = template.cache.get_or_download(prefs.userpicUrl, Cache.Method.ASYNC, true);
-			if(path != prefs.userpicUrl)
-				reTweet.set_userpic(path);
-			
-			return;
-		}
-		
-		twee.userpic_url_done.connect((username, result) => {
-			if(username == prefs.login) {
-				prefs.userpicUrl = result;
-				
-				template.cache.pic_downloaded.connect((url, path) => {
-					if(url == result) {
-						reTweet.set_userpic(path); 
-					}
-				});
-				
-				string path = template.cache.get_or_download(result, Cache.Method.ASYNC, true);
-				if(path != result) {
-					reTweet.set_userpic(path);
-				}
-			}
-		});
-		
-		twee.showUserPicUrl(prefs.login);
-	}
-	
-	private void tray_popup(uint button, uint activate_time) {
-		popup.popup(null, null, null, button, activate_time);
-	}
-	
-	private bool show_popup_menu(Gdk.EventButton event) {
-		if((event.type == Gdk.EventType.BUTTON_PRESS) && (event.button == 3)) {
-			popup.popup(null, null, null, event.button, event.time);
-			return true;
-		}
-		
-		return false;
 	}
 	
 	private void style_update(Style? prevStyle) {
