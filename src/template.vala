@@ -40,6 +40,8 @@ public class Template : Object {
 	private Regex urls;
 	private Regex clear_notice;
 	
+	public signal void emit_for_refresh();
+	
 	public Template(Prefs _prefs, SystemStyle _gtk_style, Cache _cache) {
 		prefs = _prefs;
 		gtk_style = _gtk_style;
@@ -53,6 +55,10 @@ public class Template : Object {
 		
 		// characters must be cleared to know direction of text
 		clear_notice = new Regex("[: \n\t\r♻♺]+|@[^ ]+");
+		
+		prefs.roundedAvatarsChanged.connect(() => emit_for_refresh());
+		prefs.opacityTweetsChanged.connect(() => emit_for_refresh());
+		prefs.rtlChanged.connect(() => emit_for_refresh());
 	}
 	
 	private string generate(string content) {

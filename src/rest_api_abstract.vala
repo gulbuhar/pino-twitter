@@ -91,8 +91,6 @@ public abstract class RestAPIAbstract : Object {
 		HashTable<string, string> params = new HashTable<string, string>(null, null),
 		int retry = 3) throws RestError {
 		
-		warning(auth_data.login);
-		
 		if(method == "GET") { //set get-parameters
 			string query = "";
 		
