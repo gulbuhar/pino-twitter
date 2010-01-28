@@ -55,6 +55,14 @@ public class TimelineList : TimelineListAbstract {
 		icon_fresh = _icon_fresh;
 	}
 	
+	public void set_auth(AuthData auth_data) {
+		api.set_auth(auth_data);
+		
+		lst.clear();
+		last_focused = 0;
+		update();
+	}
+	
 	public override void show_smart() {
 		show();
 		
