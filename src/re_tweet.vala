@@ -31,7 +31,7 @@ public class ReTweet : VBox {
 	private State state;
 	
 	private RestAPIRe api;
-	private Image userpic;
+	private UserpicImage userpic;
 	
 	private TextView entry;
 	public TextView text_entry {
@@ -56,7 +56,7 @@ public class ReTweet : VBox {
 	
 	public signal void status_updated(Status status);
 	
-	public ReTweet(Window _parent, Prefs _prefs) {
+	public ReTweet(Window _parent, Prefs _prefs, Cache cache) {
 		parent = _parent;
 		prefs = _prefs;
 		
@@ -89,8 +89,9 @@ public class ReTweet : VBox {
         scroll.set_policy(PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);
         scroll.add(entry);
 		
-		userpic = new Image();
+		userpic = new UserpicImage(cache, api);
 		userpic.set_size_request(48, 48);
+		userpic.update();
 		
 		var hbox = new HBox(false, 1);
 		hbox.pack_start(scroll, true, true, 0);
@@ -105,6 +106,11 @@ public class ReTweet : VBox {
 		pack_start(sep, false, false, 0);
 		pack_start(l_box, false, false, 0);
 		pack_start(frame, false, true, 0);
+	}
+	
+	public void set_auth(AuthData auth_data) {
+		api.set_auth(auth_data);
+		userpic.update();
 	}
 	
 	public void set_screen_name(string user_name) {

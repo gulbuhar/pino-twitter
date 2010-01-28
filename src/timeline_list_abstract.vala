@@ -119,10 +119,6 @@ public abstract class TimelineListAbstract : HBox {
 		start_screen();
 	}
 	
-	public void set_auth(AuthData auth_data) {
-		api.set_auth(auth_data);
-	}
-	
 	public virtual void show_smart() {
 		show();
 		last_focused = (int)lst.get(0).created_at.mktime();

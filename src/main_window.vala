@@ -58,10 +58,7 @@ public class MainWindow : Window {
 	private Prefs prefs;
 	private SmartTimer timer;
 	
-	private int last_time_friends = 0;
-	private int last_focused_friends = -1;
-	private int last_time_mentions = 0;
-	private int last_focused_mentions = -1;
+	private AuthData auth_data;
 	
 	private bool focused;
 	
@@ -71,6 +68,8 @@ public class MainWindow : Window {
 		
 		//getting settings
 		prefs = new Prefs();
+		
+		auth_data = { prefs.login, prefs.password };
 		
 		set_default_size (prefs.width, prefs.height);
 		set_size_request(350, 300);
@@ -108,34 +107,24 @@ public class MainWindow : Window {
 			return true;
 		});
 		
-		//tray setup
-		tray = new TrayIcon(logo, logo_fresh);
-		/*tray.popup = popup;
-		tray.activate.connect(() => {
-			if(visible)
-				this.hide();
-			else
-				this.show();
-		});*/
-		
 		cache = new Cache();
 		//template setup
 		template = new Template(prefs, gtk_style, cache);
 		
 		//home timeline
-		home = new TimelineList(this, {prefs.login, prefs.password}, TimelineType.HOME,
+		home = new TimelineList(this, auth_data, TimelineType.HOME,
 			new TwitterUrls(), template, 20, Icon.new_for_string(Config.TIMELINE_PATH),
 			Icon.new_for_string(Config.TIMELINE_FRESH_PATH), "HomeAct", _("Home timeline"),
 			_("Show your home timeline"), true);
 		
 		//mentions
-		mentions = new TimelineList(this, {prefs.login, prefs.password}, TimelineType.MENTIONS,
+		mentions = new TimelineList(this, auth_data, TimelineType.MENTIONS,
 			new TwitterUrls(), template, 20, Icon.new_for_string(Config.MENTIONS_PATH),
 			Icon.new_for_string(Config.MENTIONS_FRESH_PATH), "MentionsAct", _("Mentions"),
 			_("Show mentions"));
 		
 		//mentions
-		direct = new TimelineDirectList(this, {prefs.login, prefs.password}, new TwitterUrls(),
+		direct = new TimelineDirectList(this, auth_data, new TwitterUrls(),
 			template, 20, Icon.new_for_string(Config.DIRECT_PATH),
 			Icon.new_for_string(Config.DIRECT_FRESH_PATH), "DirectAct", _("Direct messages"),
 			_("Show direct messages"));
@@ -154,8 +143,12 @@ public class MainWindow : Window {
 		
 		menu_init();
 		
+		//tray setup
+		tray = new TrayIcon(this, logo, logo_fresh);
+		tray.popup = popup;
+		
 		//retweet widget
-		re_tweet = new ReTweet(this, prefs);
+		re_tweet = new ReTweet(this, prefs, cache);
 		re_tweet.status_updated.connect((status) => {
 			home.insert_status(status);
 		});
@@ -205,8 +198,6 @@ public class MainWindow : Window {
 		vbox.pack_end(re_tweet, false, false, 0);
 		
 		this.add(vbox);
-		
-		//get_my_userpic();
 		
 		//show window
 		show_all();
@@ -499,41 +490,40 @@ public class MainWindow : Window {
 	
 	private void run_prefs() {
 		var pref_dialog = new PrefDialog(prefs, this);
-		/*
+		
 		pref_dialog.delete_cache.connect(() => {
-			template.cache.delete_cache();
+			cache.delete_cache();
 		});
 		
 		pref_dialog.destroy.connect(() => {
 			//timer interval update
 			timer.set_interval(prefs.updateInterval * 60);
 			
-			var old_login = twee.login_public;
+			var old_login = auth_data.login;
+			
+			auth_data = { prefs.login, prefs.password };
 			
 			//auth data update
-			twee.set_auth(prefs.login, prefs.password);
+			//twee.set_auth(prefs.login, prefs.password);
 			
 			prefs.write();
 			
 			if(prefs.is_new || old_login != prefs.login) { //if new settings or changing login
-				twee.friends.clear();
-				twee.mentions.clear();
+				updateAct.set_sensitive(false);
+				statusbar.set_status(StatusbarSmart.StatusType.UPDATING);
 				
-				last_time_friends = 0;
-				last_focused_friends = -1;
-				last_time_mentions = 0;
-				last_focused_mentions = -1;
+				re_tweet.set_auth(auth_data);
+				home.set_auth(auth_data);
+				mentions.set_auth(auth_data);
+				direct.set_auth(auth_data);
 				
-				//refreshing userpic
-				prefs.userpicUrl = "";
-				get_my_userpic();
-				
-				refresh_action();
+				statusbar.set_status(StatusbarSmart.StatusType.FINISH_OK);
+				updateAct.set_sensitive(true);
 			}
 			
 			prefs.is_new = false;
 		});
-		*/
+		
 		pref_dialog.set_transient_for(this);
 		pref_dialog.show();
 	}
