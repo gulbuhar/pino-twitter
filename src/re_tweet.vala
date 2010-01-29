@@ -49,12 +49,15 @@ public class ReTweet : VBox {
 	private Label label;
 	public Label user_label;
 	
+	private DmEntry direct_entry;
+	private ToolButton close_btn;
 	private Window parent;
 	private Prefs prefs;
 	
 	private string reply_id = "";
 	
 	public signal void status_updated(Status status);
+	public signal void dm_sent();
 	
 	public ReTweet(Window _parent, Prefs _prefs, Cache cache) {
 		parent = _parent;
@@ -71,11 +74,30 @@ public class ReTweet : VBox {
 		status_icon = new Image();
 		user_label = new Label(_("New status:"));
 		
+		direct_entry = new DmEntry(api);
+		/*direct_entry.set_icon_from_stock(EntryIconPosition.SECONDARY, "gtk-refresh");
+		direct_entry.set_icon_tooltip_text(EntryIconPosition.SECONDARY, _("Check"));
+		direct_entry.icon_press.connect((pos, event) => get_friendship_thread());
+		direct_entry.set_size_request(100, -1);*/
+		
 		label = new Label("<b>140</b>");
 		label.set_use_markup(true);
 		
+		Image close_img = new Image();
+		close_img.set_from_stock("gtk-close", IconSize.MENU);
+		close_img.set_tooltip_text(_("Hide"));
+		var event_close = new EventBox();
+		event_close.add(close_img);
+		event_close.set_events(Gdk.EventMask.BUTTON_PRESS_MASK);
+		event_close.button_press_event.connect((event) => {
+			hide();
+			return false;
+		});
+		
 		l_box.pack_start(status_icon, false, false, 2);
 		l_box.pack_start(user_label, false, false, 2);
+		l_box.pack_start(direct_entry, false, false, 2);
+		l_box.pack_end(event_close, false, false, 2);
 		l_box.pack_end(label, false, false, 2);
 		
 		entry = new TextView();
@@ -138,9 +160,11 @@ public class ReTweet : VBox {
 	public void set_state_new() {
 		state = State.NEW;
 		
+		direct_entry.hide();
 		clear();
 		show();
 		status_icon.set_from_stock(STOCK_EDIT, IconSize.SMALL_TOOLBAR);
+		user_label.set_text(_("New status:"));
 		parent.set_focus(text_entry);
 	}
 	
@@ -148,6 +172,7 @@ public class ReTweet : VBox {
 		state = State.REPLY;
 		reply_id = status.id;
 		
+		direct_entry.hide();
 		clear();
 		show();
 		
@@ -161,18 +186,25 @@ public class ReTweet : VBox {
 	public void set_state_directreply(string screen_name) {
 		state = State.DIRECT_REPLY;
 		
-		clear();
-		show();
+		direct_entry.show();
+		direct_entry.set_text(screen_name);
 		
 		status_icon.set_from_file(Config.DIRECT_REPLY_PATH);
-		user_label.set_text(_("Direct message to") + " <b>%s</b>:".printf(screen_name));
+		user_label.set_text(_("Direct message to"));
 		user_label.set_use_markup(true);
+		
 		parent.set_focus(text_entry);
+		
+		direct_entry.check();
+		
+		clear();
+		show();
 	}
 	
 	public void set_state_retweet(Status status) {
 		state = State.RETWEET;
 		
+		direct_entry.hide();
 		clear();
 		show();
 		
@@ -190,7 +222,7 @@ public class ReTweet : VBox {
 			
 			case ReTweet.Style.VIA:
 				var msg = status.text;
-				var via = " via @%s".printf(status.user_screen_name);
+				var via = " (via @%s)".printf(status.user_screen_name);
 				
 				if(msg.length > (140 - via.length))
 					msg = msg.substring(0, 140 - via.length);
@@ -244,6 +276,10 @@ public class ReTweet : VBox {
 			case State.RETWEET:
 				send_new();
 				break;
+			
+			case State.DIRECT_REPLY:
+				send_dm();
+				break;
 		}
 	}
 	
@@ -260,6 +296,29 @@ public class ReTweet : VBox {
 		}
 		
 		status_updated(status); //send_signal
+		
+		hide();
+		set_sensitive(true);
+	}
+	
+	private void send_dm() {
+		set_sensitive(false);
+		
+		try {
+			api.send_dm(direct_entry.text, text);
+		} catch(RestError e) {
+			var message_dialog = new MessageDialog(parent,
+			Gtk.DialogFlags.DESTROY_WITH_PARENT | Gtk.DialogFlags.MODAL,
+			Gtk.MessageType.INFO, Gtk.ButtonsType.OK,
+			(direct_entry.warning_text));
+			
+			message_dialog.run();
+			message_dialog.destroy();
+			set_sensitive(true);
+			return;
+		}
+		
+		dm_sent(); //send_signal
 		
 		hide();
 		set_sensitive(true);

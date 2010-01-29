@@ -326,9 +326,9 @@ public class MainWindow : Window {
 		actGroup.add_action(editMenu);
 		actGroup.add_action_with_accel(prefAct, "<Ctrl>P");
 		actGroup.add_action(viewMenu);
-		actGroup.add_action(home.act);
-		actGroup.add_action(mentions.act);
-		actGroup.add_action(direct.act);
+		actGroup.add_action_with_accel(home.act, "<Ctrl>1");
+		actGroup.add_action_with_accel(mentions.act, "<Ctrl>2");
+		actGroup.add_action_with_accel(direct.act, "<Ctrl>3");
 		//actGroup.add_action(showTimelineAct);
 		//actGroup.add_action(showMentionsAct);
 		actGroup.add_action_with_accel(menuAct, "<Ctrl>M");
