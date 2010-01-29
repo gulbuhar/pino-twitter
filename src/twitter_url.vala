@@ -16,6 +16,10 @@ public class TwitterUrls : Object, IRestUrls {
 		get { return "http://twitter.com/direct_messages/destroy/%s.xml"; }
 	}
 	
+	public string direct_new {
+		get { return "http://twitter.com/direct_messages/new.xml"; }
+	}
+	
 	public string mentions {
 		get { return "http://twitter.com/statuses/mentions.xml"; }
 	}
@@ -26,5 +30,9 @@ public class TwitterUrls : Object, IRestUrls {
 		
 	public string user {
 		get { return "http://twitter.com/users/show/%s.xml"; }
+	}
+	
+	public string friendship {
+		get { return "http://twitter.com/friendships/show.xml"; }
 	}
 }

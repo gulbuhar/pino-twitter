@@ -89,7 +89,7 @@ public abstract class RestAPIAbstract : Object {
 	
 	protected string make_request(owned string req_url, string method,
 		HashTable<string, string> params = new HashTable<string, string>(null, null),
-		int retry = 3) throws RestError {
+		bool async = true, int retry = 3) throws RestError {
 		
 		if(method == "GET") { //set get-parameters
 			string query = "";
@@ -117,7 +117,13 @@ public abstract class RestAPIAbstract : Object {
 		//send signal about all requests
         request("%s: %s".printf(method, req_url));
         
-        SessionAsync session = new SessionAsync();
+        Session session;
+        
+		if(async)
+			session = new SessionAsync();
+		else
+			session = new SessionSync();
+		
         Message message = new Message(method, req_url);
         message.set_http_version (HTTPVersion.1_1);
         

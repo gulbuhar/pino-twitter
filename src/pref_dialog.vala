@@ -61,7 +61,7 @@ public class PrefDialog : Dialog {
 		retweetStyle = new ComboBox.text();
 		retweetStyle.append_text("RT @username: message");
 		retweetStyle.append_text("♺ @username: message");
-		retweetStyle.append_text("message via @username");
+		retweetStyle.append_text("message (via @username)");
 		
 		//delete cache
 		deleteCache = new Button.with_label(_("Clear now"));
