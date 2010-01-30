@@ -44,6 +44,18 @@ public class Prefs : Object {
 		set{ _showMentionsNotify = value; }
 	}
 	
+	private bool _showDirectNotify = true;
+	public bool showDirectNotify {
+		get{ return _showDirectNotify; }
+		set{ _showDirectNotify = value; }
+	}
+	
+	private bool _showFullNotify = true;
+	public bool showFullNotify {
+		get{ return _showFullNotify; }
+		set{ _showFullNotify = value; }
+	}
+	
 	private string _retweetStyle = "UNI";
 	public ReTweet.Style retweetStyle {
 		get{
@@ -251,6 +263,14 @@ public class Prefs : Object {
 					_showMentionsNotify = iter->get_content().to_bool();
 					break;
 				
+				case "showDirectNotify":
+					_showDirectNotify = iter->get_content().to_bool();
+					break;
+				
+				case "showFullNotify":
+					_showFullNotify = iter->get_content().to_bool();
+					break;
+				
 				case "retweetStyle":
 					_retweetStyle = iter->get_content();
 					break;
@@ -329,6 +349,10 @@ public class Prefs : Object {
         root->new_text_child(ns, "showTimelineNotify", _showTimelineNotify.to_string());
         root->add_content("\n");
         root->new_text_child(ns, "showMentionsNotify", _showMentionsNotify.to_string());
+        root->add_content("\n");
+        root->new_text_child(ns, "showDirectNotify", _showDirectNotify.to_string());
+        root->add_content("\n");
+        root->new_text_child(ns, "showFullNotify", _showFullNotify.to_string());
         root->add_content("\n");
         root->new_text_child(ns, "retweetStyle", _retweetStyle);
         root->add_content("\n");

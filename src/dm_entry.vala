@@ -39,7 +39,7 @@ public class DmEntry : Entry {
 	}
 	
 	public void check() {
-		if (!Thread.supported()) {
+		/*if (!Thread.supported()) {
 			error("Cannot run without threads.");
 			return;
 		}
@@ -50,9 +50,28 @@ public class DmEntry : Entry {
 		} catch(ThreadError e) {
 			warning("Error: %s", e.message);
 			return;
-        }
+        }*/
+        
+        set_icon_from_stock(EntryIconPosition.SECONDARY, "gtk-refresh");
+		set_tooltip_text(_("Checking..."));
+		
+		bool answer = false;
+		
+		try {
+			answer = api.check_friendship(text);
+		} catch(RestError e) {
+			set_warning();
+			return;
+		}
+		
+		if(answer) {
+			set_ok();
+		} else {
+			set_warning();
+		}
 	}
 	
+	/*
 	private void* get_friendship() {
 		set_icon_from_stock(EntryIconPosition.SECONDARY, "gtk-refresh");
 		set_tooltip_text(_("Checking..."));
@@ -74,4 +93,5 @@ public class DmEntry : Entry {
 		
 		return null;
 	}
+	*/
 }

@@ -75,18 +75,21 @@ public class TimelineList : TimelineListAbstract {
 	}
 	
 	/* get new statuses and update the list */
-	public virtual void update() {
-		ArrayList<RestAPI.Status> result;
+	public virtual ArrayList<Status> update() {
+		ArrayList<Status> result = null;
 		string since_id = "";
+		bool first_time = true;
 		
-		if(lst.size > 0)
+		if(lst.size > 0) {
 			since_id = lst.get(0).id;
+			first_time = false;
+		}
 		
 		try {
 			result = api.get_timeline(_items_count, since_id);
 		} catch(RestError e) {
 			updating_error(e.message);
-			return;
+			return result;
 		}
 		
 		if(result.size > 0) { //if we get some statuses
@@ -99,7 +102,7 @@ public class TimelineList : TimelineListAbstract {
 				lst.add_all(result);
 			} else {
 				int i = 0;
-				foreach(RestAPI.Status status in result) { //insert statuses at the start of the list
+				foreach(Status status in result) { //insert statuses at the start of the list
 					lst.insert(i, status);
 					i++;
 				}
@@ -117,6 +120,11 @@ public class TimelineList : TimelineListAbstract {
 		}
 		
 		finish_update(); //send signal
+		
+		if(first_time)
+			result.clear();
+		
+		return result;
 	}
 	
 	/* insert new status */

@@ -195,10 +195,10 @@ public class ReTweet : VBox {
 		
 		parent.set_focus(text_entry);
 		
-		direct_entry.check();
-		
 		clear();
 		show();
+		
+		direct_entry.check();
 	}
 	
 	public void set_state_retweet(Status status) {
