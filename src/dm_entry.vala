@@ -17,7 +17,7 @@ public class DmEntry : Entry {
 	public DmEntry(RestAPIRe _api) {
 		api = _api;
 		
-		set_icon_from_stock(EntryIconPosition.SECONDARY, "gtk-refresh");
+		set_icon_from_stock(EntryIconPosition.SECONDARY, "gtk-dialog-warning");
 		set_icon_tooltip_text(EntryIconPosition.SECONDARY, _("Check"));
 		icon_press.connect((pos, event) => {
 			if(event.button.button == 1)

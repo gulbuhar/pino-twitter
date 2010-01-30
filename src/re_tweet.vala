@@ -193,12 +193,13 @@ public class ReTweet : VBox {
 		user_label.set_text(_("Direct message to"));
 		user_label.set_use_markup(true);
 		
-		parent.set_focus(text_entry);
-		
 		clear();
 		show();
 		
-		direct_entry.check();
+		if(screen_name != "") { // if new DM, not a "reply"
+			direct_entry.check();
+			parent.set_focus(text_entry);
+		} else parent.set_focus(direct_entry);
 	}
 	
 	public void set_state_retweet(Status status) {

@@ -58,8 +58,10 @@ public class Popups : Object {
 		
 		if(prefs.showTimelineNotify) {
 			foreach(Status status in home) {
-				show_popup(status);
-				ids.add(status.id);
+				if(status.user_screen_name != prefs.login) {
+					show_popup(status);
+					ids.add(status.id);
+				}
 			}
 		}
 		
