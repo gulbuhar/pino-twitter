@@ -235,9 +235,18 @@ public class MainWindow : Window {
 		
 		//file menu
 		var fileMenu = new Action("FileMenu", _("Twitter"), null, null);
+		
 		var createAct = new Action("FileCreate", _("New status"),
 			_("Create new status"), STOCK_EDIT);
 		createAct.activate.connect(() => { re_tweet.set_state_new(); });
+		
+		var createDirectAct = new Action("FileCreateDirect", _("New direct message"),
+			_("Create new direct message"), null);
+		createDirectAct.set_gicon(Icon.new_for_string(Config.DIRECT_REPLY_PATH));
+		createDirectAct.activate.connect(() => {
+			re_tweet.set_state_directreply("");
+		});
+		
 		updateAct = new Action("FileUpdate", _("Update timeline"),
 			null, STOCK_REFRESH);
 		updateAct.activate.connect(refresh_action);
@@ -321,6 +330,7 @@ public class MainWindow : Window {
 		
 		actGroup.add_action(fileMenu);
 		actGroup.add_action_with_accel(createAct, "<Ctrl>N");
+		actGroup.add_action_with_accel(createDirectAct, "<Ctrl>D");
 		actGroup.add_action_with_accel(updateAct, "<Ctrl>R");
 		actGroup.add_action_with_accel(quitAct, "<Ctrl>Q");
 		actGroup.add_action(editMenu);
@@ -345,6 +355,7 @@ public class MainWindow : Window {
 			<menubar name="MenuBar">
 				<menu action="FileMenu">
 					<menuitem action="FileCreate" />
+					<menuitem action="FileCreateDirect" />
 					<menuitem action="FileUpdate" />
 					<separator />
 					<menuitem action="FileQuit" />
@@ -366,6 +377,7 @@ public class MainWindow : Window {
 			</menubar>
 			<popup name="MenuPopup">
 				<menuitem action="FileCreate" />
+				<menuitem action="FileCreateDirect" />
 				<menuitem action="FileUpdate" />
 				<separator />
 				<menuitem action="EditPref" />
