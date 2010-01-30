@@ -24,19 +24,21 @@ public class TimelineDirectList : TimelineList {
 	}
 	
 	/* get new direct messages and update the list */
-	public override void update() {
-		ArrayList<RestAPI.Status> result;
+	public override ArrayList<Status> update() {
+		ArrayList<RestAPI.Status> result = null;
 		string since_id = "";
 		bool first_time = true;
 		
-		if(lst.size > 0)
+		if(lst.size > 0) {
 			since_id = lst.get(0).id;
+			first_time = false;
+		}
 		
 		try {
 			result = api.get_direct(_items_count, since_id);
 		} catch(RestError e) {
 			updating_error(e.message);
-			return;
+			return result;
 		}
 		
 		if(result.size > 0) { //if we get some statuses
@@ -49,7 +51,7 @@ public class TimelineDirectList : TimelineList {
 				lst.add_all(result);
 			} else {
 				int i = 0;
-				foreach(RestAPI.Status status in result) { //insert statuses at the start of the list
+				foreach(Status status in result) { //insert statuses at the start of the list
 					lst.insert(i, status);
 					i++;
 				}
@@ -67,6 +69,11 @@ public class TimelineDirectList : TimelineList {
 		}
 		
 		finish_update(); //send signal
+		
+		if(first_time)
+			result.clear();
+		
+		return result;
 	}
 	
 	/* get older direct messages */

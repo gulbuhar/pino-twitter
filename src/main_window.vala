@@ -21,8 +21,6 @@
 
 using Gtk;
 using WebKit;
-//using Sexy;
-using Notify;
 using RestAPI;
 
 public class MainWindow : Window {
@@ -59,6 +57,8 @@ public class MainWindow : Window {
 	private SmartTimer timer;
 	
 	private AuthData auth_data;
+	
+	private Popups notify;
 	
 	private bool focused;
 	
@@ -210,13 +210,13 @@ public class MainWindow : Window {
 		if(prefs.is_new || !prefs.rememberPass)
 			run_prefs();
 		
+		//notification popups
+		notify = new Popups(prefs, cache, logo);
+		
 		//searchEntry.hide();
 		re_tweet.hide();
 		mentions.hide();
 		direct.hide();
-		
-		//libnotify init
-		Notify.init(Config.APPNAME);
 		
 		//hide menubar and toolbar if needed
 		if(!prefs.menuShow)
@@ -410,11 +410,14 @@ public class MainWindow : Window {
 		
 		statusbar.set_status(StatusbarSmart.StatusType.UPDATING);
 		
-		home.update();
-		mentions.update();
-		direct.update();
+		var home_list = home.update();
+		var mentions_list = mentions.update();
+		var direct_list = direct.update();
 		
 		statusbar.set_status(StatusbarSmart.StatusType.FINISH_OK);
+		
+		notify.start(home_list, mentions_list, direct_list);
+		
 		/*
 		Gee.ArrayList<string> exclude = new Gee.ArrayList<string>();
 		

@@ -160,7 +160,7 @@ public class RestAPIRe : RestAPIAbstract {
 		map.insert("source_screen_name", auth_data.login);
 		map.insert("target_screen_name", screen_name);
 		
-		string data = make_request(req_url, "GET", map, false);
+		string data = make_request(req_url, "GET", map);
 
 		return parse_friendship(data);
 	}
