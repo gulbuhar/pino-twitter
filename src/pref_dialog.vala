@@ -25,6 +25,7 @@ public class PrefDialog : Dialog {
 	
 	private Notebook tabs;
 	private SpinButton updateInterval;
+	private SpinButton numberStatuses;
 	private CheckButton showTimelineNotify;
 	private CheckButton showMentionsNotify;
 	private CheckButton showDirectNotify;
@@ -54,8 +55,12 @@ public class PrefDialog : Dialog {
 		var main_box = new VBox(false, 10);
 		
 		//update interval
-		var updateLabel = new Label(_("Update interval"));
+		var updateLabel = new Label(_("Update interval (in minutes)"));
 		updateInterval = new SpinButton.with_range(1, 60, 1);
+		
+		//default number of statuses in lists
+		var numberStatusesLabel = new Label(_("Default number of statuses"));
+		numberStatuses = new SpinButton.with_range(5, 100, 1);
 		
 		//show notifications
 		showTimelineNotify = new CheckButton.with_label(_("For timeline"));
@@ -83,8 +88,9 @@ public class PrefDialog : Dialog {
 			delete_cache();
 		});
 		
-		var table_int = new HigTable(_("Time interval"));
+		var table_int = new HigTable(_("REST API options"));
 		table_int.add_two_widgets(updateLabel, updateInterval);
+		table_int.add_two_widgets(numberStatusesLabel, numberStatuses);
 		
 		var table_not = new HigTable(_("Notification"));
 		table_not.add_widget(showTimelineNotify);
@@ -226,6 +232,7 @@ public class PrefDialog : Dialog {
 	
 	private void setup_prefs(Prefs prefs) {
 		updateInterval.value = prefs.updateInterval;
+		numberStatuses.value = prefs.numberStatuses;
 		showTimelineNotify.active = prefs.showTimelineNotify;
 		showMentionsNotify.active = prefs.showMentionsNotify;
 		
@@ -247,6 +254,10 @@ public class PrefDialog : Dialog {
 	private void setup_prefs_signals(Prefs prefs) {
 		updateInterval.value_changed.connect(() => {
 			prefs.updateInterval = (int)updateInterval.value;
+		});
+		
+		numberStatuses.value_changed.connect(() => {
+			prefs.numberStatuses = (int)numberStatuses.value;
 		});
 		
 		roundedAvatars.toggled.connect(() => {

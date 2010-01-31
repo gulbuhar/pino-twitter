@@ -32,6 +32,12 @@ public class Prefs : Object {
 		set{ _updateInterval = value; }
 	}
 	
+	private int _numberStatuses = 20;
+	public int numberStatuses {
+		get{ return _numberStatuses; }
+		set{ _numberStatuses = value; }
+	}
+	
 	private bool _showTimelineNotify = true;
 	public bool showTimelineNotify {
 		get{ return _showTimelineNotify; }
@@ -187,12 +193,6 @@ public class Prefs : Object {
 		set{ _toolbarShow = value; }
 	}
 	
-	private string _userpicUrl = "";
-	public string userpicUrl {
-		get{ return _userpicUrl; }
-		set{ _userpicUrl = value; }
-	}
-	
 	public enum LoadStatus { OK, EMPTY, ERROR }
 	public enum WriteStatus { OK, ERROR }
 	
@@ -253,6 +253,10 @@ public class Prefs : Object {
 			switch(iter->name) {
 				case "updateInterval":
 					_updateInterval = iter->get_content().to_int();
+					break;
+				
+				case "numberStatuses":
+					_numberStatuses = iter->get_content().to_int();
 					break;
 				
 				case "showTimelineNotify":
@@ -324,10 +328,6 @@ public class Prefs : Object {
 				case "toolbarShow":
 					_toolbarShow = iter->get_content().to_bool();
 					break;
-				
-				case "userpicUrl":
-					_userpicUrl = iter->get_content();
-					break;
 			}
 		}
 		
@@ -345,6 +345,8 @@ public class Prefs : Object {
         //creating properties
         root->add_content("\n");
         root->new_text_child(ns, "updateInterval", _updateInterval.to_string());
+        root->add_content("\n");
+        root->new_text_child(ns, "numberStatuses", _numberStatuses.to_string());
         root->add_content("\n");
         root->new_text_child(ns, "showTimelineNotify", _showTimelineNotify.to_string());
         root->add_content("\n");
@@ -382,8 +384,6 @@ public class Prefs : Object {
         root->new_text_child(ns, "menuShow", _menuShow.to_string());
         root->add_content("\n");
         root->new_text_child(ns, "toolbarShow", _toolbarShow.to_string());
-        root->add_content("\n");
-        root->new_text_child(ns, "userpicUrl", _userpicUrl);
         root->add_content("\n");
 		
 		//write this document to the pref file

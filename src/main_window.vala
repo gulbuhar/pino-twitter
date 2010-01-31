@@ -113,19 +113,22 @@ public class MainWindow : Window {
 		
 		//home timeline
 		home = new TimelineList(this, auth_data, TimelineType.HOME,
-			new TwitterUrls(), template, 20, Icon.new_for_string(Config.TIMELINE_PATH),
+			new TwitterUrls(), template, prefs.numberStatuses,
+			Icon.new_for_string(Config.TIMELINE_PATH),
 			Icon.new_for_string(Config.TIMELINE_FRESH_PATH), "HomeAct", _("Home timeline"),
 			_("Show your home timeline"), true);
 		
 		//mentions
 		mentions = new TimelineList(this, auth_data, TimelineType.MENTIONS,
-			new TwitterUrls(), template, 20, Icon.new_for_string(Config.MENTIONS_PATH),
+			new TwitterUrls(), template, prefs.numberStatuses,
+			Icon.new_for_string(Config.MENTIONS_PATH),
 			Icon.new_for_string(Config.MENTIONS_FRESH_PATH), "MentionsAct", _("Mentions"),
 			_("Show mentions"));
 		
 		//mentions
 		direct = new TimelineDirectList(this, auth_data, new TwitterUrls(),
-			template, 20, Icon.new_for_string(Config.DIRECT_PATH),
+			template, prefs.numberStatuses,
+			Icon.new_for_string(Config.DIRECT_PATH),
 			Icon.new_for_string(Config.DIRECT_FRESH_PATH), "DirectAct", _("Direct messages"),
 			_("Show direct messages"));
 		
@@ -533,6 +536,10 @@ public class MainWindow : Window {
 				home.set_auth(auth_data);
 				mentions.set_auth(auth_data);
 				direct.set_auth(auth_data);
+				
+				home.items_count = prefs.numberStatuses;
+				mentions.items_count = prefs.numberStatuses;
+				direct.items_count = prefs.numberStatuses;
 				
 				statusbar.set_status(StatusbarSmart.StatusType.FINISH_OK);
 				updateAct.set_sensitive(true);
