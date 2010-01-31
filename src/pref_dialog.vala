@@ -25,8 +25,14 @@ public class PrefDialog : Dialog {
 	
 	private Notebook tabs;
 	private SpinButton updateInterval;
+	private SpinButton numberStatuses;
 	private CheckButton showTimelineNotify;
 	private CheckButton showMentionsNotify;
+	private CheckButton showDirectNotify;
+	
+	private RadioButton showFullNotify;
+	private RadioButton showLowNotify;
+	
 	private ComboBox retweetStyle;
 	private Button deleteCache;
 	private CheckButton roundedAvatars;
@@ -49,19 +55,30 @@ public class PrefDialog : Dialog {
 		var main_box = new VBox(false, 10);
 		
 		//update interval
-		var updateLabel = new Label(_("Update interval"));
+		var updateLabel = new Label(_("Update interval (in minutes)"));
 		updateInterval = new SpinButton.with_range(1, 60, 1);
+		
+		//default number of statuses in lists
+		var numberStatusesLabel = new Label(_("Default number of statuses"));
+		numberStatuses = new SpinButton.with_range(5, 100, 1);
 		
 		//show notifications
 		showTimelineNotify = new CheckButton.with_label(_("For timeline"));
 		showMentionsNotify = new CheckButton.with_label(_("For mentions"));
+		showDirectNotify = new CheckButton.with_label(_("For direct messages"));
+		
+		weak SList<weak Gtk.RadioButton> group_not  = null;
+		showFullNotify = new RadioButton.with_label(group_not,
+			_("Show notification for each status"));
+		showLowNotify = new RadioButton.with_label(showFullNotify.get_group(),
+			_("Show overall notification"));
 		
 		//retweet style
 		var reLabel = new Label(_("Retweets style"));
 		retweetStyle = new ComboBox.text();
 		retweetStyle.append_text("RT @username: message");
 		retweetStyle.append_text("♺ @username: message");
-		retweetStyle.append_text("message via @username");
+		retweetStyle.append_text("message (via @username)");
 		
 		//delete cache
 		deleteCache = new Button.with_label(_("Clear now"));
@@ -71,12 +88,15 @@ public class PrefDialog : Dialog {
 			delete_cache();
 		});
 		
-		var table_int = new HigTable(_("Time interval"));
+		var table_int = new HigTable(_("REST API options"));
 		table_int.add_two_widgets(updateLabel, updateInterval);
+		table_int.add_two_widgets(numberStatusesLabel, numberStatuses);
 		
 		var table_not = new HigTable(_("Notification"));
 		table_not.add_widget(showTimelineNotify);
 		table_not.add_widget(showMentionsNotify);
+		table_not.add_widget(showDirectNotify);
+		table_not.add_two_widgets(showFullNotify, showLowNotify);
 		
 		var table_re = new HigTable(_("Retweets"));
 		table_re.add_two_widgets(reLabel, retweetStyle);
@@ -212,8 +232,16 @@ public class PrefDialog : Dialog {
 	
 	private void setup_prefs(Prefs prefs) {
 		updateInterval.value = prefs.updateInterval;
+		numberStatuses.value = prefs.numberStatuses;
 		showTimelineNotify.active = prefs.showTimelineNotify;
 		showMentionsNotify.active = prefs.showMentionsNotify;
+		
+		if(prefs.showFullNotify)
+			showFullNotify.active = true;
+		else
+			showLowNotify.active = true;
+		
+		showDirectNotify.active = prefs.showDirectNotify;
 		setup_retweet(prefs);
 		roundedAvatars.active = prefs.roundedAvatars;
 		opacityTweets.set_value((int)(prefs.opacityTweets.to_double() * 100));
@@ -226,6 +254,10 @@ public class PrefDialog : Dialog {
 	private void setup_prefs_signals(Prefs prefs) {
 		updateInterval.value_changed.connect(() => {
 			prefs.updateInterval = (int)updateInterval.value;
+		});
+		
+		numberStatuses.value_changed.connect(() => {
+			prefs.numberStatuses = (int)numberStatuses.value;
 		});
 		
 		roundedAvatars.toggled.connect(() => {
@@ -259,6 +291,14 @@ public class PrefDialog : Dialog {
 		
 		showMentionsNotify.toggled.connect(() => {
 			prefs.showMentionsNotify = showMentionsNotify.active;
+		});
+		
+		showDirectNotify.toggled.connect(() => {
+			prefs.showDirectNotify = showDirectNotify.active;
+		});
+		
+		showFullNotify.toggled.connect(() => {
+			prefs.showFullNotify = showFullNotify.active;
 		});
 		
 		retweetStyle.changed.connect(() => {
