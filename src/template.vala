@@ -101,6 +101,7 @@ public class Template : Object {
 		
 		var reply_text = _("Reply");
 		var delete_text = _("Delete");
+		var dm_text = _("Direct message");
 		
 		//rounded userpics
 		string rounded_str = "";
@@ -136,6 +137,7 @@ public class Template : Object {
 				map["rtl_class"] = "";
 			
 			map["delete_text"] = delete_text;
+			map["dm_text"] = dm_text;
 			map["delete"] = Config.DELETE_PATH;
 			map["direct_reply"] = Config.DIRECT_REPLY_PATH;
 			content += render(status_direct_template, map);
@@ -153,6 +155,7 @@ public class Template : Object {
 		var reply_text = _("Reply");
 		var delete_text = _("Delete");
 		var retweet_text = _("Retweet");
+		var dm_text = _("Direct message");
 		
 		//rounded userpics
 		string rounded_str = "";
@@ -232,6 +235,7 @@ public class Template : Object {
 				map["retweet_text"] = retweet_text;
 				map["reply_text"] = reply_text;
 				map["direct_reply"] = Config.DIRECT_REPLY_PATH;
+				map["dm_text"] = dm_text;
 				map["reply"] = Config.REPLY_PATH;
 				map["re_tweet"] = Config.RETWEET_PATH;
 				content += render(status_template, map);
