@@ -61,6 +61,11 @@ public class Template : Object {
 		prefs.rtlChanged.connect(() => emit_for_refresh());
 	}
 	
+	public void refresh_gtk_style(SystemStyle _gtk_style) {
+		gtk_style = _gtk_style;
+		emit_for_refresh();
+	}
+	
 	private string generate(string content) {
 		//rounded userpics
 		string rounded_str = "";

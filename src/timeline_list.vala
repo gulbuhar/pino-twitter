@@ -43,6 +43,7 @@ public class TimelineList : TimelineListAbstract {
 	
 	public signal void fresh();
 	public signal void no_fresh();
+	public signal void deleted(string message);
 	
 	public TimelineList(Window _parent, AuthData auth_data, TimelineType timeline_type,
 		IRestUrls urls, Template _template, int __items_count, Icon _icon,
@@ -143,6 +144,7 @@ public class TimelineList : TimelineListAbstract {
 			api.destroy_status(id);
 		} catch(RestError e) {
 			updating_error(e.message);
+			parent.window.set_cursor(null);
 			return;
 		}
 		
@@ -157,6 +159,8 @@ public class TimelineList : TimelineListAbstract {
 		last_focused = (int)lst.get(0).created_at.mktime();
 		
 		refresh();
+		
+		deleted(_("Your status has been deleted successfully")); //signal
 	}
 	
 	/* refresh timeline */

@@ -26,6 +26,7 @@ public class StatusbarSmart : VBox {
 	public static enum StatusType {
 		UPDATING,
 		SENDING_DATA,
+		DATA_SENT,
 		FINISH_OK,
 		FINISH_ERROR
 	}
@@ -101,7 +102,11 @@ public class StatusbarSmart : VBox {
 				break;
 			
 			case StatusType.SENDING_DATA:
-				push("gtk-go-up", _("sending status... "));
+				push_custom(Config.PROGRESS_PATH, message);
+				break;
+			
+			case StatusType.DATA_SENT:
+				push("gtk-info", message);
 				break;
 			
 			case StatusType.FINISH_ERROR:

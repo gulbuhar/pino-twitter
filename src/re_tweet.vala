@@ -56,8 +56,10 @@ public class ReTweet : VBox {
 	
 	private string reply_id = "";
 	
+	public signal void sending_data(string message);
+	public signal void data_sent(string message);
+	public signal void data_error_sent(string message);
 	public signal void status_updated(Status status);
-	public signal void dm_sent();
 	
 	public ReTweet(Window _parent, Prefs _prefs, Cache cache) {
 		parent = _parent;
@@ -287,42 +289,44 @@ public class ReTweet : VBox {
 	private void send_new(string reply_id = "") {
 		set_sensitive(false);
 		
+		sending_data(_("Sending status...")); //signal
+		
 		Status status = null;
 		try {
 			status = api.update_status(text, reply_id);
 		} catch(RestError e) {
 			set_sensitive(true);
-			warning(e.message);
+			
+			data_error_sent(e.message);
 			return;
 		}
 		
-		status_updated(status); //send_signal
+		status_updated(status); //signal
 		
 		hide();
 		set_sensitive(true);
+		
+		data_sent(_("Your status has been sent successfully")); //signal
 	}
 	
 	private void send_dm() {
 		set_sensitive(false);
 		
+		sending_data(_("Sending direct message...")); //signal
+		
 		try {
 			api.send_dm(direct_entry.text, text);
 		} catch(RestError e) {
-			var message_dialog = new MessageDialog(parent,
-			Gtk.DialogFlags.DESTROY_WITH_PARENT | Gtk.DialogFlags.MODAL,
-			Gtk.MessageType.INFO, Gtk.ButtonsType.OK,
-			(direct_entry.warning_text));
-			
-			message_dialog.run();
-			message_dialog.destroy();
 			set_sensitive(true);
+			
+			data_error_sent(e.message);
 			return;
 		}
 		
-		dm_sent(); //send_signal
-		
 		hide();
 		set_sensitive(true);
+		
+		data_sent(_("Your direct message has been sent successfully")); //signal
 	}
 	
 	private void change() {

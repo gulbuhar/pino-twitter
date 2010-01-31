@@ -124,5 +124,7 @@ public class TimelineDirectList : TimelineList {
 		}
 		
 		refresh();
+		
+		deleted(_("Your direct message has been deleted successfully")); //signal
 	}
 }

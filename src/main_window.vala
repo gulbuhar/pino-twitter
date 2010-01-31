@@ -161,6 +161,18 @@ public class MainWindow : Window {
 			home.insert_status(status);
 		});
 		
+		re_tweet.sending_data.connect((msg) => {
+			statusbar.set_status(StatusbarSmart.StatusType.SENDING_DATA, msg);
+		});
+		
+		re_tweet.data_sent.connect((msg) => {
+			statusbar.set_status(StatusbarSmart.StatusType.DATA_SENT, msg);
+		});
+		
+		re_tweet.data_error_sent.connect((msg) => {
+			statusbar.set_status(StatusbarSmart.StatusType.FINISH_ERROR, msg);
+		});
+		
 		home.retweet.connect((status) => {
 			re_tweet.set_state_retweet(status);
 		});
@@ -181,6 +193,12 @@ public class MainWindow : Window {
 		});
 		mentions.replyto.connect((status) => {
 			re_tweet.set_state_reply(status);
+		});
+		home.deleted.connect((msg) => {
+			statusbar.set_status(StatusbarSmart.StatusType.DATA_SENT, msg);
+		});
+		direct.deleted.connect((msg) => {
+			statusbar.set_status(StatusbarSmart.StatusType.DATA_SENT, msg);
 		});
 		
 		//setup logging
@@ -231,6 +249,15 @@ public class MainWindow : Window {
 		if(!prefs.is_new && prefs.rememberPass) {
 			refresh_action();
 		}
+		
+		style_set.connect((prev_style) => { //when gtk style is changing
+			gtk_style.updateStyle(rc_get_style(this));
+			template.refresh_gtk_style(gtk_style);
+		});
+		
+		//start timer
+		timer = new SmartTimer(prefs.updateInterval * 60);
+		timer.timeout.connect(refresh_action);
 	}
 	
 	private void menu_init() {	
@@ -433,81 +460,6 @@ public class MainWindow : Window {
 		
 		notify.start(home_list, mentions_list, direct_list);
 		
-		/*
-		Gee.ArrayList<string> exclude = new Gee.ArrayList<string>();
-		
-		switch(twee.sync_friends(last_time_friends, last_focused_friends)) {
-			case TwitterInterface.Reply.ERROR_401:
-				statusbar.set_status(statusbar.Status.ERROR_401);
-				break;
-			case TwitterInterface.Reply.ERROR_TIMEOUT:
-				statusbar.set_status(statusbar.Status.ERROR_TIMEOUT);
-				break;
-			case TwitterInterface.Reply.ERROR_UNKNOWN:
-				statusbar.set_status(statusbar.Status.ERROR_UNKNOWN);
-				break;
-			case TwitterInterface.Reply.OK:
-				tweets.load_string(template.generate_timeline(twee.friends, gtkStyle, prefs, last_focused_friends),
-					"text/html", "utf8", "file:///");
-				
-				//tray notification
-				if(last_time_friends > 0 &&
-					last_time_friends < (int)twee.friends.get(0).created_at.mktime() &&
-					!focused) {
-					tray.set_from_file(Config.LOGO_FRESH_PATH);
-				}
-				
-				//show new statuses via libnotify
-				if(prefs.showTimelineNotify && last_time_friends > 0)
-					exclude = show_popups(twee.friends, last_time_friends, exclude);
-				
-				last_time_friends = (int)twee.friends.get(0).created_at.mktime();
-				if(focused || last_focused_friends == -1)
-					last_focused_friends = last_time_friends;
-				
-				break;
-			case TwitterInterface.Reply.EMPTY:
-				tweets.load_string(template.generate_timeline(twee.friends, gtkStyle, prefs, last_focused_friends),
-					"text/html", "utf8", "file:///");
-				break;
-		}
-		
-		switch(twee.sync_mentions(last_time_mentions, last_focused_mentions)) {
-			case TwitterInterface.Reply.ERROR_401:
-				statusbar.set_status(statusbar.Status.ERROR_401);
-				break;
-			case TwitterInterface.Reply.ERROR_TIMEOUT:
-				statusbar.set_status(statusbar.Status.ERROR_TIMEOUT);
-				break;
-			case TwitterInterface.Reply.ERROR_UNKNOWN:
-				statusbar.set_status(statusbar.Status.ERROR_UNKNOWN);
-				break;
-			case TwitterInterface.Reply.OK:
-				mentions.load_string(template.generate_timeline(twee.mentions, gtkStyle, prefs, last_focused_mentions),
-					"text/html", "utf8", "file:///");
-				
-				//tray notification
-				if(last_time_mentions > 0 &&
-					last_time_mentions < (int)twee.mentions.get(0).created_at.mktime() &&
-					!focused) {
-					tray.set_from_file(Config.LOGO_FRESH_PATH);
-				}
-				
-				//show new statuses via libnotify
-				if(prefs.showMentionsNotify && last_time_mentions > 0)
-					show_popups(twee.mentions, last_time_mentions, exclude);
-				
-				last_time_mentions = (int)twee.mentions.get(0).created_at.mktime();
-				if(focused || last_focused_friends == -1)
-					last_focused_mentions = last_time_mentions;
-				
-				break;
-			case TwitterInterface.Reply.EMPTY:
-				mentions.load_string(template.generate_timeline(twee.mentions, gtkStyle, prefs, last_focused_mentions),
-					"text/html", "utf8", "file:///");
-				break;
-		}
-		*/
 		updateAct.set_sensitive(true);
 	}
 	
