@@ -20,6 +20,11 @@ executable-options:
   working-dir: /home/troorl/Desktop/apps/pino
   environment: []
 files:
+- path: src/timeline_list.vala
+- path: src/twitter_url.vala
+- path: src/rest_url_interface.vala
+- path: src/rest_api_abstract.vala
+- path: src/tray_icon.vala
 - path: src/vapi/config.vapi
 - path: src/timer.vala
 - path: src/pref_dialog.vala
@@ -34,6 +39,8 @@ files:
 - path: src/prefs.vala
 - path: src/hig_table.vala
 - path: src/cache.vala
+- path: src/rest_api_timeline.vala
+- path: src/timeline_list_abstract.vala
 packages:
 - name: posix
 - name: gee-1.0

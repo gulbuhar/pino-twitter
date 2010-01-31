@@ -19,6 +19,9 @@
  * 	troorl <troorl@gmail.com>
  */
 
+using RestAPI;
+using Gee;
+
 public class Main {
 	
   	public static int main (string[] args) {
@@ -27,7 +30,7 @@ public class Main {
 		
 		Intl.bindtextdomain(Config.GETTEXT_PACKAGE, Config.LOCALE_DIR);
     	Intl.bind_textdomain_codeset(Config.GETTEXT_PACKAGE, "UTF-8");
-		
+    	
 		MainWindow window = new MainWindow();
 		
 		Gtk.main();

@@ -21,21 +21,31 @@
 
 using Gee;
 using GLib;
+using RestAPI;
+using TimeUtils;
 
-class Template : Object {
+public class Template : Object {
 	
-	public Cache cache;
+	private Prefs prefs;
+	private SystemStyle gtk_style;
+	private Cache cache;
 	
-	private string mainTemplate;
-	private string statusTemplate;
-	private string statusMeTemplate;
+	private string main_template;
+	private string status_template;
+	private string status_me_template;
+	private string status_direct_template;
 	
 	private Regex nicks;
 	private Regex tags;
 	private Regex urls;
-	private Regex clearNotice;
+	private Regex clear_notice;
 	
-	public Template() {
+	public signal void emit_for_refresh();
+	
+	public Template(Prefs _prefs, SystemStyle _gtk_style, Cache _cache) {
+		prefs = _prefs;
+		gtk_style = _gtk_style;
+		cache = _cache;
 		reload();
 		
 		//compile regex
@@ -44,13 +54,98 @@ class Template : Object {
 		urls = new Regex("((http|https|ftp)://([\\S]+))"); //need something better
 		
 		// characters must be cleared to know direction of text
-		clearNotice = new Regex("[: \n\t\r♻♺]+|@[^ ]+");
+		clear_notice = new Regex("[: \n\t\r♻♺]+|@[^ ]+");
 		
-		cache = new Cache();
+		prefs.roundedAvatarsChanged.connect(() => emit_for_refresh());
+		prefs.opacityTweetsChanged.connect(() => emit_for_refresh());
+		prefs.rtlChanged.connect(() => emit_for_refresh());
 	}
 	
-	public string generateFriends(Gee.ArrayList<Status> friends,
-		SystemStyle gtkStyle, Prefs prefs, int last_focused) {
+	public void refresh_gtk_style(SystemStyle _gtk_style) {
+		gtk_style = _gtk_style;
+		emit_for_refresh();
+	}
+	
+	private string generate(string content) {
+		//rounded userpics
+		string rounded_str = "";
+		if(prefs.roundedAvatars)
+			rounded_str = "-webkit-border-radius:5px;";
+		
+		var map = new HashMap<string, string>();
+		map["bg_color"] = gtk_style.bg_color;
+		map["fg_color"] = gtk_style.fg_color;
+		map["rounded"] = rounded_str;
+		map["lt_color"] = gtk_style.lt_color;
+		map["sl_color"] = gtk_style.sl_color;
+		map["lg_color"] = gtk_style.lg_color;
+		map["dr_color"] = gtk_style.dr_color;
+		map["tweets_opacity"] = prefs.opacityTweets;
+		map["main_content"] = content;
+		
+		return render(main_template, map);
+	}
+	
+	/* render start screen */
+	public string generate_message(string message) {
+		string content = "<h2>%s</h2>".printf(message);
+		
+		return generate(content);
+	}
+	
+	/* render direct inbox */
+	public string generate_direct(Gee.ArrayList<Status> friends, int last_focused) {
+		string content = "";
+		
+		var now = get_current_time();
+		
+		var reply_text = _("Reply");
+		var delete_text = _("Delete");
+		
+		//rounded userpics
+		string rounded_str = "";
+		if(prefs.roundedAvatars)
+			rounded_str = "-webkit-border-radius:5px;";
+		
+		foreach(Status i in friends) {
+			//checking for new statuses
+			var fresh = "old";
+			if(last_focused > 0 && (int)i.created_at.mktime() > last_focused)
+				fresh = "fresh";
+			
+			//making human-readable time/date
+			string time = time_to_human_delta(now, i.created_at);
+			
+			var user_avatar = i.user_avatar;
+			var name = i.user_name;
+			var screen_name = i.user_screen_name;
+			var text = i.text;
+			
+			var map = new HashMap<string, string>();
+			map["avatar"] = cache.get_or_download(user_avatar, Cache.Method.ASYNC, false);
+			map["fresh"] = fresh;
+			map["id"] = i.id;
+			map["screen_name"] = screen_name;
+			map["name"] = name;
+			map["time"] = time;
+			map["content"] = making_links(text);
+			
+			if(prefs.rtlSupport && is_rtl(clear_notice.replace(i.text, -1, 0, "")))
+				map["rtl_class"] = "rtl-notice";
+			else
+				map["rtl_class"] = "";
+			
+			map["delete_text"] = delete_text;
+			map["delete"] = Config.DELETE_PATH;
+			map["direct_reply"] = Config.DIRECT_REPLY_PATH;
+			content += render(status_direct_template, map);
+		}
+		
+		return generate(content);
+	}
+	
+	/* render timeline, mentions */
+	public string generate_timeline(Gee.ArrayList<Status> friends, int last_focused) {
 		string content = "";
 		
 		var now = get_current_time();
@@ -60,13 +155,9 @@ class Template : Object {
 		var retweet_text = _("Retweet");
 		
 		//rounded userpics
-		string rounded = "";
+		string rounded_str = "";
 		if(prefs.roundedAvatars)
-			rounded = "-webkit-border-radius:5px;";
-		
-		var h = new HashMap<string, string>();
-		h["var"] = "troorl";
-		render("", h);
+			rounded_str = "-webkit-border-radius:5px;";
 		
 		foreach(Status i in friends) {
 			//checking for new statuses
@@ -79,11 +170,11 @@ class Template : Object {
 			
 			var by_who = "";
 				
-				if(i.to_user != "") { // in reply to
-					string to_user = i.to_user;
-					if(to_user == prefs.login)
-						to_user = _("you");
-					by_who = "<a class='by_who' href='http://twitter.com/%s/status/%s'>%s %s</a>".printf(i.to_user, i.to_status_id, _("in reply to"), to_user);
+			if(i.to_user != "") { // in reply to
+				string to_user = i.to_user;
+				if(to_user == prefs.login)
+					to_user = _("you");
+				by_who = "<a class='by_who' href='http://twitter.com/%s/status/%s'>%s %s</a>".printf(i.to_user, i.to_status_id, _("in reply to"), to_user);
 				}
 			
 			if(i.user_screen_name == prefs.login) { //your own status
@@ -96,13 +187,14 @@ class Template : Object {
 				map["name"] = i.user_name;
 				map["content"] = making_links(i.text);
 
-				if(prefs.rtlSupport && isRTL(clearNotice.replace(i.text, -1, 0, "")))
+				if(prefs.rtlSupport && is_rtl(clear_notice.replace(i.text, -1, 0, "")))
 					map["rtl_class"] = "rtl-notice";
 				else
 					map["rtl_class"] = "";
 				
 				map["delete_text"] = delete_text;
-				content += render(statusMeTemplate, map);
+				map["delete"] = Config.DELETE_PATH;
+				content += render(status_me_template, map);
 				
 			} else {
 				var re_icon = "";
@@ -114,7 +206,7 @@ class Template : Object {
 				
 				if(i.is_retweet) {
 					re_icon = "<span class='re'>Rt:</span> ";
-					by_who = "<a class='by_who' href='nickto://%s'>by %s</a>".printf(i.user_screen_name, i.user_name);
+					by_who = "<a class='by_who' href='nickto://%s'>by %s</a>".printf(i.user_screen_name, i.user_screen_name);
 					name = i.re_user_name;
 					screen_name = i.re_user_screen_name;
 					user_avatar = i.re_user_avatar;
@@ -131,7 +223,7 @@ class Template : Object {
 				map["time"] = time;
 				map["content"] = making_links(text);
 				
-				if(prefs.rtlSupport && isRTL(clearNotice.replace(i.text, -1, 0, "")))
+				if(prefs.rtlSupport && is_rtl(clear_notice.replace(i.text, -1, 0, "")))
 					map["rtl_class"] = "rtl-notice";
 				else
 					map["rtl_class"] = "";
@@ -139,22 +231,14 @@ class Template : Object {
 				map["by_who"] = by_who;
 				map["retweet_text"] = retweet_text;
 				map["reply_text"] = reply_text;
-				content += render(statusTemplate, map);
+				map["direct_reply"] = Config.DIRECT_REPLY_PATH;
+				map["reply"] = Config.REPLY_PATH;
+				map["re_tweet"] = Config.RETWEET_PATH;
+				content += render(status_template, map);
 			}
 		}
 		
-		var map = new HashMap<string, string>();
-		map["bg_color"] = gtkStyle.bg_color;
-		map["fg_color"] = gtkStyle.fg_color;
-		map["rounded"] = rounded;
-		map["lt_color"] = gtkStyle.lt_color;
-		map["sl_color"] = gtkStyle.sl_color;
-		map["lg_color"] = gtkStyle.lg_color;
-		map["dr_color"] = gtkStyle.dr_color;
-		map["tweets_opacity"] = prefs.opacityTweets;
-		map["main_content"] = content;
-		
-		return render(mainTemplate, map);
+		return generate(content);
 	}
 	
 	private string render(string text, HashMap<string, string> map) {
@@ -164,7 +248,6 @@ class Template : Object {
 			var pat = new Regex("{{" + key + "}}");
 			result = pat.replace(result, -1, 0, map[key]);
 		}
-		
 		return result;
 	}
 	
@@ -214,21 +297,15 @@ class Template : Object {
 		return t.format("%k:%M %b %d %Y");
 	}
 	
-	private Time get_current_time() {
-		var tval = TimeVal();
-		tval.get_current_time();
-		return Time.local((time_t)tval.tv_sec);
-		//warning("lolo %s", tr.to_string());
-	}
-	
 	public void reload() {
 		//load templates
-		mainTemplate = loadTemplate(Config.TEMPLATES_PATH + "/main.tpl");
-		statusTemplate = loadTemplate(Config.TEMPLATES_PATH + "/status.tpl");
-		statusMeTemplate = loadTemplate(Config.TEMPLATES_PATH + "/status_me.tpl");
+		main_template = load_template(Config.TEMPLATES_PATH + "/main.tpl");
+		status_template = load_template(Config.TEMPLATES_PATH + "/status.tpl");
+		status_me_template = load_template(Config.TEMPLATES_PATH + "/status_me.tpl");
+		status_direct_template = load_template(Config.TEMPLATES_PATH + "/status_direct.tpl");
 	}
 	
-	private string loadTemplate(string path) {
+	private string load_template(string path) {
 		var file = File.new_for_path(path);
 		
 		if(!file.query_exists(null)) {
@@ -248,7 +325,7 @@ class Template : Object {
 	}
 	
 	/* Right-to-left languages detection by Behrooz Shabani <everplays@gmail.com> */
-	private bool isRTL(string inStr){
+	private bool is_rtl(string inStr){
 		unichar cc = inStr[0]; // first character code
 		if(cc>=1536 && cc<=1791) // arabic, persian, ...
 			return true;
