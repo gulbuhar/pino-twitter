@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -16,14 +16,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/dm_entry.vala:35
-msgid ""
-"You can't send direct message to this user. He (or she) must follow you too"
+msgid "You can't send direct message to this user. He (or she) must follow you too"
 msgstr ""
 
 #: src/dm_entry.vala:42
-#, fuzzy
 msgid "Check"
-msgstr "Кеш"
+msgstr "Проверить"
 
 #: src/dm_entry.vala:58
 msgid "You can send direct message to this user"
@@ -31,17 +29,15 @@ msgstr ""
 
 #: src/dm_entry.vala:77
 msgid "Checking..."
-msgstr ""
+msgstr "Проверка..."
 
 #: src/main_window.vala:118
-#, fuzzy
 msgid "Home timeline"
-msgstr "Для ленты сообщений"
+msgstr "Домашняя лента"
 
 #: src/main_window.vala:119
-#, fuzzy
 msgid "Show your home timeline"
-msgstr "Показать вашу ленту сообщений"
+msgstr "Показать вашу домашнюю ленту"
 
 #: src/main_window.vala:125
 msgid "Mentions"
@@ -124,12 +120,11 @@ msgstr "О %s"
 
 #: src/more_window.vala:36
 msgid "Get older entries"
-msgstr ""
+msgstr "Получить более старые записи"
 
 #: src/popups.vala:66
-#, fuzzy
 msgid "Updates"
-msgstr "обновлено "
+msgstr "Обновления"
 
 #: src/popups.vala:111
 #, c-format
@@ -137,9 +132,9 @@ msgid "in the home timeline: %d\n"
 msgstr ""
 
 #: src/popups.vala:114
-#, fuzzy, c-format
+#, c-format
 msgid "in mentions: %d\n"
-msgstr "Для упоминаний"
+msgstr "в упоминаниях: %d\n"
 
 #: src/popups.vala:117
 #, c-format
@@ -147,14 +142,12 @@ msgid "in direct messages: %d"
 msgstr ""
 
 #: src/pref_dialog.vala:58
-#, fuzzy
 msgid "Update interval (in minutes)"
-msgstr "Интервал обновления"
+msgstr "Интервал обновления (в минутах)"
 
 #: src/pref_dialog.vala:62
-#, fuzzy
 msgid "Default number of statuses"
-msgstr "Создать новый статус"
+msgstr "Количество статусов по умолчанию"
 
 #: src/pref_dialog.vala:66
 msgid "For timeline"
@@ -170,11 +163,11 @@ msgstr ""
 
 #: src/pref_dialog.vala:72
 msgid "Show notification for each status"
-msgstr ""
+msgstr "Показывать уведомления для каждого статуса"
 
 #: src/pref_dialog.vala:74
 msgid "Show overall notification"
-msgstr ""
+msgstr "Показывать общие уведомления"
 
 #: src/pref_dialog.vala:77
 msgid "Retweets style"
@@ -186,7 +179,7 @@ msgstr "Очистить сейчас"
 
 #: src/pref_dialog.vala:91
 msgid "REST API options"
-msgstr ""
+msgstr "Настройки RESP API"
 
 #: src/pref_dialog.vala:95
 msgid "Notification"
@@ -254,7 +247,7 @@ msgstr "Новый статус:"
 
 #: src/re_tweet.vala:90
 msgid "Hide"
-msgstr ""
+msgstr "Спрятать"
 
 #: src/re_tweet.vala:141
 #, c-format
@@ -355,16 +348,15 @@ msgstr ""
 
 #: src/timeline_list.vala:184
 msgid "Your status has been deleted successfully"
-msgstr ""
+msgstr "Ваш статус успешно удален"
 
 #: src/timeline_list_abstract.vala:162
 msgid "Connecting..."
-msgstr ""
+msgstr "Соединяемся..."
 
 #: src/timeline_list_abstract.vala:227
-#, fuzzy
 msgid "Sure you want to delete this status?"
-msgstr "Уверены, что хотите удалить этот твит?"
+msgstr "Уверены, что хотите удалить этот статус?"
 
 #: src/tray_icon.vala:44
 #, c-format
