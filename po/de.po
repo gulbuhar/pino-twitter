@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -16,30 +16,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/dm_entry.vala:35
-msgid ""
-"You can't send direct message to this user. He (or she) must follow you too"
-msgstr ""
+msgid "You can't send direct message to this user. He (or she) must follow you too"
+msgstr "Direktnachrichten an diesen Benutzer sind nicht möglich, da der Benutzer dir nicht folgt"
 
 #: src/dm_entry.vala:42
 #, fuzzy
 msgid "Check"
-msgstr "Zwischenspeicher"
+msgstr "Prüfen"
 
 #: src/dm_entry.vala:58
 msgid "You can send direct message to this user"
-msgstr ""
+msgstr "Direktnachrichten an diesen Benutzer sind möglich"
 
 #: src/dm_entry.vala:77
 msgid "Checking..."
-msgstr ""
+msgstr "Überprüfen..."
 
 #: src/main_window.vala:118
-#, fuzzy
 msgid "Home timeline"
 msgstr "Eigene Timeline anzeigen"
 
 #: src/main_window.vala:119
-#, fuzzy
 msgid "Show your home timeline"
 msgstr "Eigene Timeline anzeigen"
 
@@ -53,11 +50,11 @@ msgstr "Mentions anzeigen"
 
 #: src/main_window.vala:132
 msgid "Direct messages"
-msgstr ""
+msgstr "Direktnachrichten"
 
 #: src/main_window.vala:133
 msgid "Show direct messages"
-msgstr ""
+msgstr "Direktnachrichten anzeigen"
 
 #: src/main_window.vala:209 src/main_window.vala:210 src/main_window.vala:211
 #: src/status_bar_smart.vala:93 src/status_bar_smart.vala:96
@@ -78,12 +75,11 @@ msgstr "Neue Nachricht erstellen"
 
 #: src/main_window.vala:273
 msgid "New direct message"
-msgstr ""
+msgstr "Neue Direktnachricht"
 
 #: src/main_window.vala:274
-#, fuzzy
 msgid "Create new direct message"
-msgstr "Neue Nachricht erstellen"
+msgstr "Neue Direktnachricht erstellen"
 
 #: src/main_window.vala:280
 msgid "Update timeline"
@@ -124,57 +120,59 @@ msgstr "Über %s"
 
 #: src/more_window.vala:36
 msgid "Get older entries"
-msgstr ""
+msgstr "Ältere Nachrichten anzeigen"
 
 #: src/popups.vala:66
 #, fuzzy
 msgid "Updates"
-msgstr "Fertig "
+msgstr "Neue Nachrichten"
 
 #: src/popups.vala:111
 #, c-format
 msgid "in the home timeline: %d\n"
-msgstr ""
+msgstr "in der eigenen Timeline: %d\n"
 
 #: src/popups.vala:114
-#, fuzzy, c-format
+#, c-format
 msgid "in mentions: %d\n"
-msgstr "Mentions anzeigen"
+msgstr "in Mentions: %d\n"
 
 #: src/popups.vala:117
 #, c-format
 msgid "in direct messages: %d"
-msgstr ""
+msgstr "in Direktnachrichten: %d"
 
 #: src/pref_dialog.vala:58
-#, fuzzy
 msgid "Update interval (in minutes)"
-msgstr "Aktualisierungsintervall"
+msgstr "Aktualisierungsintervall (in Minuten)"
 
 #: src/pref_dialog.vala:62
 #, fuzzy
 msgid "Default number of statuses"
-msgstr "Neue Nachricht erstellen"
+msgstr "Voreingestelle Nachrichtenanzahl"
 
 #: src/pref_dialog.vala:66
+#, fuzzy
 msgid "For timeline"
 msgstr "Eigene Timeline anzeigen"
 
 #: src/pref_dialog.vala:67
+#, fuzzy
 msgid "For mentions"
 msgstr "Mentions anzeigen"
 
 #: src/pref_dialog.vala:68
+#, fuzzy
 msgid "For direct messages"
-msgstr ""
+msgstr "Für die Direktnachrichten"
 
 #: src/pref_dialog.vala:72
 msgid "Show notification for each status"
-msgstr ""
+msgstr "Benachrichtigungen für jede Nachricht anzeigen"
 
 #: src/pref_dialog.vala:74
 msgid "Show overall notification"
-msgstr ""
+msgstr "Allgemeine Benachrichtigungen anzeigen"
 
 #: src/pref_dialog.vala:77
 #, fuzzy
@@ -186,12 +184,13 @@ msgid "Clear now"
 msgstr "Jetzt leeren"
 
 #: src/pref_dialog.vala:91
+#, fuzzy
 msgid "REST API options"
-msgstr ""
+msgstr "REST-API-Optionen"
 
 #: src/pref_dialog.vala:95
 msgid "Notification"
-msgstr "Benachrichtigungen anzeigen"
+msgstr "Benachrichtigung"
 
 #: src/pref_dialog.vala:101
 msgid "Retweets"
@@ -227,10 +226,9 @@ msgstr "Nachrichten"
 
 #: src/pref_dialog.vala:168
 msgid "Rounded corners"
-msgstr "Abgerunde Ecken"
+msgstr "Abgerundete Ecken"
 
 #: src/pref_dialog.vala:171
-#, fuzzy
 msgid "Right-to-left languages detection"
 msgstr "Right-to-left-Unterstützung"
 
@@ -255,8 +253,9 @@ msgid "New status:"
 msgstr "Neuer Status:"
 
 #: src/re_tweet.vala:90
+#, fuzzy
 msgid "Hide"
-msgstr ""
+msgstr "Verstecken"
 
 #: src/re_tweet.vala:141
 #, c-format
@@ -266,11 +265,12 @@ msgstr "Antwort an <b>%s</b>:"
 #: src/re_tweet.vala:182
 #, fuzzy
 msgid "Reply to"
-msgstr "Antworten"
+msgstr "Antwort an"
 
 #: src/re_tweet.vala:195
+#, fuzzy
 msgid "Direct message to"
-msgstr ""
+msgstr "Direktnachricht an"
 
 #: src/re_tweet.vala:215
 msgid "Retweet:"
@@ -281,21 +281,20 @@ msgid "Type something first"
 msgstr "Bitte etwas eingeben"
 
 #: src/re_tweet.vala:292
-#, fuzzy
 msgid "Sending status..."
-msgstr "Sende Status... "
+msgstr "Nachricht senden... "
 
 #: src/re_tweet.vala:309
 msgid "Your status has been sent successfully"
-msgstr ""
+msgstr "Nachricht wurde erfolgreich versendet"
 
 #: src/re_tweet.vala:315
 msgid "Sending direct message..."
-msgstr ""
+msgstr "Direktnachricht senden... "
 
 #: src/re_tweet.vala:329
 msgid "Your direct message has been sent successfully"
-msgstr ""
+msgstr "Direktnachricht wurde erfolgreich versendet"
 
 #: src/status_bar_smart.vala:101
 msgid "updating... "
@@ -311,7 +310,7 @@ msgstr "Löschen"
 
 #: src/template.vala:104 src/template.vala:158
 msgid "Direct message"
-msgstr ""
+msgstr "Direktnachricht"
 
 #: src/template.vala:157
 msgid "Retweet"
@@ -349,30 +348,30 @@ msgid "about %i hours ago"
 msgstr "vor %i Stunden"
 
 #: src/timeline_direct_list.vala:42 src/timeline_list.vala:190
+#, fuzzy
 msgid "Empty"
-msgstr ""
+msgstr "Leer"
 
 #: src/timeline_direct_list.vala:149
 msgid "Your direct message has been deleted successfully"
-msgstr ""
+msgstr "Direktnachricht wurde erfolgreich gelöscht"
 
 #: src/timeline_list.vala:184
 msgid "Your status has been deleted successfully"
-msgstr ""
+msgstr "Nachricht wurde erfolgreich gelöscht"
 
 #: src/timeline_list_abstract.vala:162
 msgid "Connecting..."
-msgstr ""
+msgstr "Verbinden..."
 
 #: src/timeline_list_abstract.vala:227
-#, fuzzy
 msgid "Sure you want to delete this status?"
-msgstr "Möchten Sie diesen Tweet wirklich löschen?"
+msgstr "Möchten Sie diese Nachricht wirklich löschen?"
 
 #: src/tray_icon.vala:44
 #, c-format
 msgid "%s - a twitter client"
-msgstr "%s - Twitter Client"
+msgstr "%s - ein Twitter Client"
 
 #~ msgid "Timeline"
 #~ msgstr "Timeline"

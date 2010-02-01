@@ -2,7 +2,7 @@
 # Copyright (C) 2009 the Free Software Foundation, Inc.
 # This file is distributed under the same license as the pino package.
 # Daniele Napolitano <dnax88@gmail.com>, 2009.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: pino\n"
@@ -16,32 +16,28 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/dm_entry.vala:35
-msgid ""
-"You can't send direct message to this user. He (or she) must follow you too"
-msgstr ""
+msgid "You can't send direct message to this user. He (or she) must follow you too"
+msgstr "Non è possibile inviare un messaggio diretto a questo utente. Anche lui (o lei) deve seguirti"
 
 #: src/dm_entry.vala:42
-#, fuzzy
 msgid "Check"
-msgstr "Cache"
+msgstr "Verifica"
 
 #: src/dm_entry.vala:58
 msgid "You can send direct message to this user"
-msgstr ""
+msgstr "È possibile inviare un messaggio diretto a questo utente"
 
 #: src/dm_entry.vala:77
 msgid "Checking..."
-msgstr ""
+msgstr "Verifica in corso..."
 
 #: src/main_window.vala:118
-#, fuzzy
 msgid "Home timeline"
-msgstr "Per la timeline"
+msgstr "Timeline principale"
 
 #: src/main_window.vala:119
-#, fuzzy
 msgid "Show your home timeline"
-msgstr "Mostra la propria timeline"
+msgstr "Mostra la timeline principale"
 
 #: src/main_window.vala:125
 msgid "Mentions"
@@ -53,11 +49,11 @@ msgstr "Mostra citazioni"
 
 #: src/main_window.vala:132
 msgid "Direct messages"
-msgstr ""
+msgstr "Messaggi diretti"
 
 #: src/main_window.vala:133
 msgid "Show direct messages"
-msgstr ""
+msgstr "Mostra messaggi diretti"
 
 #: src/main_window.vala:209 src/main_window.vala:210 src/main_window.vala:211
 #: src/status_bar_smart.vala:93 src/status_bar_smart.vala:96
@@ -70,20 +66,19 @@ msgstr "Twitter"
 
 #: src/main_window.vala:269
 msgid "New status"
-msgstr "Nuovo stato"
+msgstr "Nuovo status"
 
 #: src/main_window.vala:270
 msgid "Create new status"
-msgstr "Crea un nuovo stato"
+msgstr "Crea un nuovo status"
 
 #: src/main_window.vala:273
 msgid "New direct message"
-msgstr ""
+msgstr "Nuovo messaggio diretto"
 
 #: src/main_window.vala:274
-#, fuzzy
 msgid "Create new direct message"
-msgstr "Crea un nuovo stato"
+msgstr "Crea un nuovo messaggio diretto"
 
 #: src/main_window.vala:280
 msgid "Update timeline"

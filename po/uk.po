@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -16,14 +16,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/dm_entry.vala:35
-msgid ""
-"You can't send direct message to this user. He (or she) must follow you too"
+msgid "You can't send direct message to this user. He (or she) must follow you too"
 msgstr ""
 
 #: src/dm_entry.vala:42
-#, fuzzy
 msgid "Check"
-msgstr "Кеш"
+msgstr "Перевірити"
 
 #: src/dm_entry.vala:58
 msgid "You can send direct message to this user"
@@ -31,17 +29,15 @@ msgstr ""
 
 #: src/dm_entry.vala:77
 msgid "Checking..."
-msgstr ""
+msgstr "Перевіряю..."
 
 #: src/main_window.vala:118
-#, fuzzy
 msgid "Home timeline"
-msgstr "Для стрічки повідомлень"
+msgstr "Домашня стрічка повідомлень"
 
 #: src/main_window.vala:119
-#, fuzzy
 msgid "Show your home timeline"
-msgstr "Показати вашу стрічку повідомлень"
+msgstr "Показати вашу домашню стрічку повідомлень"
 
 #: src/main_window.vala:125
 msgid "Mentions"
@@ -124,22 +120,21 @@ msgstr "Про %s"
 
 #: src/more_window.vala:36
 msgid "Get older entries"
-msgstr ""
+msgstr "Отримати старіші записи"
 
 #: src/popups.vala:66
-#, fuzzy
 msgid "Updates"
-msgstr "оновлено "
+msgstr "Оновлення"
 
 #: src/popups.vala:111
 #, c-format
 msgid "in the home timeline: %d\n"
-msgstr ""
+msgstr "в домашній стрічці повідомлень: %d\n"
 
 #: src/popups.vala:114
-#, fuzzy, c-format
+#, c-format
 msgid "in mentions: %d\n"
-msgstr "Для згадок"
+msgstr "в згадках: %d\n"
 
 #: src/popups.vala:117
 #, c-format
@@ -147,14 +142,12 @@ msgid "in direct messages: %d"
 msgstr ""
 
 #: src/pref_dialog.vala:58
-#, fuzzy
 msgid "Update interval (in minutes)"
-msgstr "Інтервал поновлення"
+msgstr "Інтервал поновлення (в хвилинах)"
 
 #: src/pref_dialog.vala:62
-#, fuzzy
 msgid "Default number of statuses"
-msgstr "Створити новий статус"
+msgstr ""
 
 #: src/pref_dialog.vala:66
 msgid "For timeline"
@@ -186,7 +179,7 @@ msgstr "Очистити негайно"
 
 #: src/pref_dialog.vala:91
 msgid "REST API options"
-msgstr ""
+msgstr "Налаштування REST API"
 
 #: src/pref_dialog.vala:95
 msgid "Notification"
