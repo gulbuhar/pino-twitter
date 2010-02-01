@@ -6,7 +6,7 @@ troorl <troorl@gmail.com>
     Russian, Ukrainian translations
 
 Behrooz Shabani <everplays@gmail.com>
-    Right-to-left languages detection support (issue 36)
+    Many patches
 
 Alexander Fehr <pizzapunk@gmail.com>
     PKGBUILD for Arch Linux
@@ -46,3 +46,9 @@ Dorian Jaminais <dorian.jaminais@gmail.com>
 
 Siebrand Mazeland <s.mazeland@xs4all.nl>
     Dutch translation
+
+Gonçalo Cordeiro <gzcordeiro@gmail.com>
+    Galician translation
+
+Piotr Drąg <piotrdrag@gmail.com>
+    Polish translation
