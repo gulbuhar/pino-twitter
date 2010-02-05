@@ -60,7 +60,7 @@ public class MainWindow : Window {
 	
 	private Popups notify;
 	
-	private bool focused;
+	public bool first_show = true;
 	
 	public MainWindow() {
 		logo = new Gdk.Pixbuf.from_file(Config.LOGO_PATH);
@@ -95,7 +95,6 @@ public class MainWindow : Window {
 		delete_event.connect((event) => {
 			this.hide_on_delete();
 			visible = false;
-			focused = false;
 			return true;
 		});
 		
@@ -226,7 +225,16 @@ public class MainWindow : Window {
 		this.add(vbox);
 		
 		//show window
-		show_all();
+		if(!prefs.startMin) {
+			show_all();
+			first_hide();
+		}
+		
+		//hide menubar and toolbar if needed
+		if(!prefs.menuShow)
+			menuAct.set_active(false);
+		if(!prefs.toolbarShow)
+			toolbarAct.set_active(false);
 		
 		if(prefs.is_new || !prefs.rememberPass)
 			run_prefs();
@@ -235,15 +243,7 @@ public class MainWindow : Window {
 		notify = new Popups(prefs, cache, logo);
 		
 		//searchEntry.hide();
-		re_tweet.hide();
-		mentions.hide();
-		direct.hide();
-		
-		//hide menubar and toolbar if needed
-		if(!prefs.menuShow)
-			menuAct.set_active(false);
-		if(!prefs.toolbarShow)
-			toolbarAct.set_active(false);
+		first_hide();
 		
 		//getting updates
 		if(!prefs.is_new && prefs.rememberPass) {
@@ -258,6 +258,17 @@ public class MainWindow : Window {
 		//start timer
 		timer = new SmartTimer(prefs.updateInterval * 60);
 		timer.timeout.connect(refresh_action);
+	}
+	
+	public void first_hide() { //when starts minimized
+		re_tweet.hide();
+		mentions.hide();
+		direct.hide();
+		
+		if(!prefs.menuShow)
+			menubar.hide();
+		if(!prefs.toolbarShow)
+			toolbar.hide();
 	}
 	
 	private void menu_init() {	
@@ -474,6 +485,9 @@ public class MainWindow : Window {
 	private void before_close() {
 		prefs.menuShow = menubar.visible;
 		prefs.toolbarShow = toolbar.visible;
+		
+		warning("visible %s", visible.to_string());
+		prefs.startMin = !visible;
 		
 		prefs.write();
 		main_quit();

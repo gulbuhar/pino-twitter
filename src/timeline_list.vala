@@ -30,7 +30,7 @@ public class TimelineList : TimelineListAbstract {
 	public Icon icon_fresh;
 	
 	//focus of the main window
-	protected bool _parent_focus = true;
+	protected bool _parent_focus = false;
 	public override bool parent_focus {
 		get { return _parent_focus; }
 		set {
