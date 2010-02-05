@@ -55,13 +55,13 @@ public class Prefs : Object {
 		get{ return _showDirectNotify; }
 		set{ _showDirectNotify = value; }
 	}
-	
+	/*
 	private bool _showFullNotify = true;
 	public bool showFullNotify {
 		get{ return _showFullNotify; }
 		set{ _showFullNotify = value; }
 	}
-	
+	*/
 	private string _retweetStyle = "UNI";
 	public ReTweet.Style retweetStyle {
 		get{
@@ -270,11 +270,11 @@ public class Prefs : Object {
 				case "showDirectNotify":
 					_showDirectNotify = iter->get_content().to_bool();
 					break;
-				
+				/*
 				case "showFullNotify":
 					_showFullNotify = iter->get_content().to_bool();
 					break;
-				
+				*/
 				case "retweetStyle":
 					_retweetStyle = iter->get_content();
 					break;
@@ -354,8 +354,8 @@ public class Prefs : Object {
         root->add_content("\n");
         root->new_text_child(ns, "showDirectNotify", _showDirectNotify.to_string());
         root->add_content("\n");
-        root->new_text_child(ns, "showFullNotify", _showFullNotify.to_string());
-        root->add_content("\n");
+        /*root->new_text_child(ns, "showFullNotify", _showFullNotify.to_string());
+        root->add_content("\n");*/
         root->new_text_child(ns, "retweetStyle", _retweetStyle);
         root->add_content("\n");
         root->new_text_child(ns, "roundedAvatars", _roundedAvatars.to_string());

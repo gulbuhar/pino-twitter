@@ -332,10 +332,13 @@ public class ReTweet : VBox {
 	private void change() {
 		int length = (int)text.len();
 		
+		
 		if(length > 140) {
-			string t = text.substring(0, 140);
+			Gdk.Color red_color;
+			//label.modify_fg(StateType.NORMAL, red_color.parse("red", out red_color));
+			//string t = text.substring(0, 140);
 			//warning(t);
-			text = t;
+			//text = t;
 		}
 		
 		label.set_text("<b>%s</b>".printf((140 - text.len()).to_string()));
