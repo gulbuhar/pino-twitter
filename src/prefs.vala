@@ -205,6 +205,12 @@ public class Prefs : Object {
 		set{ _toolbarShow = value; }
 	}
 	
+	private bool _startMin = false;
+	public bool startMin {
+		get{ return _startMin; }
+		set{ _startMin = value; }
+	}
+	
 	public enum LoadStatus { OK, EMPTY, ERROR }
 	public enum WriteStatus { OK, ERROR }
 	
@@ -344,6 +350,10 @@ public class Prefs : Object {
 				case "toolbarShow":
 					_toolbarShow = iter->get_content().to_bool();
 					break;
+				
+				case "startMin":
+					_startMin = iter->get_content().to_bool();
+					break;
 			}
 		}
 		
@@ -402,6 +412,8 @@ public class Prefs : Object {
         root->new_text_child(ns, "menuShow", _menuShow.to_string());
         root->add_content("\n");
         root->new_text_child(ns, "toolbarShow", _toolbarShow.to_string());
+        root->add_content("\n");
+        root->new_text_child(ns, "startMin", _startMin.to_string());
         root->add_content("\n");
 		
 		//write this document to the pref file

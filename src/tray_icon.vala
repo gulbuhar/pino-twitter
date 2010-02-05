@@ -23,7 +23,7 @@ using Gtk;
 
 public class TrayIcon : StatusIcon {
 	
-	private Window parent;
+	private MainWindow parent;
 	private Gdk.Pixbuf logo;
 	private Gdk.Pixbuf logo_fresh;
 	
@@ -33,7 +33,7 @@ public class TrayIcon : StatusIcon {
 		set{ _popup = value; }
 	}
 	
-	public TrayIcon(Window _parent, Gdk.Pixbuf _logo, Gdk.Pixbuf _logo_fresh) {
+	public TrayIcon(MainWindow _parent, Gdk.Pixbuf _logo, Gdk.Pixbuf _logo_fresh) {
 		base;
 		
 		parent = _parent;
@@ -48,10 +48,18 @@ public class TrayIcon : StatusIcon {
 		});
 		
 		activate.connect(() => {
-			if(parent.visible)
+			if(parent.visible) {
 				parent.hide();
-			else
+			} else {
+				if(parent.first_show) {
+					parent.show_all();
+					parent.first_hide();
+					parent.first_show = false;
+					return;
+				}
+				
 				parent.show();
+			}
 		});
 	}
 	
