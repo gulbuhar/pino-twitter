@@ -30,7 +30,7 @@ public class PrefDialog : Dialog {
 	private CheckButton showMentionsNotify;
 	private CheckButton showDirectNotify;
 	
-	private RadioButton showFullNotify;
+	//private RadioButton showFullNotify;
 	private RadioButton showLowNotify;
 	
 	private ComboBox retweetStyle;
@@ -66,13 +66,13 @@ public class PrefDialog : Dialog {
 		showTimelineNotify = new CheckButton.with_label(_("For timeline"));
 		showMentionsNotify = new CheckButton.with_label(_("For mentions"));
 		showDirectNotify = new CheckButton.with_label(_("For direct messages"));
-		
+		/*
 		weak SList<weak Gtk.RadioButton> group_not  = null;
 		showFullNotify = new RadioButton.with_label(group_not,
 			_("Show notification for each status"));
 		showLowNotify = new RadioButton.with_label(showFullNotify.get_group(),
 			_("Show overall notification"));
-		
+		*/
 		//retweet style
 		var reLabel = new Label(_("Retweets style"));
 		retweetStyle = new ComboBox.text();
@@ -96,7 +96,7 @@ public class PrefDialog : Dialog {
 		table_not.add_widget(showTimelineNotify);
 		table_not.add_widget(showMentionsNotify);
 		table_not.add_widget(showDirectNotify);
-		table_not.add_two_widgets(showFullNotify, showLowNotify);
+		//table_not.add_two_widgets(showFullNotify, showLowNotify);
 		
 		var table_re = new HigTable(_("Retweets"));
 		table_re.add_two_widgets(reLabel, retweetStyle);
@@ -235,12 +235,12 @@ public class PrefDialog : Dialog {
 		numberStatuses.value = prefs.numberStatuses;
 		showTimelineNotify.active = prefs.showTimelineNotify;
 		showMentionsNotify.active = prefs.showMentionsNotify;
-		
+		/*
 		if(prefs.showFullNotify)
 			showFullNotify.active = true;
 		else
 			showLowNotify.active = true;
-		
+		*/
 		showDirectNotify.active = prefs.showDirectNotify;
 		setup_retweet(prefs);
 		roundedAvatars.active = prefs.roundedAvatars;
@@ -296,11 +296,11 @@ public class PrefDialog : Dialog {
 		showDirectNotify.toggled.connect(() => {
 			prefs.showDirectNotify = showDirectNotify.active;
 		});
-		
+		/*
 		showFullNotify.toggled.connect(() => {
 			prefs.showFullNotify = showFullNotify.active;
 		});
-		
+		*/
 		retweetStyle.changed.connect(() => {
 			switch(retweetStyle.get_active()) {
 				case 0:

@@ -41,15 +41,18 @@ public class Popups : Object {
 	public void start(ArrayList<Status> home, ArrayList<Status> mentions,
 		ArrayList<Status> direct) {
 		
-		if(prefs.showFullNotify)
-			full_notify(home, mentions, direct);
-		else
+		if(home.size > 3 || mentions.size > 3 || direct.size > 3)
 			low_notify(home, mentions, direct);
+		else
+			full_notify(home, mentions, direct);
 	}
 	
-	private void show_popup(Status status) {
-		Notification popup = new Notification(status.user_name,
-			status.text, null, null);
+	private void show_popup(Status status, bool direct = false) {
+		string head = status.user_name;
+		if(direct)
+			head = "%s %s %s".printf(_("Direct message"), _("from"), head);
+		
+		Notification popup = new Notification(head, status.text, null, null);
 		
 		string av_path = cache.get_or_download(status.user_avatar, Cache.Method.ASYNC, false);
 		if(av_path == status.user_avatar)
@@ -57,7 +60,7 @@ public class Popups : Object {
 		else {
 			popup.set_icon_from_pixbuf(new Gdk.Pixbuf.from_file(av_path));
 		}
-		popup.set_timeout(100000); //doesn't working... hm
+		popup.set_timeout(5000); //doesn't working... hm
 		popup.set_urgency(Notify.Urgency.NORMAL);
 		popup.show();
 	}
@@ -66,7 +69,7 @@ public class Popups : Object {
 		Notification popup = new Notification(_("Updates"),
 			text, null, null);
 		popup.set_icon_from_pixbuf(logo);
-		popup.set_timeout(100000);
+		popup.set_timeout(5000);
 		popup.set_urgency(Notify.Urgency.NORMAL);
 		popup.show();
 	}
@@ -78,7 +81,8 @@ public class Popups : Object {
 		ArrayList<string> ids = new ArrayList<string>();
 		
 		if(prefs.showTimelineNotify) {
-			foreach(Status status in home) {
+			for(int i = home.size -1; i > -1; i--) {
+				var status = home.get(i);
 				if(status.user_screen_name != prefs.login) {
 					show_popup(status);
 					ids.add(status.id);
@@ -87,15 +91,17 @@ public class Popups : Object {
 		}
 		
 		if(prefs.showMentionsNotify) {
-			foreach(Status status in mentions) {
+			for(int i = mentions.size -1; i > -1; i--) {
+				var status = mentions.get(i);
 				if(!(status.id in ids))
 					show_popup(status);
 			}
 		}
 		
 		if(prefs.showDirectNotify) {
-			foreach(Status status in direct) {
-				show_popup(status);
+			for(int i = direct.size -1; i > -1; i--) {
+				var status = direct.get(i);
+				show_popup(status, true);
 			}
 		}
 		
