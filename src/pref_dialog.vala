@@ -38,6 +38,7 @@ public class PrefDialog : Dialog {
 	private CheckButton roundedAvatars;
 	private HScale opacityTweets;
 	private CheckButton rtlSupport;
+	private CheckButton fullNames;
 	private Entry login;
 	private Entry password;
 	private CheckButton savePass;
@@ -170,6 +171,9 @@ public class PrefDialog : Dialog {
 		//rtl support
 		rtlSupport = new CheckButton.with_label(_("Right-to-left languages detection"));
 		
+		//full names or nicks in tweets
+		fullNames = new CheckButton.with_label(_("Full names instead of nicknames"));
+		
 		//opacity for tweets
 		var opacityTweetsLabel = new Label(_("Opacity"));
 		opacityTweets = new HScale.with_range(0, 100, 5);
@@ -177,6 +181,7 @@ public class PrefDialog : Dialog {
 		
 		table_tweets.add_widget(roundedAvatars);
 		table_tweets.add_widget(rtlSupport);
+		table_tweets.add_widget(fullNames);
 		table_tweets.add_two_widgets(opacityTweetsLabel, opacityTweets);
 		
 		app_box.pack_start(table_tweets, false, true, 10);
@@ -246,6 +251,7 @@ public class PrefDialog : Dialog {
 		roundedAvatars.active = prefs.roundedAvatars;
 		opacityTweets.set_value((int)(prefs.opacityTweets.to_double() * 100));
 		rtlSupport.active = prefs.rtlSupport;
+		fullNames.active = prefs.fullNames;
 		login.text = prefs.login;
 		password.text = prefs.password;
 		savePass.active = prefs.rememberPass;
@@ -283,6 +289,10 @@ public class PrefDialog : Dialog {
 		
 		rtlSupport.toggled.connect(() => {
 			prefs.rtlSupport = rtlSupport.active;
+		});
+		
+		fullNames.toggled.connect(() => {
+			prefs.fullNames = fullNames.active;
 		});
 		
 		showTimelineNotify.toggled.connect(() => {
