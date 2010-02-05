@@ -59,6 +59,7 @@ public class Template : Object {
 		prefs.roundedAvatarsChanged.connect(() => emit_for_refresh());
 		prefs.opacityTweetsChanged.connect(() => emit_for_refresh());
 		prefs.rtlChanged.connect(() => emit_for_refresh());
+		prefs.fullNamesChanged.connect(() => emit_for_refresh());
 	}
 	
 	public void refresh_gtk_style(SystemStyle _gtk_style) {
@@ -118,7 +119,7 @@ public class Template : Object {
 			string time = time_to_human_delta(now, i.created_at);
 			
 			var user_avatar = i.user_avatar;
-			var name = i.user_name;
+			var name = i.user_screen_name;
 			var screen_name = i.user_screen_name;
 			var text = i.text;
 			
@@ -127,7 +128,12 @@ public class Template : Object {
 			map["fresh"] = fresh;
 			map["id"] = i.id;
 			map["screen_name"] = screen_name;
-			map["name"] = name;
+			
+			if(prefs.fullNames)
+				map["name"] = name;
+			else
+				map["name"] = screen_name;
+			
 			map["time"] = time;
 			map["content"] = making_links(text);
 			
@@ -187,7 +193,12 @@ public class Template : Object {
 				map["id"] = i.id;
 				map["time"] = time;
 				map["by_who"] = by_who;
-				map["name"] = i.user_name;
+				
+				if(prefs.fullNames)
+					map["name"] = i.user_name;
+				else
+					map["name"] = i.user_screen_name;
+			
 				map["content"] = making_links(i.text);
 
 				if(prefs.rtlSupport && is_rtl(clear_notice.replace(i.text, -1, 0, "")))
@@ -222,7 +233,12 @@ public class Template : Object {
 				map["id"] = i.id;
 				map["re_icon"] = re_icon;
 				map["screen_name"] = screen_name;
-				map["name"] = name;
+				
+				if(prefs.fullNames)
+					map["name"] = name;
+				else
+					map["name"] = screen_name;
+			
 				map["time"] = time;
 				map["content"] = making_links(text);
 				

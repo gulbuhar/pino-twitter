@@ -136,6 +136,18 @@ public class Prefs : Object {
 		}
 	}
 	
+	public signal void fullNamesChanged();
+	private bool _fullNames = false;
+	public bool fullNames {
+		get{ return _fullNames; }
+		set{
+			if(_fullNames != value) {
+				_fullNames = value;
+				fullNamesChanged();
+			}
+		}
+	}
+	
 	private string _login = "";
 	public string login {
 		get{ return _login; }
@@ -291,6 +303,10 @@ public class Prefs : Object {
 					_rtlSupport = iter->get_content().to_bool();
 					break;
 				
+				case "fullNames":
+					_fullNames = iter->get_content().to_bool();
+					break;
+				
 				case "login":
 					_login = iter->get_content();
 					break;
@@ -363,6 +379,8 @@ public class Prefs : Object {
         root->new_text_child(ns, "opacityTweets", _opacityTweets);
         root->add_content("\n");
         root->new_text_child(ns, "rtlSupport", _rtlSupport.to_string());
+        root->add_content("\n");
+        root->new_text_child(ns, "fullNames", _fullNames.to_string());
         root->add_content("\n");
         root->new_text_child(ns, "login", _login);
         root->add_content("\n");
