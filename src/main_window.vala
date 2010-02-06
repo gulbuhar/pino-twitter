@@ -486,7 +486,6 @@ public class MainWindow : Window {
 		prefs.menuShow = menubar.visible;
 		prefs.toolbarShow = toolbar.visible;
 		
-		warning("visible %s", visible.to_string());
 		prefs.startMin = !visible;
 		
 		prefs.write();
