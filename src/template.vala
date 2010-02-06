@@ -50,7 +50,7 @@ public class Template : Object {
 		
 		//compile regex
 		nicks = new Regex("@([A-Za-z0-9_]+)");
-		tags = new Regex("(\\#[A-Za-z0-9_]+)");
+		tags = new Regex("((^|\\s)\\#[A-Za-z0-9_]+)");
 		urls = new Regex("((http|https|ftp)://([\\S]+))"); //need something better
 		
 		// characters must be cleared to know direction of text
