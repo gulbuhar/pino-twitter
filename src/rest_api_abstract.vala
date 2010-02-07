@@ -124,7 +124,9 @@ public abstract class RestAPIAbstract : Object {
 					int tmp_iter2 = 0;
 					foreach(string val in params.get_values()) {
 						if(tmp_iter2 == tmp_iter) {
-							query += Soup.form_encode(key, val) + "&";
+							query += Soup.form_encode(key, val);
+							if(tmp_iter < params.size() - 1)
+								query += "&";
 							break;
 						}
 						tmp_iter2++;

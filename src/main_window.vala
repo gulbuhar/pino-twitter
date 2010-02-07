@@ -143,6 +143,12 @@ public class MainWindow : Window {
 		mentions.act.set_group(home.act.get_group());
 		direct.act.set_group(home.act.get_group());
 		
+		//retweet widget
+		re_tweet = new ReTweet(this, prefs, cache);
+		re_tweet.status_updated.connect((status) => {
+			home.insert_status(status);
+		});
+		
 		menu_init();
 		
 		//set popup menu to the views
@@ -153,12 +159,6 @@ public class MainWindow : Window {
 		//tray setup
 		tray = new TrayIcon(this, logo, logo_fresh);
 		tray.popup = popup;
-		
-		//retweet widget
-		re_tweet = new ReTweet(this, prefs, cache);
-		re_tweet.status_updated.connect((status) => {
-			home.insert_status(status);
-		});
 		
 		re_tweet.sending_data.connect((msg) => {
 			statusbar.set_status(StatusbarSmart.StatusType.SENDING_DATA, msg);
@@ -350,6 +350,7 @@ public class MainWindow : Window {
 		actGroup.add_action_with_accel(updateAct, "<Ctrl>R");
 		actGroup.add_action_with_accel(quitAct, "<Ctrl>Q");
 		actGroup.add_action(editMenu);
+		actGroup.add_action_with_accel(re_tweet.shortAct, "<Ctrl>U");
 		actGroup.add_action_with_accel(prefAct, "<Ctrl>P");
 		actGroup.add_action(viewMenu);
 		actGroup.add_action_with_accel(home.act, "<Ctrl>1");
@@ -377,6 +378,8 @@ public class MainWindow : Window {
 					<menuitem action="FileQuit" />
 				</menu>
 				<menu action="EditMenu">
+					<menuitem action="UrlShort" />
+					<separator />
 					<menuitem action="EditPref" />
 				</menu>
 				<menu action="ViewMenu">

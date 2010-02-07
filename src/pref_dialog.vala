@@ -24,8 +24,10 @@ using Gtk;
 public class PrefDialog : Dialog {
 	
 	private Notebook tabs;
+	
 	private SpinButton updateInterval;
 	private SpinButton numberStatuses;
+	private ComboBox urlShorten;
 	private CheckButton showTimelineNotify;
 	private CheckButton showMentionsNotify;
 	private CheckButton showDirectNotify;
@@ -63,6 +65,12 @@ public class PrefDialog : Dialog {
 		var numberStatusesLabel = new Label(_("Default number of statuses"));
 		numberStatuses = new SpinButton.with_range(5, 100, 1);
 		
+		//URL shortening service
+		var urlShortenLabel = new Label(_("URL shortening service"));
+		urlShorten = new ComboBox.text();
+		urlShorten.append_text("goo.gl");
+		urlShorten.append_text("is.gd");
+		
 		//show notifications
 		showTimelineNotify = new CheckButton.with_label(_("For timeline"));
 		showMentionsNotify = new CheckButton.with_label(_("For mentions"));
@@ -89,9 +97,10 @@ public class PrefDialog : Dialog {
 			delete_cache();
 		});
 		
-		var table_int = new HigTable(_("REST API options"));
+		var table_int = new HigTable(_("General"));
 		table_int.add_two_widgets(updateLabel, updateInterval);
 		table_int.add_two_widgets(numberStatusesLabel, numberStatuses);
+		table_int.add_two_widgets(urlShortenLabel, urlShorten);
 		
 		var table_not = new HigTable(_("Notification"));
 		table_not.add_widget(showTimelineNotify);
@@ -219,6 +228,22 @@ public class PrefDialog : Dialog {
 			set_focus(password);
 	}
 	
+	private void setup_urlshorten(Prefs prefs) {
+		switch(prefs.urlShorten) {
+			case "goo.gl":
+				urlShorten.set_active(0);
+				break;
+			
+			case "is.gd":
+				urlShorten.set_active(1);
+				break;
+			
+			default:
+				urlShorten.set_active(0);
+				break;
+		}
+	}
+	
 	private void setup_retweet(Prefs prefs) {
 		switch(prefs.retweetStyle) {
 			case ReTweet.Style.CLASSIC:
@@ -238,6 +263,7 @@ public class PrefDialog : Dialog {
 	private void setup_prefs(Prefs prefs) {
 		updateInterval.value = prefs.updateInterval;
 		numberStatuses.value = prefs.numberStatuses;
+		setup_urlshorten(prefs);
 		showTimelineNotify.active = prefs.showTimelineNotify;
 		showMentionsNotify.active = prefs.showMentionsNotify;
 		/*
@@ -264,6 +290,18 @@ public class PrefDialog : Dialog {
 		
 		numberStatuses.value_changed.connect(() => {
 			prefs.numberStatuses = (int)numberStatuses.value;
+		});
+		
+		urlShorten.changed.connect(() => {
+			switch(urlShorten.get_active()) {
+				case 0:
+					prefs.urlShorten = "goo.gl";
+					break;
+				
+				case 1:
+					prefs.urlShorten = "is.gd";
+					break;
+			}
 		});
 		
 		roundedAvatars.toggled.connect(() => {

@@ -38,6 +38,12 @@ public class Prefs : Object {
 		set{ _numberStatuses = value; }
 	}
 	
+	private string _urlShorten = "goo.gl";
+	public string urlShorten {
+		get{ return _urlShorten; }
+		set{ _urlShorten = value; }
+	}
+	
 	private bool _showTimelineNotify = true;
 	public bool showTimelineNotify {
 		get{ return _showTimelineNotify; }
@@ -277,6 +283,10 @@ public class Prefs : Object {
 					_numberStatuses = iter->get_content().to_int();
 					break;
 				
+				case "urlShorten":
+					_urlShorten = iter->get_content();
+					break;
+				
 				case "showTimelineNotify":
 					_showTimelineNotify = iter->get_content().to_bool();
 					break;
@@ -373,6 +383,8 @@ public class Prefs : Object {
         root->new_text_child(ns, "updateInterval", _updateInterval.to_string());
         root->add_content("\n");
         root->new_text_child(ns, "numberStatuses", _numberStatuses.to_string());
+        root->add_content("\n");
+        root->new_text_child(ns, "urlShorten", _urlShorten);
         root->add_content("\n");
         root->new_text_child(ns, "showTimelineNotify", _showTimelineNotify.to_string());
         root->add_content("\n");

@@ -49,11 +49,13 @@ public class ReTweet : VBox {
 	private Label label;
 	public Label user_label;
 	
+	public Action shortAct;
+	
 	private DmEntry direct_entry;
 	private ToolButton close_btn;
 	private Window parent;
 	private Prefs prefs;
-	
+	private UrlShort url_short;
 	private string reply_id = "";
 	
 	public signal void sending_data(string message);
@@ -66,6 +68,27 @@ public class ReTweet : VBox {
 		prefs = _prefs;
 		
 		api = new RestAPIRe(new TwitterUrls(), {prefs.login, prefs.password});
+		
+		url_short = new UrlShort(prefs, api);
+		
+		shortAct = new Action("UrlShort", _("Shorten URLs..."), null, null);
+		shortAct.activate.connect(() => {
+			shortAct.set_sensitive(false);
+			set_sensitive(false);
+			sending_data(_("Shortening URLs...")); //signal
+			
+			string reply = url_short.shortit(text);
+			
+			if(reply != text)
+				data_sent(_("URLs was shortened successfully")); //signal
+			else
+				data_sent(_("Nothing to shorten")); //signal
+			
+			text = reply;
+			
+			shortAct.set_sensitive(true);
+			set_sensitive(true);
+		});
 		
 		//gui setup
 		border_width = 0;
@@ -237,6 +260,21 @@ public class ReTweet : VBox {
 		parent.set_focus(text_entry);
 	}
 	
+	private bool too_long() {
+		if(text.length > 140) {
+			var message_dialog = new MessageDialog(parent,
+				Gtk.DialogFlags.DESTROY_WITH_PARENT | Gtk.DialogFlags.MODAL,
+				Gtk.MessageType.INFO, Gtk.ButtonsType.OK, (_("Your status is too long")));
+		
+			message_dialog.run();
+			message_dialog.destroy();
+			
+			return true;
+		}
+		return false;
+		
+	}
+	
 	private bool hide_or_send(Gdk.EventKey event) {
 		switch(event.hardware_keycode) {
 			case 36: //return key
@@ -269,15 +307,18 @@ public class ReTweet : VBox {
 	private void enter_pressed() {
 		switch(state) {
 			case State.NEW:
-				send_new();
+				if(!too_long())
+					send_new();
 				break;
 			
 			case State.REPLY:
-				send_new(reply_id);
+				if(!too_long())
+					send_new(reply_id);
 				break;
 			
 			case State.RETWEET:
-				send_new();
+				if(!too_long())
+					send_new();
 				break;
 			
 			case State.DIRECT_REPLY:
@@ -332,6 +373,7 @@ public class ReTweet : VBox {
 	private void change() {
 		int length = (int)text.len();
 		
+		//url_short.find_urls(text);
 		
 		if(length > 140) {
 			Gdk.Color red_color;
