@@ -23,6 +23,16 @@ using Soup;
 using Gee;
 using RestAPI;
 
+public class Position : Object {
+	public int start;
+	public int end;
+	
+	public Position(int _start, int _end) {
+		start = _start;
+		end = _end;
+	}
+}
+
 public class UrlShort : Object {
 	
 	Prefs prefs;
@@ -70,7 +80,7 @@ public class UrlShort : Object {
 		return text;
 	}
 	
-	public ArrayList<string> find_urls(owned string text) {
+	public ArrayList<string> find_urls(owned string text, bool len = true) {
 		ArrayList<string> lst = new ArrayList<string>();
 		int pos = 0;
 		
@@ -80,8 +90,12 @@ public class UrlShort : Object {
 			
 			if(bingo) {
 				foreach(string s in match_info.fetch_all()) {
-					if(s.length > 18)
+					if(len) {
+						if(s.length > 18)
+							lst.add(s);
+					} else {
 						lst.add(s);
+					}
 					
 					match_info.fetch_pos(0, null, out pos);
 					break;
