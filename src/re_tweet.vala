@@ -20,6 +20,7 @@
  */
 
 using Gtk;
+using Gee;
 using RestAPI;
 
 public class ReTweet : VBox {
@@ -40,9 +41,9 @@ public class ReTweet : VBox {
 	
 	public string text {
 		public owned get
-		{ return entry.get_buffer().text; }
+		{ return entry.buffer.text; }
 		set
-		{ entry.get_buffer().set_text(value, (int)value.size()); }
+		{ entry.buffer.set_text(value, (int)value.size()); }
 	}
 	
 	private Image status_icon;
@@ -58,14 +59,21 @@ public class ReTweet : VBox {
 	private UrlShort url_short;
 	private string reply_id = "";
 	
+	Regex nicks;
+	Regex urls;
+	Regex tags;
+	
+	SystemStyle gtk_style;
+	
 	public signal void sending_data(string message);
 	public signal void data_sent(string message);
 	public signal void data_error_sent(string message);
 	public signal void status_updated(Status status);
 	
-	public ReTweet(Window _parent, Prefs _prefs, Cache cache) {
+	public ReTweet(Window _parent, Prefs _prefs, Cache cache, SystemStyle _gtk_style) {
 		parent = _parent;
 		prefs = _prefs;
+		gtk_style = _gtk_style;
 		
 		api = new RestAPIRe(new TwitterUrls(), {prefs.login, prefs.password});
 		
@@ -100,10 +108,6 @@ public class ReTweet : VBox {
 		user_label = new Label(_("New status:"));
 		
 		direct_entry = new DmEntry(api);
-		/*direct_entry.set_icon_from_stock(EntryIconPosition.SECONDARY, "gtk-refresh");
-		direct_entry.set_icon_tooltip_text(EntryIconPosition.SECONDARY, _("Check"));
-		direct_entry.icon_press.connect((pos, event) => get_friendship_thread());
-		direct_entry.set_size_request(100, -1);*/
 		
 		label = new Label("<b>140</b>");
 		label.set_use_markup(true);
@@ -130,7 +134,17 @@ public class ReTweet : VBox {
 		entry.cursor_visible = true;
 		entry.set_wrap_mode(Gtk.WrapMode.WORD);
 		entry.key_press_event.connect(hide_or_send);
-		entry.get_buffer().changed.connect(change);
+		entry.buffer.changed.connect(change);
+		
+		entry.buffer.create_tag("red_bg", "background", "#ffa4a4");
+		entry.buffer.create_tag("url", "foreground", gtk_style.sl_color);
+		entry.buffer.create_tag("nick", "weight", Pango.Weight.BOLD);
+		entry.buffer.create_tag("tag", "foreground", gtk_style.sl_color,
+			"weight", Pango.Weight.BOLD);
+		
+		nicks = new Regex("(^|\\s)@([A-Za-z0-9_]+)");
+		urls = new Regex("((http|https|ftp)://([\\S]+)\\.([\\S]+))");
+		tags = new Regex("((^|\\s)\\#[A-Za-z0-9_]+)");
 		
 		var scroll = new ScrolledWindow(null, null);
         scroll.set_policy(PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);
@@ -179,7 +193,7 @@ public class ReTweet : VBox {
 	}
 	
 	public void insert(string str) {
-		entry.get_buffer().insert_at_cursor(str, (int)str.length);
+		entry.buffer.insert_at_cursor(str, (int)str.length);
 	}
 	
 	public void set_state_new() {
@@ -279,7 +293,7 @@ public class ReTweet : VBox {
 		switch(event.hardware_keycode) {
 			case 36: //return key
 				if(event.state == 1) { //shift + enter
-					entry.get_buffer().insert_at_cursor("\n", (int)"\n".length);
+					entry.buffer.insert_at_cursor("\n", (int)"\n".length);
 					return true;
 				}
 				if(text.length > 0) {
@@ -370,17 +384,57 @@ public class ReTweet : VBox {
 		data_sent(_("Your direct message has been sent successfully")); //signal
 	}
 	
+	/* styling for nicks in the buffer */
+	private void tagging(TextIter start_pos, string text, Regex regex, string tag_name) {
+		ArrayList<string> lst = new ArrayList<string>();
+		int pos = 0;
+		
+		while(true) {
+			MatchInfo match_info;
+			bool bingo = regex.match_all_full(text, -1, pos, GLib.RegexMatchFlags.NEWLINE_ANY, out match_info);
+			
+			if(bingo) {
+				foreach(string s in match_info.fetch_all()) {
+					lst.add(s);
+					
+					match_info.fetch_pos(0, null, out pos);
+					break;
+				}
+			} else break;
+		}
+		
+		foreach(string item in lst) {
+			TextIter start_pos_regex;
+			TextIter end_pos_regex;
+			
+			start_pos.forward_search(item, TextSearchFlags.TEXT_ONLY,
+				out start_pos_regex, out end_pos_regex, null);
+			
+			entry.buffer.apply_tag_by_name(tag_name, start_pos_regex, end_pos_regex);
+		}
+	}
+	
 	private void change() {
 		int length = (int)text.len();
 		
-		//url_short.find_urls(text);
+		TextIter start_pos;
+		TextIter end_pos;
+		
+		entry.buffer.get_bounds(out start_pos, out end_pos);
+		
+		entry.buffer.remove_all_tags(start_pos, end_pos);
+		
+		tagging(start_pos, text, urls, "url");
+		tagging(start_pos, text, nicks, "nick");
+		tagging(start_pos, text, tags, "tag");
 		
 		if(length > 140) {
-			Gdk.Color red_color;
-			//label.modify_fg(StateType.NORMAL, red_color.parse("red", out red_color));
-			//string t = text.substring(0, 140);
-			//warning(t);
-			//text = t;
+			TextIter start_red_pos;
+			
+			entry.buffer.get_iter_at_offset(out start_red_pos, 140);
+			entry.buffer.get_iter_at_offset(out end_pos, length);
+			
+			entry.buffer.apply_tag_by_name("red_bg", start_red_pos, end_pos);
 		}
 		
 		label.set_text("<b>%s</b>".printf((140 - text.len()).to_string()));

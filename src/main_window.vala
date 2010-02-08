@@ -144,7 +144,7 @@ public class MainWindow : Window {
 		direct.act.set_group(home.act.get_group());
 		
 		//retweet widget
-		re_tweet = new ReTweet(this, prefs, cache);
+		re_tweet = new ReTweet(this, prefs, cache, gtk_style);
 		re_tweet.status_updated.connect((status) => {
 			home.insert_status(status);
 		});
