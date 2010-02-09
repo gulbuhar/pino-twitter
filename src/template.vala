@@ -60,6 +60,7 @@ public class Template : Object {
 		prefs.opacityTweetsChanged.connect(() => emit_for_refresh());
 		prefs.rtlChanged.connect(() => emit_for_refresh());
 		prefs.fullNamesChanged.connect(() => emit_for_refresh());
+		prefs.fontChanged.connect(() => emit_for_refresh());
 	}
 	
 	public void refresh_gtk_style(SystemStyle _gtk_style) {
@@ -82,6 +83,10 @@ public class Template : Object {
 		map["lg_color"] = gtk_style.lg_color;
 		map["dr_color"] = gtk_style.dr_color;
 		map["tweets_opacity"] = prefs.opacityTweets;
+		map["font_size"] = prefs.deFontSize.to_string();
+		map["font_size_small"] = (prefs.deFontSize - 1).to_string();
+		map["fresh_color"] = prefs.freshColor;
+		map["font_name"] = prefs.deFontName;
 		map["main_content"] = content;
 		
 		return render(main_template, map);

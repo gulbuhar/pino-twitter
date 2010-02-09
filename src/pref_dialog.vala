@@ -41,6 +41,8 @@ public class PrefDialog : Dialog {
 	private HScale opacityTweets;
 	private CheckButton rtlSupport;
 	private CheckButton fullNames;
+	private FontButton deFont;
+	private ColorButton freshColor;
 	private Entry login;
 	private Entry password;
 	private CheckButton savePass;
@@ -172,7 +174,7 @@ public class PrefDialog : Dialog {
 		//Appearance tab
 		var app_box = new VBox(false, 0);
 		
-		var table_tweets = new HigTable(_("Tweets"));
+		var table_tweets = new HigTable(_("Statuses"));
 		
 		//rounded corners
 		roundedAvatars = new CheckButton.with_label(_("Rounded corners"));
@@ -183,6 +185,17 @@ public class PrefDialog : Dialog {
 		//full names or nicks in tweets
 		fullNames = new CheckButton.with_label(_("Full names instead of nicknames"));
 		
+		//default font in statuses
+		var deFontLabel = new Label(_("Default font"));
+		deFont = new FontButton();
+		deFont.set_use_size(true);
+		deFont.set_show_style(false);
+		
+		//color of fresh statuses
+		var freshColorLabel = new Label(_("Fresh statuses color"));
+		freshColor = new ColorButton();
+		freshColor.set_use_alpha(true);
+		
 		//opacity for tweets
 		var opacityTweetsLabel = new Label(_("Opacity"));
 		opacityTweets = new HScale.with_range(0, 100, 5);
@@ -191,6 +204,8 @@ public class PrefDialog : Dialog {
 		table_tweets.add_widget(roundedAvatars);
 		table_tweets.add_widget(rtlSupport);
 		table_tweets.add_widget(fullNames);
+		table_tweets.add_two_widgets(deFontLabel, deFont);
+		table_tweets.add_two_widgets(freshColorLabel, freshColor);
 		table_tweets.add_two_widgets(opacityTweetsLabel, opacityTweets);
 		
 		app_box.pack_start(table_tweets, false, true, 10);
@@ -278,6 +293,15 @@ public class PrefDialog : Dialog {
 		opacityTweets.set_value((int)(prefs.opacityTweets.to_double() * 100));
 		rtlSupport.active = prefs.rtlSupport;
 		fullNames.active = prefs.fullNames;
+		deFont.set_font_name("%s %d".printf(prefs.deFontName, prefs.deFontSize));
+		
+		//colorFrsh setup
+		uint16 alpha_fresh;
+		var fresh_color = ColorUtils.rgba2color(prefs.freshColor, out alpha_fresh);
+		//warning("%d", alpha_fresh);
+		freshColor.set_color(fresh_color);
+		freshColor.set_alpha(alpha_fresh);
+		
 		login.text = prefs.login;
 		password.text = prefs.password;
 		savePass.active = prefs.rememberPass;
@@ -331,6 +355,22 @@ public class PrefDialog : Dialog {
 		
 		fullNames.toggled.connect(() => {
 			prefs.fullNames = fullNames.active;
+		});
+		
+		deFont.font_set.connect(() => {
+			//warning(deFont.get_font_name());
+			prefs.deFont = deFont.get_font_name();
+			//warning("font: %s, size: %d", prefs.deFontName, prefs.deFontSize);
+		});
+		
+		freshColor.color_set.connect(() => {
+			Gdk.Color fresh_color;
+			freshColor.get_color(out fresh_color);
+			double alpha = (double)freshColor.get_alpha() / 256.0 / 256.0;
+
+			string result = ColorUtils.color2rgba(fresh_color, alpha);
+			
+			prefs.freshColor = result;
 		});
 		
 		showTimelineNotify.toggled.connect(() => {
