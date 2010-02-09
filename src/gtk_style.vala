@@ -19,6 +19,8 @@
  * 	troorl <troorl@gmail.com>
  */
 
+using ColorUtils;
+
 public class SystemStyle : Object {
 	
 	private string _bg_color;
@@ -68,28 +70,6 @@ public class SystemStyle : Object {
 			_dr_color = rgb_to_hex(dark_color);
 		}
 		
-		warning("New style");
-	}
-	
-	private uint16 lighter(uint16 color, uint16 delta) {
-		if(color + delta > 255*256)
-			return 255*256;
-		else
-			return color + delta; 
-	}
-	
-	private uint16 darker(uint16 color, uint16 delta) {
-		if(color - delta < 0)
-			return 0;
-		else
-			return color - delta; 
-	}
-	
-	private string rgb_to_hex(Gdk.Color color) {
-		string s = "%X%X%X".printf(
-			(int)Math.trunc(color.red / 256.00),
-			(int)Math.trunc(color.green / 256.00),
-			(int)Math.trunc(color.blue / 256.00));
-		return "#" + s;
+		//warning("New style");
 	}
 }

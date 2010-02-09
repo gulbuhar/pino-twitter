@@ -154,6 +154,44 @@ public class Prefs : Object {
 		}
 	}
 	
+	public signal void fontChanged();
+	private int _deFontSize = 9;
+	public int deFontSize {
+		get { return _deFontSize; }
+	}
+	private string _deFontName = "Dejavu Sans";
+	public string deFontName {
+		get { return _deFontName; }
+	}
+	public string deFont {
+		set{
+			_deFontName = "";
+			
+			Regex bold_italic = new Regex("(.*)(Bold Italic)(.*)");
+			Regex re_style = new Regex("([a-zA-Z0-9 _]+) (BoldItalic|Bold|Italic|Medium|Oblique|BoldOblique) ([0-9]+)");
+			Regex re_normal = new Regex("([a-zA-Z0-9 _]+) ([0-9]+)");
+			
+			string my_val = bold_italic.replace(value, -1, 0, "\\1BoldItalic\\3");
+			
+			if(re_style.match(value)) {
+				_deFontName = re_style.replace(my_val, -1, 0, "\\1");
+				_deFontSize = re_style.replace(my_val, -1, 0, "\\3").to_int();
+				
+			} else {
+				_deFontName = re_normal.replace(my_val, -1, 0, "\\1");
+				_deFontSize = re_normal.replace(my_val, -1, 0, "\\2").to_int();
+			}
+			
+			fontChanged();
+		}
+	}
+	
+	private string _freshColor = "rgba(179, 110, 117, 0.32)";
+	public string freshColor {
+		get { return _freshColor; }
+		set { _freshColor = value; }
+	}
+	
 	private string _login = "";
 	public string login {
 		get{ return _login; }
@@ -323,6 +361,18 @@ public class Prefs : Object {
 					_fullNames = iter->get_content().to_bool();
 					break;
 				
+				case "deFontName":
+					_deFontName = iter->get_content();
+					break;
+				
+				case "deFontSize":
+					_deFontSize = iter->get_content().to_int();
+					break;
+				
+				case "freshColor":
+					_freshColor = iter->get_content();
+					break;
+				
 				case "login":
 					_login = iter->get_content();
 					break;
@@ -403,6 +453,12 @@ public class Prefs : Object {
         root->new_text_child(ns, "rtlSupport", _rtlSupport.to_string());
         root->add_content("\n");
         root->new_text_child(ns, "fullNames", _fullNames.to_string());
+        root->add_content("\n");
+        root->new_text_child(ns, "deFontName", _deFontName);
+        root->add_content("\n");
+        root->new_text_child(ns, "deFontSize", _deFontSize.to_string());
+        root->add_content("\n");
+        root->new_text_child(ns, "freshColor", _freshColor);
         root->add_content("\n");
         root->new_text_child(ns, "login", _login);
         root->add_content("\n");
