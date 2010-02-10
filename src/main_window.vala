@@ -235,6 +235,7 @@ public class MainWindow : Window {
 		
 		//show window
 		if(!prefs.startMin) {
+			first_show = false;
 			show_all();
 			first_hide();
 		}
@@ -252,7 +253,7 @@ public class MainWindow : Window {
 		notify = new Popups(prefs, cache, logo);
 		
 		//searchEntry.hide();
-		first_hide();
+		//first_hide();
 		
 		//getting updates
 		if(!prefs.is_new && prefs.rememberPass) {
