@@ -108,7 +108,7 @@ public abstract class RestAPIAbstract : Object {
 		}
 	}
 	
-	protected string make_request(owned string req_url, string method,
+	public string make_request(owned string req_url, string method,
 		HashTable<string, string> params = new HashTable<string, string>(null, null),
 		bool async = true, int retry = 3) throws RestError {
 		
@@ -177,7 +177,7 @@ public abstract class RestAPIAbstract : Object {
 		if(status_code != 200)
 			reply_tracking(status_code);
 		
-		return message.response_body.data;
+		return (string)message.response_body.flatten().data;
 	}
 }
 

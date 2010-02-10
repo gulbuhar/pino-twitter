@@ -423,7 +423,7 @@ public class Prefs : Object {
 	public WriteStatus write() {
 		//creating xml document
 		Xml.Doc* xmldoc = new Xml.Doc("1.0");
-		Xml.Ns* ns = Xml.Ns.create(null, null, null);
+		Xml.Ns* ns = new Xml.Ns(null, null, null);
 		ns->type = Xml.ElementType.ELEMENT_NODE;
 		Xml.Node* root = new Xml.Node(ns, "settings");
 		xmldoc->set_root_element(root);
@@ -487,7 +487,7 @@ public class Prefs : Object {
 		//write this document to the pref file
 		var stream = FileStream.open(prefFilePath, "w");
 		//how does this work...
-		Xml.Doc.dump(stream, xmldoc);
+		xmldoc->dump(stream);
 		
 		return WriteStatus.OK;
 	}
