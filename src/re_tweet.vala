@@ -196,6 +196,7 @@ public class ReTweet : VBox {
 		entry.buffer.insert_at_cursor(str, (int)str.length);
 	}
 	
+	/* when user clicked on a nick */
 	public void set_nickto(string screen_name) {
 		if(!visible)
 			set_state_new();

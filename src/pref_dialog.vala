@@ -28,6 +28,7 @@ public class PrefDialog : Dialog {
 	private SpinButton updateInterval;
 	private SpinButton numberStatuses;
 	private ComboBox urlShorten;
+	private CheckButton startMin;
 	private CheckButton showTimelineNotify;
 	private CheckButton showMentionsNotify;
 	private CheckButton showDirectNotify;
@@ -73,6 +74,9 @@ public class PrefDialog : Dialog {
 		urlShorten.append_text("goo.gl");
 		urlShorten.append_text("is.gd");
 		
+		//start in tray
+		startMin = new CheckButton.with_label(_("Starting up in tray"));
+		
 		//show notifications
 		showTimelineNotify = new CheckButton.with_label(_("For timeline"));
 		showMentionsNotify = new CheckButton.with_label(_("For mentions"));
@@ -103,6 +107,7 @@ public class PrefDialog : Dialog {
 		table_int.add_two_widgets(updateLabel, updateInterval);
 		table_int.add_two_widgets(numberStatusesLabel, numberStatuses);
 		table_int.add_two_widgets(urlShortenLabel, urlShorten);
+		table_int.add_widget(startMin);
 		
 		var table_not = new HigTable(_("Notification"));
 		table_not.add_widget(showTimelineNotify);
@@ -279,6 +284,7 @@ public class PrefDialog : Dialog {
 		updateInterval.value = prefs.updateInterval;
 		numberStatuses.value = prefs.numberStatuses;
 		setup_urlshorten(prefs);
+		startMin.active = prefs.startMin;
 		showTimelineNotify.active = prefs.showTimelineNotify;
 		showMentionsNotify.active = prefs.showMentionsNotify;
 		/*
@@ -326,6 +332,10 @@ public class PrefDialog : Dialog {
 					prefs.urlShorten = "is.gd";
 					break;
 			}
+		});
+		
+		startMin.toggled.connect(() => {
+			prefs.startMin = startMin.active;
 		});
 		
 		roundedAvatars.toggled.connect(() => {
