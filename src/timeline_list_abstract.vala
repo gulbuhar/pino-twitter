@@ -62,6 +62,7 @@ public abstract class TimelineListAbstract : HBox {
 	public signal void finish_update();
 	public signal void updating_error(string msg);
 	
+	public signal void nickto(string screen_name);
 	public signal void replyto(Status status);
 	public signal void retweet(Status status);
 	public signal void directreply(string screen_name);
@@ -198,11 +199,7 @@ public abstract class TimelineListAbstract : HBox {
 		
 		switch(prot) {
 			case "nickto":
-				/*
-				reTweet.show();
-				reTweet.insert("@" + params);
-				this.set_focus(reTweet.text_entry);
-				*/
+				nickto(params);
 				return true;
 			
 			case "directreply":

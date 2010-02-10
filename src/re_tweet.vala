@@ -196,6 +196,13 @@ public class ReTweet : VBox {
 		entry.buffer.insert_at_cursor(str, (int)str.length);
 	}
 	
+	public void set_nickto(string screen_name) {
+		if(!visible)
+			set_state_new();
+			
+		insert("@%s ".printf(screen_name));
+	}
+	
 	public void set_state_new() {
 		state = State.NEW;
 		

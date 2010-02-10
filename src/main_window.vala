@@ -172,6 +172,15 @@ public class MainWindow : Window {
 			statusbar.set_status(StatusbarSmart.StatusType.FINISH_ERROR, msg);
 		});
 		
+		home.nickto.connect((screen_name) => {
+			re_tweet.set_nickto(screen_name);
+		});
+		mentions.nickto.connect((screen_name) => {
+			re_tweet.set_nickto(screen_name);
+		});
+		direct.nickto.connect((screen_name) => {
+			re_tweet.set_nickto(screen_name);
+		});
 		home.retweet.connect((status) => {
 			re_tweet.set_state_retweet(status);
 		});
