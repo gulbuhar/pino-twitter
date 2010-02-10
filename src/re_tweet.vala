@@ -80,6 +80,7 @@ public class ReTweet : VBox {
 		url_short = new UrlShort(prefs, api);
 		
 		shortAct = new Action("UrlShort", _("Shorten URLs..."), null, null);
+		shortAct.set_sensitive(false);
 		shortAct.activate.connect(() => {
 			shortAct.set_sensitive(false);
 			set_sensitive(false);
@@ -96,6 +97,14 @@ public class ReTweet : VBox {
 			
 			shortAct.set_sensitive(true);
 			set_sensitive(true);
+		});
+		
+		//enable or disable shrten url action
+		show.connect((event) => {
+			shortAct.set_sensitive(true);
+		});
+		hide.connect((event) => {
+			shortAct.set_sensitive(false);
 		});
 		
 		//gui setup

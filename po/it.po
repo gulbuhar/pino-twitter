@@ -119,37 +119,34 @@ msgstr "Informazioni su %s"
 
 #: src/more_window.vala:36
 msgid "Get older entries"
-msgstr ""
+msgstr "Ricevi vecchi tweet"
 
 #: src/popups.vala:66
-#, fuzzy
 msgid "Updates"
-msgstr "aggiornato "
+msgstr "Aggiornamenti"
 
 #: src/popups.vala:111
 #, c-format
 msgid "in the home timeline: %d\n"
-msgstr ""
+msgstr "nella timeline principale: %d\n"
 
 #: src/popups.vala:114
-#, fuzzy, c-format
+#, c-format
 msgid "in mentions: %d\n"
-msgstr "Per le citazioni"
+msgstr "nelle citazioni: %d\n"
 
 #: src/popups.vala:117
 #, c-format
 msgid "in direct messages: %d"
-msgstr ""
+msgstr "nei messaggi diretti: %d"
 
 #: src/pref_dialog.vala:58
-#, fuzzy
 msgid "Update interval (in minutes)"
-msgstr "Intervallo di aggiornamento"
+msgstr "Intervallo di aggiornamento (in minuti)"
 
 #: src/pref_dialog.vala:62
-#, fuzzy
 msgid "Default number of statuses"
-msgstr "Crea un nuovo stato"
+msgstr "Numero predefinito di aggiornamenti"
 
 #: src/pref_dialog.vala:66
 msgid "For timeline"
@@ -161,15 +158,15 @@ msgstr "Per le citazioni"
 
 #: src/pref_dialog.vala:68
 msgid "For direct messages"
-msgstr ""
+msgstr "Per i messaggi diretti"
 
 #: src/pref_dialog.vala:72
 msgid "Show notification for each status"
-msgstr ""
+msgstr "Mostra una notifica per ogni stato"
 
 #: src/pref_dialog.vala:74
 msgid "Show overall notification"
-msgstr ""
+msgstr "Mostra notifica globale"
 
 #: src/pref_dialog.vala:77
 msgid "Retweets style"
@@ -181,7 +178,7 @@ msgstr "Pulisci ora"
 
 #: src/pref_dialog.vala:91
 msgid "REST API options"
-msgstr ""
+msgstr "Opzioni REST API"
 
 #: src/pref_dialog.vala:95
 msgid "Notification"
@@ -249,7 +246,7 @@ msgstr "Nuovo stato:"
 
 #: src/re_tweet.vala:90
 msgid "Hide"
-msgstr ""
+msgstr "Nascondi"
 
 #: src/re_tweet.vala:141
 #, c-format
@@ -257,13 +254,12 @@ msgid "Reply to <b>%s</b>:"
 msgstr "Rispondi a <b>%s</b>:"
 
 #: src/re_tweet.vala:182
-#, fuzzy
 msgid "Reply to"
-msgstr "Rispondi"
+msgstr "Rispondi a"
 
 #: src/re_tweet.vala:195
 msgid "Direct message to"
-msgstr ""
+msgstr "Messaggio diretto a"
 
 #: src/re_tweet.vala:215
 msgid "Retweet:"
@@ -274,21 +270,20 @@ msgid "Type something first"
 msgstr "Scrivi prima qualcosa"
 
 #: src/re_tweet.vala:292
-#, fuzzy
 msgid "Sending status..."
-msgstr "invio stato... "
+msgstr "Invio status... "
 
 #: src/re_tweet.vala:309
 msgid "Your status has been sent successfully"
-msgstr ""
+msgstr "Il tuo stato è stato inviato con successo"
 
 #: src/re_tweet.vala:315
 msgid "Sending direct message..."
-msgstr ""
+msgstr "Invio messaggio diretto..."
 
 #: src/re_tweet.vala:329
 msgid "Your direct message has been sent successfully"
-msgstr ""
+msgstr "Il tuo massaggio diretto è stato inviato con successo"
 
 #: src/status_bar_smart.vala:101
 msgid "updating... "
@@ -304,7 +299,7 @@ msgstr "Elimina"
 
 #: src/template.vala:104 src/template.vala:158
 msgid "Direct message"
-msgstr ""
+msgstr "Massaggio diretto"
 
 #: src/template.vala:157
 msgid "Retweet"
@@ -342,24 +337,23 @@ msgstr "circa %i ore fa"
 
 #: src/timeline_direct_list.vala:42 src/timeline_list.vala:190
 msgid "Empty"
-msgstr ""
+msgstr "Vuoto"
 
 #: src/timeline_direct_list.vala:149
 msgid "Your direct message has been deleted successfully"
-msgstr ""
+msgstr "Il tuo messaggio diretto è stato eliminato con successo"
 
 #: src/timeline_list.vala:184
 msgid "Your status has been deleted successfully"
-msgstr ""
+msgstr "Il tuo status è stato eliminato con successo"
 
 #: src/timeline_list_abstract.vala:162
 msgid "Connecting..."
-msgstr ""
+msgstr "Connessione..."
 
 #: src/timeline_list_abstract.vala:227
-#, fuzzy
 msgid "Sure you want to delete this status?"
-msgstr "Si è sicuri di volter eliminare questo tweet?"
+msgstr "Si è sicuri di voler eliminare questo status?"
 
 #: src/tray_icon.vala:44
 #, c-format
