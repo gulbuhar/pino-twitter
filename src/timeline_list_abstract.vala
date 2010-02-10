@@ -113,6 +113,7 @@ public abstract class TimelineListAbstract : HBox {
 				if(more.visible)
 					more.hide();
 			}
+			return true;
 		});
 		
 		this.pack_start(event_view, true, true, 0);
@@ -127,9 +128,11 @@ public abstract class TimelineListAbstract : HBox {
 		parent = _parent;
 		parent.focus_in_event.connect((w, e) => {
 			parent_focus = true;
+			return true;
 		});
 		parent.focus_out_event.connect((w, e) => {
 			parent_focus = false;
+			return true;
 		});
 		
 		//create new action
