@@ -20,7 +20,6 @@ msgid "You can't send direct message to this user. He (or she) must follow you t
 msgstr "Direktnachrichten an diesen Benutzer sind nicht möglich, da der Benutzer dir nicht folgt"
 
 #: src/dm_entry.vala:42
-#, fuzzy
 msgid "Check"
 msgstr "Prüfen"
 
@@ -34,7 +33,7 @@ msgstr "Überprüfen..."
 
 #: src/main_window.vala:118
 msgid "Home timeline"
-msgstr "Eigene Timeline anzeigen"
+msgstr "Timeline"
 
 #: src/main_window.vala:119
 msgid "Show your home timeline"
@@ -83,7 +82,7 @@ msgstr "Neue Direktnachricht erstellen"
 
 #: src/main_window.vala:280
 msgid "Update timeline"
-msgstr "Timeline aktualisieren"
+msgstr "Aktualisieren"
 
 #: src/main_window.vala:283
 msgid "Quit"
@@ -123,7 +122,6 @@ msgid "Get older entries"
 msgstr "Ältere Nachrichten anzeigen"
 
 #: src/popups.vala:66
-#, fuzzy
 msgid "Updates"
 msgstr "Neue Nachrichten"
 
@@ -147,35 +145,30 @@ msgid "Update interval (in minutes)"
 msgstr "Aktualisierungsintervall (in Minuten)"
 
 #: src/pref_dialog.vala:62
-#, fuzzy
 msgid "Default number of statuses"
-msgstr "Voreingestelle Nachrichtenanzahl"
+msgstr "Nachrichtenanzahl (Standard)"
 
 #: src/pref_dialog.vala:66
-#, fuzzy
 msgid "For timeline"
-msgstr "Eigene Timeline anzeigen"
+msgstr "Für eigene Timeline"
 
 #: src/pref_dialog.vala:67
-#, fuzzy
 msgid "For mentions"
-msgstr "Mentions anzeigen"
+msgstr "Für Mentions"
 
 #: src/pref_dialog.vala:68
-#, fuzzy
 msgid "For direct messages"
-msgstr "Für die Direktnachrichten"
+msgstr "Für Direktnachrichten"
 
 #: src/pref_dialog.vala:72
 msgid "Show notification for each status"
-msgstr "Benachrichtigungen für jede Nachricht anzeigen"
+msgstr "für jede Nachricht einzeln"
 
 #: src/pref_dialog.vala:74
 msgid "Show overall notification"
-msgstr "Allgemeine Benachrichtigungen anzeigen"
+msgstr "Allgemeine Benachrichtigungen"
 
 #: src/pref_dialog.vala:77
-#, fuzzy
 msgid "Retweets style"
 msgstr "Retweet-Muster"
 
@@ -190,7 +183,7 @@ msgstr "REST-API-Optionen"
 
 #: src/pref_dialog.vala:95
 msgid "Notification"
-msgstr "Benachrichtigung"
+msgstr "Benachrichtigungen"
 
 #: src/pref_dialog.vala:101
 msgid "Retweets"
@@ -253,9 +246,8 @@ msgid "New status:"
 msgstr "Neuer Status:"
 
 #: src/re_tweet.vala:90
-#, fuzzy
 msgid "Hide"
-msgstr "Verstecken"
+msgstr "Ausblenden"
 
 #: src/re_tweet.vala:141
 #, c-format
@@ -263,12 +255,10 @@ msgid "Reply to <b>%s</b>:"
 msgstr "Antwort an <b>%s</b>:"
 
 #: src/re_tweet.vala:182
-#, fuzzy
 msgid "Reply to"
 msgstr "Antwort an"
 
 #: src/re_tweet.vala:195
-#, fuzzy
 msgid "Direct message to"
 msgstr "Direktnachricht an"
 
@@ -317,7 +307,6 @@ msgid "Retweet"
 msgstr "Retweeten"
 
 #: src/template.vala:179
-#, fuzzy
 msgid "you"
 msgstr "dich"
 
@@ -348,7 +337,6 @@ msgid "about %i hours ago"
 msgstr "vor %i Stunden"
 
 #: src/timeline_direct_list.vala:42 src/timeline_list.vala:190
-#, fuzzy
 msgid "Empty"
 msgstr "Leer"
 

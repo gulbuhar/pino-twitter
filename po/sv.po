@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Johan Eriksson <hund@ubuntu.com>, 2010.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-01-31 18:20+0200\n"
-"PO-Revision-Date: 2010-01-15 00:17+0100\n"
+"PO-Revision-Date: 2010-02-01 19:18+0100\n"
 "Last-Translator: Johan Eriksson <hund@lathund.nu>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,30 +18,26 @@ msgstr ""
 "X-Poedit-Country: SWEDEN\n"
 
 #: src/dm_entry.vala:35
-msgid ""
-"You can't send direct message to this user. He (or she) must follow you too"
-msgstr ""
+msgid "You can't send direct message to this user. He (or she) must follow you too"
+msgstr "Du kan inte skicka direktmeddelanden till denna användare. Han/hon måste följa dig"
 
 #: src/dm_entry.vala:42
-#, fuzzy
 msgid "Check"
-msgstr "Cache"
+msgstr "Kontrollera"
 
 #: src/dm_entry.vala:58
 msgid "You can send direct message to this user"
-msgstr ""
+msgstr "Du kan skicka direktmeddelanden till denna användaren"
 
 #: src/dm_entry.vala:77
 msgid "Checking..."
-msgstr ""
+msgstr "Kontrollerar..."
 
 #: src/main_window.vala:118
-#, fuzzy
 msgid "Home timeline"
-msgstr "För tidslinjen"
+msgstr "Tidslinje"
 
 #: src/main_window.vala:119
-#, fuzzy
 msgid "Show your home timeline"
 msgstr "Visa din tidslinje"
 
@@ -55,11 +51,11 @@ msgstr "Visa omnämningar"
 
 #: src/main_window.vala:132
 msgid "Direct messages"
-msgstr ""
+msgstr "Direktmeddelanden"
 
 #: src/main_window.vala:133
 msgid "Show direct messages"
-msgstr ""
+msgstr "Visa direktmeddelanden"
 
 #: src/main_window.vala:209 src/main_window.vala:210 src/main_window.vala:211
 #: src/status_bar_smart.vala:93 src/status_bar_smart.vala:96
@@ -80,12 +76,11 @@ msgstr "Skapa ny status"
 
 #: src/main_window.vala:273
 msgid "New direct message"
-msgstr ""
+msgstr "Nytt direktmeddelande"
 
 #: src/main_window.vala:274
-#, fuzzy
 msgid "Create new direct message"
-msgstr "Skapa ny status"
+msgstr "Skapa nytt direktmeddelande"
 
 #: src/main_window.vala:280
 msgid "Update timeline"
@@ -126,37 +121,34 @@ msgstr "Om %s"
 
 #: src/more_window.vala:36
 msgid "Get older entries"
-msgstr ""
+msgstr "Hämta äldre inlägg"
 
 #: src/popups.vala:66
-#, fuzzy
 msgid "Updates"
-msgstr "uppdaterad"
+msgstr "Uppdateringar"
 
 #: src/popups.vala:111
 #, c-format
 msgid "in the home timeline: %d\n"
-msgstr ""
+msgstr "i tidslinjen: %d\n"
 
 #: src/popups.vala:114
-#, fuzzy, c-format
+#, c-format
 msgid "in mentions: %d\n"
-msgstr "För omnämningar"
+msgstr "i omnämningar:  %d\n"
 
 #: src/popups.vala:117
 #, c-format
 msgid "in direct messages: %d"
-msgstr ""
+msgstr "i direktmeddelanden: %d"
 
 #: src/pref_dialog.vala:58
-#, fuzzy
 msgid "Update interval (in minutes)"
-msgstr "Uppdateringsintervall "
+msgstr "Uppdateringsintervall (i minuter)"
 
 #: src/pref_dialog.vala:62
-#, fuzzy
 msgid "Default number of statuses"
-msgstr "Skapa ny status"
+msgstr "Standardvärde för antal nya uppdateringar som ska visas"
 
 #: src/pref_dialog.vala:66
 msgid "For timeline"
@@ -168,15 +160,15 @@ msgstr "För omnämningar"
 
 #: src/pref_dialog.vala:68
 msgid "For direct messages"
-msgstr ""
+msgstr "För direktmeddelanden"
 
 #: src/pref_dialog.vala:72
 msgid "Show notification for each status"
-msgstr ""
+msgstr "Visa notifikation för varje status"
 
 #: src/pref_dialog.vala:74
 msgid "Show overall notification"
-msgstr ""
+msgstr "Visa övergripande notifikation"
 
 #: src/pref_dialog.vala:77
 msgid "Retweets style"
@@ -188,7 +180,7 @@ msgstr "Rensa nu"
 
 #: src/pref_dialog.vala:91
 msgid "REST API options"
-msgstr ""
+msgstr "REST API val"
 
 #: src/pref_dialog.vala:95
 msgid "Notification"
@@ -256,7 +248,7 @@ msgstr "Ny status:"
 
 #: src/re_tweet.vala:90
 msgid "Hide"
-msgstr ""
+msgstr "Dölj"
 
 #: src/re_tweet.vala:141
 #, c-format
@@ -264,13 +256,12 @@ msgid "Reply to <b>%s</b>:"
 msgstr "Svara till <b>%s</b>:"
 
 #: src/re_tweet.vala:182
-#, fuzzy
 msgid "Reply to"
 msgstr "Svara"
 
 #: src/re_tweet.vala:195
 msgid "Direct message to"
-msgstr ""
+msgstr "Direktmeddelande till"
 
 #: src/re_tweet.vala:215
 msgid "Retweet:"
@@ -281,21 +272,20 @@ msgid "Type something first"
 msgstr "Skriv något först"
 
 #: src/re_tweet.vala:292
-#, fuzzy
 msgid "Sending status..."
-msgstr "skickar status..."
+msgstr "Skickar status..."
 
 #: src/re_tweet.vala:309
 msgid "Your status has been sent successfully"
-msgstr ""
+msgstr "Din status har skickats"
 
 #: src/re_tweet.vala:315
 msgid "Sending direct message..."
-msgstr ""
+msgstr "Skickar direktmeddelande..."
 
 #: src/re_tweet.vala:329
 msgid "Your direct message has been sent successfully"
-msgstr ""
+msgstr "Ditt direktmeddelande har skickats"
 
 #: src/status_bar_smart.vala:101
 msgid "updating... "
@@ -311,7 +301,7 @@ msgstr "Radera"
 
 #: src/template.vala:104 src/template.vala:158
 msgid "Direct message"
-msgstr ""
+msgstr "Direktmeddelande"
 
 #: src/template.vala:157
 msgid "Retweet"
@@ -349,24 +339,23 @@ msgstr "omkring %i timmar sedan"
 
 #: src/timeline_direct_list.vala:42 src/timeline_list.vala:190
 msgid "Empty"
-msgstr ""
+msgstr "Tom"
 
 #: src/timeline_direct_list.vala:149
 msgid "Your direct message has been deleted successfully"
-msgstr ""
+msgstr "Ditt direktmeddelande har tagits bort"
 
 #: src/timeline_list.vala:184
 msgid "Your status has been deleted successfully"
-msgstr ""
+msgstr "Din status har tagits bort"
 
 #: src/timeline_list_abstract.vala:162
 msgid "Connecting..."
-msgstr ""
+msgstr "Ansluter..."
 
 #: src/timeline_list_abstract.vala:227
-#, fuzzy
 msgid "Sure you want to delete this status?"
-msgstr "Är du säker på att du vill radera det här meddelandet?"
+msgstr "Är du säker på att du vill ta bort det här meddelandet?"
 
 #: src/tray_icon.vala:44
 #, c-format
