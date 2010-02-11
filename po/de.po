@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -16,11 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/dm_entry.vala:35
-msgid ""
-"You can't send direct message to this user. He (or she) must follow you too"
-msgstr ""
-"Direktnachrichten an diesen Benutzer sind nicht möglich, da der Benutzer dir "
-"nicht folgt"
+msgid "You can't send direct message to this user. He (or she) must follow you too"
+msgstr "Direktnachrichten an diesen Benutzer sind nicht möglich, da der Benutzer dir nicht folgt"
 
 #: src/dm_entry.vala:42
 msgid "Check"
@@ -131,7 +128,7 @@ msgstr "Direktnachricht"
 
 #: src/popups.vala:53
 msgid "from"
-msgstr ""
+msgstr "von"
 
 #: src/popups.vala:69
 msgid "Updates"
@@ -162,11 +159,11 @@ msgstr "Nachrichtenanzahl (Standard)"
 
 #: src/pref_dialog.vala:72
 msgid "URL shortening service"
-msgstr ""
+msgstr "Linkverkürzerdienst"
 
 #: src/pref_dialog.vala:78
 msgid "Starting up in tray"
-msgstr ""
+msgstr "Hauptfenster beim Start nicht anzeigen"
 
 #: src/pref_dialog.vala:81
 msgid "For timeline"
@@ -189,9 +186,8 @@ msgid "Clear now"
 msgstr "Jetzt leeren"
 
 #: src/pref_dialog.vala:106
-#, fuzzy
 msgid "General"
-msgstr "Aktualisierungsintervall"
+msgstr "Allgemein"
 
 #: src/pref_dialog.vala:112
 msgid "Notification"
@@ -227,7 +223,7 @@ msgstr "Neuen Account erstellen"
 
 #: src/pref_dialog.vala:182
 msgid "Statuses"
-msgstr ""
+msgstr "Nachrichten"
 
 #: src/pref_dialog.vala:185
 msgid "Rounded corners"
@@ -239,15 +235,15 @@ msgstr "Right-to-left-Unterstützung"
 
 #: src/pref_dialog.vala:191
 msgid "Full names instead of nicknames"
-msgstr ""
+msgstr "Echte Namen statt Nicknamen verwenden"
 
 #: src/pref_dialog.vala:194
 msgid "Default font"
-msgstr ""
+msgstr "Standardschriftart"
 
 #: src/pref_dialog.vala:200
 msgid "Fresh statuses color"
-msgstr ""
+msgstr "Farbe neuer Nachrichten"
 
 #: src/pref_dialog.vala:205
 msgid "Opacity"
@@ -267,21 +263,19 @@ msgstr "Erscheinungsbild"
 
 #: src/re_tweet.vala:82
 msgid "Shorten URLs..."
-msgstr ""
+msgstr "Links verkürzen..."
 
 #: src/re_tweet.vala:87
-#, fuzzy
 msgid "Shortening URLs..."
-msgstr "Nachricht senden... "
+msgstr "Links werden verkürzt... "
 
 #: src/re_tweet.vala:92
-#, fuzzy
 msgid "URLs was shortened successfully"
-msgstr "Nachricht wurde erfolgreich gelöscht"
+msgstr "Links wurden erfolgreich verkürzt"
 
 #: src/re_tweet.vala:94
 msgid "Nothing to shorten"
-msgstr ""
+msgstr "Nichts zu verkürzen"
 
 #: src/re_tweet.vala:117 src/re_tweet.vala:223
 msgid "New status:"
@@ -310,7 +304,7 @@ msgstr "Retweet:"
 
 #: src/re_tweet.vala:298
 msgid "Your status is too long"
-msgstr ""
+msgstr "Die Nachricht ist zu lang"
 
 #: src/re_tweet.vala:322
 msgid "Type something first"
@@ -409,7 +403,6 @@ msgstr "%s - ein Twitter Client"
 #~ msgid "Show overall notification"
 #~ msgstr "Allgemeine Benachrichtigungen"
 
-#, fuzzy
 #~ msgid "REST API options"
 #~ msgstr "REST-API-Optionen"
 

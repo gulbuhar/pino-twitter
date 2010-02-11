@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -16,11 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/dm_entry.vala:35
-msgid ""
-"You can't send direct message to this user. He (or she) must follow you too"
-msgstr ""
-"No puedes enviarle un mensaje directo a este usuario. Para ello él debe "
-"seguirte también."
+msgid "You can't send direct message to this user. He (or she) must follow you too"
+msgstr "No puedes enviarle un mensaje directo a este usuario. Para ello él debe seguirte también."
 
 #: src/dm_entry.vala:42
 msgid "Check"
@@ -131,7 +128,7 @@ msgstr "Mensaje directo"
 
 #: src/popups.vala:53
 msgid "from"
-msgstr ""
+msgstr "de"
 
 #: src/popups.vala:69
 msgid "Updates"
@@ -162,11 +159,11 @@ msgstr "Número de tweets por defecto"
 
 #: src/pref_dialog.vala:72
 msgid "URL shortening service"
-msgstr ""
+msgstr "Servicio de acortamiento de URL"
 
 #: src/pref_dialog.vala:78
 msgid "Starting up in tray"
-msgstr ""
+msgstr "Iniciar minimizado"
 
 #: src/pref_dialog.vala:81
 msgid "For timeline"
@@ -189,9 +186,8 @@ msgid "Clear now"
 msgstr "Limpiar ahora"
 
 #: src/pref_dialog.vala:106
-#, fuzzy
 msgid "General"
-msgstr "Intervalo de tiempo"
+msgstr "General"
 
 #: src/pref_dialog.vala:112
 msgid "Notification"
@@ -227,7 +223,7 @@ msgstr "Crear nueva cuenta..."
 
 #: src/pref_dialog.vala:182
 msgid "Statuses"
-msgstr ""
+msgstr "Tweets"
 
 #: src/pref_dialog.vala:185
 msgid "Rounded corners"
@@ -239,15 +235,15 @@ msgstr "Detección de escritura de derecha a izquierda"
 
 #: src/pref_dialog.vala:191
 msgid "Full names instead of nicknames"
-msgstr ""
+msgstr "Nombre completo en lugar de alias"
 
 #: src/pref_dialog.vala:194
 msgid "Default font"
-msgstr ""
+msgstr "Fuente por defecto"
 
 #: src/pref_dialog.vala:200
 msgid "Fresh statuses color"
-msgstr ""
+msgstr "Color de los tweets"
 
 #: src/pref_dialog.vala:205
 msgid "Opacity"
@@ -267,21 +263,19 @@ msgstr "Apariencia"
 
 #: src/re_tweet.vala:82
 msgid "Shorten URLs..."
-msgstr ""
+msgstr "URL corta..."
 
 #: src/re_tweet.vala:87
-#, fuzzy
 msgid "Shortening URLs..."
-msgstr "Enviando tweet... "
+msgstr "Acortando URLs..."
 
 #: src/re_tweet.vala:92
-#, fuzzy
 msgid "URLs was shortened successfully"
-msgstr "Tu tweet se ha eliminado con éxito"
+msgstr "La URL se ha acortado con éxito"
 
 #: src/re_tweet.vala:94
 msgid "Nothing to shorten"
-msgstr ""
+msgstr "Nada que acortar"
 
 #: src/re_tweet.vala:117 src/re_tweet.vala:223
 msgid "New status:"
@@ -310,7 +304,7 @@ msgstr "Retweet:"
 
 #: src/re_tweet.vala:298
 msgid "Your status is too long"
-msgstr ""
+msgstr "Tu tweet es muy largo"
 
 #: src/re_tweet.vala:322
 msgid "Type something first"
@@ -395,7 +389,6 @@ msgid "Connecting..."
 msgstr "Conectando..."
 
 #: src/timeline_list_abstract.vala:224
-#, fuzzy
 msgid "Sure you want to delete this status?"
 msgstr "¿Seguro que quieres eliminar este tweet?"
 

@@ -2,8 +2,8 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Athasiri Laohavanich <athasiri@gmail.com>, 2009.
-#
-#
+# 
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -17,8 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/dm_entry.vala:35
-msgid ""
-"You can't send direct message to this user. He (or she) must follow you too"
+msgid "You can't send direct message to this user. He (or she) must follow you too"
 msgstr "คุณไม่สามารถส่งข้อความส่วนตัวถึงผู้ใช้นี้ได้ เขาหรือเธอต้อง follow คุณด้วย"
 
 #: src/dm_entry.vala:42
@@ -132,7 +131,7 @@ msgstr "ข้อความส่วนตัว"
 
 #: src/popups.vala:53
 msgid "from"
-msgstr ""
+msgstr "จาก"
 
 #: src/popups.vala:69
 msgid "Updates"
@@ -158,17 +157,16 @@ msgid "Update interval (in minutes)"
 msgstr "ช่วงเวลาอัพเดตข้อมูล (หน่วยเป็นนาที)"
 
 #: src/pref_dialog.vala:68
-#, fuzzy
 msgid "Default number of statuses"
-msgstr "สร้างสถานะใหม่"
+msgstr "ค่าปริยายของสถานะ"
 
 #: src/pref_dialog.vala:72
 msgid "URL shortening service"
-msgstr ""
+msgstr "บริการย่อ URL"
 
 #: src/pref_dialog.vala:78
 msgid "Starting up in tray"
-msgstr ""
+msgstr "เริ่มต้นที่ถาดระบบ"
 
 #: src/pref_dialog.vala:81
 msgid "For timeline"
@@ -229,7 +227,7 @@ msgstr "สร้างบัญชีใหม่..."
 
 #: src/pref_dialog.vala:182
 msgid "Statuses"
-msgstr ""
+msgstr "สถานะ"
 
 #: src/pref_dialog.vala:185
 msgid "Rounded corners"
@@ -241,15 +239,15 @@ msgstr "การตรวจจับภาษาที่อ่านจาก
 
 #: src/pref_dialog.vala:191
 msgid "Full names instead of nicknames"
-msgstr ""
+msgstr "ชื่อเต็มแทนที่ชื่อเล่น"
 
 #: src/pref_dialog.vala:194
 msgid "Default font"
-msgstr ""
+msgstr "แบบอักษรปริยาย"
 
 #: src/pref_dialog.vala:200
 msgid "Fresh statuses color"
-msgstr ""
+msgstr "สีของสถานะล่าสุด"
 
 #: src/pref_dialog.vala:205
 msgid "Opacity"
@@ -269,21 +267,19 @@ msgstr "ลักษณะ"
 
 #: src/re_tweet.vala:82
 msgid "Shorten URLs..."
-msgstr ""
+msgstr "ย่อ URLs"
 
 #: src/re_tweet.vala:87
-#, fuzzy
 msgid "Shortening URLs..."
-msgstr "กำลังส่งสถานะ... "
+msgstr "กำลังย่อ URLs... "
 
 #: src/re_tweet.vala:92
-#, fuzzy
 msgid "URLs was shortened successfully"
-msgstr "สถานะของคุณลบสำเร็จแล้ว"
+msgstr "URLs ถูกย่อสำเร็จแล้ว"
 
 #: src/re_tweet.vala:94
 msgid "Nothing to shorten"
-msgstr ""
+msgstr "ไม่มีอะไรให้ย่อ"
 
 #: src/re_tweet.vala:117 src/re_tweet.vala:223
 msgid "New status:"
@@ -312,7 +308,7 @@ msgstr "Retweet:"
 
 #: src/re_tweet.vala:298
 msgid "Your status is too long"
-msgstr ""
+msgstr "สถานะของคุณยาวเกินไป"
 
 #: src/re_tweet.vala:322
 msgid "Type something first"
