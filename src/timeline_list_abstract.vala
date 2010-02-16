@@ -20,6 +20,7 @@
  */
 
 using WebKit;
+using Auth;
 using RestAPI;
 using Gee;
 using Gtk;
@@ -58,6 +59,8 @@ public abstract class TimelineListAbstract : HBox {
 	
 	protected Window parent;
 	
+	protected Accounts accounts;
+	
 	public signal void start_update(string req);
 	public signal void finish_update();
 	public signal void updating_error(string msg);
@@ -76,9 +79,11 @@ public abstract class TimelineListAbstract : HBox {
 		}
 	}
 	
-	public TimelineListAbstract(Window _parent, AuthData auth_data, TimelineType timeline_type,
-		IRestUrls urls, Template _template, int __items_count, Icon _icon,
+	public TimelineListAbstract(Window _parent, Accounts _accounts, TimelineType timeline_type,
+		Template _template, int __items_count, Icon _icon,
 		string fname, string icon_name, string icon_desc, bool _active = false) {
+		
+		accounts = _accounts;
 		
 		view = new WebView();
 		view.navigation_policy_decision_requested.connect(link_clicking);
@@ -119,7 +124,8 @@ public abstract class TimelineListAbstract : HBox {
 		this.pack_start(event_view, true, true, 0);
 		//this.pack_start(fixed, true, true, 0);
 		
-		api = new RestAPITimeline(urls, auth_data, timeline_type);
+		var acc = accounts.get_current_account();
+		api = new RestAPITimeline(acc, timeline_type);
 		api.request.connect((req) => start_update(req));
 		template = _template;
 		template.emit_for_refresh.connect(() => refresh());
@@ -150,7 +156,35 @@ public abstract class TimelineListAbstract : HBox {
 		//popup menu actions
 		view.button_press_event.connect(show_popup_menu);
 		
-		start_screen();
+		if(accounts.accounts.size > 0)
+			start_screen();
+		else
+			set_empty();
+	}
+	
+	public void set_empty() {
+		lst.clear();
+		last_focused = 0;
+		update_content(template.generate_message(_("Empty")));
+	}
+	
+	public virtual ArrayList<Status>? update() {
+		return null;
+	}
+	
+	public void update_auth() {
+		var acc = accounts.get_current_account();
+		api.set_auth(acc);
+		
+		lst.clear();
+		last_focused = 0;
+		
+		if(acc == null)
+			set_empty();
+		else {
+			start_screen();
+			update();
+		}
 	}
 	
 	public virtual void show_smart() {

@@ -20,6 +20,7 @@
  */
 
 using Gtk;
+using Auth;
 
 public class PrefDialog : Dialog {
 	
@@ -50,7 +51,7 @@ public class PrefDialog : Dialog {
 	
 	public signal void delete_cache();
 	
-	public PrefDialog(Prefs prefs, Window parent) {
+	public PrefDialog(Prefs prefs, Window parent, Accounts accounts) {
 		this.modal = true;
 		set_title(_("Preferences"));
 		this.has_separator = false;
@@ -154,7 +155,11 @@ public class PrefDialog : Dialog {
 			//
 		});
 		
+		//accounts
+		AccountWidget accountWidget = new AccountWidget(this, accounts);
+		
 		var table_auth = new HigTable(_("Authorization"));
+		table_auth.add_widget_wide(accountWidget);
 		table_auth.add_two_widgets(logLabel, login);
 		table_auth.add_two_widgets(pasLabel, password);
 		table_auth.add_widget(savePass);
@@ -240,7 +245,7 @@ public class PrefDialog : Dialog {
 		set_transient_for(parent);
 		
 		//if first start or don't want to remember the password
-		if(prefs.is_new || !prefs.rememberPass) {	
+		if(accounts.is_new) {	
 			tabs.set_current_page(1);
 		}
 		

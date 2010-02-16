@@ -38,8 +38,10 @@ public class Popups : Object {
 		logo = _logo;
 	}
 	
-	public void start(ArrayList<Status> home, ArrayList<Status> mentions,
-		ArrayList<Status> direct) {
+	public void start(ArrayList<Status>? home, ArrayList<Status>? mentions,
+		ArrayList<Status>? direct) {
+		if(home == null)
+			return;
 		
 		if(home.size > 3 || mentions.size > 3 || direct.size > 3)
 			low_notify(home, mentions, direct);

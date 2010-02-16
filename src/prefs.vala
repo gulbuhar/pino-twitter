@@ -305,7 +305,7 @@ public class Prefs : Object {
 	
 	private LoadStatus parse(string content) {
 		//parsing config
-		Xml.Doc* xmlDoc = Parser.parse_memory(content, (int)content.length);
+		Xml.Doc* xmlDoc = Parser.parse_memory(content, (int)content.size());
 		Xml.Node* rootNode = xmlDoc->get_root_element();
 		
 		for(Xml.Node* iter = rootNode->children; iter != null; iter = iter->next) {

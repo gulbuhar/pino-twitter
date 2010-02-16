@@ -20,9 +20,10 @@
  */
 
 using WebKit;
+using Auth;
 using RestAPI;
 using Gee;
-
+const string a = """
 public abstract class ListAbstract : WebView {
 	
 	protected Template template;
@@ -43,10 +44,12 @@ public abstract class ListAbstract : WebView {
 	public signal void finish_update();
 	public signal void updating_error(string msg);
 	
-	public ListAbstract(AuthData auth_data, TimelineType timeline_type,
-		IRestUrls urls, Template _template, int __items_count) {
+	public ListAbstract(Accounts _accounts, TimelineType timeline_type,
+		Template _template, int __items_count) {
 		
-		api = new RestAPITimeline(urls, auth_data, timeline_type);
+		var acc = _accounts.get_current_account();
+		AuthData auth_data = {acc.login, acc.password, acc.service};
+		api = new RestAPITimeline(auth_data, timeline_type);
 		template = _template;
 		lst = new ArrayList<RestAPI.Status>();
 		_items_count = __items_count;
@@ -159,3 +162,4 @@ public abstract class ListAbstract : WebView {
 		}
 	}
 }
+""";

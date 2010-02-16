@@ -39,6 +39,7 @@ namespace Config
 	public const string REPLY_PATH;
 	public const string RETWEET_PATH;
 	public const string DELETE_PATH;
+	public const string USERPIC_PATH;
 	public const string TEMPLATES_PATH;
 	public const string AUTHORS;
 }

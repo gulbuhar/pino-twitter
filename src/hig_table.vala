@@ -42,6 +42,12 @@ public class HigTable : VBox {
 		pack_start(hbox, false, false, 2);
 	}
 	
+	public void add_widget_wide(Widget w) {
+		var hbox = new HBox(false, 0);
+		hbox.pack_start(w, true, true, 20);
+		pack_start(hbox, false, false, 2);
+	}
+	
 	public void add_two_widgets(Widget w1, Widget w2) {
 		var hbox = new HBox(false, 0);
 		hbox.pack_start(w1, false, true, 20);

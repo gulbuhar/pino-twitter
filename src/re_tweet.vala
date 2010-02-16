@@ -21,6 +21,7 @@
 
 using Gtk;
 using Gee;
+using Auth;
 using RestAPI;
 
 public class ReTweet : VBox {
@@ -32,7 +33,6 @@ public class ReTweet : VBox {
 	private State state;
 	
 	private RestAPIRe api;
-	private UserpicImage userpic;
 	
 	private TextView entry;
 	public TextView text_entry {
@@ -45,6 +45,8 @@ public class ReTweet : VBox {
 		set
 		{ entry.buffer.set_text(value, (int)value.size()); }
 	}
+	
+	private Accounts accounts;
 	
 	private Image status_icon;
 	private Label label;
@@ -70,12 +72,14 @@ public class ReTweet : VBox {
 	public signal void data_error_sent(string message);
 	public signal void status_updated(Status status);
 	
-	public ReTweet(Window _parent, Prefs _prefs, Cache cache, SystemStyle _gtk_style) {
+	public ReTweet(Window _parent, Prefs _prefs, Accounts _accounts, Cache cache, SystemStyle _gtk_style) {
 		parent = _parent;
 		prefs = _prefs;
+		accounts = _accounts;
 		gtk_style = _gtk_style;
 		
-		api = new RestAPIRe(new TwitterUrls(), {prefs.login, prefs.password});
+		var acc = accounts.get_current_account();
+		api = new RestAPIRe(acc);
 		
 		url_short = new UrlShort(prefs, api);
 		
@@ -139,7 +143,7 @@ public class ReTweet : VBox {
 		l_box.pack_end(label, false, false, 2);
 		
 		entry = new TextView();
-		entry.set_size_request(-1, 48);
+		entry.set_size_request(-1, 60);
 		entry.cursor_visible = true;
 		entry.set_wrap_mode(Gtk.WrapMode.WORD);
 		entry.key_press_event.connect(hide_or_send);
@@ -159,16 +163,11 @@ public class ReTweet : VBox {
         scroll.set_policy(PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);
         scroll.add(entry);
 		
-		userpic = new UserpicImage(cache, api);
-		userpic.set_size_request(48, 48);
-		userpic.update();
-		
 		var hbox = new HBox(false, 1);
 		hbox.pack_start(scroll, true, true, 0);
-		hbox.pack_start(userpic, false, false, 0);
 		
 		var frame = new Frame(null);
-		frame.set_size_request(-1, 48);
+		frame.set_size_request(-1, 60);
 		frame.add(hbox);
 		
 		var sep = new HSeparator();
@@ -178,23 +177,15 @@ public class ReTweet : VBox {
 		pack_start(frame, false, true, 0);
 	}
 	
-	public void set_auth(AuthData auth_data) {
-		api.set_auth(auth_data);
-		userpic.update();
+	public void update_auth() {
+		var acc = accounts.get_current_account();
+		
+		api.set_auth(acc);
 	}
 	
 	public void set_screen_name(string user_name) {
 		user_label.set_text(_("Reply to <b>%s</b>:").printf(user_name));
 		user_label.set_use_markup(true);
-	}
-	
-	public void set_userpic(string path) {
-		var buf = new Gdk.Pixbuf.from_file(path);
-		
-		if(buf.width > 48 || buf.height > 48)
-			buf = buf.scale_simple(48, 48, Gdk.InterpType.BILINEAR);
-		
-		userpic.set_from_pixbuf(buf);
 	}
 	
 	private void clear() {
