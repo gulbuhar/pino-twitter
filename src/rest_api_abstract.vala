@@ -21,6 +21,7 @@
 
 using Gee;
 using Soup;
+using Auth;
 using TimeUtils;
 
 namespace RestAPI {
@@ -47,6 +48,7 @@ public class Status : Object {
 public struct AuthData {
 	public string login = "";
 	public string password = "";
+	public string service = "";
 } 
 
 errordomain RestError {
@@ -65,24 +67,40 @@ public static enum TimelineType {
 public abstract class RestAPIAbstract : Object {
 	
 	protected IRestUrls urls;
-	public AuthData auth_data;
+	public Account? account;
 	
-	public RestAPIAbstract(IRestUrls _urls, AuthData _auth_data) {
-		this.urls = _urls;
-		this.auth_data = _auth_data;
+	public RestAPIAbstract(Account? _account) {
+		set_auth(_account);
 	}
 	
-	public void set_auth(AuthData _auth_data) {
-		auth_data = _auth_data;
+	private IRestUrls select_urls(string service) {
+		switch(service) {
+			case "twitter.com":
+				return new TwitterUrls();
+			
+			case "identi.ca":
+				return new IdenticaUrls();
+			
+			default:
+				return new TwitterUrls();
+		}
+	}
+	
+	public void set_auth(Account? _account) {
+		account = _account;
+		
+		if(account != null)
+			urls = select_urls(account.service);
 	}
 	
 	public signal void request(string req);
 	
-	public abstract ArrayList<Status> get_timeline(int count = 0,
-		string since_id = "", string max_id = "") throws RestError, ParseError;
+	public virtual ArrayList<Status>? get_timeline(int count = 0,
+		string since_id = "", string max_id = "") throws RestError, ParseError {
+		
+		return null;
+	}
 	
-	public abstract ArrayList<Status> get_direct(int count = 0,
-		string since_id = "", string max_id = "") throws RestError, ParseError;
 	
 	public virtual void destroy_status(string id) throws RestError {}
 	
@@ -108,9 +126,16 @@ public abstract class RestAPIAbstract : Object {
 		}
 	}
 	
+	protected void no_account() throws RestError {
+		throw new RestError.CODE("Account is not found");
+	}
+	
 	public string make_request(owned string req_url, string method,
 		HashTable<string, string> params = new HashTable<string, string>(null, null),
 		bool async = true, int retry = 3) throws RestError {
+		
+		if(account == null)
+			no_account();
 		
 		if(method == "GET") { //set get-parameters
 			string query = "";
@@ -164,7 +189,7 @@ public abstract class RestAPIAbstract : Object {
 		//Basic HTTP authorization
         session.authenticate += (sess, msg, auth, retrying) => {
 			if (retrying) return;
-			auth.authenticate(auth_data.login, auth_data.password);
+			auth.authenticate(account.login, account.password);
 		};
 		
 		int status_code = 0;

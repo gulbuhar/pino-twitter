@@ -20,32 +20,34 @@
  */
 
 using Gee;
+using Auth;
 using RestAPI;
 using Gtk;
 
 public class TimelineDirectList : TimelineList {
 	
-	public TimelineDirectList(Window _parent, AuthData auth_data, IRestUrls urls,
+	public TimelineDirectList(Window _parent, Accounts _accounts,
 		Template _template, int __items_count, Icon _icon, Icon _icon_fresh,
 		string fname, string icon_name, string icon_desc, bool _active = false) {
 		
-		base(_parent, auth_data, TimelineType.HOME, urls, _template, __items_count,
+		base(_parent, _accounts, TimelineType.HOME, _template, __items_count,
 			_icon, _icon_fresh, fname, icon_name, icon_desc, _active);
 		
-		api = new RestAPIDirect(urls, auth_data);
+		var acc = accounts.get_current_account();
+		api = new RestAPIDirect(acc);
 		api.request.connect((req) => start_update(req));
 	}
 	
 	/* refresh timeline */
 	public override void refresh() {
 		if(lst.size == 0)
-			update_content(template.generate_message(_("Empty")));
+			set_empty();
 		else
 			update_content(template.generate_direct(lst, last_focused));
 	}
 	
 	/* get new direct messages and update the list */
-	public override ArrayList<Status> update() {
+	public override ArrayList<Status>? update() {
 		ArrayList<RestAPI.Status> result = null;
 		string since_id = "";
 		bool first_time = true;
@@ -56,7 +58,7 @@ public class TimelineDirectList : TimelineList {
 		}
 		
 		try {
-			result = api.get_direct(_items_count, since_id);
+			result = api.get_timeline(_items_count, since_id);
 		} catch(RestError e) {
 			updating_error(e.message);
 			return result;
@@ -108,7 +110,7 @@ public class TimelineDirectList : TimelineList {
 		string max_id = lst.get(lst.size - 1).id;
 		
 		try {
-			result = api.get_direct(_items_count, "", max_id);
+			result = api.get_timeline(_items_count, "", max_id);
 		} catch(RestError e) {
 			more.set_enabled(true);
 			updating_error(e.message);

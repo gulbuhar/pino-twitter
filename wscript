@@ -55,6 +55,7 @@ def configure(conf):
 	conf.define('REPLY_PATH', conf.env.PREFIX + '/share/pino/icons/reply.png')
 	conf.define('RETWEET_PATH', conf.env.PREFIX + '/share/pino/icons/re_tweet.png')
 	conf.define('DELETE_PATH', conf.env.PREFIX + '/share/pino/icons/delete_status.png')
+	conf.define('USERPIC_PATH', conf.env.PREFIX + '/share/pino/icons/userpic.svg')
 	conf.define('TEMPLATES_PATH', conf.env.PREFIX + '/share/pino/templates')
 	conf.define('VERSION_MAJOR_MINOR', VERSION_MAJOR_MINOR)
 	conf.define('LOCALE_DIR', conf.env.PREFIX + '/share/locale/')
@@ -101,6 +102,7 @@ def build(bld):
 	bld.install_files('${PREFIX}/share/pino/icons', 'img/reply.png')
 	bld.install_files('${PREFIX}/share/pino/icons', 'img/re_tweet.png')
 	bld.install_files('${PREFIX}/share/pino/icons', 'img/delete_status.png')
+	bld.install_files('${PREFIX}/share/pino/icons', 'img/userpic.svg')
 	bld.install_files('${PREFIX}/share/applications', 'pino.desktop')
 	bld.install_files('${PREFIX}/share/doc/pino', 'COPYING README AUTHORS INSTALL')
 	

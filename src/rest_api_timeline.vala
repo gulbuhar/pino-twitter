@@ -22,6 +22,7 @@
 using Soup;
 using Gee;
 using Xml;
+using Auth;
 using TimeUtils;
 
 namespace RestAPI {
@@ -30,15 +31,10 @@ public class RestAPITimeline : RestAPIAbstract {
 	
 	private TimelineType timeline_type;
 	
-	public RestAPITimeline(IRestUrls _urls, AuthData _auth_data,
+	public RestAPITimeline(Account? _account,
 		TimelineType _timeline_type) {
-		base(_urls, _auth_data);
+		base(_account);
 		this.timeline_type = _timeline_type;
-	}
-	
-	public override ArrayList<Status> get_direct(int count = 0,
-		string since_id = "", string max_id = "") throws RestError, ParseError {
-		return null;
 	}
 	
 	/* destroy status */
@@ -48,8 +44,12 @@ public class RestAPITimeline : RestAPIAbstract {
 	}
 	
 	/* for timelines (home, mentions, public etc.) */
-	public override ArrayList<Status> get_timeline(int count = 0,
+	public override ArrayList<Status>? get_timeline(int count = 0,
 		string since_id = "", string max_id = "") throws RestError, ParseError {
+		
+		if(account == null)
+			no_account();
+		
 		string req_url = "";
 		
 		switch(timeline_type) {

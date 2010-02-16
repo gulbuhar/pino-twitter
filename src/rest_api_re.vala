@@ -21,6 +21,7 @@
 
 using Gee;
 using Soup;
+using Auth;
 using Xml;
 using TimeUtils;
 
@@ -28,26 +29,19 @@ namespace RestAPI {
 
 public class RestAPIRe : RestAPIAbstract {
 	
-	public RestAPIRe(IRestUrls _urls, AuthData _auth_data) {
-		base(_urls, _auth_data);
+	public RestAPIRe(Account? _account) {
+		base(_account);
 	}
 	
 	public IRestUrls get_urls() {
 		return urls;
 	}
 	
-	public override ArrayList<Status> get_direct(int count = 0,
-		string since_id = "", string max_id = "") throws RestError, ParseError {
-		return null;
-	}
-	
-	public override ArrayList<Status> get_timeline(int count = 0,
-		string since_id = "", string max_id = "") throws RestError, ParseError {
-		return null;
-	}
-	
 	/* send new dm */
 	public void send_dm(string user, string text) throws RestError {
+		if(account == null)
+			no_account();
+		
 		string req_url = urls.direct_new;
 		
 		var map = new HashTable<string, string>(null, null);
@@ -60,6 +54,9 @@ public class RestAPIRe : RestAPIAbstract {
 	/* post new status */
 	public Status update_status(string text,
 		string reply_id = "") throws RestError, ParseError {
+		
+		if(account == null)
+			no_account();
 		
 		string req_url = urls.status_update;
 		
@@ -144,41 +141,12 @@ public class RestAPIRe : RestAPIAbstract {
 		return status;
 	}
 	
-	/* get userpic url of a current user */
-	public string get_userpic_url() {
-		string req_url = urls.user.printf(auth_data.login);
-		string data = make_request(req_url, "GET",
-			new HashTable<string, string>(null, null), false);
-		
-		return parse_userpic_url(data);
-	}
-	
-	private string parse_userpic_url(string data) {
-		Xml.Doc* xmlDoc = Parser.parse_memory(data, (int)data.size());
-		Xml.Node* rootNode = xmlDoc->get_root_element();
-		
-		string result = "";
-		
-		Xml.Node* iter;
-		for(iter = rootNode->children; iter != null; iter = iter->next) {
-			if (iter->type != ElementType.ELEMENT_NODE)
-				continue;
-			
-			if(iter->name == "profile_image_url") {
-				result = iter->get_content();
-				break;
-			}
-		} delete iter;
-		
-		return result;
-	}
-	
 	/* check user for DM availability */
 	public bool check_friendship(string screen_name) throws RestError {
 		string req_url = urls.friendship;
 		
 		HashTable map = new HashTable<string, string>(null, null);
-		map.insert("source_screen_name", auth_data.login);
+		map.insert("source_screen_name", account.login);
 		map.insert("target_screen_name", screen_name);
 		
 		string data = make_request(req_url, "GET", map);

@@ -22,6 +22,7 @@
 using Gtk;
 using WebKit;
 using RestAPI;
+using Auth;
 
 public class MainWindow : Window {
 	
@@ -30,6 +31,8 @@ public class MainWindow : Window {
 	private Action updateAct;
 	private ToggleAction menuAct;
 	private ToggleAction toolbarAct;
+	private AccountAction accountAct;
+	
 	private TrayIcon tray;
 	
 	private Gdk.Pixbuf logo;
@@ -54,6 +57,7 @@ public class MainWindow : Window {
 	private Template template;
 	
 	private Prefs prefs;
+	private Accounts accounts;
 	private SmartTimer timer;
 	
 	private AuthData auth_data;
@@ -68,6 +72,24 @@ public class MainWindow : Window {
 		
 		//getting settings
 		prefs = new Prefs();
+		
+		accounts = new Accounts();
+		accounts.active_changed.connect(() => {
+			updateAct.set_sensitive(false);
+			statusbar.set_status(StatusbarSmart.StatusType.UPDATING);
+			
+			re_tweet.update_auth();
+			home.update_auth();
+			mentions.update_auth();
+			direct.update_auth();
+			
+			home.items_count = prefs.numberStatuses;
+			mentions.items_count = prefs.numberStatuses;
+			direct.items_count = prefs.numberStatuses;
+			
+			statusbar.set_status(StatusbarSmart.StatusType.FINISH_OK);
+			updateAct.set_sensitive(true);
+		});
 		
 		auth_data = { prefs.login, prefs.password };
 		
@@ -111,21 +133,21 @@ public class MainWindow : Window {
 		template = new Template(prefs, gtk_style, cache);
 		
 		//home timeline
-		home = new TimelineList(this, auth_data, TimelineType.HOME,
-			new TwitterUrls(), template, prefs.numberStatuses,
+		home = new TimelineList(this, accounts, TimelineType.HOME,
+			template, prefs.numberStatuses,
 			Icon.new_for_string(Config.TIMELINE_PATH),
 			Icon.new_for_string(Config.TIMELINE_FRESH_PATH), "HomeAct", _("Home timeline"),
 			_("Show your home timeline"), true);
 		
 		//mentions
-		mentions = new TimelineList(this, auth_data, TimelineType.MENTIONS,
-			new TwitterUrls(), template, prefs.numberStatuses,
+		mentions = new TimelineList(this, accounts, TimelineType.MENTIONS,
+			template, prefs.numberStatuses,
 			Icon.new_for_string(Config.MENTIONS_PATH),
 			Icon.new_for_string(Config.MENTIONS_FRESH_PATH), "MentionsAct", _("Mentions"),
 			_("Show mentions"));
 		
-		//mentions
-		direct = new TimelineDirectList(this, auth_data, new TwitterUrls(),
+		//direct messages
+		direct = new TimelineDirectList(this, accounts,
 			template, prefs.numberStatuses,
 			Icon.new_for_string(Config.DIRECT_PATH),
 			Icon.new_for_string(Config.DIRECT_FRESH_PATH), "DirectAct", _("Direct messages"),
@@ -144,7 +166,7 @@ public class MainWindow : Window {
 		direct.act.set_group(home.act.get_group());
 		
 		//retweet widget
-		re_tweet = new ReTweet(this, prefs, cache, gtk_style);
+		re_tweet = new ReTweet(this, prefs, accounts, cache, gtk_style);
 		re_tweet.status_updated.connect((status) => {
 			home.insert_status(status);
 		});
@@ -246,17 +268,16 @@ public class MainWindow : Window {
 		if(!prefs.toolbarShow)
 			toolbarAct.set_active(false);
 		
-		if(prefs.is_new || !prefs.rememberPass)
+		if(accounts.is_new)
 			run_prefs();
 		
 		//notification popups
 		notify = new Popups(prefs, cache, logo);
 		
-		//searchEntry.hide();
 		//first_hide();
 		
 		//getting updates
-		if(!prefs.is_new && prefs.rememberPass) {
+		if(accounts.accounts.size > 0) {
 			refresh_action();
 		}
 		
@@ -307,6 +328,8 @@ public class MainWindow : Window {
 		
 		//edit menu
 		var editMenu = new Action("EditMenu", _("Edit"), null, null);
+		accountAct = new AccountAction();
+		accountAct.set_accounts(accounts);
 		var prefAct = new Action("EditPref", _("Preferences"),
 			null, STOCK_PREFERENCES);
 		prefAct.activate.connect(run_prefs);
@@ -361,6 +384,7 @@ public class MainWindow : Window {
 		actGroup.add_action_with_accel(quitAct, "<Ctrl>Q");
 		actGroup.add_action(editMenu);
 		actGroup.add_action_with_accel(re_tweet.shortAct, "<Ctrl>U");
+		actGroup.add_action(accountAct);
 		actGroup.add_action_with_accel(prefAct, "<Ctrl>P");
 		actGroup.add_action(viewMenu);
 		actGroup.add_action_with_accel(home.act, "<Ctrl>1");
@@ -389,6 +413,8 @@ public class MainWindow : Window {
 				</menu>
 				<menu action="EditMenu">
 					<menuitem action="UrlShort" />
+					<menu action="AccountAct">
+					</menu>
 					<separator />
 					<menuitem action="EditPref" />
 				</menu>
@@ -426,6 +452,8 @@ public class MainWindow : Window {
 				<toolitem action="HomeAct" />
 				<toolitem action="MentionsAct" />
 				<toolitem action="DirectAct" />
+				<separator expand="true" draw="false" />
+				<toolitem action="AccountAct" />
 			</toolbar>
 		</ui>
 		""";
@@ -435,6 +463,10 @@ public class MainWindow : Window {
 		menubar = ui.get_widget("/MenuBar");
 		popup = (Menu)ui.get_widget("/MenuPopup");
 		toolbar = ui.get_widget("/ToolBar");
+		
+		accountAct.set_ui(ui, cache);
+		//var toolitem = new AccountAction(accounts);
+		//((Toolbar)toolbar).insert(toolitem, 9);
 	}
 	
 	public void refresh_action() {
@@ -454,7 +486,7 @@ public class MainWindow : Window {
 	}
 	
 	private void run_prefs() {
-		var pref_dialog = new PrefDialog(prefs, this);
+		var pref_dialog = new PrefDialog(prefs, this, accounts);
 		
 		pref_dialog.delete_cache.connect(() => {
 			cache.delete_cache();
@@ -464,27 +496,14 @@ public class MainWindow : Window {
 			//timer interval update
 			timer.set_interval(prefs.updateInterval * 60);
 			
-			var old_login = auth_data.login;
+			//var old_login = auth_data.login;
 			
 			auth_data = { prefs.login, prefs.password };
 			
 			prefs.write();
 			
-			if(prefs.is_new || old_login != prefs.login) { //if new settings or changing login
-				updateAct.set_sensitive(false);
-				statusbar.set_status(StatusbarSmart.StatusType.UPDATING);
+			if(prefs.is_new) { //if new settings or changing login
 				
-				re_tweet.set_auth(auth_data);
-				home.set_auth(auth_data);
-				mentions.set_auth(auth_data);
-				direct.set_auth(auth_data);
-				
-				home.items_count = prefs.numberStatuses;
-				mentions.items_count = prefs.numberStatuses;
-				direct.items_count = prefs.numberStatuses;
-				
-				statusbar.set_status(StatusbarSmart.StatusType.FINISH_OK);
-				updateAct.set_sensitive(true);
 			}
 			
 			prefs.is_new = false;

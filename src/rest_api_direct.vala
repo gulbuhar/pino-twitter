@@ -22,19 +22,15 @@
 using Soup;
 using Gee;
 using Xml;
+using Auth;
 using TimeUtils;
 
 namespace RestAPI {
 
 public class RestAPIDirect : RestAPIAbstract {
 	
-	public 	RestAPIDirect(IRestUrls _urls, AuthData _auth_data) {
-		base(_urls, _auth_data);
-	}
-	
-	public override ArrayList<Status> get_timeline(int count = 0,
-		string since_id = "", string max_id = "") throws RestError, ParseError {
-		return null;
+	public 	RestAPIDirect(Account? _account) {
+		base(_account);
 	}
 	
 	/* destroy direct message */
@@ -44,8 +40,11 @@ public class RestAPIDirect : RestAPIAbstract {
 	}
 	
 	/* get direct messages (inbox) */
-	public override ArrayList<Status> get_direct(int count = 0,
+	public override ArrayList<Status>? get_timeline(int count = 0,
 		string since_id = "", string max_id = "") throws RestError, ParseError {
+		
+		if(account == null)
+			no_account();
 		
 		var map = new HashTable<string, string>(null, null);
 		if(count != 0)

@@ -20,6 +20,7 @@
  */
 
 using Gtk;
+using Auth;
 using RestAPI;
 using WebKit;
 using Gee;
@@ -66,23 +67,15 @@ public class TimelineList : TimelineListAbstract {
 	public signal void no_fresh();
 	public signal void deleted(string message);
 	
-	public TimelineList(Window _parent, AuthData auth_data, TimelineType timeline_type,
-		IRestUrls urls, Template _template, int __items_count, Icon _icon,
+	public TimelineList(Window _parent, Accounts _accounts, TimelineType timeline_type,
+		Template _template, int __items_count, Icon _icon,
 		Icon _icon_fresh, string fname, string icon_name, string icon_desc,
 		bool _active = false) {
 		
-		base(_parent, auth_data, timeline_type, urls, _template, __items_count, 
+		base(_parent, _accounts, timeline_type, _template, __items_count, 
 			_icon, fname, icon_name, icon_desc, _active);
 		
 		icon_fresh = _icon_fresh;
-	}
-	
-	public void set_auth(AuthData auth_data) {
-		api.set_auth(auth_data);
-		
-		lst.clear();
-		last_focused = 0;
-		update();
 	}
 	
 	public override void show_smart() {
@@ -97,7 +90,7 @@ public class TimelineList : TimelineListAbstract {
 	}
 	
 	/* get new statuses and update the list */
-	public virtual ArrayList<Status> update() {
+	public override ArrayList<Status>? update() {
 		ArrayList<Status> result = null;
 		string since_id = "";
 		bool first_time = true;
@@ -187,7 +180,7 @@ public class TimelineList : TimelineListAbstract {
 	/* refresh timeline */
 	public override void refresh() {
 		if(lst.size == 0)
-			update_content(template.generate_message(_("Empty")));
+			set_empty();
 		else
 			update_content(template.generate_timeline(lst, last_focused));
 	}
