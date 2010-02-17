@@ -56,7 +56,8 @@ public class Popups : Object {
 		
 		Notification popup = new Notification(head, status.text, null, null);
 		
-		string av_path = cache.get_or_download(status.user_avatar, Cache.Method.ASYNC, false);
+		string av_path = cache.get_or_download(status.user_avatar,
+			Cache.Method.ASYNC, false);
 		if(av_path == status.user_avatar)
 			popup.set_icon_from_pixbuf(logo);
 		else {

@@ -20,6 +20,7 @@
  */
 
 using Gee;
+using Auth;
 
 public class Cache : Object {
 	
@@ -30,10 +31,13 @@ public class Cache : Object {
 	string cache_path;
 	
 	private HashMap<string, string> map;
+	private Regex url_re;
 	
 	public Cache() {
 		map = new HashMap<string, string>();
 		check_cache_dir();
+		
+		url_re = new Regex("(http://)([a-zA-Z0-9-\\.]+)/(.*)");
 	}
 	
 	public string get_or_download(string url, Method method, bool need_emit) {
@@ -43,7 +47,7 @@ public class Cache : Object {
 			return quick_response;
 		
 		//get a file name
-		string save_name = url.split("/")[4];
+		string save_name = url.replace("/", "");//screen_name + service;
 		
 		//then look on disk
 		string file_path = cache_path + "/" + save_name;
@@ -64,10 +68,20 @@ public class Cache : Object {
 		return file_path;
 	}
 	
-	private void download(string url, string save_name) {
-		var enc_name = Soup.form_encode("", save_name).split("=")[1];
+	private string encode_url(string url) {
+		string old_url_path = url_re.replace(url, -1, 0, "\\3");
+		string new_url_path = Soup.form_encode("", old_url_path).split("=")[1];
+		new_url_path = url.replace(old_url_path, new_url_path);
 		
-		var pick = File.new_for_uri(url.replace(save_name, enc_name));
+		new_url_path = new_url_path.replace("%2F", "/");
+		
+		return new_url_path;
+	}
+	
+	private void download(string url, string save_name) {
+		//var enc_name = Soup.form_encode("", save_name).split("=")[1];
+		
+		var pick = File.new_for_uri(url);
 		var pick_file = File.new_for_path(cache_path + "/" + save_name);
 		
 		if(!pick_file.query_exists(null)) {
@@ -76,10 +90,10 @@ public class Cache : Object {
 	}
 	
 	private async void download_async(string url, string save_name, bool need_emit) {
-		var utf_name = url.split("/")[5];
-		var enc_name = Soup.form_encode("", utf_name).split("=")[1];
+		//var utf_name = url.split("/")[5];
+		//var enc_name = Soup.form_encode("", utf_name).split("=")[1];
 		
-		var pick = File.new_for_uri(url.replace(utf_name, enc_name));
+		var pick = File.new_for_uri(encode_url(url));
 		var pick_file = File.new_for_path(cache_path + "/" + save_name);
 		
 		if(!pick_file.query_exists(null)) {
