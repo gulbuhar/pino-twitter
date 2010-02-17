@@ -50,7 +50,10 @@ public class Popups : Object {
 	}
 	
 	private void show_popup(Status status, bool direct = false) {
-		string head = status.user_name;
+		string head = status.user_screen_name;
+		if(prefs.fullNames)
+			head = status.user_name;
+		
 		if(direct)
 			head = "%s %s %s".printf(_("Direct message"), _("from"), head);
 		
