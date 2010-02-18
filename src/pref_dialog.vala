@@ -130,39 +130,11 @@ public class PrefDialog : Dialog {
 		//account page
 		var ac_box = new VBox(false, 0);
 		
-		//login
-		var logLabel = new Label(_("Login"));
-		login = new Entry();
-		
-		//password
-		var pasLabel = new Label(_("Password"));
-		password = new Entry();
-		password.visible = 0;
-		
-		password.key_press_event.connect((event) => {
-			if(event.hardware_keycode == 36) {
-				close();
-				return true;
-			} else
-				return false;
-		});
-		
-		//save password
-		savePass = new CheckButton.with_label(_("Remember password"));
-		savePass.active = true;
-		
-		savePass.toggled.connect(() => {
-			//
-		});
-		
 		//accounts
 		AccountWidget accountWidget = new AccountWidget(this, accounts);
 		
 		var table_auth = new HigTable(_("Authorization"));
 		table_auth.add_widget_wide(accountWidget);
-		table_auth.add_two_widgets(logLabel, login);
-		table_auth.add_two_widgets(pasLabel, password);
-		table_auth.add_widget(savePass);
 		
 		ac_box.pack_start(table_auth, false, true, 10);
 		
@@ -248,9 +220,6 @@ public class PrefDialog : Dialog {
 		if(accounts.is_new) {	
 			tabs.set_current_page(1);
 		}
-		
-		if(!prefs.rememberPass)
-			set_focus(password);
 	}
 	
 	private void setup_urlshorten(Prefs prefs) {
@@ -312,10 +281,6 @@ public class PrefDialog : Dialog {
 		//warning("%d", alpha_fresh);
 		freshColor.set_color(fresh_color);
 		freshColor.set_alpha(alpha_fresh);
-		
-		login.text = prefs.login;
-		password.text = prefs.password;
-		savePass.active = prefs.rememberPass;
 	}
 	
 	private void setup_prefs_signals(Prefs prefs) {
@@ -418,18 +383,6 @@ public class PrefDialog : Dialog {
 					prefs.retweetStyle = ReTweet.Style.VIA;
 					break;
 			}
-		});
-		
-		login.changed.connect(() => {
-			prefs.login = login.text;
-		});
-		
-		password.changed.connect(() => {
-			prefs.password = password.text;
-		});
-		
-		savePass.toggled.connect(() => {
-			prefs.rememberPass = savePass.active;
 		});
 	}
 	

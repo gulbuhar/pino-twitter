@@ -21,21 +21,38 @@
 
 using Notify;
 using Gee;
+using Auth;
 using RestAPI;
 
 public class Popups : Object {
 	
 	private Prefs prefs;
+	private Accounts accounts;
 	private Cache cache;
 	private Gdk.Pixbuf logo;
 	
-	public Popups(Prefs _prefs, Cache _cache, Gdk.Pixbuf _logo) {
+	private string? login;
+	
+	public Popups(Prefs _prefs, Accounts _accounts, Cache _cache,
+		Gdk.Pixbuf _logo) {
 		//libnotify init
 		Notify.init(Config.APPNAME);
 		
 		prefs = _prefs;
+		accounts = _accounts;
 		cache = _cache;
 		logo = _logo;
+		
+		login_changed();
+		accounts.changed.connect(login_changed);
+		accounts.active_changed.connect(login_changed);
+	}
+	
+	private void login_changed() {
+		var acc = accounts.get_current_account();
+		
+		if(acc != null);
+			login = acc.login;
 	}
 	
 	public void start(ArrayList<Status>? home, ArrayList<Status>? mentions,
@@ -89,7 +106,7 @@ public class Popups : Object {
 		if(prefs.showTimelineNotify) {
 			for(int i = home.size -1; i > -1; i--) {
 				var status = home.get(i);
-				if(status.user_screen_name != prefs.login) {
+				if(status.user_screen_name != login) {
 					show_popup(status);
 					ids.add(status.id);
 				}

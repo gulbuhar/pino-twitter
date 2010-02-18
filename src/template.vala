@@ -21,6 +21,7 @@
 
 using Gee;
 using GLib;
+using Auth;
 using RestAPI;
 using TimeUtils;
 
@@ -29,6 +30,12 @@ public class Template : Object {
 	private Prefs prefs;
 	private SystemStyle gtk_style;
 	private Cache cache;
+	
+	private Accounts accounts;
+	private string login;
+	private string status_url;
+	private string search_url;
+	private string nick_url;
 	
 	private string main_template;
 	private string status_template;
@@ -42,8 +49,9 @@ public class Template : Object {
 	
 	public signal void emit_for_refresh();
 	
-	public Template(Prefs _prefs, SystemStyle _gtk_style, Cache _cache) {
+	public Template(Prefs _prefs, Accounts _accounts, SystemStyle _gtk_style, Cache _cache) {
 		prefs = _prefs;
+		accounts = _accounts;
 		gtk_style = _gtk_style;
 		cache = _cache;
 		reload();
@@ -61,6 +69,28 @@ public class Template : Object {
 		prefs.rtlChanged.connect(() => emit_for_refresh());
 		prefs.fullNamesChanged.connect(() => emit_for_refresh());
 		prefs.fontChanged.connect(() => emit_for_refresh());
+	}
+	
+	private void login_changed() {
+		var acc = accounts.get_current_account();
+		
+		if(acc != null) {
+			login = acc.login;
+			
+			switch(acc.service) {
+				case "twitter.com":
+					status_url = "http://twitter.com/%s/status/%s";
+					search_url = "http://twitter.com/#search?q=";
+					nick_url = "http://twitter.com/";
+					break;
+				
+				case "identi.ca":
+					status_url = "http://identi.ca/notice/%s";
+					search_url = "http://identi.ca/search/notice?q=";
+					nick_url = "http://identi.ca/";
+					break;
+			}
+		}
 	}
 	
 	public void refresh_gtk_style(SystemStyle _gtk_style) {
@@ -101,6 +131,8 @@ public class Template : Object {
 	
 	/* render direct inbox */
 	public string generate_direct(Gee.ArrayList<Status> friends, int last_focused) {
+		login_changed();
+		
 		string content = "";
 		
 		var now = get_current_time();
@@ -159,6 +191,8 @@ public class Template : Object {
 	
 	/* render timeline, mentions */
 	public string generate_timeline(Gee.ArrayList<Status> friends, int last_focused) {
+		login_changed();
+		
 		string content = "";
 		
 		var now = get_current_time();
@@ -186,12 +220,13 @@ public class Template : Object {
 				
 			if(i.to_user != "") { // in reply to
 				string to_user = i.to_user;
-				if(to_user == prefs.login)
+				if(to_user == login)
 					to_user = _("you");
+				
 				by_who = "<a class='by_who' href='http://twitter.com/%s/status/%s'>%s %s</a>".printf(i.to_user, i.to_status_id, _("in reply to"), to_user);
-				}
+			}
 			
-			if(i.user_screen_name == prefs.login) { //your own status
+			if(i.user_screen_name == login) { //your own status
 				var map = new HashMap<string, string>();
 				map["avatar"] = cache.get_or_download(i.user_avatar, Cache.Method.ASYNC, false);
 				map["me"] = "me";
@@ -301,8 +336,8 @@ public class Template : Object {
 			} else break;
 		}
 		
-		result = nicks.replace(result, -1, 0, "@<a class='re_nick' href='http://twitter.com/\\1'>\\1</a>");
-		result = tags.replace(result, -1, 0, "<a class='tags' href='http://twitter.com/#search?q=\\1'>\\1</a>");
+		result = nicks.replace(result, -1, 0, "@<a class='re_nick' href='%s\\1'>\\1</a>".printf(nick_url));
+		result = tags.replace(result, -1, 0, "<a class='tags' href='%s\\1'>\\1</a>".printf(search_url));
 		return result;
 	}
 	

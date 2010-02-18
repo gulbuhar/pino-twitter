@@ -91,8 +91,6 @@ public class MainWindow : Window {
 			updateAct.set_sensitive(true);
 		});
 		
-		auth_data = { prefs.login, prefs.password };
-		
 		set_default_size (prefs.width, prefs.height);
 		set_size_request(350, 300);
 		
@@ -130,7 +128,7 @@ public class MainWindow : Window {
 		
 		cache = new Cache();
 		//template setup
-		template = new Template(prefs, gtk_style, cache);
+		template = new Template(prefs, accounts, gtk_style, cache);
 		
 		//home timeline
 		home = new TimelineList(this, accounts, TimelineType.HOME,
@@ -272,7 +270,7 @@ public class MainWindow : Window {
 			run_prefs();
 		
 		//notification popups
-		notify = new Popups(prefs, cache, logo);
+		notify = new Popups(prefs, accounts, cache, logo);
 		
 		//first_hide();
 		
@@ -495,18 +493,7 @@ public class MainWindow : Window {
 		pref_dialog.destroy.connect(() => {
 			//timer interval update
 			timer.set_interval(prefs.updateInterval * 60);
-			
-			//var old_login = auth_data.login;
-			
-			auth_data = { prefs.login, prefs.password };
-			
 			prefs.write();
-			
-			if(prefs.is_new) { //if new settings or changing login
-				
-			}
-			
-			prefs.is_new = false;
 		});
 		
 		pref_dialog.set_transient_for(this);
