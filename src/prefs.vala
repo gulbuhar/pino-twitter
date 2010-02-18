@@ -192,27 +192,6 @@ public class Prefs : Object {
 		set { _freshColor = value; }
 	}
 	
-	private string _login = "";
-	public string login {
-		get{ return _login; }
-		set{ _login = value; }
-	}
-	
-	private string _password = "";
-	public string password {
-		get{ return _password; }
-		set {
-			is_new = true;
-			_password = value;
-		}
-	}
-	
-	private bool _rememberPass = true;
-	public bool rememberPass {
-		get{ return _rememberPass; }
-		set{ _rememberPass = value; }
-	}
-	
 	private int _width = 250;
 	public int width {
 		get{ return _width; }
@@ -373,20 +352,6 @@ public class Prefs : Object {
 					_freshColor = iter->get_content();
 					break;
 				
-				case "login":
-					_login = iter->get_content();
-					break;
-				
-				case "password":
-					_password = iter->get_content();
-					/*if(_password == "")
-						is_new = true;*/
-					break;
-				
-				case "rememberPass":
-					_rememberPass = iter->get_content().to_bool();
-					break;
-				
 				case "width":
 					_width = iter->get_content().to_int();
 					break;
@@ -459,15 +424,6 @@ public class Prefs : Object {
         root->new_text_child(ns, "deFontSize", _deFontSize.to_string());
         root->add_content("\n");
         root->new_text_child(ns, "freshColor", _freshColor);
-        root->add_content("\n");
-        root->new_text_child(ns, "login", _login);
-        root->add_content("\n");
-        if(rememberPass)
-        	root->new_text_child(ns, "password", _password);
-        else
-        	root->new_text_child(ns, "password", "");
-        root->add_content("\n");
-        root->new_text_child(ns, "rememberPass", _rememberPass.to_string());
         root->add_content("\n");
         root->new_text_child(ns, "width", _width.to_string());
         root->add_content("\n");

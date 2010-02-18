@@ -68,9 +68,11 @@ public class EditAccount : Dialog {
 		
 		var login_label = new Label(_("Login"));
 		login = new Entry();
+		login.key_press_event.connect(on_enter);
 		
 		var password_label = new Label(_("Password"));
 		password = new Entry();
+		password.key_press_event.connect(on_enter);
 		password.visible = 0;
 		
 		var service_label = new Label(_("Service"));
@@ -88,9 +90,11 @@ public class EditAccount : Dialog {
 		
 		//action buttons
 		add_button(STOCK_CANCEL, ResponseType.CANCEL);
-		add_button(STOCK_OK, ResponseType.OK);
+		var cb = add_button(STOCK_OK, ResponseType.OK);
 		
 		response.connect(response_act);
+		
+		set_default(cb);
 	}
 	
 	private void data_setup() {
@@ -109,6 +113,15 @@ public class EditAccount : Dialog {
 				service.set_active(1);
 				break;
 		}
+	}
+	
+	/* when user pressed Enter key */
+	private bool on_enter(Gdk.EventKey event) {
+		if(event.hardware_keycode == 36) {
+			response_act(ResponseType.OK);
+			return true;
+		} else
+			return false;
 	}
 	
 	private string service_from_box(int index) {
