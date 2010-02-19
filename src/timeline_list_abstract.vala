@@ -80,8 +80,8 @@ public abstract class TimelineListAbstract : HBox {
 	}
 	
 	public TimelineListAbstract(Window _parent, Accounts _accounts, TimelineType timeline_type,
-		Template _template, int __items_count, Icon _icon,
-		string fname, string icon_name, string icon_desc, bool _active = false) {
+		Template _template, int __items_count, Icon? _icon, string fname = "",
+		string icon_name = "", string icon_desc = "", bool _active = false) {
 		
 		accounts = _accounts;
 		
@@ -218,6 +218,7 @@ public abstract class TimelineListAbstract : HBox {
 			lst.remove_at(lst.size - 1);
 	}
 	
+	/* list events */
 	private bool link_clicking(WebFrame p0, NetworkRequest request,
 		WebNavigationAction action, WebPolicyDecision decision) {
 		if(request.uri == "")
@@ -268,6 +269,15 @@ public abstract class TimelineListAbstract : HBox {
 					destroy_status(status_id);
 				}
 				message_dialog.destroy();
+				
+				return true;
+			
+			case "showtree":
+				string status_id = params;
+				warning(status_id);
+				var d = new StatusViewDialog(parent, accounts, template,
+					find_status(status_id));
+				//dialog.run();
 				
 				return true;
 			

@@ -27,7 +27,7 @@ using Gtk;
 public class TimelineDirectList : TimelineList {
 	
 	public TimelineDirectList(Window _parent, Accounts _accounts,
-		Template _template, int __items_count, Icon _icon, Icon _icon_fresh,
+		Template _template, int __items_count, Icon? _icon, Icon? _icon_fresh,
 		string fname, string icon_name, string icon_desc, bool _active = false) {
 		
 		base(_parent, _accounts, TimelineType.HOME, _template, __items_count,

@@ -56,4 +56,8 @@ public class TwitterUrls : Object, IRestUrls {
 	public string friendship {
 		get { return "http://twitter.com/friendships/show.xml"; }
 	}
+	
+	public string status {
+		get { return "http://api.twitter.com/1/statuses/show/%s.xml"; }
+	}
 }

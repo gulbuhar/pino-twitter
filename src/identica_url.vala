@@ -56,4 +56,8 @@ public class IdenticaUrls : Object, IRestUrls {
 	public string friendship {
 		get { return "http://identi.ca/api/friendships/show.xml"; }
 	}
+	
+	public string status {
+		get { return "http://identi.ca/api/statuses/show/%s.xml"; }
+	}
 }
