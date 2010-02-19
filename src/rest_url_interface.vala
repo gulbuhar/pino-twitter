@@ -30,4 +30,5 @@ public interface IRestUrls : Object {
 	public abstract string direct_in { get; }
 	public abstract string user { get; }
 	public abstract string friendship { get; }
+	public abstract string status { get; }
 }

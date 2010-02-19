@@ -223,7 +223,7 @@ public class Template : Object {
 				if(to_user == login)
 					to_user = _("you");
 				
-				by_who = "<a class='by_who' href='http://twitter.com/%s/status/%s'>%s %s</a>".printf(i.to_user, i.to_status_id, _("in reply to"), to_user);
+				by_who = "<a class='by_who' href='showtree://%s'>%s %s</a>".printf(i.id, _("in reply to"), to_user);
 			}
 			
 			if(i.user_screen_name == login) { //your own status

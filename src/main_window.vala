@@ -46,11 +46,11 @@ public class MainWindow : Window {
 	
 	private SystemStyle gtk_style;
 	
-	private TimelineList home;
-	private TimelineList mentions;
-	private TimelineDirectList direct;
-	private ReTweet re_tweet;
-	private StatusbarSmart statusbar;
+	public TimelineList home;
+	public TimelineList mentions;
+	public TimelineDirectList direct;
+	public ReTweet re_tweet;
+	public StatusbarSmart statusbar;
 	
 	//private TwitterInterface twee;
 	private Cache cache;

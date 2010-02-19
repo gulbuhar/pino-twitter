@@ -68,9 +68,9 @@ public class TimelineList : TimelineListAbstract {
 	public signal void deleted(string message);
 	
 	public TimelineList(Window _parent, Accounts _accounts, TimelineType timeline_type,
-		Template _template, int __items_count, Icon _icon,
-		Icon _icon_fresh, string fname, string icon_name, string icon_desc,
-		bool _active = false) {
+		Template _template, int __items_count = 20, Icon? _icon = null,
+		Icon? _icon_fresh = null, string fname = "", string icon_name = "",
+		string icon_desc = "", bool _active = false) {
 		
 		base(_parent, _accounts, timeline_type, _template, __items_count, 
 			_icon, fname, icon_name, icon_desc, _active);

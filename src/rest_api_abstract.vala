@@ -101,6 +101,9 @@ public abstract class RestAPIAbstract : Object {
 		return null;
 	}
 	
+	public virtual Status get_status(string id) throws RestError, ParseError {
+		return new Status();
+	}
 	
 	public virtual void destroy_status(string id) throws RestError {}
 	

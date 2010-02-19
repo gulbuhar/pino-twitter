@@ -199,6 +199,81 @@ public class RestAPITimeline : RestAPIAbstract {
 		
 		return lst;
 	}
+	
+	/* return single status */
+	public override Status get_status(string id) throws RestError, ParseError {
+		string req_url = urls.status.printf(id);
+		string data = make_request(req_url, "GET");
+		
+		return parse_status(data);
+	}
+	
+	private Status parse_status(string data) throws ParseError {
+		Xml.Doc* xmlDoc = Parser.parse_memory(data, (int)data.size());
+		Xml.Node* rootNode = xmlDoc->get_root_element();
+		
+		//changing locale to C
+		string currentLocale = GLib.Intl.setlocale(GLib.LocaleCategory.TIME, null);
+		GLib.Intl.setlocale(GLib.LocaleCategory.TIME, "C");
+		
+		Status status = new Status();
+		
+		for(Xml.Node* iter = rootNode->children; iter != null; iter = iter->next) {
+			if(iter->type != ElementType.ELEMENT_NODE)
+				continue;
+			
+			switch(iter->name) {
+				case "id":
+					status.id = iter->get_content();
+    				break;
+    			
+    			case "created_at":
+    				status.created_at = str_to_time(iter->get_content());
+    				break;
+    			
+    			case "text":
+    				status.text = iter->get_content();
+    				break;
+    			
+    			case "in_reply_to_screen_name":
+    				status.to_user = iter->get_content();
+    				break;
+    			
+    			case "in_reply_to_status_id":
+    				status.to_status_id = iter->get_content();
+    				break;
+    			
+    			case "user":
+    				Xml.Node *iter_user;
+    				
+					for(iter_user = iter->children->next; iter_user != null; iter_user = iter_user->next) {
+						switch(iter_user->name) {
+							case "id":
+    							break;
+    						
+    						case "name":
+    							status.user_name = iter_user->get_content();
+    							break;
+    						
+    						case "screen_name":
+    							status.user_screen_name = iter_user->get_content();
+    							break;
+    						
+    						case "profile_image_url":
+    							status.user_avatar = iter_user->get_content();
+    							break;
+	   					}
+    				}
+    				delete iter_user;
+    				break;
+			}
+		}
+		
+		//back to the normal locale
+		GLib.Intl.setlocale(GLib.LocaleCategory.TIME, currentLocale);
+		
+		return status;
+	}
 }
 
 }
