@@ -67,6 +67,7 @@ public class ReTweet : VBox {
 	
 	SystemStyle gtk_style;
 	
+	public signal void start_update(string req_url);
 	public signal void sending_data(string message);
 	public signal void data_sent(string message);
 	public signal void data_error_sent(string message);
@@ -80,6 +81,7 @@ public class ReTweet : VBox {
 		
 		var acc = accounts.get_current_account();
 		api = new RestAPIRe(acc);
+		api.request.connect((req) => start_update(req));
 		
 		url_short = new UrlShort(prefs, api);
 		
