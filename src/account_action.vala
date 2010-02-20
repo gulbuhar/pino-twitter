@@ -94,17 +94,21 @@ public class AccountAction : Action {
 	
 	public void set_accounts(Accounts _accounts) {
 		accounts = _accounts;
-		api = new RestAPIAcc(accounts.get_current_account());
+		var acc = accounts.get_current_account();
+		api = new RestAPIAcc(acc);
 		accounts.changed.connect(() => {
 			setup();
 		});
 		
 		accounts.active_changed.connect(() => {
-			api.set_auth(accounts.get_current_account());
+			var accc = accounts.get_current_account();
+			api.set_auth(accc);
 			update_icon();
+			tooltip = "%s (%s)".printf(accc.login, accc.service);
 		});
 		
 		update_icon();
+		tooltip = "%s (%s)".printf(acc.login, acc.service);
 	}
 	
 	public void update_icon() {
