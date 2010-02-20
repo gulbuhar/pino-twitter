@@ -16,25 +16,27 @@ def set_options(opt):
 def configure(conf):
 	conf.check_tool('compiler_cc vala gnu_dirs intltool')
 	conf.check_cfg(package='glib-2.0', uselib_store='GLIB',
-			atleast_version='2.14.0', mandatory=True, args='--cflags --libs')
+		atleast_version='2.14.0', mandatory=True, args='--cflags --libs')
 	conf.check_cfg(package='gobject-2.0', uselib_store='GOBJECT',
-			atleast_version='2.14.0', mandatory=True, args='--cflags --libs')
+		atleast_version='2.14.0', mandatory=True, args='--cflags --libs')
 	conf.check_cfg(package='gtk+-2.0', uselib_store='GTK+',
-			atleast_version='2.10.0', mandatory=True, args='--cflags --libs')
+		atleast_version='2.10.0', mandatory=True, args='--cflags --libs')
 	conf.check_cfg(package='gee-1.0', uselib_store='GEE',
-			atleast_version='0.5.0', mandatory=True, args='--cflags --libs')
+		atleast_version='0.5.0', mandatory=True, args='--cflags --libs')
 	conf.check_cfg(package='gio-2.0', uselib_store='GIO',
-			atleast_version='2.0', mandatory=True, args='--cflags --libs')
+		atleast_version='2.0', mandatory=True, args='--cflags --libs')
 	conf.check_cfg(package='libnotify', uselib_store='LIBNOTIFY',
-			mandatory=True, args='--cflags --libs')
+		mandatory=True, args='--cflags --libs')
 	#conf.check_cfg(package='libsexy', uselib_store='GTK+',
 	#		mandatory=True, args='--cflags --libs')
 	conf.check_cfg(package='libsoup-2.4', uselib_store='LIBSOUP',
-			atleast_version='2.4', mandatory=True, args='--cflags --libs')
+		atleast_version='2.4', mandatory=True, args='--cflags --libs')
 	conf.check_cfg(package='libxml-2.0', uselib_store='LIBXML',
-			atleast_version='2.0', mandatory=True, args='--cflags --libs')
+		atleast_version='2.0', mandatory=True, args='--cflags --libs')
 	conf.check_cfg(package='webkit-1.0', uselib_store='WEBKIT',
-			atleast_version='1.0', mandatory=True, args='--cflags --libs')
+		atleast_version='1.0', mandatory=True, args='--cflags --libs')
+	conf.check_cfg(package='unique-1.0', uselib_store='LIBUNIQUE',
+		atleast_version='1.0', mandatory=True, args='--cflags --libs')
 
 	conf.define('PACKAGE', APPNAME)
 	conf.define('PACKAGE_NAME', APPNAME)
