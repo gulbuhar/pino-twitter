@@ -234,6 +234,16 @@ public class Prefs : Object {
 		set{ _startMin = value; }
 	}
 	
+	public signal void showTrayChanged();
+	private bool _showTray = true;
+	public bool showTray {
+		get{ return _showTray; }
+		set{
+			_showTray = value;
+			showTrayChanged();
+		}
+	}
+	
 	public enum LoadStatus { OK, EMPTY, ERROR }
 	public enum WriteStatus { OK, ERROR }
 	
@@ -379,6 +389,10 @@ public class Prefs : Object {
 				case "startMin":
 					_startMin = iter->get_content().to_bool();
 					break;
+				
+				case "showTray":
+					_showTray = iter->get_content().to_bool();
+					break;
 			}
 		}
 		
@@ -438,6 +452,8 @@ public class Prefs : Object {
         root->new_text_child(ns, "toolbarShow", _toolbarShow.to_string());
         root->add_content("\n");
         root->new_text_child(ns, "startMin", _startMin.to_string());
+        root->add_content("\n");
+        root->new_text_child(ns, "showTray", _showTray.to_string());
         root->add_content("\n");
 		
 		//write this document to the pref file

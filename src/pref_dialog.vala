@@ -30,6 +30,7 @@ public class PrefDialog : Dialog {
 	private SpinButton numberStatuses;
 	private ComboBox urlShorten;
 	private CheckButton startMin;
+	private CheckButton showTray;
 	private CheckButton showTimelineNotify;
 	private CheckButton showMentionsNotify;
 	private CheckButton showDirectNotify;
@@ -78,6 +79,9 @@ public class PrefDialog : Dialog {
 		//start in tray
 		startMin = new CheckButton.with_label(_("Starting up in tray"));
 		
+		//show tray icon
+		showTray = new CheckButton.with_label(_("Show tray icon"));
+		
 		//show notifications
 		showTimelineNotify = new CheckButton.with_label(_("For timeline"));
 		showMentionsNotify = new CheckButton.with_label(_("For mentions"));
@@ -109,6 +113,7 @@ public class PrefDialog : Dialog {
 		table_int.add_two_widgets(numberStatusesLabel, numberStatuses);
 		table_int.add_two_widgets(urlShortenLabel, urlShorten);
 		table_int.add_widget(startMin);
+		table_int.add_widget(showTray);
 		
 		var table_not = new HigTable(_("Notification"));
 		table_not.add_widget(showTimelineNotify);
@@ -213,8 +218,8 @@ public class PrefDialog : Dialog {
 		//setup signals for prefs
 		setup_prefs_signals(prefs);
 		
-		show_all();
 		set_transient_for(parent);
+		show_all();
 		
 		//if first start or don't want to remember the password
 		if(accounts.is_new) {	
@@ -259,6 +264,7 @@ public class PrefDialog : Dialog {
 		numberStatuses.value = prefs.numberStatuses;
 		setup_urlshorten(prefs);
 		startMin.active = prefs.startMin;
+		showTray.active = prefs.showTray;
 		showTimelineNotify.active = prefs.showTimelineNotify;
 		showMentionsNotify.active = prefs.showMentionsNotify;
 		/*
@@ -306,6 +312,16 @@ public class PrefDialog : Dialog {
 		
 		startMin.toggled.connect(() => {
 			prefs.startMin = startMin.active;
+			
+			if(prefs.startMin) //enabling tray
+				showTray.active = true;
+		});
+		
+		showTray.toggled.connect(() => {
+			prefs.showTray = showTray.active;
+			
+			if(!prefs.showTray) //disable starting in tray
+				startMin.active = false;
 		});
 		
 		roundedAvatars.toggled.connect(() => {
