@@ -1,64 +1,64 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Pino\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-02-10 14:23+0200\n"
-"PO-Revision-Date: 2009-12-23 21:47+0100\n"
-"Last-Translator: Valter Asensio <valterasensio@yahoo.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Rolands Bondars <r.bondars@gmail.com>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Latvian\n"
+"X-Poedit-Country: LATVIA\n"
 
 #: src/dm_entry.vala:35
 msgid "You can't send direct message to this user. He (or she) must follow you too"
-msgstr "Não pode enviar uma Mensagem Directa a este utilizador. Ele (ou ela) têm que o seguir também."
+msgstr "Jūs nevarat sūtīt vēstuli šim lietotājam. Viņam (vai viņai) jāseko jums."
 
 #: src/dm_entry.vala:42
 msgid "Check"
-msgstr "Verificar"
+msgstr "Pārbaudīt"
 
 #: src/dm_entry.vala:58
 msgid "You can send direct message to this user"
-msgstr "Pode enviar uma Mensagem Directa a este utilizador "
+msgstr "Jūs varat sūtīt vēstuli šim lietotājam"
 
 #: src/dm_entry.vala:77
 msgid "Checking..."
-msgstr "A verificar..."
+msgstr "Pārbauda..."
 
 #: src/main_window.vala:117
 msgid "Home timeline"
-msgstr "Linha de Tempo"
+msgstr "Visi ziņojumi"
 
 #: src/main_window.vala:118
 msgid "Show your home timeline"
-msgstr "Mostrar a sua Linha de Tempo"
+msgstr "Rādīt visus ziņojumus"
 
 #: src/main_window.vala:124
 msgid "Mentions"
-msgstr "Menções"
+msgstr "Atsauksmes"
 
 #: src/main_window.vala:125
 msgid "Show mentions"
-msgstr "Mostrar menções"
+msgstr "Rādīt atsauksmes"
 
 #: src/main_window.vala:131
 msgid "Direct messages"
-msgstr "Mensagens Directas"
+msgstr "Vēstules"
 
 #: src/main_window.vala:132
 msgid "Show direct messages"
-msgstr "Mostrar Mensagens Directas"
+msgstr "Rādīt vēstules"
 
-#: src/main_window.vala:217 src/main_window.vala:218 src/main_window.vala:219
-#: src/status_bar_smart.vala:93 src/status_bar_smart.vala:96
+#: src/main_window.vala:217
+#: src/main_window.vala:218
+#: src/main_window.vala:219
+#: src/status_bar_smart.vala:93
+#: src/status_bar_smart.vala:96
 msgid "updated "
-msgstr "Actualizado"
+msgstr "atjaunots"
 
 #: src/main_window.vala:287
 msgid "Twitter"
@@ -66,360 +66,341 @@ msgstr "Twitter"
 
 #: src/main_window.vala:289
 msgid "New status"
-msgstr "Novo Estado"
+msgstr "Jauns ziņojums"
 
 #: src/main_window.vala:290
 msgid "Create new status"
-msgstr "Criar Novo Estado"
+msgstr "Izveidot jaunu ziņojumu"
 
 #: src/main_window.vala:293
 msgid "New direct message"
-msgstr "Nova Mensagem Directa"
+msgstr "Jauna vēstule"
 
 #: src/main_window.vala:294
 msgid "Create new direct message"
-msgstr "Criar nova Mensagem Directa"
+msgstr "Izveidot jaunu vēstuli"
 
 #: src/main_window.vala:300
 msgid "Update timeline"
-msgstr "Actualizar Linha de Tempo"
+msgstr "Atjaunot ziņojumus"
 
 #: src/main_window.vala:303
 msgid "Quit"
-msgstr "Sair"
+msgstr "Iziet"
 
 #: src/main_window.vala:308
 msgid "Edit"
-msgstr "Editar"
+msgstr "Rediģēt"
 
-#: src/main_window.vala:309 src/pref_dialog.vala:55
+#: src/main_window.vala:309
+#: src/pref_dialog.vala:55
 msgid "Preferences"
-msgstr "Preferências"
+msgstr "Iestatījumi"
 
 #: src/main_window.vala:314
 msgid "View"
-msgstr "Ver"
+msgstr "Skats"
 
 #: src/main_window.vala:316
 msgid "Show menu"
-msgstr "Mostrar Menu"
+msgstr "Rādīt izvēlni"
 
 #: src/main_window.vala:326
 msgid "Show toolbar"
-msgstr "Mostrar Barra de Ferramentas"
+msgstr "Rādīt rīkjoslu"
 
 #: src/main_window.vala:338
 msgid "Help"
-msgstr "Ajuda"
+msgstr "Palīdzība"
 
 #: src/main_window.vala:339
 #, c-format
 msgid "About %s"
-msgstr "Sobre %s"
+msgstr "Par %s"
 
 #: src/more_window.vala:36
 msgid "Get older entries"
-msgstr "Obter entradas antigas"
+msgstr "Iegūt vecākus ierakstus"
 
-#: src/popups.vala:53 src/template.vala:110 src/template.vala:169
+#: src/popups.vala:53
+#: src/template.vala:110
+#: src/template.vala:169
 #, c-format
 msgid "Direct message"
-msgstr "Mensagem Directa"
+msgstr "Vēstule"
 
 #: src/popups.vala:53
 msgid "from"
-msgstr "de"
+msgstr "no"
 
 #: src/popups.vala:69
 msgid "Updates"
-msgstr "Actualizações"
+msgstr "Ziņojumi"
 
 #: src/popups.vala:117
 #, c-format
 msgid "in the home timeline: %d\n"
-msgstr "na sua Linha de Tempo: %d\n"
+msgstr "visos ziņojumos: %d\n"
 
 #: src/popups.vala:120
 #, c-format
 msgid "in mentions: %d\n"
-msgstr "em Menções: \t%d\n"
+msgstr "atsauksmēs: %d\n"
 
 #: src/popups.vala:123
 #, c-format
 msgid "in direct messages: %d"
-msgstr "em Mensagens Directas: %d"
+msgstr "vēstulēs: %d"
 
 #: src/pref_dialog.vala:64
 msgid "Update interval (in minutes)"
-msgstr "Intervalo de Actualização (em minutos)"
+msgstr "Atjaunināšanas starplaiks"
 
 #: src/pref_dialog.vala:68
 msgid "Default number of statuses"
-msgstr "Numero de Estados por Omissão"
+msgstr "Noklusētais ziņojumu skaits"
 
 #: src/pref_dialog.vala:72
 msgid "URL shortening service"
-msgstr "Serviço de abreviação de URL"
+msgstr "Adrešu saīsināšanas serviss"
 
 #: src/pref_dialog.vala:78
 msgid "Starting up in tray"
-msgstr "Iniciar na Área de Notificação"
+msgstr "Sākt sistēmas ikonu joslā"
 
 #: src/pref_dialog.vala:81
 msgid "For timeline"
-msgstr "Para Linha de Tempo"
+msgstr "Visiem ziņojumiem"
 
 #: src/pref_dialog.vala:82
 msgid "For mentions"
-msgstr "Para Respostas Directas"
+msgstr "Atsauksmēm"
 
 #: src/pref_dialog.vala:83
 msgid "For direct messages"
-msgstr "Para Mensagens Directas"
+msgstr "Vēstulēm"
 
 #: src/pref_dialog.vala:92
 msgid "Retweets style"
-msgstr "Estilo dos Retweets"
+msgstr "Pārziņošanas veids"
 
 #: src/pref_dialog.vala:99
 msgid "Clear now"
-msgstr "Limpar agora"
+msgstr "Iztīrīt tagad"
 
 #: src/pref_dialog.vala:106
 msgid "General"
-msgstr "Geral"
+msgstr "Vispārīgi"
 
 #: src/pref_dialog.vala:112
 msgid "Notification"
-msgstr "Notificações"
+msgstr "Paziņojumi"
 
 #: src/pref_dialog.vala:118
 msgid "Retweets"
-msgstr "Retweets"
+msgstr "Pārziņojumi"
 
 #: src/pref_dialog.vala:121
 msgid "Cache"
-msgstr "Cache"
+msgstr "Kešatmiņa"
 
 #: src/pref_dialog.vala:133
 msgid "Login"
-msgstr "Conectar"
+msgstr "Lietotājvārds"
 
 #: src/pref_dialog.vala:137
 msgid "Password"
-msgstr "Palavra-passe"
+msgstr "Parole"
 
 #: src/pref_dialog.vala:150
 msgid "Remember password"
-msgstr "Lembrar Palavra-passe"
+msgstr "Atcerēties paroli"
 
 #: src/pref_dialog.vala:157
 msgid "Authorization"
-msgstr "Autorização"
+msgstr "Autorizācija"
 
 #: src/pref_dialog.vala:166
 msgid "Create new account..."
-msgstr "Criar Nova Conta..."
+msgstr "Izveidot jaunu kontu..."
 
 #: src/pref_dialog.vala:182
 msgid "Statuses"
-msgstr "Estados"
+msgstr "Ziņojumi"
 
 #: src/pref_dialog.vala:185
 msgid "Rounded corners"
-msgstr "Cantos Arredondados"
+msgstr "Noapaļoti stūri"
 
 #: src/pref_dialog.vala:188
 msgid "Right-to-left languages detection"
-msgstr "Detecção de escrita da direita para a esquerda"
+msgstr "RTL valodu noteikšana"
 
 #: src/pref_dialog.vala:191
 msgid "Full names instead of nicknames"
-msgstr "Nomes completos em vez de nomes de utilizador"
+msgstr "Pilni vārdi iesauku vietā"
 
 #: src/pref_dialog.vala:194
 msgid "Default font"
-msgstr "Tipo de Letra por omissão"
+msgstr "Noklusētais fonts"
 
 #: src/pref_dialog.vala:200
 msgid "Fresh statuses color"
-msgstr "Cor dos Estados actualizados"
+msgstr "Svaigo ziņojumu krāsa"
 
 #: src/pref_dialog.vala:205
 msgid "Opacity"
-msgstr "Opacidade"
+msgstr "Necaurspīdība"
 
 #: src/pref_dialog.vala:218
 msgid "Main"
-msgstr "Principal"
+msgstr "Galvenais"
 
 #: src/pref_dialog.vala:219
 msgid "Account"
-msgstr "Conta"
+msgstr "Konts"
 
 #: src/pref_dialog.vala:220
 msgid "Appearance"
-msgstr "Aparência"
+msgstr "Izskats"
 
 #: src/re_tweet.vala:82
 msgid "Shorten URLs..."
-msgstr "URL abreviados..."
+msgstr "Īsināt adreses..."
 
 #: src/re_tweet.vala:87
 msgid "Shortening URLs..."
-msgstr "A abreviar URL... "
+msgstr "Īsina adreses..."
 
 #: src/re_tweet.vala:92
 msgid "URLs was shortened successfully"
-msgstr "O URL foi abreviado com sucesso"
+msgstr "Adreses tika veiksmīgi saīsinātas"
 
 #: src/re_tweet.vala:94
 msgid "Nothing to shorten"
-msgstr "Nada a abreviar"
+msgstr "Nav ko īsināt"
 
-#: src/re_tweet.vala:117 src/re_tweet.vala:223
+#: src/re_tweet.vala:117
+#: src/re_tweet.vala:223
 msgid "New status:"
-msgstr "Novo Estado:"
+msgstr "Jauns ziņojums:"
 
 #: src/re_tweet.vala:126
 msgid "Hide"
-msgstr "Esconder"
+msgstr "Paslēpt"
 
 #: src/re_tweet.vala:187
 #, c-format
 msgid "Reply to <b>%s</b>:"
-msgstr "Responder a <b>%s</b>"
+msgstr "Atbilde <b>%s</b>:"
 
 #: src/re_tweet.vala:236
 msgid "Reply to"
-msgstr "Responder a"
+msgstr "Atbildēt"
 
 #: src/re_tweet.vala:249
 msgid "Direct message to"
-msgstr "Mensagem Directa para"
+msgstr "Vēstule"
 
 #: src/re_tweet.vala:269
 msgid "Retweet:"
-msgstr "Retweet:"
+msgstr "Pārziņot"
 
 #: src/re_tweet.vala:298
 msgid "Your status is too long"
-msgstr "O seu Estado é muito longo..."
+msgstr "Jūsu ziņojums ir pārāk garš"
 
 #: src/re_tweet.vala:322
 msgid "Type something first"
-msgstr "Escreva alguma coisa primeiro"
+msgstr "Vispirms kaut ko ierakstiet"
 
 #: src/re_tweet.vala:364
 msgid "Sending status..."
-msgstr "Enviando Estado... "
+msgstr "Sūta ziņojumu..."
 
 #: src/re_tweet.vala:381
 msgid "Your status has been sent successfully"
-msgstr "O seu Estado foi enviado com sucesso"
+msgstr "Jūsu ziņojums tika veiksmīgi nosūtīts"
 
 #: src/re_tweet.vala:387
 msgid "Sending direct message..."
-msgstr "A enviar Mensagem Directa"
+msgstr "Sūta vēstuli..."
 
 #: src/re_tweet.vala:401
 msgid "Your direct message has been sent successfully"
-msgstr "A sua Mensagem Directa foi enviada com sucesso"
+msgstr "Jūsu vēstule tika veiksmīgi nosūtīta"
 
 #: src/status_bar_smart.vala:101
 msgid "updating... "
-msgstr "A actualizar... "
+msgstr "atjauno..."
 
-#: src/template.vala:108 src/template.vala:166
+#: src/template.vala:108
+#: src/template.vala:166
 msgid "Reply"
-msgstr "Responder"
+msgstr "Atbildēt"
 
-#: src/template.vala:109 src/template.vala:167
+#: src/template.vala:109
+#: src/template.vala:167
 msgid "Delete"
-msgstr "Apagar"
+msgstr "Dzēst"
 
 #: src/template.vala:168
 msgid "Retweet"
-msgstr "Retweet"
+msgstr "Pārziņot"
 
 #: src/template.vala:190
 msgid "you"
-msgstr "ti"
+msgstr "jūs"
 
 #: src/template.vala:191
 msgid "in reply to"
-msgstr "como resposta a"
+msgstr "atbildot "
 
 #: src/template.vala:312
 msgid "a few seconds ago"
-msgstr "há uns segundos"
+msgstr "pirms dažām sekundēm"
 
 #: src/template.vala:314
 msgid "1 minute ago"
-msgstr "há um minuto"
+msgstr "pirms 1 minūtes"
 
 #: src/template.vala:316
 #, c-format
 msgid "%i minutes ago"
-msgstr "há %i minutos"
+msgstr "pirms %i minūtēm"
 
 #: src/template.vala:318
 msgid "about 1 hour ago"
-msgstr "há cerca de uma hora atrás"
+msgstr "apmēram pirms stundas"
 
 #: src/template.vala:320
 #, c-format
 msgid "about %i hours ago"
-msgstr "há cerca de  %i horas atrás"
+msgstr "apmēram pirms %i stundām"
 
-#: src/timeline_direct_list.vala:42 src/timeline_list.vala:190
+#: src/timeline_direct_list.vala:42
+#: src/timeline_list.vala:190
 msgid "Empty"
-msgstr "Vazio"
+msgstr "Tukšs"
 
 #: src/timeline_direct_list.vala:149
 msgid "Your direct message has been deleted successfully"
-msgstr "A sua Mensagem Directa foi eliminada com sucesso"
+msgstr "Jūsu vēstule tika veiksmīgi izdzēsta"
 
 #: src/timeline_list.vala:184
 msgid "Your status has been deleted successfully"
-msgstr "O seu Estado foi eliminado com sucesso"
+msgstr "Jūsu ziņojums tika veiksmīgi izdzēsts"
 
 #: src/timeline_list_abstract.vala:163
 msgid "Connecting..."
-msgstr "A ligar..."
+msgstr "Savienojas..."
 
 #: src/timeline_list_abstract.vala:224
 msgid "Sure you want to delete this status?"
-msgstr "Tem a certeza que deseja apagar este Estado?"
+msgstr "Vai jūs tiešām vēlaties dzēst šo ziņojumu?"
 
 #: src/tray_icon.vala:44
 #, c-format
 msgid "%s - a twitter client"
-msgstr "%s - Um Cliente de Twitter"
+msgstr "%s - twitter klients"
 
-#~ msgid "Show notification for each status"
-#~ msgstr "Mostrar Notificação para cada Estado"
-
-#~ msgid "Show overall notification"
-#~ msgstr "Mostrar Notificação Global"
-
-#~ msgid "REST API options"
-#~ msgstr "Opções REST API"
-
-#~ msgid "Tweets"
-#~ msgstr "Tweets"
-
-#~ msgid "Timeline"
-#~ msgstr "Linha de Tempo"
-
-#~ msgid "wrong login or password "
-#~ msgstr "Nome de Utilizador ou Palavra-passe errada "
-
-#~ msgid "problems with connection "
-#~ msgstr "Problemas com a ligação "
-
-#~ msgid "some strange error "
-#~ msgstr "Erro desconhecido "
-
-#~ msgid "Main developer and project owner:"
-#~ msgstr "Desenvolvedor principal e Dono do projecto:"

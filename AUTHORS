@@ -15,7 +15,7 @@ Alexander Fehr <pizzapunk@gmail.com>
     PKGBUILD for Arch Linux
 
 藤原　妹紅 <sufosp@gmail.com>
-    Application icon
+    Application icon (for versions <= 0.1.5)
 
 MaXeR <mmaxer@googlemail.com>
     Arabic translation
@@ -55,3 +55,6 @@ Gonçalo Cordeiro <gzcordeiro@gmail.com>
 
 Piotr Drąg <piotrdrag@gmail.com>
     Polish translation
+
+Rolands Bondars <r.bondars@gmail.com>
+    Latvian translation
