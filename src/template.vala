@@ -36,6 +36,7 @@ public class Template : Object {
 	private string status_url;
 	private string search_url;
 	private string nick_url;
+	private string service;
 	
 	private string main_template;
 	private string status_template;
@@ -44,6 +45,7 @@ public class Template : Object {
 	
 	private Regex nicks;
 	private Regex tags;
+	private Regex groups;
 	private Regex urls;
 	private Regex clear_notice;
 	
@@ -59,6 +61,7 @@ public class Template : Object {
 		//compile regex
 		nicks = new Regex("@([A-Za-z0-9_]+)");
 		tags = new Regex("((^|\\s)\\#[A-Za-z0-9_]+)");
+		groups = new Regex("(^|\\s)!([A-Za-z0-9_]+)"); //for identi.ca groups
 		urls = new Regex("((http|https|ftp)://([\\S]+))"); //need something better
 		
 		// characters must be cleared to know direction of text
@@ -76,8 +79,9 @@ public class Template : Object {
 		
 		if(acc != null) {
 			login = acc.login;
+			service = acc.service;
 			
-			switch(acc.service) {
+			switch(service) {
 				case "twitter.com":
 					status_url = "http://twitter.com/%s/status/%s";
 					search_url = "http://twitter.com/#search?q=";
@@ -338,6 +342,10 @@ public class Template : Object {
 		
 		result = nicks.replace(result, -1, 0, "@<a class='re_nick' href='%s\\1'>\\1</a>".printf(nick_url));
 		result = tags.replace(result, -1, 0, "<a class='tags' href='%s\\1'>\\1</a>".printf(search_url));
+		
+		if(service == "identi.ca") //for identi.ca only
+			result = groups.replace(result, -1, 0, "\\1!<a class='tags' href='http://identi.ca/group/\\2'>\\2</a>");
+		
 		return result;
 	}
 	
