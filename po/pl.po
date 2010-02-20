@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-02-10 14:23+0200\n"
-"PO-Revision-Date: 2010-01-31 23:54+0100\n"
+"PO-Revision-Date: 2010-02-16 21:06+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <trans-pl@lists.fedoraproject.org>\n"
 "MIME-Version: 1.0\n"
@@ -129,7 +129,7 @@ msgstr "Bezpośrednia wiadomość"
 
 #: src/popups.vala:53
 msgid "from"
-msgstr ""
+msgstr "od"
 
 #: src/popups.vala:69
 msgid "Updates"
@@ -160,11 +160,11 @@ msgstr "Domyślna liczna stanów"
 
 #: src/pref_dialog.vala:72
 msgid "URL shortening service"
-msgstr ""
+msgstr "Usługa skracania adresów URL"
 
 #: src/pref_dialog.vala:78
 msgid "Starting up in tray"
-msgstr ""
+msgstr "Uruchamianie w obszarze powiadamiania"
 
 #: src/pref_dialog.vala:81
 msgid "For timeline"
@@ -188,7 +188,7 @@ msgstr "Wyczyść teraz"
 
 #: src/pref_dialog.vala:106
 msgid "General"
-msgstr ""
+msgstr "Ogólne"
 
 #: src/pref_dialog.vala:112
 msgid "Notification"
@@ -224,7 +224,7 @@ msgstr "Utwórz nowe konto..."
 
 #: src/pref_dialog.vala:182
 msgid "Statuses"
-msgstr ""
+msgstr "Stany"
 
 #: src/pref_dialog.vala:185
 msgid "Rounded corners"
@@ -236,15 +236,15 @@ msgstr "Wykrywanie języków pisanych od prawej do lewej"
 
 #: src/pref_dialog.vala:191
 msgid "Full names instead of nicknames"
-msgstr ""
+msgstr "Imiona i nazwiska zamiast pseudonimów"
 
 #: src/pref_dialog.vala:194
 msgid "Default font"
-msgstr ""
+msgstr "Domyślna czcionka"
 
 #: src/pref_dialog.vala:200
 msgid "Fresh statuses color"
-msgstr ""
+msgstr "Kolor nowych stanów"
 
 #: src/pref_dialog.vala:205
 msgid "Opacity"
@@ -264,21 +264,19 @@ msgstr "Wygląd"
 
 #: src/re_tweet.vala:82
 msgid "Shorten URLs..."
-msgstr ""
+msgstr "Skróć adresy URL..."
 
 #: src/re_tweet.vala:87
-#, fuzzy
 msgid "Shortening URLs..."
-msgstr "wysyłanie stanu..."
+msgstr "Skracanie adresów URL..."
 
 #: src/re_tweet.vala:92
-#, fuzzy
 msgid "URLs was shortened successfully"
-msgstr "Stan został pomyślnie usunięty"
+msgstr "Pomyślnie skrócono adresy URL"
 
 #: src/re_tweet.vala:94
 msgid "Nothing to shorten"
-msgstr ""
+msgstr "Nie ma nic do skrócenia"
 
 #: src/re_tweet.vala:117 src/re_tweet.vala:223
 msgid "New status:"
@@ -307,7 +305,7 @@ msgstr "Powtórzenie wpisu:"
 
 #: src/re_tweet.vala:298
 msgid "Your status is too long"
-msgstr ""
+msgstr "Stan jest za długi"
 
 #: src/re_tweet.vala:322
 msgid "Type something first"
@@ -399,15 +397,3 @@ msgstr "Na pewno usunąć ten stan?"
 #, c-format
 msgid "%s - a twitter client"
 msgstr "%s - klient serwisu Twitter"
-
-#~ msgid "Show notification for each status"
-#~ msgstr "Wyświetlanie powiadomień dla każdego stanu"
-
-#~ msgid "Show overall notification"
-#~ msgstr "Wyświetlanie ogólnych powiadomień"
-
-#~ msgid "REST API options"
-#~ msgstr "Opcje API REST"
-
-#~ msgid "Tweets"
-#~ msgstr "Wpisy"

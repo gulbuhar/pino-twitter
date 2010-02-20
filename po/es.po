@@ -82,7 +82,7 @@ msgstr "Crear nuevo mensaje directo"
 
 #: src/main_window.vala:300
 msgid "Update timeline"
-msgstr "Actualizar timeline"
+msgstr "Actualizar linea de tiempo"
 
 #: src/main_window.vala:303
 msgid "Quit"
@@ -397,29 +397,29 @@ msgstr "¿Seguro que quieres eliminar este tweet?"
 msgid "%s - a twitter client"
 msgstr "%s - un cliente de twitter"
 
-#~ msgid "Show notification for each status"
-#~ msgstr "Mostrar notificación para cada tweet"
+msgid "Show notification for each status"
+msgstr "Mostrar notificación para cada tweet"
 
-#~ msgid "Show overall notification"
-#~ msgstr "Mostrar notificación global"
+msgid "Show overall notification"
+msgstr "Mostrar notificación global"
 
-#~ msgid "REST API options"
-#~ msgstr "Opciones de la API"
+msgid "REST API options"
+msgstr "Opciones de la API"
 
-#~ msgid "Tweets"
-#~ msgstr "Tweets"
+msgid "Tweets"
+msgstr "Tweets"
 
-#~ msgid "Timeline"
-#~ msgstr "Lista"
+msgid "Timeline"
+msgstr "Lista"
 
-#~ msgid "wrong login or password "
-#~ msgstr "usuario o contraseña incorrectos "
+msgid "wrong login or password "
+msgstr "usuario o contraseña incorrectos "
 
-#~ msgid "problems with connection "
-#~ msgstr "problemas con la conexión "
+msgid "problems with connection "
+msgstr "problemas con la conexión "
 
-#~ msgid "some strange error "
-#~ msgstr "error no definido "
+msgid "some strange error "
+msgstr "error no definido "
 
-#~ msgid "Main developer and project owner:"
-#~ msgstr "Desarrollador y propietario del proyecto:"
+msgid "Main developer and project owner:"
+msgstr "Desarrollador y propietario del proyecto:"
