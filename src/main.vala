@@ -19,19 +19,35 @@
  * 	troorl <troorl@gmail.com>
  */
 
-using RestAPI;
-using Gee;
+using Unique;
 
 public class Main {
 	
   	public static int main (string[] args) {
-		
+		Unique.App app;
 		Gtk.init(ref args);
+		
+		app = new Unique.App("org.pino.unique", null);
+		
+		if(app.is_running) { //not starting if already running
+			Unique.Command command;
+			Unique.Response response;
+			Unique.MessageData message;
+			message = new MessageData ();
+			command = (Unique.Command) Unique.Command.ACTIVATE;
+			response = app.send_message (command, message);
+		
+			if(response == Unique.Response.OK)
+				return 0;
+			else
+				return 1;
+		}
 		
 		Intl.bindtextdomain(Config.GETTEXT_PACKAGE, Config.LOCALE_DIR);
     	Intl.bind_textdomain_codeset(Config.GETTEXT_PACKAGE, "UTF-8");
     	
 		MainWindow window = new MainWindow();
+		app.watch_window(window);
 		
 		Gtk.main();
 		return 0;
