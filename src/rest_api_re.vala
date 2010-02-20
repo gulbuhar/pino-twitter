@@ -48,6 +48,9 @@ public class RestAPIRe : RestAPIAbstract {
 		map.insert("screen_name", user);
 		map.insert("text", text);
 		
+		if(account != null && account.service == "identi.ca") //client name for identi.ca
+			map.insert("source", Config.APPNAME);
+		
 		make_request(req_url, "POST", map);
 	}
 	
@@ -62,6 +65,10 @@ public class RestAPIRe : RestAPIAbstract {
 		
 		var map = new HashTable<string, string>(null, null);
 		map.insert("status", text);
+		
+		if(account != null && account.service == "identi.ca") //client name for identi.ca
+			map.insert("source", Config.APPNAME);
+		
 		if(reply_id != "")
 			map.insert("in_reply_to_status_id", reply_id);
 		
