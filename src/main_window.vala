@@ -111,13 +111,6 @@ public class MainWindow : Window {
 		set_icon(logo);
 		set_title(Config.APPNAME);
 		
-		//hiding on closing main window
-		delete_event.connect((event) => {
-			this.hide_on_delete();
-			visible = false;
-			return true;
-		});
-		
 		destroy.connect(() => before_close());
 		
 		gtk_style = new SystemStyle(rc_get_style(this));
@@ -178,7 +171,24 @@ public class MainWindow : Window {
 		
 		//tray setup
 		tray = new TrayIcon(this, logo, logo_fresh);
+		tray.set_visible(prefs.showTray);
+		
 		tray.popup = popup;
+		prefs.showTrayChanged.connect(() => {
+			tray.set_visible(prefs.showTray);
+		});
+		
+		//hiding on closing main window
+		delete_event.connect((event) => {
+			if(!tray.visible) { //close pino, if tray is hided
+				before_close();
+				return true;
+			}
+			
+			this.hide_on_delete();
+			visible = false;
+			return true;
+		});
 		
 		re_tweet.sending_data.connect((msg) => {
 			statusbar.set_status(StatusbarSmart.StatusType.SENDING_DATA, msg);
@@ -262,7 +272,7 @@ public class MainWindow : Window {
 		this.add(vbox);
 		
 		//show window
-		if(!prefs.startMin) {
+		if(!prefs.startMin || !prefs.showTray) {
 			first_show = false;
 			show_all();
 			first_hide();
@@ -504,8 +514,8 @@ public class MainWindow : Window {
 			prefs.write();
 		});
 		
-		pref_dialog.set_transient_for(this);
-		pref_dialog.show();
+		//pref_dialog.set_transient_for(this);
+		//pref_dialog.show();
 	}
 	
 	/* saving settings */
