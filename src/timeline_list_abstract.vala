@@ -58,8 +58,9 @@ public abstract class TimelineListAbstract : HBox {
 	protected int last_focused = 0; //time of the last readed status
 	
 	protected Window parent;
-	
 	protected Accounts accounts;
+	
+	protected bool need_more_button = true;
 	
 	public signal void start_update(string req);
 	public signal void finish_update();
@@ -93,9 +94,6 @@ public abstract class TimelineListAbstract : HBox {
 			((VScrollbar)scroll.get_vscrollbar()).set_value(current_scroll_pos);
 		});
 		
-		more = new MoreWindow();
-		more.moar_event.connect(get_older);
-		
 		scroll = new ScrolledWindow(null, null);
 		scroll.set_policy(PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);
 		scroll.add(view);
@@ -105,8 +103,15 @@ public abstract class TimelineListAbstract : HBox {
 		
 		var event_view = new EventBox();
 		event_view.add(vbox);
+		
+		more = new MoreWindow();
+		more.moar_event.connect(get_older);
+		
 		event_view.set_events(Gdk.EventMask.BUTTON_MOTION_MASK);
 		event_view.motion_notify_event.connect((event) => {
+			if(!need_more_button)
+				return true;
+			
 			int height = allocation.height;
 			if(height - event.y > 20 && height - event.y < 60 && event.x > 20 && event.x < 60) {
 				int ax = (int)(event.x_root - event.x + 20);
