@@ -32,6 +32,8 @@ public class StatusViewList : TimelineList {
 		
 		base(_parent, _accounts, TimelineType.HOME, _template, 0, null);
 		lst.add(status);
+		
+		need_more_button = false; //no "more" button
 	}
 	
 	private override void get_older(){}

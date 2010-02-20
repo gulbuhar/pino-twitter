@@ -33,7 +33,7 @@ public class StatusViewDialog : Dialog {
 		set_title(_("Conversation"));
 		modal = false;
 		has_separator = false;
-		set_size_request(300, 400);
+		set_size_request(350, 450);
 		
 		var view = new StatusViewList(parent, _accounts, _status, template);
 		
