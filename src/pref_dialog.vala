@@ -112,14 +112,6 @@ public class PrefDialog : Dialog {
 		table_int.add_two_widgets(updateLabel, updateInterval);
 		table_int.add_two_widgets(numberStatusesLabel, numberStatuses);
 		table_int.add_two_widgets(urlShortenLabel, urlShorten);
-		table_int.add_widget(startMin);
-		table_int.add_widget(showTray);
-		
-		var table_not = new HigTable(_("Notification"));
-		table_not.add_widget(showTimelineNotify);
-		table_not.add_widget(showMentionsNotify);
-		table_not.add_widget(showDirectNotify);
-		//table_not.add_two_widgets(showFullNotify, showLowNotify);
 		
 		var table_re = new HigTable(_("Retweets"));
 		table_re.add_two_widgets(reLabel, retweetStyle);
@@ -128,9 +120,24 @@ public class PrefDialog : Dialog {
 		table_cache.add_widget(deleteCache);
 		
 		main_box.pack_start(table_int, false, true, 10);
-		main_box.pack_start(table_not, false, true, 10);
 		main_box.pack_start(table_re, false, true, 10);
 		main_box.pack_start(table_cache, false, true, 10);
+		
+		//desktop preferences
+		var de_box = new VBox(false, 0);
+		
+		//tray
+		var table_tr = new HigTable(_("Notification area"));
+		table_tr.add_widget(startMin);
+		table_tr.add_widget(showTray);
+		
+		var table_not = new HigTable(_("Notification"));
+		table_not.add_widget(showTimelineNotify);
+		table_not.add_widget(showMentionsNotify);
+		table_not.add_widget(showDirectNotify);
+		
+		de_box.pack_start(table_tr, false, true, 10);
+		de_box.pack_start(table_not, false, true, 10);
 		
 		//account page
 		var ac_box = new VBox(false, 0);
@@ -198,6 +205,7 @@ public class PrefDialog : Dialog {
 		app_box.pack_start(table_tweets, false, true, 10);
 		
 		tabs.append_page(main_box, new Label(_("Main")));
+		tabs.append_page(de_box, new Label(_("Desktop")));
 		tabs.append_page(ac_box, new Label(_("Account")));
 		tabs.append_page(app_box, new Label(_("Appearance")));
 		
@@ -223,7 +231,7 @@ public class PrefDialog : Dialog {
 		
 		//if first start or don't want to remember the password
 		if(accounts.is_new) {	
-			tabs.set_current_page(1);
+			tabs.set_current_page(2);
 		}
 	}
 	
