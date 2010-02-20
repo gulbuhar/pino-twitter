@@ -157,8 +157,8 @@ public class TimelineList : TimelineListAbstract {
 		try {
 			api.destroy_status(id);
 		} catch(RestError e) {
+			warning(e.message);
 			updating_error(e.message);
-			parent.window.set_cursor(null);
 			return;
 		}
 		

@@ -111,6 +111,7 @@ public class StatusbarSmart : VBox {
 			
 			case StatusType.FINISH_ERROR:
 				push("gtk-dialog-warning", message);
+				log_warning(message);
 				break;
 		}
 	}

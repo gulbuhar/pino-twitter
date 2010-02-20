@@ -234,12 +234,20 @@ public class MainWindow : Window {
 		home.start_update.connect((req) => statusbar.logging(req));
 		mentions.start_update.connect((req) => statusbar.logging(req));
 		direct.start_update.connect((req) => statusbar.logging(req));
+		re_tweet.start_update.connect((req) => statusbar.logging(req));
+		
 		home.finish_update.connect(() => statusbar.logging(_("updated ")));
 		mentions.finish_update.connect(() => statusbar.logging(_("updated ")));
 		direct.finish_update.connect(() => statusbar.logging(_("updated ")));
-		home.updating_error.connect((msg) => statusbar.log_warning(msg));
-		mentions.updating_error.connect((msg) => statusbar.log_warning(msg));
-		direct.updating_error.connect((msg) => statusbar.log_warning(msg));
+		home.updating_error.connect((msg) => {
+			statusbar.set_status(StatusbarSmart.StatusType.FINISH_ERROR, msg);
+		});
+		mentions.updating_error.connect((msg) => {
+			statusbar.set_status(StatusbarSmart.StatusType.FINISH_ERROR, msg);
+		});
+		direct.updating_error.connect((msg) => {
+			statusbar.set_status(StatusbarSmart.StatusType.FINISH_ERROR, msg);
+		});
 		
 		VBox vbox = new VBox(false, 0);
 		vbox.pack_start(menubar, false, false, 0);
