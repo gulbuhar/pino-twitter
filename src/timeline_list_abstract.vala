@@ -194,7 +194,8 @@ public abstract class TimelineListAbstract : HBox {
 	
 	public virtual void show_smart() {
 		show();
-		last_focused = (int)lst.get(0).created_at.mktime();
+		if(lst.size > 0)
+			last_focused = (int)lst.get(0).created_at.mktime();
 	}
 	
 	public virtual void hide_smart() {

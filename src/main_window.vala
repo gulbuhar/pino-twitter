@@ -49,6 +49,8 @@ public class MainWindow : Window {
 	public TimelineList home;
 	public TimelineList mentions;
 	public TimelineDirectList direct;
+	public UserInfoList user_info;
+	
 	public ReTweet re_tweet;
 	public StatusbarSmart statusbar;
 	
@@ -144,6 +146,11 @@ public class MainWindow : Window {
 			Icon.new_for_string(Config.DIRECT_FRESH_PATH), "DirectAct", _("Direct messages"),
 			_("Show direct messages"));
 		
+		//user info
+		user_info = new UserInfoList(this, accounts, template, prefs.numberStatuses,
+			Icon.new_for_string(Config.USERPIC_PATH), "UserInfoAct",
+			_("User info"), _("Show information about user"));
+		
 		home.fresh.connect(() => tray.new_tweets(true));
 		mentions.fresh.connect(() => tray.new_tweets(true));
 		direct.fresh.connect(() => tray.new_tweets(true));
@@ -155,6 +162,7 @@ public class MainWindow : Window {
 		list_group = home.act.get_group();
 		mentions.act.set_group(home.act.get_group());
 		direct.act.set_group(home.act.get_group());
+		user_info.act.set_group(home.act.get_group());
 		
 		//retweet widget
 		re_tweet = new ReTweet(this, prefs, accounts, cache, gtk_style);
@@ -406,8 +414,7 @@ public class MainWindow : Window {
 		actGroup.add_action_with_accel(home.act, "<Ctrl>1");
 		actGroup.add_action_with_accel(mentions.act, "<Ctrl>2");
 		actGroup.add_action_with_accel(direct.act, "<Ctrl>3");
-		//actGroup.add_action(showTimelineAct);
-		//actGroup.add_action(showMentionsAct);
+		actGroup.add_action_with_accel(user_info.act, "<Ctrl>4");
 		actGroup.add_action_with_accel(menuAct, "<Ctrl>M");
 		actGroup.add_action(toolbarAct);
 		actGroup.add_action(helpMenu);
@@ -439,6 +446,8 @@ public class MainWindow : Window {
 					<menuitem action="MentionsAct" />
 					<menuitem action="DirectAct" />
 					<separator />
+					<menuitem action="UserInfoAct" />
+					<separator />
 					<menuitem action="ViewMenuAct" />
 					<menuitem action="ViewToolbar" />
 				</menu>
@@ -463,11 +472,11 @@ public class MainWindow : Window {
 				<toolitem action="FileCreate" />
 				<toolitem action="FileUpdate" />
 				<separator />
-				<toolitem action="EditPref" />
-				<separator />
 				<toolitem action="HomeAct" />
 				<toolitem action="MentionsAct" />
 				<toolitem action="DirectAct" />
+				<separator />
+				<toolitem action="UserInfoAct" />
 				<separator expand="true" draw="false" />
 				<toolitem action="AccountAct" />
 			</toolbar>
