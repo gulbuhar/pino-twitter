@@ -41,7 +41,8 @@ public class StatusViewList : TimelineList {
 	public override ArrayList<Status>? update() {
 		refresh();
 		
-		for(int i = 0; i < 6; i++) {
+		int deep = 8;
+		for(int i = 0; i < deep; i++) {
 			if(lst.get(0).to_status_id == "")
 				break;
 			
