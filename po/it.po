@@ -2,12 +2,12 @@
 # Copyright (C) 2009 the Free Software Foundation, Inc.
 # This file is distributed under the same license as the pino package.
 # Daniele Napolitano <dnax88@gmail.com>, 2009.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: pino\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-10 14:23+0200\n"
+"POT-Creation-Date: 2010-02-20 18:38+0200\n"
 "PO-Revision-Date: 2009-12-21 01:11+0100\n"
 "Last-Translator: Daniele Napolitano <dnax88@gmail.com>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
@@ -15,9 +15,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: src/account_action.vala:42
+#, fuzzy
+msgid "Accounts"
+msgstr "Account"
+
+#: src/account_widget.vala:153
+#, fuzzy
+msgid "Sure you want to delete this account?"
+msgstr "Si è sicuri di voler eliminare questo status?"
+
 #: src/dm_entry.vala:35
-msgid "You can't send direct message to this user. He (or she) must follow you too"
-msgstr "Non è possibile inviare un messaggio diretto a questo utente. Anche lui (o lei) deve seguirti"
+msgid ""
+"You can't send direct message to this user. He (or she) must follow you too"
+msgstr ""
+"Non è possibile inviare un messaggio diretto a questo utente. Anche lui (o "
+"lei) deve seguirti"
 
 #: src/dm_entry.vala:42
 msgid "Check"
@@ -31,88 +44,118 @@ msgstr "È possibile inviare un messaggio diretto a questo utente"
 msgid "Checking..."
 msgstr "Verifica in corso..."
 
-#: src/main_window.vala:117
+#: src/edit_account.vala:65
+#, fuzzy
+msgid "Edit account"
+msgstr "Account"
+
+#: src/edit_account.vala:67
+#, fuzzy
+msgid "Create new account"
+msgstr "Crea un nuovo account..."
+
+#: src/edit_account.vala:69
+msgid "Login"
+msgstr "Login"
+
+#: src/edit_account.vala:73
+msgid "Password"
+msgstr "Password"
+
+#: src/edit_account.vala:78
+msgid "Service"
+msgstr ""
+
+#: src/edit_account.vala:84 src/pref_dialog.vala:209
+msgid "Account"
+msgstr "Account"
+
+#: src/edit_account.vala:153
+msgid "You must fill in all fields"
+msgstr ""
+
+#: src/main_window.vala:130
 msgid "Home timeline"
 msgstr "Timeline principale"
 
-#: src/main_window.vala:118
+#: src/main_window.vala:131
 msgid "Show your home timeline"
 msgstr "Mostra la timeline principale"
 
-#: src/main_window.vala:124
+#: src/main_window.vala:137
 msgid "Mentions"
 msgstr "Citazioni"
 
-#: src/main_window.vala:125
+#: src/main_window.vala:138
 msgid "Show mentions"
 msgstr "Mostra citazioni"
 
-#: src/main_window.vala:131
+#: src/main_window.vala:144
 msgid "Direct messages"
 msgstr "Messaggi diretti"
 
-#: src/main_window.vala:132
+#: src/main_window.vala:145
 msgid "Show direct messages"
 msgstr "Mostra messaggi diretti"
 
-#: src/main_window.vala:217 src/main_window.vala:218 src/main_window.vala:219
+#: src/main_window.vala:249 src/main_window.vala:250 src/main_window.vala:251
 #: src/status_bar_smart.vala:93 src/status_bar_smart.vala:96
 msgid "updated "
 msgstr "aggiornato "
 
-#: src/main_window.vala:287
+#: src/main_window.vala:325
 msgid "Twitter"
 msgstr "Twitter"
 
-#: src/main_window.vala:289
+#: src/main_window.vala:327
 msgid "New status"
 msgstr "Nuovo status"
 
-#: src/main_window.vala:290
+#: src/main_window.vala:328
 msgid "Create new status"
 msgstr "Crea un nuovo status"
 
-#: src/main_window.vala:293
+#: src/main_window.vala:331
 msgid "New direct message"
 msgstr "Nuovo messaggio diretto"
 
-#: src/main_window.vala:294
+#: src/main_window.vala:332
 msgid "Create new direct message"
 msgstr "Crea un nuovo messaggio diretto"
 
-#: src/main_window.vala:300
+#: src/main_window.vala:338
 msgid "Update timeline"
 msgstr "Aggiorna timeline"
 
-#: src/main_window.vala:303
+#: src/main_window.vala:341
 msgid "Quit"
 msgstr "Esci"
 
-#: src/main_window.vala:308
+#: src/main_window.vala:346
 msgid "Edit"
 msgstr "Modifica"
 
-#: src/main_window.vala:309 src/pref_dialog.vala:55
+#: src/main_window.vala:349 src/pref_dialog.vala:57
 msgid "Preferences"
 msgstr "Preferenze"
 
-#: src/main_window.vala:314
+#: src/main_window.vala:354
 msgid "View"
 msgstr "Visualizza"
 
-#: src/main_window.vala:316
+#: src/main_window.vala:356
 msgid "Show menu"
 msgstr "Mostra menù"
 
-#: src/main_window.vala:326
+#: src/main_window.vala:366
 msgid "Show toolbar"
 msgstr "Mostra barra degli strumenti"
 
-#: src/main_window.vala:338
+#: src/main_window.vala:378
 msgid "Help"
 msgstr "Aiuto"
 
-#: src/main_window.vala:339
+#: src/main_window.vala:379
 #, c-format
 msgid "About %s"
 msgstr "Informazioni su %s"
@@ -121,208 +164,206 @@ msgstr "Informazioni su %s"
 msgid "Get older entries"
 msgstr "Ricevi vecchi tweet"
 
-#: src/popups.vala:53 src/template.vala:110 src/template.vala:169
+#: src/popups.vala:75 src/template.vala:146 src/template.vala:207
 #, c-format
 msgid "Direct message"
 msgstr "Massaggio diretto"
 
-#: src/popups.vala:53
+#: src/popups.vala:75
 msgid "from"
 msgstr "da"
 
-#: src/popups.vala:69
+#: src/popups.vala:92
 msgid "Updates"
 msgstr "Aggiornamenti"
 
-#: src/popups.vala:117
+#: src/popups.vala:140
 #, c-format
 msgid "in the home timeline: %d\n"
 msgstr "nella timeline principale: %d\n"
 
-#: src/popups.vala:120
+#: src/popups.vala:143
 #, c-format
 msgid "in mentions: %d\n"
 msgstr "nelle citazioni: %d\n"
 
-#: src/popups.vala:123
+#: src/popups.vala:146
 #, c-format
 msgid "in direct messages: %d"
 msgstr "nei messaggi diretti: %d"
 
-#: src/pref_dialog.vala:64
+#: src/pref_dialog.vala:66
 msgid "Update interval (in minutes)"
 msgstr "Intervallo di aggiornamento (in minuti)"
 
-#: src/pref_dialog.vala:68
+#: src/pref_dialog.vala:70
 msgid "Default number of statuses"
 msgstr "Numero predefinito di aggiornamenti"
 
-#: src/pref_dialog.vala:72
+#: src/pref_dialog.vala:74
 msgid "URL shortening service"
 msgstr "Servizio di accorciamento URL"
 
-#: src/pref_dialog.vala:78
+#: src/pref_dialog.vala:80
 msgid "Starting up in tray"
 msgstr "Avvio nel vassoio"
 
-#: src/pref_dialog.vala:81
+#: src/pref_dialog.vala:83
+#, fuzzy
+msgid "Show tray icon"
+msgstr "Mostra citazioni"
+
+#: src/pref_dialog.vala:86
 msgid "For timeline"
 msgstr "Per la timeline"
 
-#: src/pref_dialog.vala:82
+#: src/pref_dialog.vala:87
 msgid "For mentions"
 msgstr "Per le citazioni"
 
-#: src/pref_dialog.vala:83
+#: src/pref_dialog.vala:88
 msgid "For direct messages"
 msgstr "Per i messaggi diretti"
 
-#: src/pref_dialog.vala:92
+#: src/pref_dialog.vala:97
 msgid "Retweets style"
 msgstr "Stile retweet"
 
-#: src/pref_dialog.vala:99
+#: src/pref_dialog.vala:104
 msgid "Clear now"
 msgstr "Pulisci ora"
 
-#: src/pref_dialog.vala:106
+#: src/pref_dialog.vala:111
 msgid "General"
 msgstr "Generale"
 
-#: src/pref_dialog.vala:112
-msgid "Notification"
-msgstr "Notifica"
-
-#: src/pref_dialog.vala:118
+#: src/pref_dialog.vala:116
 msgid "Retweets"
 msgstr "Retweet"
 
-#: src/pref_dialog.vala:121
+#: src/pref_dialog.vala:119
 msgid "Cache"
 msgstr "Cache"
 
-#: src/pref_dialog.vala:133
-msgid "Login"
-msgstr "Login"
+#: src/pref_dialog.vala:130
+#, fuzzy
+msgid "Notification area"
+msgstr "Notifica"
 
-#: src/pref_dialog.vala:137
-msgid "Password"
-msgstr "Password"
+#: src/pref_dialog.vala:134
+msgid "Notification"
+msgstr "Notifica"
 
-#: src/pref_dialog.vala:150
-msgid "Remember password"
-msgstr "Ricorda password"
-
-#: src/pref_dialog.vala:157
+#: src/pref_dialog.vala:148
 msgid "Authorization"
 msgstr "Autorizzazione"
 
-#: src/pref_dialog.vala:166
+#: src/pref_dialog.vala:155
 msgid "Create new account..."
 msgstr "Crea un nuovo account..."
 
-#: src/pref_dialog.vala:182
+#: src/pref_dialog.vala:171
 msgid "Statuses"
 msgstr "Stati"
 
-#: src/pref_dialog.vala:185
+#: src/pref_dialog.vala:174
 msgid "Rounded corners"
 msgstr "Angoli arrotondati"
 
-#: src/pref_dialog.vala:188
+#: src/pref_dialog.vala:177
 msgid "Right-to-left languages detection"
 msgstr "Rilevamento lingue da destra a sinistra"
 
-#: src/pref_dialog.vala:191
+#: src/pref_dialog.vala:180
 msgid "Full names instead of nicknames"
 msgstr "Nomi completi invece del nickname"
 
-#: src/pref_dialog.vala:194
+#: src/pref_dialog.vala:183
 msgid "Default font"
 msgstr "Carattere predefinito"
 
-#: src/pref_dialog.vala:200
+#: src/pref_dialog.vala:189
 msgid "Fresh statuses color"
 msgstr "Colore stati recenti"
 
-#: src/pref_dialog.vala:205
+#: src/pref_dialog.vala:194
 msgid "Opacity"
 msgstr "Opacità"
 
-#: src/pref_dialog.vala:218
+#: src/pref_dialog.vala:207
 msgid "Main"
 msgstr "Generale"
 
-#: src/pref_dialog.vala:219
-msgid "Account"
-msgstr "Account"
+#: src/pref_dialog.vala:208
+msgid "Desktop"
+msgstr ""
 
-#: src/pref_dialog.vala:220
+#: src/pref_dialog.vala:210
 msgid "Appearance"
 msgstr "Aspetto"
 
-#: src/re_tweet.vala:82
+#: src/re_tweet.vala:88
 msgid "Shorten URLs..."
 msgstr "URL accorciato..."
 
-#: src/re_tweet.vala:87
+#: src/re_tweet.vala:93
 msgid "Shortening URLs..."
 msgstr "Accorciamento URL..."
 
-#: src/re_tweet.vala:92
+#: src/re_tweet.vala:98
 msgid "URLs was shortened successfully"
 msgstr "URL accorciati con successo"
 
-#: src/re_tweet.vala:94
+#: src/re_tweet.vala:100
 msgid "Nothing to shorten"
 msgstr "Niente da accorciare"
 
-#: src/re_tweet.vala:117 src/re_tweet.vala:223
+#: src/re_tweet.vala:123 src/re_tweet.vala:216
 msgid "New status:"
 msgstr "Nuovo stato:"
 
-#: src/re_tweet.vala:126
+#: src/re_tweet.vala:132
 msgid "Hide"
 msgstr "Nascondi"
 
-#: src/re_tweet.vala:187
+#: src/re_tweet.vala:189
 #, c-format
 msgid "Reply to <b>%s</b>:"
 msgstr "Rispondi a <b>%s</b>:"
 
-#: src/re_tweet.vala:236
+#: src/re_tweet.vala:229
 msgid "Reply to"
 msgstr "Rispondi a"
 
-#: src/re_tweet.vala:249
+#: src/re_tweet.vala:242
 msgid "Direct message to"
 msgstr "Messaggio diretto a"
 
-#: src/re_tweet.vala:269
+#: src/re_tweet.vala:262
 msgid "Retweet:"
 msgstr "Retweet:"
 
-#: src/re_tweet.vala:298
+#: src/re_tweet.vala:291
 msgid "Your status is too long"
 msgstr "Il tuo status è troppo lungo"
 
-#: src/re_tweet.vala:322
+#: src/re_tweet.vala:315
 msgid "Type something first"
 msgstr "Scrivi prima qualcosa"
 
-#: src/re_tweet.vala:364
+#: src/re_tweet.vala:357
 msgid "Sending status..."
 msgstr "Invio status... "
 
-#: src/re_tweet.vala:381
+#: src/re_tweet.vala:374
 msgid "Your status has been sent successfully"
 msgstr "Il tuo stato è stato inviato con successo"
 
-#: src/re_tweet.vala:387
+#: src/re_tweet.vala:380
 msgid "Sending direct message..."
 msgstr "Invio messaggio diretto..."
 
-#: src/re_tweet.vala:401
+#: src/re_tweet.vala:394
 msgid "Your direct message has been sent successfully"
 msgstr "Il tuo massaggio diretto è stato inviato con successo"
 
@@ -330,65 +371,69 @@ msgstr "Il tuo massaggio diretto è stato inviato con successo"
 msgid "updating... "
 msgstr "in aggiornamento... "
 
-#: src/template.vala:108 src/template.vala:166
+#: src/status_view_dialog.vala:33
+msgid "Conversation"
+msgstr ""
+
+#: src/template.vala:144 src/template.vala:204
 msgid "Reply"
 msgstr "Rispondi"
 
-#: src/template.vala:109 src/template.vala:167
+#: src/template.vala:145 src/template.vala:205
 msgid "Delete"
 msgstr "Elimina"
 
-#: src/template.vala:168
+#: src/template.vala:206
 msgid "Retweet"
 msgstr "Retweet"
 
-#: src/template.vala:190
+#: src/template.vala:228
 msgid "you"
 msgstr "te"
 
-#: src/template.vala:191
+#: src/template.vala:230
 msgid "in reply to"
 msgstr "in risposta a"
 
-#: src/template.vala:312
+#: src/template.vala:355
 msgid "a few seconds ago"
 msgstr "qualche secondo fa"
 
-#: src/template.vala:314
+#: src/template.vala:357
 msgid "1 minute ago"
 msgstr "un minuto fa"
 
-#: src/template.vala:316
+#: src/template.vala:359
 #, c-format
 msgid "%i minutes ago"
 msgstr "%i minuti fa"
 
-#: src/template.vala:318
+#: src/template.vala:361
 msgid "about 1 hour ago"
 msgstr "circa un'ora fa"
 
-#: src/template.vala:320
+#: src/template.vala:363
 #, c-format
 msgid "about %i hours ago"
 msgstr "circa %i ore fa"
 
-#: src/timeline_direct_list.vala:42 src/timeline_list.vala:190
-msgid "Empty"
-msgstr "Vuoto"
-
-#: src/timeline_direct_list.vala:149
+#: src/timeline_direct_list.vala:151
 msgid "Your direct message has been deleted successfully"
 msgstr "Il tuo messaggio diretto è stato eliminato con successo"
 
-#: src/timeline_list.vala:184
+#: src/timeline_list.vala:177
 msgid "Your status has been deleted successfully"
 msgstr "Il tuo status è stato eliminato con successo"
 
-#: src/timeline_list_abstract.vala:163
+#: src/timeline_list_abstract.vala:173
+msgid "Empty"
+msgstr "Vuoto"
+
+#: src/timeline_list_abstract.vala:205
 msgid "Connecting..."
 msgstr "Connessione..."
 
-#: src/timeline_list_abstract.vala:224
+#: src/timeline_list_abstract.vala:267
 msgid "Sure you want to delete this status?"
 msgstr "Si è sicuri di voler eliminare questo status?"
 
@@ -396,6 +441,9 @@ msgstr "Si è sicuri di voler eliminare questo status?"
 #, c-format
 msgid "%s - a twitter client"
 msgstr "%s - un client twitter"
+
+#~ msgid "Remember password"
+#~ msgstr "Ricorda password"
 
 #~ msgid "Show notification for each status"
 #~ msgstr "Mostra una notifica per ogni stato"

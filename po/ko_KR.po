@@ -7,13 +7,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-10 14:23+0200\n"
+"POT-Creation-Date: 2010-02-20 18:38+0200\n"
 "PO-Revision-Date: 2009-12-27 18:24+0900\n"
 "Last-Translator: Kang Bundo <bundo@bundo.biz>\n"
 "Language-Team: UBUNTU-KO <bundo@bundo.biz>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: src/account_action.vala:42
+#, fuzzy
+msgid "Accounts"
+msgstr "계정"
+
+#: src/account_widget.vala:153
+#, fuzzy
+msgid "Sure you want to delete this account?"
+msgstr "정말로 이 트윗을 지우겠습니까?"
 
 #: src/dm_entry.vala:35
 msgid ""
@@ -32,91 +42,121 @@ msgstr ""
 msgid "Checking..."
 msgstr ""
 
-#: src/main_window.vala:117
+#: src/edit_account.vala:65
+#, fuzzy
+msgid "Edit account"
+msgstr "계정"
+
+#: src/edit_account.vala:67
+#, fuzzy
+msgid "Create new account"
+msgstr "새 계정만들기..."
+
+#: src/edit_account.vala:69
+msgid "Login"
+msgstr "아이디"
+
+#: src/edit_account.vala:73
+msgid "Password"
+msgstr "비밀번호"
+
+#: src/edit_account.vala:78
+msgid "Service"
+msgstr ""
+
+#: src/edit_account.vala:84 src/pref_dialog.vala:209
+msgid "Account"
+msgstr "계정"
+
+#: src/edit_account.vala:153
+msgid "You must fill in all fields"
+msgstr ""
+
+#: src/main_window.vala:130
 #, fuzzy
 msgid "Home timeline"
 msgstr "새 트윗글"
 
-#: src/main_window.vala:118
+#: src/main_window.vala:131
 #, fuzzy
 msgid "Show your home timeline"
 msgstr "내 타임라인 순으로 트윗 보기"
 
-#: src/main_window.vala:124
+#: src/main_window.vala:137
 msgid "Mentions"
 msgstr "댓글(RT)"
 
-#: src/main_window.vala:125
+#: src/main_window.vala:138
 msgid "Show mentions"
 msgstr "댓글 내용 보기"
 
-#: src/main_window.vala:131
+#: src/main_window.vala:144
 msgid "Direct messages"
 msgstr ""
 
-#: src/main_window.vala:132
+#: src/main_window.vala:145
 msgid "Show direct messages"
 msgstr ""
 
-#: src/main_window.vala:217 src/main_window.vala:218 src/main_window.vala:219
+#: src/main_window.vala:249 src/main_window.vala:250 src/main_window.vala:251
 #: src/status_bar_smart.vala:93 src/status_bar_smart.vala:96
 msgid "updated "
 msgstr "갱신"
 
-#: src/main_window.vala:287
+#: src/main_window.vala:325
 msgid "Twitter"
 msgstr "트위터"
 
-#: src/main_window.vala:289
+#: src/main_window.vala:327
 msgid "New status"
 msgstr "트윗 쓰기"
 
-#: src/main_window.vala:290
+#: src/main_window.vala:328
 msgid "Create new status"
 msgstr "새 트윗 보내기"
 
-#: src/main_window.vala:293
+#: src/main_window.vala:331
 msgid "New direct message"
 msgstr ""
 
-#: src/main_window.vala:294
+#: src/main_window.vala:332
 #, fuzzy
 msgid "Create new direct message"
 msgstr "새 트윗 보내기"
 
-#: src/main_window.vala:300
+#: src/main_window.vala:338
 msgid "Update timeline"
 msgstr "타임라인 갱신"
 
-#: src/main_window.vala:303
+#: src/main_window.vala:341
 msgid "Quit"
 msgstr "종료"
 
-#: src/main_window.vala:308
+#: src/main_window.vala:346
 msgid "Edit"
 msgstr "편집"
 
-#: src/main_window.vala:309 src/pref_dialog.vala:55
+#: src/main_window.vala:349 src/pref_dialog.vala:57
 msgid "Preferences"
 msgstr "설정"
 
-#: src/main_window.vala:314
+#: src/main_window.vala:354
 msgid "View"
 msgstr "보기"
 
-#: src/main_window.vala:316
+#: src/main_window.vala:356
 msgid "Show menu"
 msgstr "메뉴표시"
 
-#: src/main_window.vala:326
+#: src/main_window.vala:366
 msgid "Show toolbar"
 msgstr "도구 표시"
 
-#: src/main_window.vala:338
+#: src/main_window.vala:378
 msgid "Help"
 msgstr "도움말"
 
-#: src/main_window.vala:339
+#: src/main_window.vala:379
 #, c-format
 msgid "About %s"
 msgstr "%s 정보"
@@ -125,216 +165,214 @@ msgstr "%s 정보"
 msgid "Get older entries"
 msgstr ""
 
-#: src/popups.vala:53 src/template.vala:110 src/template.vala:169
+#: src/popups.vala:75 src/template.vala:146 src/template.vala:207
 #, c-format
 msgid "Direct message"
 msgstr ""
 
-#: src/popups.vala:53
+#: src/popups.vala:75
 msgid "from"
 msgstr ""
 
-#: src/popups.vala:69
+#: src/popups.vala:92
 #, fuzzy
 msgid "Updates"
 msgstr "갱신"
 
-#: src/popups.vala:117
+#: src/popups.vala:140
 #, c-format
 msgid "in the home timeline: %d\n"
 msgstr ""
 
-#: src/popups.vala:120
+#: src/popups.vala:143
 #, fuzzy, c-format
 msgid "in mentions: %d\n"
 msgstr "댓글(RT)"
 
-#: src/popups.vala:123
+#: src/popups.vala:146
 #, c-format
 msgid "in direct messages: %d"
 msgstr ""
 
-#: src/pref_dialog.vala:64
+#: src/pref_dialog.vala:66
 #, fuzzy
 msgid "Update interval (in minutes)"
 msgstr "갱신 주기"
 
-#: src/pref_dialog.vala:68
+#: src/pref_dialog.vala:70
 #, fuzzy
 msgid "Default number of statuses"
 msgstr "새 트윗 보내기"
 
-#: src/pref_dialog.vala:72
+#: src/pref_dialog.vala:74
 msgid "URL shortening service"
 msgstr ""
 
-#: src/pref_dialog.vala:78
+#: src/pref_dialog.vala:80
 msgid "Starting up in tray"
 msgstr ""
 
-#: src/pref_dialog.vala:81
+#: src/pref_dialog.vala:83
+#, fuzzy
+msgid "Show tray icon"
+msgstr "댓글 내용 보기"
+
+#: src/pref_dialog.vala:86
 msgid "For timeline"
 msgstr "새 트윗글"
 
-#: src/pref_dialog.vala:82
+#: src/pref_dialog.vala:87
 msgid "For mentions"
 msgstr "댓글(RT)"
 
-#: src/pref_dialog.vala:83
+#: src/pref_dialog.vala:88
 msgid "For direct messages"
 msgstr ""
 
-#: src/pref_dialog.vala:92
+#: src/pref_dialog.vala:97
 msgid "Retweets style"
 msgstr ""
 
-#: src/pref_dialog.vala:99
+#: src/pref_dialog.vala:104
 msgid "Clear now"
 msgstr ""
 
-#: src/pref_dialog.vala:106
+#: src/pref_dialog.vala:111
 #, fuzzy
 msgid "General"
 msgstr "수신 간격"
 
-#: src/pref_dialog.vala:112
-msgid "Notification"
-msgstr "알림 통보"
-
-#: src/pref_dialog.vala:118
+#: src/pref_dialog.vala:116
 #, fuzzy
 msgid "Retweets"
 msgstr "트윗 보기 모양"
 
-#: src/pref_dialog.vala:121
+#: src/pref_dialog.vala:119
 msgid "Cache"
 msgstr ""
 
-#: src/pref_dialog.vala:133
-msgid "Login"
-msgstr "아이디"
+#: src/pref_dialog.vala:130
+#, fuzzy
+msgid "Notification area"
+msgstr "알림 통보"
 
-#: src/pref_dialog.vala:137
-msgid "Password"
-msgstr "비밀번호"
+#: src/pref_dialog.vala:134
+msgid "Notification"
+msgstr "알림 통보"
 
-#: src/pref_dialog.vala:150
-msgid "Remember password"
-msgstr "비밀번호 기억"
-
-#: src/pref_dialog.vala:157
+#: src/pref_dialog.vala:148
 msgid "Authorization"
 msgstr "인증"
 
-#: src/pref_dialog.vala:166
+#: src/pref_dialog.vala:155
 msgid "Create new account..."
 msgstr "새 계정만들기..."
 
-#: src/pref_dialog.vala:182
+#: src/pref_dialog.vala:171
 msgid "Statuses"
 msgstr ""
 
-#: src/pref_dialog.vala:185
+#: src/pref_dialog.vala:174
 msgid "Rounded corners"
 msgstr "모서리를 둥글게"
 
-#: src/pref_dialog.vala:188
+#: src/pref_dialog.vala:177
 msgid "Right-to-left languages detection"
 msgstr ""
 
-#: src/pref_dialog.vala:191
+#: src/pref_dialog.vala:180
 msgid "Full names instead of nicknames"
 msgstr ""
 
-#: src/pref_dialog.vala:194
+#: src/pref_dialog.vala:183
 msgid "Default font"
 msgstr ""
 
-#: src/pref_dialog.vala:200
+#: src/pref_dialog.vala:189
 msgid "Fresh statuses color"
 msgstr ""
 
-#: src/pref_dialog.vala:205
+#: src/pref_dialog.vala:194
 msgid "Opacity"
 msgstr ""
 
-#: src/pref_dialog.vala:218
+#: src/pref_dialog.vala:207
 msgid "Main"
 msgstr "메인"
 
-#: src/pref_dialog.vala:219
-msgid "Account"
-msgstr "계정"
+#: src/pref_dialog.vala:208
+msgid "Desktop"
+msgstr ""
 
-#: src/pref_dialog.vala:220
+#: src/pref_dialog.vala:210
 msgid "Appearance"
 msgstr "모양"
 
-#: src/re_tweet.vala:82
+#: src/re_tweet.vala:88
 msgid "Shorten URLs..."
 msgstr ""
 
-#: src/re_tweet.vala:87
+#: src/re_tweet.vala:93
 #, fuzzy
 msgid "Shortening URLs..."
 msgstr "보내기... "
 
-#: src/re_tweet.vala:92
+#: src/re_tweet.vala:98
 msgid "URLs was shortened successfully"
 msgstr ""
 
-#: src/re_tweet.vala:94
+#: src/re_tweet.vala:100
 msgid "Nothing to shorten"
 msgstr ""
 
-#: src/re_tweet.vala:117 src/re_tweet.vala:223
+#: src/re_tweet.vala:123 src/re_tweet.vala:216
 msgid "New status:"
 msgstr "새 트윗 글 수:"
 
-#: src/re_tweet.vala:126
+#: src/re_tweet.vala:132
 msgid "Hide"
 msgstr ""
 
-#: src/re_tweet.vala:187
+#: src/re_tweet.vala:189
 #, c-format
 msgid "Reply to <b>%s</b>:"
 msgstr "댓글을 <b>%s</b>:"
 
-#: src/re_tweet.vala:236
+#: src/re_tweet.vala:229
 #, fuzzy
 msgid "Reply to"
 msgstr "답글"
 
-#: src/re_tweet.vala:249
+#: src/re_tweet.vala:242
 msgid "Direct message to"
 msgstr ""
 
-#: src/re_tweet.vala:269
+#: src/re_tweet.vala:262
 msgid "Retweet:"
 msgstr ""
 
-#: src/re_tweet.vala:298
+#: src/re_tweet.vala:291
 msgid "Your status is too long"
 msgstr ""
 
-#: src/re_tweet.vala:322
+#: src/re_tweet.vala:315
 msgid "Type something first"
 msgstr "처음으로 먼가를 쓰다"
 
-#: src/re_tweet.vala:364
+#: src/re_tweet.vala:357
 #, fuzzy
 msgid "Sending status..."
 msgstr "보내기... "
 
-#: src/re_tweet.vala:381
+#: src/re_tweet.vala:374
 msgid "Your status has been sent successfully"
 msgstr ""
 
-#: src/re_tweet.vala:387
+#: src/re_tweet.vala:380
 msgid "Sending direct message..."
 msgstr ""
 
-#: src/re_tweet.vala:401
+#: src/re_tweet.vala:394
 msgid "Your direct message has been sent successfully"
 msgstr ""
 
@@ -342,66 +380,70 @@ msgstr ""
 msgid "updating... "
 msgstr "갱신중..."
 
-#: src/template.vala:108 src/template.vala:166
+#: src/status_view_dialog.vala:33
+msgid "Conversation"
+msgstr ""
+
+#: src/template.vala:144 src/template.vala:204
 msgid "Reply"
 msgstr "답글"
 
-#: src/template.vala:109 src/template.vala:167
+#: src/template.vala:145 src/template.vala:205
 msgid "Delete"
 msgstr "삭제"
 
-#: src/template.vala:168
+#: src/template.vala:206
 #, fuzzy
 msgid "Retweet"
 msgstr "트윗 보기 모양"
 
-#: src/template.vala:190
+#: src/template.vala:228
 msgid "you"
 msgstr ""
 
-#: src/template.vala:191
+#: src/template.vala:230
 msgid "in reply to"
 msgstr ""
 
-#: src/template.vala:312
+#: src/template.vala:355
 msgid "a few seconds ago"
 msgstr "몇초전"
 
-#: src/template.vala:314
+#: src/template.vala:357
 msgid "1 minute ago"
 msgstr "1분전"
 
-#: src/template.vala:316
+#: src/template.vala:359
 #, c-format
 msgid "%i minutes ago"
 msgstr "%i 분전"
 
-#: src/template.vala:318
+#: src/template.vala:361
 msgid "about 1 hour ago"
 msgstr "약 1시간 전"
 
-#: src/template.vala:320
+#: src/template.vala:363
 #, c-format
 msgid "about %i hours ago"
 msgstr "약 %i 시간 전에"
 
-#: src/timeline_direct_list.vala:42 src/timeline_list.vala:190
-msgid "Empty"
-msgstr ""
-
-#: src/timeline_direct_list.vala:149
+#: src/timeline_direct_list.vala:151
 msgid "Your direct message has been deleted successfully"
 msgstr ""
 
-#: src/timeline_list.vala:184
+#: src/timeline_list.vala:177
 msgid "Your status has been deleted successfully"
 msgstr ""
 
-#: src/timeline_list_abstract.vala:163
+#: src/timeline_list_abstract.vala:173
+msgid "Empty"
+msgstr ""
+
+#: src/timeline_list_abstract.vala:205
 msgid "Connecting..."
 msgstr ""
 
-#: src/timeline_list_abstract.vala:224
+#: src/timeline_list_abstract.vala:267
 #, fuzzy
 msgid "Sure you want to delete this status?"
 msgstr "정말로 이 트윗을 지우겠습니까?"
@@ -410,6 +452,9 @@ msgstr "정말로 이 트윗을 지우겠습니까?"
 #, c-format
 msgid "%s - a twitter client"
 msgstr "%s - 트위터 클라이언트"
+
+#~ msgid "Remember password"
+#~ msgstr "비밀번호 기억"
 
 #~ msgid "Tweets"
 #~ msgstr "트윗 보기 모양"
