@@ -1,0 +1,474 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Diego Búrigo Zacarão <diegobz@fedoraproject.org>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-02-20 18:38+0200\n"
+"PO-Revision-Date: 2009-12-23 16:34-0200\n"
+"Last-Translator: Diego Búrigo Zacarão <diegobz@fedoraproject.org>\n"
+"Language-Team: Brazilian Portuguese <fedora-trans-pt_br@redhat.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Lokalize 1.0\n"
+
+#: src/account_action.vala:42
+#, fuzzy
+msgid "Accounts"
+msgstr "Conta"
+
+#: src/account_widget.vala:153
+#, fuzzy
+msgid "Sure you want to delete this account?"
+msgstr "Você tem certeza que deseja apagar este status?"
+
+#: src/dm_entry.vala:35
+msgid ""
+"You can't send direct message to this user. He (or she) must follow you too"
+msgstr ""
+"Você não pode enviar mensagem direta a este usuário. Ele (ou ela) tem de "
+"seguir você também"
+
+#: src/dm_entry.vala:42
+msgid "Check"
+msgstr "Verificar"
+
+#: src/dm_entry.vala:58
+msgid "You can send direct message to this user"
+msgstr "Você pode mandar uma mensagem direta para este usuário"
+
+#: src/dm_entry.vala:77
+msgid "Checking..."
+msgstr "Verificando..."
+
+#: src/edit_account.vala:65
+#, fuzzy
+msgid "Edit account"
+msgstr "Conta"
+
+#: src/edit_account.vala:67
+#, fuzzy
+msgid "Create new account"
+msgstr "Criar Nova Conta..."
+
+#: src/edit_account.vala:69
+msgid "Login"
+msgstr "Login"
+
+#: src/edit_account.vala:73
+msgid "Password"
+msgstr "Senha"
+
+#: src/edit_account.vala:78
+msgid "Service"
+msgstr ""
+
+#: src/edit_account.vala:84 src/pref_dialog.vala:209
+msgid "Account"
+msgstr "Conta"
+
+#: src/edit_account.vala:153
+msgid "You must fill in all fields"
+msgstr ""
+
+#: src/main_window.vala:130
+msgid "Home timeline"
+msgstr "Linha de tempo da sua Home"
+
+#: src/main_window.vala:131
+msgid "Show your home timeline"
+msgstr "Mostrar a sua linha de tempo"
+
+#: src/main_window.vala:137
+msgid "Mentions"
+msgstr "Menções"
+
+#: src/main_window.vala:138
+msgid "Show mentions"
+msgstr "Mostrar menções"
+
+#: src/main_window.vala:144
+msgid "Direct messages"
+msgstr "Mensagens diretas"
+
+#: src/main_window.vala:145
+msgid "Show direct messages"
+msgstr "Mostrar mensagens diretas"
+
+#: src/main_window.vala:249 src/main_window.vala:250 src/main_window.vala:251
+#: src/status_bar_smart.vala:93 src/status_bar_smart.vala:96
+msgid "updated "
+msgstr "Atualizado "
+
+#: src/main_window.vala:325
+msgid "Twitter"
+msgstr "Twitter"
+
+#: src/main_window.vala:327
+msgid "New status"
+msgstr "Novo status"
+
+#: src/main_window.vala:328
+msgid "Create new status"
+msgstr "Criar novo status"
+
+#: src/main_window.vala:331
+msgid "New direct message"
+msgstr "Nova mensagem direta"
+
+#: src/main_window.vala:332
+msgid "Create new direct message"
+msgstr "Criar nova mensagem direta"
+
+#: src/main_window.vala:338
+msgid "Update timeline"
+msgstr "Atualizar linha do tempo"
+
+#: src/main_window.vala:341
+msgid "Quit"
+msgstr "Sair"
+
+#: src/main_window.vala:346
+msgid "Edit"
+msgstr "Editar"
+
+#: src/main_window.vala:349 src/pref_dialog.vala:57
+msgid "Preferences"
+msgstr "Preferências"
+
+#: src/main_window.vala:354
+msgid "View"
+msgstr "Ver"
+
+#: src/main_window.vala:356
+msgid "Show menu"
+msgstr "Mostrar menu"
+
+#: src/main_window.vala:366
+msgid "Show toolbar"
+msgstr "Mostrar barra de ferramentas"
+
+#: src/main_window.vala:378
+msgid "Help"
+msgstr "Ajuda"
+
+#: src/main_window.vala:379
+#, c-format
+msgid "About %s"
+msgstr "Sobre %s"
+
+#: src/more_window.vala:36
+msgid "Get older entries"
+msgstr "Receber entradas mais antigas"
+
+#: src/popups.vala:75 src/template.vala:146 src/template.vala:207
+#, c-format
+msgid "Direct message"
+msgstr "Mensagem Direta"
+
+#: src/popups.vala:75
+msgid "from"
+msgstr "de"
+
+#: src/popups.vala:92
+msgid "Updates"
+msgstr "Atualizações"
+
+#: src/popups.vala:140
+#, c-format
+msgid "in the home timeline: %d\n"
+msgstr "na linha de tempo home: %d\n"
+
+#: src/popups.vala:143
+#, c-format
+msgid "in mentions: %d\n"
+msgstr "em menções: %d\n"
+
+#: src/popups.vala:146
+#, c-format
+msgid "in direct messages: %d"
+msgstr "em mensagens diretas: %d"
+
+#: src/pref_dialog.vala:66
+msgid "Update interval (in minutes)"
+msgstr "Intervalo de atualização (em minutos)"
+
+#: src/pref_dialog.vala:70
+msgid "Default number of statuses"
+msgstr "Numero de estados pré-definido"
+
+#: src/pref_dialog.vala:74
+msgid "URL shortening service"
+msgstr "Serviço de encurtamento de URL"
+
+#: src/pref_dialog.vala:80
+msgid "Starting up in tray"
+msgstr "Iniciar na bandeija"
+
+#: src/pref_dialog.vala:83
+#, fuzzy
+msgid "Show tray icon"
+msgstr "Mostrar menções"
+
+#: src/pref_dialog.vala:86
+msgid "For timeline"
+msgstr "Para linha de tempo"
+
+#: src/pref_dialog.vala:87
+msgid "For mentions"
+msgstr "Para menções"
+
+#: src/pref_dialog.vala:88
+msgid "For direct messages"
+msgstr "Para mensagens diretas"
+
+#: src/pref_dialog.vala:97
+msgid "Retweets style"
+msgstr "Estilo dos Retweets"
+
+#: src/pref_dialog.vala:104
+msgid "Clear now"
+msgstr "Limpar agora"
+
+#: src/pref_dialog.vala:111
+msgid "General"
+msgstr "Geral"
+
+#: src/pref_dialog.vala:116
+msgid "Retweets"
+msgstr "Retweets"
+
+#: src/pref_dialog.vala:119
+msgid "Cache"
+msgstr "Cache"
+
+#: src/pref_dialog.vala:130
+#, fuzzy
+msgid "Notification area"
+msgstr "Notificação"
+
+#: src/pref_dialog.vala:134
+msgid "Notification"
+msgstr "Notificação"
+
+#: src/pref_dialog.vala:148
+msgid "Authorization"
+msgstr "Autorização"
+
+#: src/pref_dialog.vala:155
+msgid "Create new account..."
+msgstr "Criar Nova Conta..."
+
+#: src/pref_dialog.vala:171
+msgid "Statuses"
+msgstr "Status"
+
+#: src/pref_dialog.vala:174
+msgid "Rounded corners"
+msgstr "Cantos arredondados"
+
+#: src/pref_dialog.vala:177
+msgid "Right-to-left languages detection"
+msgstr "Deteção de escrita da direita para a esquerda"
+
+#: src/pref_dialog.vala:180
+msgid "Full names instead of nicknames"
+msgstr "Nomes completos no lugar de apelidos"
+
+#: src/pref_dialog.vala:183
+msgid "Default font"
+msgstr "Fonte padrão"
+
+#: src/pref_dialog.vala:189
+msgid "Fresh statuses color"
+msgstr "Cor de novos status"
+
+#: src/pref_dialog.vala:194
+msgid "Opacity"
+msgstr "Opacidade"
+
+#: src/pref_dialog.vala:207
+msgid "Main"
+msgstr "Principal"
+
+#: src/pref_dialog.vala:208
+msgid "Desktop"
+msgstr ""
+
+#: src/pref_dialog.vala:210
+msgid "Appearance"
+msgstr "Aparência"
+
+#: src/re_tweet.vala:88
+msgid "Shorten URLs..."
+msgstr "Encurtar URL..."
+
+#: src/re_tweet.vala:93
+msgid "Shortening URLs..."
+msgstr "Encurtando URL..."
+
+#: src/re_tweet.vala:98
+msgid "URLs was shortened successfully"
+msgstr "URL encurtada com sucesso"
+
+#: src/re_tweet.vala:100
+msgid "Nothing to shorten"
+msgstr "Nada para encurtar"
+
+#: src/re_tweet.vala:123 src/re_tweet.vala:216
+msgid "New status:"
+msgstr "Novo status:"
+
+#: src/re_tweet.vala:132
+msgid "Hide"
+msgstr "Esconder"
+
+#: src/re_tweet.vala:189
+#, c-format
+msgid "Reply to <b>%s</b>:"
+msgstr "Responder para <b>%s</b>"
+
+#: src/re_tweet.vala:229
+msgid "Reply to"
+msgstr "Responder para"
+
+#: src/re_tweet.vala:242
+msgid "Direct message to"
+msgstr "Mensagem direta para"
+
+#: src/re_tweet.vala:262
+msgid "Retweet:"
+msgstr "Retweet:"
+
+#: src/re_tweet.vala:291
+msgid "Your status is too long"
+msgstr "Seu status é muito longo"
+
+#: src/re_tweet.vala:315
+msgid "Type something first"
+msgstr "Escreva algo primeiro"
+
+#: src/re_tweet.vala:357
+msgid "Sending status..."
+msgstr "Enviando estado... "
+
+#: src/re_tweet.vala:374
+msgid "Your status has been sent successfully"
+msgstr "O seu status foi enviado com sucesso"
+
+#: src/re_tweet.vala:380
+msgid "Sending direct message..."
+msgstr "Enviando mensagem direta..."
+
+#: src/re_tweet.vala:394
+msgid "Your direct message has been sent successfully"
+msgstr "A sua mensagem direta foi enviada com sucesso"
+
+#: src/status_bar_smart.vala:101
+msgid "updating... "
+msgstr "atualizando... "
+
+#: src/status_view_dialog.vala:33
+msgid "Conversation"
+msgstr ""
+
+#: src/template.vala:144 src/template.vala:204
+msgid "Reply"
+msgstr "Responder"
+
+#: src/template.vala:145 src/template.vala:205
+msgid "Delete"
+msgstr "Apagar"
+
+#: src/template.vala:206
+msgid "Retweet"
+msgstr "Retweet"
+
+#: src/template.vala:228
+msgid "you"
+msgstr "você"
+
+#: src/template.vala:230
+msgid "in reply to"
+msgstr "em resposta a"
+
+#: src/template.vala:355
+msgid "a few seconds ago"
+msgstr "alguns segundos atrás"
+
+#: src/template.vala:357
+msgid "1 minute ago"
+msgstr "1 minuto atrás"
+
+#: src/template.vala:359
+#, c-format
+msgid "%i minutes ago"
+msgstr " %i minutos atrás"
+
+#: src/template.vala:361
+msgid "about 1 hour ago"
+msgstr "há cerca de 1 hora atrás"
+
+#: src/template.vala:363
+#, c-format
+msgid "about %i hours ago"
+msgstr "cerca de %i horas atrás"
+
+#: src/timeline_direct_list.vala:151
+msgid "Your direct message has been deleted successfully"
+msgstr "A sua mensagem direta foi apagada com sucesso"
+
+#: src/timeline_list.vala:177
+msgid "Your status has been deleted successfully"
+msgstr "O seu status foi apagado com sucesso"
+
+#: src/timeline_list_abstract.vala:173
+msgid "Empty"
+msgstr "Vazio"
+
+#: src/timeline_list_abstract.vala:205
+msgid "Connecting..."
+msgstr "Conectando..."
+
+#: src/timeline_list_abstract.vala:267
+msgid "Sure you want to delete this status?"
+msgstr "Você tem certeza que deseja apagar este status?"
+
+#: src/tray_icon.vala:44
+#, c-format
+msgid "%s - a twitter client"
+msgstr "%s - Um cliente para o Twitter"
+
+#~ msgid "Remember password"
+#~ msgstr "Lembrar senha"
+
+#~ msgid "Show notification for each status"
+#~ msgstr "Mostrar notificações por cada estado"
+
+#~ msgid "Show overall notification"
+#~ msgstr "Mostrar notificação geral"
+
+#~ msgid "REST API options"
+#~ msgstr "Opções do API"
+
+#~ msgid "Tweets"
+#~ msgstr "Tweets"
+
+#~ msgid "Timeline"
+#~ msgstr "Linha de tempo"
+
+#~ msgid "wrong login or password "
+#~ msgstr "nome de usuário ou senha errada "
+
+#~ msgid "problems with connection "
+#~ msgstr "problemas com a conexão "
+
+#~ msgid "some strange error "
+#~ msgstr "algum erro estranho "
+
+#~ msgid "Main developer and project owner:"
+#~ msgstr "Desenvolvedor principal e Dono do projecto:"
