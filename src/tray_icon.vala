@@ -64,9 +64,13 @@ public class TrayIcon : StatusIcon {
 	}
 	
 	public void new_tweets(bool y) {
-		if(y)
+		if(y) {
 			set_from_pixbuf(logo_fresh);
-		else
+			parent.set_icon(logo_fresh);
+		}
+		else {
 			set_from_pixbuf(logo);
+			parent.set_icon(logo);
+		}
 	}
 }

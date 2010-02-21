@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-10 14:23+0200\n"
+"POT-Creation-Date: 2010-02-20 18:38+0200\n"
 "PO-Revision-Date: 2010-02-12 21:08+0100\n"
 "Last-Translator: Johan Eriksson <hund@lathund.nu>\n"
 "Language-Team: \n"
@@ -17,9 +17,22 @@ msgstr ""
 "X-Poedit-Language: Swedish\n"
 "X-Poedit-Country: SWEDEN\n"
 
+#: src/account_action.vala:42
+#, fuzzy
+msgid "Accounts"
+msgstr "Konto"
+
+#: src/account_widget.vala:153
+#, fuzzy
+msgid "Sure you want to delete this account?"
+msgstr "Är du säker på att du vill ta bort det här meddelandet?"
+
 #: src/dm_entry.vala:35
-msgid "You can't send direct message to this user. He (or she) must follow you too"
-msgstr "Du kan inte skicka direktmeddelanden till denna användare. Han/hon måste följa dig"
+msgid ""
+"You can't send direct message to this user. He (or she) must follow you too"
+msgstr ""
+"Du kan inte skicka direktmeddelanden till denna användare. Han/hon måste "
+"följa dig"
 
 #: src/dm_entry.vala:42
 msgid "Check"
@@ -33,92 +46,118 @@ msgstr "Du kan skicka direktmeddelanden till denna användaren"
 msgid "Checking..."
 msgstr "Kontrollerar..."
 
-#: src/main_window.vala:117
+#: src/edit_account.vala:65
+#, fuzzy
+msgid "Edit account"
+msgstr "Konto"
+
+#: src/edit_account.vala:67
+#, fuzzy
+msgid "Create new account"
+msgstr "Skapa nytt konto..."
+
+#: src/edit_account.vala:69
+msgid "Login"
+msgstr "Användarnamn"
+
+#: src/edit_account.vala:73
+msgid "Password"
+msgstr "Lösenord"
+
+#: src/edit_account.vala:78
+msgid "Service"
+msgstr ""
+
+#: src/edit_account.vala:84 src/pref_dialog.vala:209
+msgid "Account"
+msgstr "Konto"
+
+#: src/edit_account.vala:153
+msgid "You must fill in all fields"
+msgstr ""
+
+#: src/main_window.vala:130
 msgid "Home timeline"
 msgstr "Tidslinje"
 
-#: src/main_window.vala:118
+#: src/main_window.vala:131
 msgid "Show your home timeline"
 msgstr "Visa din tidslinje"
 
-#: src/main_window.vala:124
+#: src/main_window.vala:137
 msgid "Mentions"
 msgstr "Omnämningar"
 
-#: src/main_window.vala:125
+#: src/main_window.vala:138
 msgid "Show mentions"
 msgstr "Visa omnämningar"
 
-#: src/main_window.vala:131
+#: src/main_window.vala:144
 msgid "Direct messages"
 msgstr "Direktmeddelanden"
 
-#: src/main_window.vala:132
+#: src/main_window.vala:145
 msgid "Show direct messages"
 msgstr "Visa direktmeddelanden"
 
-#: src/main_window.vala:217
-#: src/main_window.vala:218
-#: src/main_window.vala:219
-#: src/status_bar_smart.vala:93
-#: src/status_bar_smart.vala:96
+#: src/main_window.vala:249 src/main_window.vala:250 src/main_window.vala:251
+#: src/status_bar_smart.vala:93 src/status_bar_smart.vala:96
 msgid "updated "
 msgstr "uppdaterad"
 
-#: src/main_window.vala:287
+#: src/main_window.vala:325
 msgid "Twitter"
 msgstr "Twitter"
 
-#: src/main_window.vala:289
+#: src/main_window.vala:327
 msgid "New status"
 msgstr "Ny status"
 
-#: src/main_window.vala:290
+#: src/main_window.vala:328
 msgid "Create new status"
 msgstr "Skapa ny status"
 
-#: src/main_window.vala:293
+#: src/main_window.vala:331
 msgid "New direct message"
 msgstr "Nytt direktmeddelande"
 
-#: src/main_window.vala:294
+#: src/main_window.vala:332
 msgid "Create new direct message"
 msgstr "Skapa nytt direktmeddelande"
 
-#: src/main_window.vala:300
+#: src/main_window.vala:338
 msgid "Update timeline"
 msgstr "Uppdatera tidslinje"
 
-#: src/main_window.vala:303
+#: src/main_window.vala:341
 msgid "Quit"
 msgstr "Avsluta"
 
-#: src/main_window.vala:308
+#: src/main_window.vala:346
 msgid "Edit"
 msgstr "Redigera"
 
-#: src/main_window.vala:309
-#: src/pref_dialog.vala:55
+#: src/main_window.vala:349 src/pref_dialog.vala:57
 msgid "Preferences"
 msgstr "Inställningar"
 
-#: src/main_window.vala:314
+#: src/main_window.vala:354
 msgid "View"
 msgstr "Visa"
 
-#: src/main_window.vala:316
+#: src/main_window.vala:356
 msgid "Show menu"
 msgstr "Visa meny"
 
-#: src/main_window.vala:326
+#: src/main_window.vala:366
 msgid "Show toolbar"
 msgstr "Visa verktygsfält"
 
-#: src/main_window.vala:338
+#: src/main_window.vala:378
 msgid "Help"
 msgstr "Hjälp"
 
-#: src/main_window.vala:339
+#: src/main_window.vala:379
 #, c-format
 msgid "About %s"
 msgstr "Om %s"
@@ -127,211 +166,206 @@ msgstr "Om %s"
 msgid "Get older entries"
 msgstr "Hämta äldre inlägg"
 
-#: src/popups.vala:53
-#: src/template.vala:110
-#: src/template.vala:169
+#: src/popups.vala:75 src/template.vala:146 src/template.vala:207
 #, c-format
 msgid "Direct message"
 msgstr "Direktmeddelande"
 
-#: src/popups.vala:53
+#: src/popups.vala:75
 msgid "from"
 msgstr "från"
 
-#: src/popups.vala:69
+#: src/popups.vala:92
 msgid "Updates"
 msgstr "Uppdateringar"
 
-#: src/popups.vala:117
+#: src/popups.vala:140
 #, c-format
 msgid "in the home timeline: %d\n"
 msgstr "i tidslinjen: %d\n"
 
-#: src/popups.vala:120
+#: src/popups.vala:143
 #, c-format
 msgid "in mentions: %d\n"
 msgstr "i omnämningar:  %d\n"
 
-#: src/popups.vala:123
+#: src/popups.vala:146
 #, c-format
 msgid "in direct messages: %d"
 msgstr "i direktmeddelanden: %d"
 
-#: src/pref_dialog.vala:64
+#: src/pref_dialog.vala:66
 msgid "Update interval (in minutes)"
 msgstr "Uppdateringsintervall (i minuter)"
 
-#: src/pref_dialog.vala:68
+#: src/pref_dialog.vala:70
 msgid "Default number of statuses"
 msgstr "Standardvärde för antal nya uppdateringar som ska visas"
 
-#: src/pref_dialog.vala:72
+#: src/pref_dialog.vala:74
 msgid "URL shortening service"
 msgstr "URL förkortningstjänst"
 
-#: src/pref_dialog.vala:78
+#: src/pref_dialog.vala:80
 msgid "Starting up in tray"
 msgstr "Starta i notifieringsfältet"
 
-#: src/pref_dialog.vala:81
+#: src/pref_dialog.vala:83
+#, fuzzy
+msgid "Show tray icon"
+msgstr "Visa omnämningar"
+
+#: src/pref_dialog.vala:86
 msgid "For timeline"
 msgstr "För tidslinjen"
 
-#: src/pref_dialog.vala:82
+#: src/pref_dialog.vala:87
 msgid "For mentions"
 msgstr "För omnämningar"
 
-#: src/pref_dialog.vala:83
+#: src/pref_dialog.vala:88
 msgid "For direct messages"
 msgstr "För direktmeddelanden"
 
-#: src/pref_dialog.vala:92
+#: src/pref_dialog.vala:97
 msgid "Retweets style"
 msgstr "Retweet stil"
 
-#: src/pref_dialog.vala:99
+#: src/pref_dialog.vala:104
 msgid "Clear now"
 msgstr "Rensa nu"
 
-#: src/pref_dialog.vala:106
+#: src/pref_dialog.vala:111
 msgid "General"
 msgstr "Allmänt"
 
-#: src/pref_dialog.vala:112
-msgid "Notification"
-msgstr "Notifikation"
-
-#: src/pref_dialog.vala:118
+#: src/pref_dialog.vala:116
 msgid "Retweets"
 msgstr "Retweets"
 
-#: src/pref_dialog.vala:121
+#: src/pref_dialog.vala:119
 msgid "Cache"
 msgstr "Cache"
 
-#: src/pref_dialog.vala:133
-msgid "Login"
-msgstr "Användarnamn"
+#: src/pref_dialog.vala:130
+#, fuzzy
+msgid "Notification area"
+msgstr "Notifikation"
 
-#: src/pref_dialog.vala:137
-msgid "Password"
-msgstr "Lösenord"
+#: src/pref_dialog.vala:134
+msgid "Notification"
+msgstr "Notifikation"
 
-#: src/pref_dialog.vala:150
-msgid "Remember password"
-msgstr "Kom ihåg lösenordet"
-
-#: src/pref_dialog.vala:157
+#: src/pref_dialog.vala:148
 msgid "Authorization"
 msgstr "Auktorisering"
 
-#: src/pref_dialog.vala:166
+#: src/pref_dialog.vala:155
 msgid "Create new account..."
 msgstr "Skapa nytt konto..."
 
-#: src/pref_dialog.vala:182
+#: src/pref_dialog.vala:171
 msgid "Statuses"
 msgstr "Statusar"
 
-#: src/pref_dialog.vala:185
+#: src/pref_dialog.vala:174
 msgid "Rounded corners"
 msgstr "Rundade hörn"
 
-#: src/pref_dialog.vala:188
+#: src/pref_dialog.vala:177
 msgid "Right-to-left languages detection"
 msgstr "Höger-till-vänster språkigenkänning"
 
-#: src/pref_dialog.vala:191
+#: src/pref_dialog.vala:180
 msgid "Full names instead of nicknames"
 msgstr "Fullständiga namn istället för användarnamn"
 
-#: src/pref_dialog.vala:194
+#: src/pref_dialog.vala:183
 msgid "Default font"
 msgstr "Standardtypsnitt"
 
-#: src/pref_dialog.vala:200
+#: src/pref_dialog.vala:189
 msgid "Fresh statuses color"
 msgstr "Fräscha statusfärger"
 
-#: src/pref_dialog.vala:205
+#: src/pref_dialog.vala:194
 msgid "Opacity"
 msgstr "Genomskinlighet"
 
-#: src/pref_dialog.vala:218
+#: src/pref_dialog.vala:207
 msgid "Main"
 msgstr "Allmänt"
 
-#: src/pref_dialog.vala:219
-msgid "Account"
-msgstr "Konto"
+#: src/pref_dialog.vala:208
+msgid "Desktop"
+msgstr ""
 
-#: src/pref_dialog.vala:220
+#: src/pref_dialog.vala:210
 msgid "Appearance"
 msgstr "Utseende"
 
-#: src/re_tweet.vala:82
+#: src/re_tweet.vala:88
 msgid "Shorten URLs..."
 msgstr "Förkorta URL:er"
 
-#: src/re_tweet.vala:87
+#: src/re_tweet.vala:93
 msgid "Shortening URLs..."
 msgstr "Förkortar URL:er..."
 
-#: src/re_tweet.vala:92
+#: src/re_tweet.vala:98
 msgid "URLs was shortened successfully"
 msgstr "URL:en förkortades framgångsrikt"
 
-#: src/re_tweet.vala:94
+#: src/re_tweet.vala:100
 msgid "Nothing to shorten"
 msgstr "Inget att förkorta"
 
-#: src/re_tweet.vala:117
-#: src/re_tweet.vala:223
+#: src/re_tweet.vala:123 src/re_tweet.vala:216
 msgid "New status:"
 msgstr "Ny status:"
 
-#: src/re_tweet.vala:126
+#: src/re_tweet.vala:132
 msgid "Hide"
 msgstr "Dölj"
 
-#: src/re_tweet.vala:187
+#: src/re_tweet.vala:189
 #, c-format
 msgid "Reply to <b>%s</b>:"
 msgstr "Svara till <b>%s</b>:"
 
-#: src/re_tweet.vala:236
+#: src/re_tweet.vala:229
 msgid "Reply to"
 msgstr "Svara"
 
-#: src/re_tweet.vala:249
+#: src/re_tweet.vala:242
 msgid "Direct message to"
 msgstr "Direktmeddelande till"
 
-#: src/re_tweet.vala:269
+#: src/re_tweet.vala:262
 msgid "Retweet:"
 msgstr "Retweet:"
 
-#: src/re_tweet.vala:298
+#: src/re_tweet.vala:291
 msgid "Your status is too long"
 msgstr "Din status är för lång"
 
-#: src/re_tweet.vala:322
+#: src/re_tweet.vala:315
 msgid "Type something first"
 msgstr "Skriv något först"
 
-#: src/re_tweet.vala:364
+#: src/re_tweet.vala:357
 msgid "Sending status..."
 msgstr "Skickar status..."
 
-#: src/re_tweet.vala:381
+#: src/re_tweet.vala:374
 msgid "Your status has been sent successfully"
 msgstr "Din status har skickats"
 
-#: src/re_tweet.vala:387
+#: src/re_tweet.vala:380
 msgid "Sending direct message..."
 msgstr "Skickar direktmeddelande..."
 
-#: src/re_tweet.vala:401
+#: src/re_tweet.vala:394
 msgid "Your direct message has been sent successfully"
 msgstr "Ditt direktmeddelande har skickats"
 
@@ -339,68 +373,69 @@ msgstr "Ditt direktmeddelande har skickats"
 msgid "updating... "
 msgstr "uppdaterar..."
 
-#: src/template.vala:108
-#: src/template.vala:166
+#: src/status_view_dialog.vala:33
+msgid "Conversation"
+msgstr ""
+
+#: src/template.vala:144 src/template.vala:204
 msgid "Reply"
 msgstr "Svara"
 
-#: src/template.vala:109
-#: src/template.vala:167
+#: src/template.vala:145 src/template.vala:205
 msgid "Delete"
 msgstr "Radera"
 
-#: src/template.vala:168
+#: src/template.vala:206
 msgid "Retweet"
 msgstr "Retweet"
 
-#: src/template.vala:190
+#: src/template.vala:228
 msgid "you"
 msgstr "du"
 
-#: src/template.vala:191
+#: src/template.vala:230
 msgid "in reply to"
 msgstr "svar till"
 
-#: src/template.vala:312
+#: src/template.vala:355
 msgid "a few seconds ago"
 msgstr "några sekunder sedan"
 
-#: src/template.vala:314
+#: src/template.vala:357
 msgid "1 minute ago"
 msgstr "1 minut sedan"
 
-#: src/template.vala:316
+#: src/template.vala:359
 #, c-format
 msgid "%i minutes ago"
 msgstr "%i minuter sedan"
 
-#: src/template.vala:318
+#: src/template.vala:361
 msgid "about 1 hour ago"
 msgstr "omkring 1 timme sedan"
 
-#: src/template.vala:320
+#: src/template.vala:363
 #, c-format
 msgid "about %i hours ago"
 msgstr "omkring %i timmar sedan"
 
-#: src/timeline_direct_list.vala:42
-#: src/timeline_list.vala:190
-msgid "Empty"
-msgstr "Tom"
-
-#: src/timeline_direct_list.vala:149
+#: src/timeline_direct_list.vala:151
 msgid "Your direct message has been deleted successfully"
 msgstr "Ditt direktmeddelande har tagits bort"
 
-#: src/timeline_list.vala:184
+#: src/timeline_list.vala:177
 msgid "Your status has been deleted successfully"
 msgstr "Din status har tagits bort"
 
-#: src/timeline_list_abstract.vala:163
+#: src/timeline_list_abstract.vala:173
+msgid "Empty"
+msgstr "Tom"
+
+#: src/timeline_list_abstract.vala:205
 msgid "Connecting..."
 msgstr "Ansluter..."
 
-#: src/timeline_list_abstract.vala:224
+#: src/timeline_list_abstract.vala:267
 msgid "Sure you want to delete this status?"
 msgstr "Är du säker på att du vill ta bort det här meddelandet?"
 
@@ -409,22 +444,32 @@ msgstr "Är du säker på att du vill ta bort det här meddelandet?"
 msgid "%s - a twitter client"
 msgstr "%s - en twitterklient"
 
+#~ msgid "Remember password"
+#~ msgstr "Kom ihåg lösenordet"
+
 #~ msgid "Show notification for each status"
 #~ msgstr "Visa notifikation för varje status"
+
 #~ msgid "Show overall notification"
 #~ msgstr "Visa övergripande notifikation"
+
 #~ msgid "REST API options"
 #~ msgstr "REST API val"
+
 #~ msgid "Tweets"
 #~ msgstr "Tweets"
+
 #~ msgid "Timeline"
 #~ msgstr "Tidslinje"
+
 #~ msgid "wrong login or password "
 #~ msgstr "felaktigt användarnamn eller lösenord"
+
 #~ msgid "problems with connection "
 #~ msgstr "problem med anslutningen"
+
 #~ msgid "some strange error "
 #~ msgstr "något konstigt fel"
+
 #~ msgid "Main developer and project owner:"
 #~ msgstr "Головний розробник і власник проекту:"
-
