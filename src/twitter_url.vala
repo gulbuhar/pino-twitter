@@ -60,4 +60,8 @@ public class TwitterUrls : Object, IRestUrls {
 	public string status {
 		get { return "http://api.twitter.com/1/statuses/show/%s.xml"; }
 	}
+	
+	public string users_timeline {
+		get { return "http://twitter.com/statuses/user_timeline/%s.xml"; }
+	}
 }

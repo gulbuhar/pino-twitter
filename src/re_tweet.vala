@@ -146,7 +146,6 @@ public class ReTweet : VBox {
 		
 		entry = new TextView();
 		entry.set_size_request(-1, 60);
-		entry.cursor_visible = true;
 		entry.set_wrap_mode(Gtk.WrapMode.WORD);
 		entry.key_press_event.connect(hide_or_send);
 		entry.buffer.changed.connect(change);

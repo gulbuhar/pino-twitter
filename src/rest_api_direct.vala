@@ -40,7 +40,7 @@ public class RestAPIDirect : RestAPIAbstract {
 	}
 	
 	/* get direct messages (inbox) */
-	public override ArrayList<Status>? get_timeline(int count = 0,
+	public override ArrayList<Status>? get_timeline(int count = 0, FullStatus? fstatus = null,
 		string since_id = "", string max_id = "") throws RestError, ParseError {
 		
 		if(account == null)

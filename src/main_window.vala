@@ -213,11 +213,20 @@ public class MainWindow : Window {
 		home.nickto.connect((screen_name) => {
 			re_tweet.set_nickto(screen_name);
 		});
+		home.user_info.connect((screen_name) => {
+			user_info.show_user(screen_name);
+		});
 		mentions.nickto.connect((screen_name) => {
 			re_tweet.set_nickto(screen_name);
 		});
+		mentions.user_info.connect((screen_name) => {
+			user_info.show_user(screen_name);
+		});
 		direct.nickto.connect((screen_name) => {
 			re_tweet.set_nickto(screen_name);
+		});
+		direct.user_info.connect((screen_name) => {
+			user_info.show_user(screen_name);
 		});
 		home.retweet.connect((status) => {
 			re_tweet.set_state_retweet(status);
@@ -274,6 +283,7 @@ public class MainWindow : Window {
 		vbox.pack_start(home, true, true, 0);
 		vbox.pack_start(mentions, true, true, 0);
 		vbox.pack_start(direct, true, true, 0);
+		vbox.pack_start(user_info, true, true, 0);
 		vbox.pack_end(statusbar, false, false, 0);
 		vbox.pack_end(re_tweet, false, false, 0);
 		
@@ -319,6 +329,7 @@ public class MainWindow : Window {
 		re_tweet.hide();
 		mentions.hide();
 		direct.hide();
+		user_info.hide();
 		
 		if(!prefs.menuShow)
 			menubar.hide();

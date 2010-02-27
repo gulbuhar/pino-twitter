@@ -44,7 +44,7 @@ public class RestAPITimeline : RestAPIAbstract {
 	}
 	
 	/* for timelines (home, mentions, public etc.) */
-	public override ArrayList<Status>? get_timeline(int count = 0,
+	public override ArrayList<Status>? get_timeline(int count = 0, FullStatus? fstatus = null,
 		string since_id = "", string max_id = "") throws RestError, ParseError {
 		
 		if(account == null)
@@ -59,6 +59,9 @@ public class RestAPITimeline : RestAPIAbstract {
 			case TimelineType.MENTIONS:
 				req_url = urls.mentions;
 				break;
+			case TimelineType.USER:
+				req_url = urls.users_timeline.printf(fstatus.user_screen_name);
+				break;
 		}
 		
 		var map = new HashTable<string, string>(null, null);
@@ -68,14 +71,16 @@ public class RestAPITimeline : RestAPIAbstract {
 			map.insert("since_id", since_id);
 		if(max_id != "")
 			map.insert("max_id", max_id);
-		
+		warning(req_url);
 		string data = make_request(req_url, "GET", map);
 		
-		return parse_timeline(data);
+		return parse_timeline(data, fstatus);
 	}
 	
 	/* parsing timeline */
-	private ArrayList<Status> parse_timeline(string data) throws ParseError {
+	private ArrayList<Status> parse_timeline(string data,
+		FullStatus? fstatus) throws ParseError {
+		
 		Xml.Doc* xmlDoc = Parser.parse_memory(data, (int)data.size());
 		Xml.Node* rootNode = xmlDoc->get_root_element();
 		
@@ -163,22 +168,64 @@ public class RestAPITimeline : RestAPIAbstract {
 				    				Xml.Node *iter_user;
 				    				
 									for(iter_user = iter_in->children->next; iter_user != null; iter_user = iter_user->next) {
-										switch(iter_user->name) {
-											case "id":
-				    							break;
-				    						
-				    						case "name":
-				    							status.user_name = iter_user->get_content();
-				    							break;
-				    						
-				    						case "screen_name":
-				    							status.user_screen_name = iter_user->get_content();
-				    							break;
-				    						
-				    						case "profile_image_url":
-				    							status.user_avatar = iter_user->get_content();
-				    							break;
-				    					}
+										if(fstatus != null && fstatus.followers == "") { //get full info about this user
+											switch(iter_user->name) {
+												case "name":
+													status.user_name = iter_user->get_content();
+													fstatus.user_name = iter_user->get_content();
+													break;
+											
+												case "screen_name":
+													warning("This is %s", iter_user->get_content());
+													status.user_screen_name = iter_user->get_content();
+													fstatus.user_screen_name = iter_user->get_content();
+													break;
+											
+												case "profile_image_url":
+													status.user_avatar = iter_user->get_content();
+													fstatus.user_avatar = iter_user->get_content();
+													break;
+												
+												case "followers_count":
+													fstatus.followers = iter_user->get_content();
+													break;
+												
+												case "friends_count":
+													fstatus.friends = iter_user->get_content();
+													break;
+												
+												case "statuses_count":
+													fstatus.statuses = iter_user->get_content();
+													break;
+												
+												case "url":
+													fstatus.url = iter_user->get_content();
+													break;
+												
+												case "description":
+													fstatus.desc = iter_user->get_content();
+													break;
+												
+												case "following":
+													fstatus.following = iter_user->get_content().to_bool();
+													break;
+											}
+										} else {
+											switch(iter_user->name) {
+												case "name":
+													status.user_name = iter_user->get_content();
+													break;
+											
+												case "screen_name":
+													status.user_screen_name = iter_user->get_content();
+													break;
+											
+												case "profile_image_url":
+													status.user_avatar = iter_user->get_content();
+													break;
+											}
+										}
+				    					
 				    				}
 				    				delete iter_user;
 				    				break;
@@ -196,7 +243,7 @@ public class RestAPITimeline : RestAPIAbstract {
 		
 		//back to the normal locale
 		GLib.Intl.setlocale(GLib.LocaleCategory.TIME, currentLocale);
-		
+		warning("bump");
 		return lst;
 	}
 	
