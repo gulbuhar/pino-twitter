@@ -101,7 +101,7 @@ public class TimelineList : TimelineListAbstract {
 		}
 		
 		try {
-			result = api.get_timeline(_items_count, since_id);
+			result = api.get_timeline(_items_count, null, since_id);
 		} catch(RestError e) {
 			updating_error(e.message);
 			return result;
@@ -177,14 +177,6 @@ public class TimelineList : TimelineListAbstract {
 		deleted(_("Your status has been deleted successfully")); //signal
 	}
 	
-	/* refresh timeline */
-	public override void refresh() {
-		if(lst.size == 0)
-			set_empty();
-		else
-			update_content(template.generate_timeline(lst, last_focused));
-	}
-	
 	/* get older statuses */
 	protected override void get_older() {
 		if(lst.size < 1)
@@ -196,7 +188,7 @@ public class TimelineList : TimelineListAbstract {
 		string max_id = lst.get(lst.size - 1).id;
 		
 		try {
-			result = api.get_timeline(_items_count, "", max_id);
+			result = api.get_timeline(_items_count, null, "", max_id);
 		} catch(RestError e) {
 			more.set_enabled(true);
 			updating_error(e.message);

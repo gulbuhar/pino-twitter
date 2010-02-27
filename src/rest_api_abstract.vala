@@ -27,6 +27,7 @@ using TimeUtils;
 namespace RestAPI {
 
 public class Status : Object {
+
 	public string id;
 	public string text;
 	public Time created_at = Time();
@@ -45,6 +46,17 @@ public class Status : Object {
 	public bool is_retweet = false;
 }
 
+public class FullStatus : Status {
+	
+	public string followers = "";
+	public string friends = "";
+	public string statuses = "";
+	public string url = "";
+	public string desc = "";
+	public bool following = false;
+	
+}
+
 public struct AuthData {
 	public string login = "";
 	public string password = "";
@@ -61,7 +73,8 @@ errordomain ParseError {
 
 public static enum TimelineType {
 	HOME,
-	MENTIONS
+	MENTIONS,
+	USER
 }
 
 public abstract class RestAPIAbstract : Object {
@@ -95,7 +108,7 @@ public abstract class RestAPIAbstract : Object {
 	
 	public signal void request(string req);
 	
-	public virtual ArrayList<Status>? get_timeline(int count = 0,
+	public virtual ArrayList<Status>? get_timeline(int count = 0, FullStatus? fstatus = null,
 		string since_id = "", string max_id = "") throws RestError, ParseError {
 		
 		return null;

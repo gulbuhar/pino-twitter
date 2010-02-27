@@ -60,10 +60,4 @@ public class StatusViewList : TimelineList {
 		return lst;
 	}
 	
-	public override void refresh() {
-		if(lst.size == 0)
-			set_empty();
-		else
-			update_content(template.generate_timeline(lst, last_focused));
-	}
 }

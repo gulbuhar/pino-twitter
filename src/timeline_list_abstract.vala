@@ -67,6 +67,7 @@ public abstract class TimelineListAbstract : HBox {
 	public signal void updating_error(string msg);
 	
 	public signal void nickto(string screen_name);
+	public signal void user_info(string screen_name);
 	public signal void replyto(Status status);
 	public signal void retweet(Status status);
 	public signal void directreply(string screen_name);
@@ -216,7 +217,12 @@ public abstract class TimelineListAbstract : HBox {
 	
 	protected abstract void get_older();
 	
-	public abstract void refresh();
+	public virtual void refresh() {
+		if(lst.size == 0)
+			set_empty();
+		else
+			update_content(template.generate_timeline(lst, last_focused));
+	}
 	
 	/* removing extra statuses or messages */
 	protected void delete_extra() {
@@ -244,6 +250,10 @@ public abstract class TimelineListAbstract : HBox {
 		switch(prot) {
 			case "nickto":
 				nickto(params);
+				return true;
+			
+			case "userinfo":
+				user_info(params);
 				return true;
 			
 			case "directreply":

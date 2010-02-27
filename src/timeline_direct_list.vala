@@ -58,7 +58,7 @@ public class TimelineDirectList : TimelineList {
 		}
 		
 		try {
-			result = api.get_timeline(_items_count, since_id);
+			result = api.get_timeline(_items_count, null, since_id);
 		} catch(RestError e) {
 			updating_error(e.message);
 			return result;
@@ -110,7 +110,7 @@ public class TimelineDirectList : TimelineList {
 		string max_id = lst.get(lst.size - 1).id;
 		
 		try {
-			result = api.get_timeline(_items_count, "", max_id);
+			result = api.get_timeline(_items_count, null, "", max_id);
 		} catch(RestError e) {
 			more.set_enabled(true);
 			updating_error(e.message);

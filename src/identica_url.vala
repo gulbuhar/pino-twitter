@@ -60,4 +60,8 @@ public class IdenticaUrls : Object, IRestUrls {
 	public string status {
 		get { return "http://identi.ca/api/statuses/show/%s.xml"; }
 	}
+	
+	public string users_timeline {
+		get { return "http://identi.ca/api/statuses/user_timeline/%s.xml"; }
+	}
 }

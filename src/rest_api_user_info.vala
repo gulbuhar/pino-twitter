@@ -1,4 +1,4 @@
-/* rest_url_interface.vala
+/* rest_api_user_info.vala
  *
  * Copyright (C) 2009-2010  troorl
  *
@@ -19,17 +19,8 @@
  * 	troorl <troorl@gmail.com>
  */
 
-public interface IRestUrls : Object {
-	
-	public abstract string home { get; }
-	public abstract string status_update { get; }
-	public abstract string destroy_status { get; }
-	public abstract string destroy_direct { get; }
-	public abstract string direct_new { get; }
-	public abstract string mentions { get; }
-	public abstract string direct_in { get; }
-	public abstract string user { get; }
-	public abstract string friendship { get; }
-	public abstract string status { get; }
-	public abstract string users_timeline { get; }
-}
+using RestAPI;
+using Gee;
+using Soup;
+
+//public class RstAPIUserInfo : RestAPIAbstract
