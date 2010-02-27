@@ -168,7 +168,7 @@ public class RestAPITimeline : RestAPIAbstract {
 				    				Xml.Node *iter_user;
 				    				
 									for(iter_user = iter_in->children->next; iter_user != null; iter_user = iter_user->next) {
-										if(fstatus != null && fstatus.followers == "") { //get full info about this user
+										if(fstatus != null && !fstatus.done) { //get full info about this user
 											switch(iter_user->name) {
 												case "name":
 													status.user_name = iter_user->get_content();
@@ -205,10 +205,6 @@ public class RestAPITimeline : RestAPIAbstract {
 												case "description":
 													fstatus.desc = iter_user->get_content();
 													break;
-												
-												case "following":
-													fstatus.following = iter_user->get_content().to_bool();
-													break;
 											}
 										} else {
 											switch(iter_user->name) {
@@ -227,6 +223,10 @@ public class RestAPITimeline : RestAPIAbstract {
 										}
 				    					
 				    				}
+				    				
+				    				if(fstatus != null)
+					    				fstatus.done = true;
+					    			
 				    				delete iter_user;
 				    				break;
 				    		}
@@ -243,7 +243,6 @@ public class RestAPITimeline : RestAPIAbstract {
 		
 		//back to the normal locale
 		GLib.Intl.setlocale(GLib.LocaleCategory.TIME, currentLocale);
-		warning("bump");
 		return lst;
 	}
 	

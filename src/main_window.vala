@@ -84,10 +84,13 @@ public class MainWindow : Window {
 			home.update_auth();
 			mentions.update_auth();
 			direct.update_auth();
+			user_info.update_auth();
 			
+			/*
 			home.items_count = prefs.numberStatuses;
 			mentions.items_count = prefs.numberStatuses;
 			direct.items_count = prefs.numberStatuses;
+			*/
 			
 			statusbar.set_status(StatusbarSmart.StatusType.FINISH_OK);
 			updateAct.set_sensitive(true);
