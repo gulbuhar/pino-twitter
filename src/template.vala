@@ -340,7 +340,7 @@ public class Template : Object {
 			} else break;
 		}
 		
-		result = nicks.replace(result, -1, 0, "@<a class='re_nick' href='%s\\1'>\\1</a>".printf(nick_url));
+		result = nicks.replace(result, -1, 0, "@<a class='re_nick' href='userinfo://\\1'>\\1</a>");
 		result = tags.replace(result, -1, 0, "<a class='tags' href='%s\\1'>\\1</a>".printf(search_url));
 		
 		if(service == "identi.ca") //for identi.ca only

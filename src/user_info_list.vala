@@ -35,14 +35,17 @@ public class UserInfoList : TimelineListAbstract {
 	private Label statuses;
 	
 	private TextView desc;
+	private HBox db;
 	private Label homepage;
 	
-	FullStatus full_status;
+	private HSeparator desc_sep;
+	
+	FullStatus? full_status = null;
 	
 	private string username_text = "<b><big>(%s) @%s</big></b>";
-	private string followers_text = _("Followers:  %s");
-	private string friends_text = _("Friends:  %s");
-	private string statuses_text = _("Statuses:  %s");
+	private string followers_text = _("Followers:  <b>%s</b>");
+	private string friends_text = _("Friends:  <b>%s</b>");
+	private string statuses_text = _("Statuses:  <b>%s</b>");
 	private string homepage_text = _("Web:  <a href='%s'>%s</a>");
 	
 	public UserInfoList(Window _parent, Accounts _accounts, Template _template,
@@ -52,7 +55,13 @@ public class UserInfoList : TimelineListAbstract {
 		base(_parent, _accounts, TimelineType.USER, _template, __items_count, 
 			_icon, fname, icon_name, icon_desc);
 		
+		accounts.active_changed.connect(() => {
+			set_empty();
+		});
+		
 		gui_setup();
+		
+		set_empty();
 	}
 	
 	private void gui_setup() {
@@ -63,7 +72,6 @@ public class UserInfoList : TimelineListAbstract {
 		
 		var up = new VBox(false, 0);
 		username = new Label("");
-		username.set_markup(username_text.printf("John Doe", "john_doe"));
 		
 		var fb = new HBox(false, 0);
 		follow = new CheckButton.with_label(_("follow"));
@@ -76,20 +84,16 @@ public class UserInfoList : TimelineListAbstract {
 		
 		var fo = new HBox(false, 0);
 		followers = new Label("");
-		followers.set_markup(followers_text.printf("-"));
 		fo.pack_start(followers, false, false, 5);
 		var fr = new HBox(false, 0);
 		friends = new Label("");
-		friends.set_markup(friends_text.printf("-"));
 		fr.pack_start(friends, false, false, 5);
 		var st = new HBox(false, 0);
 		statuses = new Label("");
-		statuses.set_markup(statuses_text.printf("-"));
 		st.pack_start(statuses, false, false, 5);
 		
 		var ub = new HBox(false, 0);
 		homepage = new Label("");
-		homepage.set_markup("Web:  <a href='http://google.com'>http://google.com</a>");
 		ub.pack_start(homepage, false, false, 5);
 		
 		sb.pack_start(fo, false, false, 2);
@@ -105,15 +109,17 @@ public class UserInfoList : TimelineListAbstract {
 		vbox.pack_start(uh, false, false, 5);
 		vbox.pack_start(new HSeparator(), false, false, 0);
 		
-		var db = new HBox(false, 0);
+		db = new HBox(false, 0);
 		desc = new TextView();
 		desc.set_wrap_mode(Gtk.WrapMode.WORD);
 		desc.set_sensitive(false);
-		desc.buffer.text = "oказалось, что бывают hd вебкамеры для мака http://bit.ly/2LeIy ну что, видео-т как #bobuk предложил?";
 		db.pack_start(desc, true, true, 5);
 		
 		vbox.pack_start(db, false, false, 5);
-		vbox.pack_start(new HSeparator(), false, false, 0);
+		
+		desc_sep = new HSeparator();
+		
+		vbox.pack_start(desc_sep, false, false, 0);
 	}
 	
 	/* get older statuses */
@@ -146,10 +152,28 @@ public class UserInfoList : TimelineListAbstract {
 		more.set_enabled(true);
 	}
 	
+	/* get data about following */
+	private void update_following() {
+		bool follow_him = false;
+		
+		try {
+			follow_him = api.check_friendship(full_status.user_screen_name, true);
+		} catch(RestError e) {
+			//TODO
+			
+			return;
+		}
+		
+		full_status.following = follow_him;
+		follow.active = follow_him;
+		follow.set_sensitive(true);
+	}
+	
 	/* get user full info and his timeline */
 	public void show_user(string screen_name) {
 		act.activate();
 		set_empty();
+		start_screen();
 		
 		full_status = new FullStatus();
 		full_status.user_screen_name = screen_name;
@@ -161,8 +185,64 @@ public class UserInfoList : TimelineListAbstract {
 			return;
 		}
 		
-		refresh();
+		refresh_info();
 		
-		warning(full_status.user_screen_name);
+		if(lst.size > 0) {
+			refresh();
+			update_following();
+		}
+		else
+			set_empty(false);
+	}
+	
+	/* set info about user */
+	private void refresh_info() {
+		//follow.set_sensitive(true);
+		followers.set_markup(followers_text.printf(full_status.followers));
+		friends.set_markup(friends_text.printf(full_status.friends));
+		statuses.set_markup(statuses_text.printf(full_status.statuses));
+		
+		if(full_status.url != "") {
+			homepage.set_markup(homepage_text.printf(full_status.url, full_status.url));
+			homepage.show();
+		} else {
+			homepage.hide();
+		}
+		
+		username.set_markup(username_text.printf(full_status.user_name,
+			full_status.user_screen_name));
+		
+		//warning(full_status.following.to_string());
+		//follow.active = full_status.following;
+		
+		if(full_status.desc != "") {
+			desc.buffer.text = full_status.desc;
+			db.show();
+			desc_sep.show();
+		} else {
+			db.hide();
+			desc_sep.hide();
+		}
+			
+	}
+	
+	/* clear all data */
+	public override void set_empty(bool full = true) {
+		if(full) {
+			full_status = null;
+			follow.set_sensitive(false);
+			followers.set_markup(followers_text.printf("-"));
+			friends.set_markup(friends_text.printf("-"));
+			statuses.set_markup(statuses_text.printf("-"));
+			homepage.hide();
+		
+			username.set_markup(username_text.printf("John Doe", "john_doe"));
+		
+			desc.buffer.text = """The name "John Doe" is used as a placeholder name in a legal action, case or discussion for a male party, whose true identity is unknown or must be withheld for legal reasons.""";
+		}
+		
+		lst.clear();
+		last_focused = 0;
+		update_content(template.generate_message(_("Empty")));
 	}
 }

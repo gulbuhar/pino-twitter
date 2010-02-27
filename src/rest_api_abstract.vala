@@ -23,6 +23,7 @@ using Gee;
 using Soup;
 using Auth;
 using TimeUtils;
+using Xml;
 
 namespace RestAPI {
 
@@ -54,6 +55,8 @@ public class FullStatus : Status {
 	public string url = "";
 	public string desc = "";
 	public bool following = false;
+	
+	public bool done = false;
 	
 }
 
@@ -219,6 +222,62 @@ public abstract class RestAPIAbstract : Object {
 			reply_tracking(status_code);
 		
 		return (string)message.response_body.flatten().data;
+	}
+	
+	/* check user for DM availability */
+	public bool check_friendship(string screen_name,
+		bool just_friend_check = false) throws RestError {
+		
+		string req_url = urls.friendship;
+		
+		HashTable map = new HashTable<string, string>(null, null);
+		map.insert("source_screen_name", account.login);
+		map.insert("target_screen_name", screen_name);
+		warning(req_url);
+		string data = make_request(req_url, "GET", map);
+		
+		return parse_friendship(data, just_friend_check);
+	}
+	
+	private bool parse_friendship(string data, bool just_friend_check = false) {
+		bool followed_by = false;
+		bool following = false;
+		
+		Xml.Doc* xmlDoc = Xml.Parser.parse_memory(data, (int)data.size());
+		Xml.Node* rootNode = xmlDoc->get_root_element();
+		
+		Xml.Node* iter;
+		for(iter = rootNode->children; iter != null; iter = iter->next) {
+			if (iter->type != ElementType.ELEMENT_NODE)
+				continue;
+			
+			if(iter->name == "target") {
+				
+				Xml.Node* iter_in;
+				for(iter_in = iter->children; iter_in != null; iter_in = iter_in->next) {
+					switch(iter_in->name) {
+						case "followed_by":
+							followed_by = iter_in->get_content().to_bool();
+							break;
+					
+						case "following":
+							following = iter_in->get_content().to_bool();
+							break;
+					}
+				}
+				delete iter_in;
+				break;
+			}
+			
+		} delete iter;
+		
+		if(just_friend_check && followed_by)
+			return true;
+		
+		if(followed_by && following)
+			return true;
+		
+		return false;
 	}
 }
 
