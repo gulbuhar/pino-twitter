@@ -68,6 +68,9 @@ public class StatusViewDialog : Dialog {
 		view.deleted.connect((msg) => {
 			p_parent.statusbar.set_status(StatusbarSmart.StatusType.DATA_SENT, msg);
 		});
+		view.user_info.connect((screen_name) => {
+			p_parent.user_info.show_user(screen_name);
+		});
 	}
 	
 	private void response_act(int resp_id) {

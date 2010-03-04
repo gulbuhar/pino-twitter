@@ -28,6 +28,8 @@ using Gtk;
 public abstract class TimelineListAbstract : HBox {
 	
 	protected VBox vbox;
+	protected VScrollbar slider;
+	protected bool get_more_allow = true;
 	protected WebView view;
 	protected ScrolledWindow scroll;
 	
@@ -72,6 +74,8 @@ public abstract class TimelineListAbstract : HBox {
 	public signal void retweet(Status status);
 	public signal void directreply(string screen_name);
 	
+	protected signal void need_more();
+	
 	//focus of the main window
 	public virtual bool parent_focus {
 		get { return false; }
@@ -90,20 +94,43 @@ public abstract class TimelineListAbstract : HBox {
 		view = new WebView();
 		view.navigation_policy_decision_requested.connect(link_clicking);
 		
-		//return scroll position to the current
-		view.load_finished.connect((f) => {
-			((VScrollbar)scroll.get_vscrollbar()).set_value(current_scroll_pos);
-		});
-		
 		scroll = new ScrolledWindow(null, null);
 		scroll.set_policy(PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);
 		scroll.add(view);
 		
-		vbox = new VBox(false, 0);
-		vbox.pack_end(scroll, true, true, 0);
+		slider = (VScrollbar)scroll.get_vscrollbar();
+		
+		//return scroll position to the current
+		view.load_finished.connect((f) => {
+			slider.set_value(current_scroll_pos);
+		});
+		
+		//emit signal, when scrollbar in the lower boundary
+		//strange bug (segfault) on some actions
+		/*
+		slider.value_changed.connect(() => {
+			if(!get_more_allow)
+				return;
+			
+			double max = slider.adjustment.upper;
+			double current = slider.get_value();
+			double scroll_size = slider.adjustment.page_size;
+			
+			if(current + scroll_size == max) {
+				warning("need more");
+				need_more(); //emit signal
+			}
+		});
+		*/
 		
 		var event_view = new EventBox();
-		event_view.add(vbox);
+		event_view.add(scroll);
+		
+		
+		vbox = new VBox(false, 0);
+		vbox.pack_end(event_view, true, true, 0);
+		
+		
 		
 		more = new MoreWindow();
 		more.moar_event.connect(get_older);
@@ -120,6 +147,7 @@ public abstract class TimelineListAbstract : HBox {
 				more.show_at(ax, ay);
 				//warning("motion: %fx%f", ax, ay);
 				//warning("root: %fx%f", event.x_root, event.y_root);
+				warning(need_more_button.to_string());
 			} else {
 				if(more.visible)
 					more.hide();
@@ -127,7 +155,7 @@ public abstract class TimelineListAbstract : HBox {
 			return true;
 		});
 		
-		this.pack_start(event_view, true, true, 0);
+		this.pack_start(vbox, true, true, 0);
 		//this.pack_start(fixed, true, true, 0);
 		
 		var acc = accounts.get_current_account();
@@ -233,6 +261,7 @@ public abstract class TimelineListAbstract : HBox {
 	/* list events */
 	private bool link_clicking(WebFrame p0, NetworkRequest request,
 		WebNavigationAction action, WebPolicyDecision decision) {
+		
 		if(request.uri == "")
 			return false;
 		
@@ -253,7 +282,8 @@ public abstract class TimelineListAbstract : HBox {
 				return true;
 			
 			case "userinfo":
-				user_info(params);
+				string screen_name = params.replace("?user=", "");
+				user_info(screen_name);
 				return true;
 			
 			case "directreply":

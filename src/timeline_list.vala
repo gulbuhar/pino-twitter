@@ -201,9 +201,11 @@ public class TimelineList : TimelineListAbstract {
 		}
 		
 		lst.add_all(result.slice(1, result.size -1));
-		refresh();
+		
 		finish_update(); //send signal
 		
 		more.set_enabled(true);
+		
+		refresh();
 	}
 }

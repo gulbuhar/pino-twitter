@@ -216,19 +216,22 @@ public class MainWindow : Window {
 		home.nickto.connect((screen_name) => {
 			re_tweet.set_nickto(screen_name);
 		});
-		home.user_info.connect((screen_name) => {
-			user_info.show_user(screen_name);
-		});
 		mentions.nickto.connect((screen_name) => {
 			re_tweet.set_nickto(screen_name);
-		});
-		mentions.user_info.connect((screen_name) => {
-			user_info.show_user(screen_name);
 		});
 		direct.nickto.connect((screen_name) => {
 			re_tweet.set_nickto(screen_name);
 		});
+		home.user_info.connect((screen_name) => {
+			user_info.show_user(screen_name);
+		});
+		mentions.user_info.connect((screen_name) => {
+			user_info.show_user(screen_name);
+		});
 		direct.user_info.connect((screen_name) => {
+			user_info.show_user(screen_name);
+		});
+		user_info.user_info.connect((screen_name) => {
 			user_info.show_user(screen_name);
 		});
 		home.retweet.connect((status) => {
@@ -258,6 +261,15 @@ public class MainWindow : Window {
 		direct.deleted.connect((msg) => {
 			statusbar.set_status(StatusbarSmart.StatusType.DATA_SENT, msg);
 		});
+		user_info.start_fetch.connect(() => {
+			statusbar.set_status(StatusbarSmart.StatusType.UPDATING);
+		});
+		user_info.end_fetch.connect(() => {
+			statusbar.set_status(StatusbarSmart.StatusType.FINISH_OK);
+		});
+		user_info.follow_event.connect((msg) => {
+			statusbar.set_status(StatusbarSmart.StatusType.DATA_SENT, msg);
+		});
 		
 		//setup logging
 		statusbar = new StatusbarSmart();
@@ -276,6 +288,9 @@ public class MainWindow : Window {
 			statusbar.set_status(StatusbarSmart.StatusType.FINISH_ERROR, msg);
 		});
 		direct.updating_error.connect((msg) => {
+			statusbar.set_status(StatusbarSmart.StatusType.FINISH_ERROR, msg);
+		});
+		user_info.updating_error.connect((msg) => {
 			statusbar.set_status(StatusbarSmart.StatusType.FINISH_ERROR, msg);
 		});
 		
@@ -333,6 +348,7 @@ public class MainWindow : Window {
 		mentions.hide();
 		direct.hide();
 		user_info.hide();
+		user_info.set_empty();
 		
 		if(!prefs.menuShow)
 			menubar.hide();
@@ -344,7 +360,7 @@ public class MainWindow : Window {
 		var actGroup = new ActionGroup("main");
 		
 		//file menu
-		var fileMenu = new Action("FileMenu", _("Twitter"), null, null);
+		var fileMenu = new Action("FileMenu", _("Pino"), null, null);
 		
 		var createAct = new Action("FileCreate", _("New status"),
 			_("Create new status"), STOCK_EDIT);
@@ -355,6 +371,13 @@ public class MainWindow : Window {
 		createDirectAct.set_gicon(Icon.new_for_string(Config.DIRECT_REPLY_PATH));
 		createDirectAct.activate.connect(() => {
 			re_tweet.set_state_directreply("");
+		});
+		
+		var showUserAct = new Action("ShowUser", _("Show user"),
+			_("Show information about specified user"), null);
+		showUserAct.activate.connect(() => {
+			user_info.set_empty();
+			user_info.act.activate();
 		});
 		
 		updateAct = new Action("FileUpdate", _("Update timeline"),
@@ -418,6 +441,7 @@ public class MainWindow : Window {
 		actGroup.add_action(fileMenu);
 		actGroup.add_action_with_accel(createAct, "<Ctrl>N");
 		actGroup.add_action_with_accel(createDirectAct, "<Ctrl>D");
+		actGroup.add_action(showUserAct);
 		actGroup.add_action_with_accel(updateAct, "<Ctrl>R");
 		actGroup.add_action_with_accel(quitAct, "<Ctrl>Q");
 		actGroup.add_action(editMenu);
@@ -444,6 +468,9 @@ public class MainWindow : Window {
 				<menu action="FileMenu">
 					<menuitem action="FileCreate" />
 					<menuitem action="FileCreateDirect" />
+					<separator />
+					<menuitem action="ShowUser" />
+					<separator />
 					<menuitem action="FileUpdate" />
 					<separator />
 					<menuitem action="FileQuit" />

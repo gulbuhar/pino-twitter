@@ -32,4 +32,6 @@ public interface IRestUrls : Object {
 	public abstract string friendship { get; }
 	public abstract string status { get; }
 	public abstract string users_timeline { get; }
+	public abstract string follow_create { get; }
+	public abstract string follow_destroy { get; }
 }

@@ -64,4 +64,12 @@ public class TwitterUrls : Object, IRestUrls {
 	public string users_timeline {
 		get { return "http://twitter.com/statuses/user_timeline/%s.xml"; }
 	}
+	
+	public string follow_create {
+		get { return "http://api.twitter.com/1/friendships/create/%s.xml"; }
+	}
+	
+	public string follow_destroy {
+		get { return "http://api.twitter.com/1/friendships/destroy/%s.xml"; }
+	}
 }
