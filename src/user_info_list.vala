@@ -26,7 +26,7 @@ using RestAPI;
 
 public class UserInfoList : TimelineListAbstract {
 	
-	private Image userpic;
+	private Userpic userpic;
 	private Label username;
 	private CheckButton follow;
 	
@@ -36,8 +36,10 @@ public class UserInfoList : TimelineListAbstract {
 	
 	private TextView desc;
 	private HBox db;
+	private HBox uh;
 	private Label homepage;
 	
+	private HSeparator first_sep;
 	private HSeparator desc_sep;
 	
 	FullStatus? full_status = null;
@@ -46,7 +48,11 @@ public class UserInfoList : TimelineListAbstract {
 	private string followers_text = _("Followers:  <b>%s</b>");
 	private string friends_text = _("Friends:  <b>%s</b>");
 	private string statuses_text = _("Statuses:  <b>%s</b>");
-	private string homepage_text = _("Web:  <a href='%s'>%s</a>");
+	private string homepage_text;
+	
+	public signal void start_fetch();
+	public signal void end_fetch();
+	public signal void follow_event(string msg);
 	
 	public UserInfoList(Window _parent, Accounts _accounts, Template _template,
 		int __items_count, Icon? _icon, string fname = "", string icon_name = "",
@@ -54,6 +60,13 @@ public class UserInfoList : TimelineListAbstract {
 		
 		base(_parent, _accounts, TimelineType.USER, _template, __items_count, 
 			_icon, fname, icon_name, icon_desc);
+		
+		need_more_button = false;
+		
+		var acc = accounts.get_current_account();
+		api = new RestAPIUserInfo(acc);
+		
+		homepage_text = _("Web:  <a href='%s'><span foreground='" + template.gtk_style.sl_color + "'>%s</span></a>");
 		
 		accounts.active_changed.connect(() => {
 			set_empty();
@@ -66,7 +79,7 @@ public class UserInfoList : TimelineListAbstract {
 	
 	private void gui_setup() {
 		var pb = new VBox(false, 0);
-		userpic = new Image.from_file(Config.USERPIC_PATH);
+		userpic = new Userpic(template.cache);
 		userpic.set_size_request(48, 48);
 		pb.pack_start(userpic, false, false, 0);
 		
@@ -75,47 +88,49 @@ public class UserInfoList : TimelineListAbstract {
 		
 		var fb = new HBox(false, 0);
 		follow = new CheckButton.with_label(_("follow"));
+		follow.toggled.connect(follow_toggled);
 		fb.pack_end(follow, false, false, 0);
 		
 		up.pack_start(username, false, false, 2);
 		up.pack_start(fb, false, false, 0);
 		
-		var sb = new VBox(false, 0);
+		VBox sb = new VBox(false, 0);
 		
 		var fo = new HBox(false, 0);
 		followers = new Label("");
-		fo.pack_start(followers, false, false, 5);
+		fo.pack_start(followers, false, false, 8);
 		var fr = new HBox(false, 0);
 		friends = new Label("");
-		fr.pack_start(friends, false, false, 5);
+		fr.pack_start(friends, false, false, 8);
 		var st = new HBox(false, 0);
 		statuses = new Label("");
-		st.pack_start(statuses, false, false, 5);
+		st.pack_start(statuses, false, false, 8);
 		
 		var ub = new HBox(false, 0);
 		homepage = new Label("");
-		ub.pack_start(homepage, false, false, 5);
+		ub.pack_start(homepage, false, false, 8);
 		
 		sb.pack_start(fo, false, false, 2);
 		sb.pack_start(fr, false, false, 0);
 		sb.pack_start(st, false, false, 0);
 		sb.pack_start(ub, false, false, 0);
 		
-		var uh = new HBox(false, 0);
-		uh.pack_end(pb, false, false, 0);
+		uh = new HBox(false, 0);
+		uh.pack_end(pb, false, false, 8);
 		uh.pack_end(up, false, false, 0);
 		uh.pack_start(sb, false, false, 0);
 		
-		vbox.pack_start(uh, false, false, 5);
-		vbox.pack_start(new HSeparator(), false, false, 0);
+		vbox.pack_start(uh, false, false, 8);
+		first_sep = new HSeparator();
+		vbox.pack_start(first_sep, false, false, 0);
 		
 		db = new HBox(false, 0);
 		desc = new TextView();
 		desc.set_wrap_mode(Gtk.WrapMode.WORD);
 		desc.set_sensitive(false);
-		db.pack_start(desc, true, true, 5);
+		db.pack_start(desc, true, true, 8);
 		
-		vbox.pack_start(db, false, false, 5);
+		vbox.pack_start(db, false, false, 8);
 		
 		desc_sep = new HSeparator();
 		
@@ -124,32 +139,7 @@ public class UserInfoList : TimelineListAbstract {
 	
 	/* get older statuses */
 	protected override void get_older() {
-		if(lst.size < 1)
-			return;
-		
-		more.set_enabled(false);
-		
-		ArrayList<RestAPI.Status> result;
-		string max_id = lst.get(lst.size - 1).id;
-		
-		try {
-			result = api.get_timeline(_items_count, null, "", max_id);
-		} catch(RestError e) {
-			more.set_enabled(true);
-			updating_error(e.message);
-			return;
-		}
-		
-		if(result.size < 2) {
-			more.set_enabled(true);
-			return;
-		}
-		
-		lst.add_all(result.slice(1, result.size -1));
-		refresh();
-		finish_update(); //send signal
-		
-		more.set_enabled(true);
+		//TODO
 	}
 	
 	/* get data about following */
@@ -159,8 +149,7 @@ public class UserInfoList : TimelineListAbstract {
 		try {
 			follow_him = api.check_friendship(full_status.user_screen_name, true);
 		} catch(RestError e) {
-			//TODO
-			
+			updating_error(e.message);
 			return;
 		}
 		
@@ -171,7 +160,16 @@ public class UserInfoList : TimelineListAbstract {
 	
 	/* get user full info and his timeline */
 	public void show_user(string screen_name) {
+		if(accounts.get_current_account().login == screen_name)
+			return;
+		
 		act.activate();
+		
+		if(full_status != null && full_status.user_screen_name == screen_name)
+			return;
+		
+		start_fetch(); //signal
+		
 		set_empty();
 		start_screen();
 		
@@ -180,8 +178,15 @@ public class UserInfoList : TimelineListAbstract {
 		
 		try {
 			lst = api.get_timeline(_items_count, full_status, "");
+		} catch(RestError.CODE_404 e) {
+			set_empty();
+			updating_error(_("This user does not exist")); //signal
+			
+			return;
 		} catch(RestError e) {
-			updating_error(e.message);
+			set_empty();
+			updating_error(e.message); //signal
+			
 			return;
 		}
 		
@@ -193,6 +198,10 @@ public class UserInfoList : TimelineListAbstract {
 		}
 		else
 			set_empty(false);
+		
+		end_fetch(); //signal
+		
+		more.set_sensitive(true);
 	}
 	
 	/* set info about user */
@@ -212,8 +221,10 @@ public class UserInfoList : TimelineListAbstract {
 		username.set_markup(username_text.printf(full_status.user_name,
 			full_status.user_screen_name));
 		
-		//warning(full_status.following.to_string());
-		//follow.active = full_status.following;
+		userpic.set_pic(full_status.user_avatar);
+		
+		uh.show();
+		first_sep.show();
 		
 		if(full_status.desc != "") {
 			desc.buffer.text = full_status.desc;
@@ -229,6 +240,7 @@ public class UserInfoList : TimelineListAbstract {
 	/* clear all data */
 	public override void set_empty(bool full = true) {
 		if(full) {
+			userpic.set_default();
 			full_status = null;
 			follow.set_sensitive(false);
 			followers.set_markup(followers_text.printf("-"));
@@ -236,13 +248,57 @@ public class UserInfoList : TimelineListAbstract {
 			statuses.set_markup(statuses_text.printf("-"));
 			homepage.hide();
 		
-			username.set_markup(username_text.printf("John Doe", "john_doe"));
-		
-			desc.buffer.text = """The name "John Doe" is used as a placeholder name in a legal action, case or discussion for a male party, whose true identity is unknown or must be withheld for legal reasons.""";
+			username.set_markup(username_text.printf("-", "-"));
+			
+			db.hide();
+			uh.hide();
+			first_sep.hide();
+			desc_sep.hide();
+			desc.buffer.text = "";
 		}
+		
+		more.set_sensitive(false);
 		
 		lst.clear();
 		last_focused = 0;
-		update_content(template.generate_message(_("Empty")));
+		//update_content(template.generate_message(_("Empty")));
+		update_content(template.generate_user_show_form());
+	}
+	
+	/* follow/unfollow some user */
+	private void follow_toggled() {
+		//skip if this is initialization
+		if(full_status != null && follow.active == full_status.following)
+			return;
+		
+		follow.set_sensitive(false);
+		
+		if(follow.active) {
+			try {
+				api.follow_create(full_status.user_screen_name);
+			} catch(RestError e) {
+				updating_error(e.message);
+				follow.active = full_status.following;
+				follow.set_sensitive(true);
+				return;
+			}
+		} else {
+			try {
+				api.follow_destroy(full_status.user_screen_name);
+			} catch(RestError e) {
+				updating_error(e.message);
+				follow.active = full_status.following;
+				follow.set_sensitive(true);
+				return;
+			}
+		}
+		
+		full_status.following = follow.active;
+		follow.set_sensitive(true);
+		
+		if(follow.active)
+			follow_event(_("Now you follow this user")); //signal
+		else
+			follow_event(_("User was unfollowed")); //signal
 	}
 }

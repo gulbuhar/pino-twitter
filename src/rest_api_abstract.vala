@@ -67,7 +67,8 @@ public struct AuthData {
 } 
 
 errordomain RestError {
-	CODE
+	CODE,
+	CODE_404
 }
 
 errordomain ParseError {
@@ -121,6 +122,9 @@ public abstract class RestAPIAbstract : Object {
 		return new Status();
 	}
 	
+	public virtual void follow_create(string screen_name) throws RestError {}
+	public virtual void follow_destroy(string screen_name) throws RestError {}
+	
 	public virtual void destroy_status(string id) throws RestError {}
 	
 	protected void reply_tracking(int status_code) throws RestError {
@@ -135,7 +139,7 @@ public abstract class RestAPIAbstract : Object {
 				throw new RestError.CODE("%d Forbidden: the server understood the request, but is refusing to fulfill it.".printf(status_code));
 			
 			case 404:
-				throw new RestError.CODE("%d Not Found: The server has not found anything matching the Request-URI.".printf(status_code));
+				throw new RestError.CODE_404("%d Not Found: The server has not found anything matching the Request-URI.".printf(status_code));
 			
 			case 407:
 				throw new RestError.CODE("%d Proxy Authentication Required: the request requires user authentication.".printf(status_code));

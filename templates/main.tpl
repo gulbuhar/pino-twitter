@@ -25,8 +25,8 @@ a.tags{text-decoration: none; font-weight: bold;}
 .footer-right {text-align:right;float:right;}
 .footer img {margin-left: 8px;}
 .rtl-notice {direction: rtl; text-align: right;}
-h2 {color: {{lt_color}}; position: fixed; top: 50%; left: 50%; margin-top: -50px; margin-left: -50px;}
-
+h2 {color: {{lt_color}};}
+td {font-size: {{font_size}}pt;}
 </style>
 </head>
 <body>

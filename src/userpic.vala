@@ -1,4 +1,4 @@
-/* rest_api_user_info.vala
+/* user_info_list.vala
  *
  * Copyright (C) 2009-2010  troorl
  *
@@ -19,27 +19,45 @@
  * 	troorl <troorl@gmail.com>
  */
 
-using Auth;
-using Gee;
-using Soup;
+using Gtk;
 
-namespace RestAPI {
-
-public class RestAPIUserInfo : RestAPITimeline {
+public class Userpic : Image {
 	
-	public RestAPIUserInfo(Account? _account) {
-		base(_account, TimelineType.USER);
+	private weak Thread thread_1;
+	private string url;
+	private Cache cache;
+	
+	public Userpic(Cache _cache) {
+		cache = _cache;
+		
+		set_default();
 	}
 	
-	public override void follow_create(string screen_name) throws RestError {
-		string req_url = urls.follow_create.printf(screen_name);
-		make_request(req_url, "POST");
+	public void set_default() {
+		set_from_file(Config.USERPIC_PATH);
 	}
 	
-	public override void follow_destroy(string screen_name) throws RestError {
-		string req_url = urls.follow_destroy.printf(screen_name);
-		make_request(req_url, "POST");
+	public void set_pic(string _url) {
+		if (!Thread.supported()) {
+			error("Cannot run without threads.");
+			return;
+		}
+		
+		url = _url;
+		
+		try {
+			thread_1 = Thread.create(get_userpic, false);
+		} catch(ThreadError e) {
+			warning("Error: %s", e.message);
+			return;
+		}
 	}
-}
-
+	
+	private void *get_userpic() {
+		string path = cache.get_or_download(url, Cache.Method.SYNC, true);
+		
+		set_from_file(path);
+		
+		return null;
+	}
 }

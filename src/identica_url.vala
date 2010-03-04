@@ -64,4 +64,12 @@ public class IdenticaUrls : Object, IRestUrls {
 	public string users_timeline {
 		get { return "http://identi.ca/api/statuses/user_timeline/%s.xml"; }
 	}
+	
+	public string follow_create {
+		get { return "http://identi.ca/api/friendships/create/%s.xml"; }
+	}
+	
+	public string follow_destroy {
+		get { return "http://identi.ca/api/friendships/destroy/%s.xml"; }
+	}
 }

@@ -28,8 +28,8 @@ using TimeUtils;
 public class Template : Object {
 	
 	private Prefs prefs;
-	private SystemStyle gtk_style;
-	private Cache cache;
+	public SystemStyle gtk_style;
+	public Cache cache;
 	
 	private Accounts accounts;
 	private string login;
@@ -126,11 +126,31 @@ public class Template : Object {
 		return render(main_template, map);
 	}
 	
+	/* just render something in the center of the screen */
+	public string center_render(string content) {
+		string result = """<table width="100%" height="100%">
+		<tr>
+		<td align="center">%s</td>
+		</tr>
+		</table>""".printf(content);
+		
+		return result;
+	}
+	
 	/* render start screen */
 	public string generate_message(string message) {
 		string content = "<h2>%s</h2>".printf(message);
 		
-		return generate(content);
+		return generate(center_render(content));
+	}
+	
+	/* render user-show form */
+	public string generate_user_show_form() {
+		string content = """<form method="GET" action="userinfo://">
+		<input type="text" name="user" /><input type="submit" value="%s" />
+		</form>""".printf(_("Show user"));
+		
+		return generate(center_render(content));
 	}
 	
 	/* render direct inbox */
