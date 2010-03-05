@@ -284,7 +284,7 @@ public class Template : Object {
 				
 				if(i.is_retweet) {
 					re_icon = "<span class='re'>Rt:</span> ";
-					by_who = "<a class='by_who' href='nickto://%s'>by %s</a>".printf(i.user_screen_name, i.user_screen_name);
+					by_who = "<a class='by_who' href='userinfo://%s'>by %s</a>".printf(i.user_screen_name, i.user_screen_name);
 					name = i.re_user_name;
 					screen_name = i.re_user_screen_name;
 					user_avatar = i.re_user_avatar;
