@@ -66,6 +66,12 @@ public struct AuthData {
 	public string service = "";
 } 
 
+public static enum ServiceType {
+	TWITTER,
+	IDENTICA,
+	UNKNOWN
+}
+
 errordomain RestError {
 	CODE,
 	CODE_404
@@ -83,23 +89,27 @@ public static enum TimelineType {
 
 public abstract class RestAPIAbstract : Object {
 	
-	protected IRestUrls urls;
+	protected RestUrls urls;
 	public Account? account;
 	
 	public RestAPIAbstract(Account? _account) {
+		urls = new RestUrls(ServiceType.UNKNOWN);
 		set_auth(_account);
 	}
 	
-	private IRestUrls select_urls(string service) {
-		switch(service) {
+	private void select_urls() {
+		switch(account.service) {
 			case "twitter.com":
-				return new TwitterUrls();
+				urls.set_prefix(ServiceType.TWITTER);
+				break;
 			
 			case "identi.ca":
-				return new IdenticaUrls();
+				urls.set_prefix(ServiceType.IDENTICA);
+				break;
 			
 			default:
-				return new TwitterUrls();
+				urls.set_prefix(ServiceType.TWITTER);
+				break;
 		}
 	}
 	
@@ -107,7 +117,7 @@ public abstract class RestAPIAbstract : Object {
 		account = _account;
 		
 		if(account != null)
-			urls = select_urls(account.service);
+			select_urls();
 	}
 	
 	public signal void request(string req);
@@ -232,7 +242,7 @@ public abstract class RestAPIAbstract : Object {
 	public bool check_friendship(string screen_name,
 		bool just_friend_check = false) throws RestError {
 		
-		string req_url = urls.friendship;
+		string req_url = urls.friendship();
 		
 		HashTable map = new HashTable<string, string>(null, null);
 		map.insert("source_screen_name", account.login);

@@ -39,7 +39,7 @@ public class RestAPITimeline : RestAPIAbstract {
 	
 	/* destroy status */
 	public override void destroy_status(string id) throws RestError {
-		string req_url = urls.destroy_status.printf(id);
+		string req_url = urls.destroy_status().printf(id);
 		make_request(req_url, "DELETE");
 	}
 	
@@ -54,13 +54,13 @@ public class RestAPITimeline : RestAPIAbstract {
 		
 		switch(timeline_type) {
 			case TimelineType.HOME:
-				req_url = urls.home;
+				req_url = urls.home();
 				break;
 			case TimelineType.MENTIONS:
-				req_url = urls.mentions;
+				req_url = urls.mentions();
 				break;
 			case TimelineType.USER:
-				req_url = urls.users_timeline.printf(fstatus.user_screen_name);
+				req_url = urls.users_timeline().printf(fstatus.user_screen_name);
 				break;
 		}
 		
@@ -248,7 +248,7 @@ public class RestAPITimeline : RestAPIAbstract {
 	
 	/* return single status */
 	public override Status get_status(string id) throws RestError, ParseError {
-		string req_url = urls.status.printf(id);
+		string req_url = urls.status().printf(id);
 		string data = make_request(req_url, "GET");
 		
 		return parse_status(data);

@@ -32,12 +32,12 @@ public class RestAPIUserInfo : RestAPITimeline {
 	}
 	
 	public override void follow_create(string screen_name) throws RestError {
-		string req_url = urls.follow_create.printf(screen_name);
+		string req_url = urls.follow_create().printf(screen_name);
 		make_request(req_url, "POST");
 	}
 	
 	public override void follow_destroy(string screen_name) throws RestError {
-		string req_url = urls.follow_destroy.printf(screen_name);
+		string req_url = urls.follow_destroy().printf(screen_name);
 		make_request(req_url, "POST");
 	}
 }

@@ -35,7 +35,7 @@ public class RestAPIDirect : RestAPIAbstract {
 	
 	/* destroy direct message */
 	public override void destroy_status(string id) throws RestError {
-		string req_url = urls.destroy_direct.printf(id);
+		string req_url = urls.destroy_direct().printf(id);
 		make_request(req_url, "DELETE");
 	}
 	
@@ -54,7 +54,7 @@ public class RestAPIDirect : RestAPIAbstract {
 		if(max_id != "")
 			map.insert("max_id", max_id);
 		
-		string data = make_request(urls.direct_in, "GET", map);
+		string data = make_request(urls.direct_in(), "GET", map);
 		
 		return parse_direct(data);
 	}
