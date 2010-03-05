@@ -30,7 +30,7 @@ public class RestAPIAcc : RestAPIAbstract {
 		base(_account);
 	}
 	
-	public IRestUrls get_urls() {
+	public RestUrls get_urls() {
 		return urls;
 	}
 	
@@ -39,7 +39,7 @@ public class RestAPIAcc : RestAPIAbstract {
 		if(account == null)
 			return null;
 		
-		string req_url = urls.user.printf(account.login);
+		string req_url = urls.user().printf(account.login);
 		string data = make_request(req_url, "GET",
 			new HashTable<string, string>(null, null), false);
 		

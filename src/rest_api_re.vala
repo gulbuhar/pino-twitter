@@ -33,7 +33,7 @@ public class RestAPIRe : RestAPIAbstract {
 		base(_account);
 	}
 	
-	public IRestUrls get_urls() {
+	public RestUrls get_urls() {
 		return urls;
 	}
 	
@@ -42,7 +42,7 @@ public class RestAPIRe : RestAPIAbstract {
 		if(account == null)
 			no_account();
 		
-		string req_url = urls.direct_new;
+		string req_url = urls.direct_new();
 		
 		var map = new HashTable<string, string>(null, null);
 		map.insert("screen_name", user);
@@ -61,7 +61,7 @@ public class RestAPIRe : RestAPIAbstract {
 		if(account == null)
 			no_account();
 		
-		string req_url = urls.status_update;
+		string req_url = urls.status_update();
 		
 		var map = new HashTable<string, string>(null, null);
 		map.insert("status", text);
