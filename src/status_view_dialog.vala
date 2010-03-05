@@ -26,19 +26,50 @@ using RestAPI;
 /* view conversation from bottom to top one */
 public class StatusViewDialog : Dialog {
 	
+	private Image img;
+	
 	public StatusViewDialog(Window parent, Accounts _accounts, Template template,
 	Status _status) {
 		
 		set_transient_for(parent);
 		set_title(_("Conversation"));
 		modal = false;
-		has_separator = false;
+		has_separator = true;
 		set_size_request(350, 450);
 		
 		var view = new StatusViewList(parent, _accounts, _status, template);
 		
+		Gdk.PixbufAnimation anima = new Gdk.PixbufAnimation.from_file(Config.PROGRESS_PATH);
+		img = new Image();
+		img.set_from_animation(anima);
+		
 		vbox.pack_start(view, true, true, 0);
 		
+		//create link to the status
+		var link = new Label("");
+		string status_url = "";
+		var acc = _accounts.get_current_account();
+		
+		switch(acc.service) {
+			case "twitter.com":
+				status_url = "http://twitter.com/%s/status/%s".printf(_status.user_screen_name, _status.id);
+				break;
+		
+			case "identi.ca":
+				status_url = "http://identi.ca/notice/%s".printf(_status.id);
+				break;
+		}
+		
+		string msg = _("go to the web page");
+		link.set_markup("<a href='%s'>%s</a>".printf(status_url, msg));
+		
+		var vb = new VBox(false, 0);
+		var hb = new HBox(false, 0);
+		hb.pack_start(img, false, false, 2);
+		hb.pack_start(link, false, false, 2);
+		vb.pack_end(hb, false, false, 2);
+		
+		add_action_widget(vb, -1);
 		add_button(STOCK_CLOSE, ResponseType.CLOSE);
 		response.connect(response_act);
 		
@@ -50,6 +81,8 @@ public class StatusViewDialog : Dialog {
 		set_transient_for(parent);
 		
 		view.update();
+		
+		img.set_from_stock("gtk-apply", Gtk.IconSize.MENU);
 	}
 	
 	private void signals_setup(MainWindow p_parent, StatusViewList view) {
