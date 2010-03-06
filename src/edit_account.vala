@@ -35,10 +35,14 @@ public class EditAccount : Dialog {
 	private bool edit_mode;
 	public bool ok = false;
 	
+	//private Regex re_proxy;
+	
 	public EditAccount(Window _parent) {
 		acc = new Account();
 		parent = _parent;
 		set_transient_for(parent);
+		
+		//re_proxy = new Regex();
 		
 		edit_mode = false;
 		gui_setup();
@@ -172,14 +176,31 @@ public class EditAccount : Dialog {
 		switch(resp_id) {
 			case ResponseType.OK:
 				if(login.text.length > 0 && password.text.length > 0) {
-					if(service.active == 2 && proxy.text.length < 12) {
-						var message_dialog = new MessageDialog(parent,
-						Gtk.DialogFlags.DESTROY_WITH_PARENT | Gtk.DialogFlags.MODAL,
-						Gtk.MessageType.INFO, Gtk.ButtonsType.OK, (_("You must enter a proxy address")));
+					if(service.active == 2) { //validation for proxy url
+						if(proxy.text.length < 10) {
+							var message_dialog = new MessageDialog(parent,
+							Gtk.DialogFlags.DESTROY_WITH_PARENT | Gtk.DialogFlags.MODAL,
+							Gtk.MessageType.INFO, Gtk.ButtonsType.OK, (_("You must enter a proxy address")));
 		
-						message_dialog.run();
-						message_dialog.destroy();
-						break;
+							message_dialog.run();
+							message_dialog.destroy();
+							break;
+						}
+						
+						if(proxy.text.substring(proxy.text.length - 1, 1) != "/")
+							proxy.text += "/";
+						
+						bool valid_url = Regex.match_simple("(http|https)://([\\S]+)/",
+							proxy.text);
+						if(!valid_url) {
+							var message_dialog = new MessageDialog(parent,
+							Gtk.DialogFlags.DESTROY_WITH_PARENT | Gtk.DialogFlags.MODAL,
+							Gtk.MessageType.INFO, Gtk.ButtonsType.OK, (_("Proxy address must contain a valid url")));
+		
+							message_dialog.run();
+							message_dialog.destroy();
+							break;
+						}
 					}
 					
 					acc.login = login.text;
