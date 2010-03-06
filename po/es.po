@@ -16,14 +16,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/account_action.vala:42
-#, fuzzy
 msgid "Accounts"
-msgstr "Cuenta"
+msgstr "Cuentas"
 
 #: src/account_widget.vala:153
-#, fuzzy
 msgid "Sure you want to delete this account?"
-msgstr "¿Seguro que quieres eliminar este tweet?"
+msgstr "¿Seguro que quieres eliminar esta cuenta?"
 
 #: src/dm_entry.vala:35
 msgid ""
@@ -45,12 +43,10 @@ msgid "Checking..."
 msgstr "Comprobando..."
 
 #: src/edit_account.vala:65
-#, fuzzy
 msgid "Edit account"
-msgstr "Cuenta"
+msgstr "Editar cuenta"
 
 #: src/edit_account.vala:67
-#, fuzzy
 msgid "Create new account"
 msgstr "Crear nueva cuenta..."
 
@@ -64,7 +60,7 @@ msgstr "Contraseña"
 
 #: src/edit_account.vala:78
 msgid "Service"
-msgstr ""
+msgstr "Servicio"
 
 #: src/edit_account.vala:84 src/pref_dialog.vala:209
 msgid "Account"
@@ -72,7 +68,7 @@ msgstr "Cuenta"
 
 #: src/edit_account.vala:153
 msgid "You must fill in all fields"
-msgstr ""
+msgstr "Debes rellenar todos los campos"
 
 #: src/main_window.vala:130
 msgid "Home timeline"
@@ -178,13 +174,13 @@ msgid "Updates"
 msgstr "Actualizaciones"
 
 #: src/popups.vala:140
-#, fuzzy, c-format
-msgid "in the home timeline: %d\n"
+#, c-format
+msgid "in the home timeline: %d"
 msgstr "en timeline: %d"
 
 #: src/popups.vala:143
-#, fuzzy, c-format
-msgid "in mentions: %d\n"
+#, c-format
+msgid "in mentions: %d"
 msgstr "en menciones: %d"
 
 #: src/popups.vala:146
@@ -209,9 +205,8 @@ msgid "Starting up in tray"
 msgstr "Iniciar minimizado"
 
 #: src/pref_dialog.vala:83
-#, fuzzy
 msgid "Show tray icon"
-msgstr "Mostrar menciones"
+msgstr "Mostrar icono de notificación"
 
 #: src/pref_dialog.vala:86
 msgid "For timeline"
@@ -246,9 +241,8 @@ msgid "Cache"
 msgstr "Caché"
 
 #: src/pref_dialog.vala:130
-#, fuzzy
 msgid "Notification area"
-msgstr "Notificación"
+msgstr "Área de Notificación"
 
 #: src/pref_dialog.vala:134
 msgid "Notification"
@@ -296,7 +290,7 @@ msgstr "Principal"
 
 #: src/pref_dialog.vala:208
 msgid "Desktop"
-msgstr ""
+msgstr "Escritorio"
 
 #: src/pref_dialog.vala:210
 msgid "Appearance"
@@ -373,7 +367,7 @@ msgstr "actualizando... "
 
 #: src/status_view_dialog.vala:33
 msgid "Conversation"
-msgstr ""
+msgstr "Conversación"
 
 #: src/template.vala:144 src/template.vala:204
 msgid "Reply"

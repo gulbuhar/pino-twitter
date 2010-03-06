@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -16,19 +16,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/account_action.vala:42
-#, fuzzy
 msgid "Accounts"
-msgstr "Учетная запись"
+msgstr "Учетные записи"
 
 #: src/account_widget.vala:153
-#, fuzzy
 msgid "Sure you want to delete this account?"
-msgstr "Уверены, что хотите удалить этот статус?"
+msgstr "Уверены, что хотите удалить эту учётную запись?"
 
 #: src/dm_entry.vala:35
-msgid ""
-"You can't send direct message to this user. He (or she) must follow you too"
-msgstr ""
+#, fuzzy
+msgid "You can't send direct message to this user. He (or she) must follow you too"
+msgstr "Вы не можете послать сообщение этому пользователю. Он (она) должен последовать за Вами"
 
 #: src/dm_entry.vala:42
 msgid "Check"
@@ -36,19 +34,17 @@ msgstr "Проверить"
 
 #: src/dm_entry.vala:58
 msgid "You can send direct message to this user"
-msgstr ""
+msgstr "Вы можете отправить сообщение этому пользователю"
 
 #: src/dm_entry.vala:77
 msgid "Checking..."
 msgstr "Проверка..."
 
 #: src/edit_account.vala:65
-#, fuzzy
 msgid "Edit account"
-msgstr "Учетная запись"
+msgstr "Редактировать учётную запись"
 
 #: src/edit_account.vala:67
-#, fuzzy
 msgid "Create new account"
 msgstr "Создать новую учетную запись..."
 
@@ -62,7 +58,7 @@ msgstr "Пароль"
 
 #: src/edit_account.vala:78
 msgid "Service"
-msgstr ""
+msgstr "Сервер"
 
 #: src/edit_account.vala:84 src/pref_dialog.vala:209
 msgid "Account"
@@ -70,7 +66,7 @@ msgstr "Учетная запись"
 
 #: src/edit_account.vala:153
 msgid "You must fill in all fields"
-msgstr ""
+msgstr "Вы должны заполнить все поля"
 
 #: src/main_window.vala:130
 msgid "Home timeline"
@@ -90,11 +86,11 @@ msgstr "Показать упоминания"
 
 #: src/main_window.vala:144
 msgid "Direct messages"
-msgstr ""
+msgstr "Сообщения от пользователей"
 
 #: src/main_window.vala:145
 msgid "Show direct messages"
-msgstr ""
+msgstr "Показать личные сообщения от пользователей"
 
 #: src/main_window.vala:249 src/main_window.vala:250 src/main_window.vala:251
 #: src/status_bar_smart.vala:93 src/status_bar_smart.vala:96
@@ -115,7 +111,7 @@ msgstr "Создать новый статус"
 
 #: src/main_window.vala:331
 msgid "New direct message"
-msgstr ""
+msgstr "Написать определённому пользователю"
 
 #: src/main_window.vala:332
 #, fuzzy
@@ -166,20 +162,20 @@ msgstr "Получить более старые записи"
 #: src/popups.vala:75 src/template.vala:146 src/template.vala:207
 #, c-format
 msgid "Direct message"
-msgstr ""
+msgstr "Личное сообщение"
 
 #: src/popups.vala:75
 msgid "from"
-msgstr ""
+msgstr "от"
 
 #: src/popups.vala:92
 msgid "Updates"
 msgstr "Обновления"
 
 #: src/popups.vala:140
-#, c-format
+#, c-format, fuzzy
 msgid "in the home timeline: %d\n"
-msgstr ""
+msgstr "в домашней ленте новостей: %d\n"
 
 #: src/popups.vala:143
 #, c-format
@@ -201,16 +197,15 @@ msgstr "Количество статусов по умолчанию"
 
 #: src/pref_dialog.vala:74
 msgid "URL shortening service"
-msgstr ""
+msgstr "Служба сокращения URL"
 
 #: src/pref_dialog.vala:80
 msgid "Starting up in tray"
-msgstr ""
+msgstr "Запускать в трее"
 
 #: src/pref_dialog.vala:83
-#, fuzzy
 msgid "Show tray icon"
-msgstr "Показать упоминания"
+msgstr "Показать иконку в трее"
 
 #: src/pref_dialog.vala:86
 msgid "For timeline"
@@ -246,7 +241,6 @@ msgid "Cache"
 msgstr "Кеш"
 
 #: src/pref_dialog.vala:130
-#, fuzzy
 msgid "Notification area"
 msgstr "Уведомления"
 
@@ -264,7 +258,7 @@ msgstr "Создать новую учетную запись..."
 
 #: src/pref_dialog.vala:171
 msgid "Statuses"
-msgstr ""
+msgstr "Статусы"
 
 #: src/pref_dialog.vala:174
 msgid "Rounded corners"
@@ -276,11 +270,11 @@ msgstr "Распознавание RTL (справа налево) языков"
 
 #: src/pref_dialog.vala:180
 msgid "Full names instead of nicknames"
-msgstr ""
+msgstr "Показывать полные имена"
 
 #: src/pref_dialog.vala:183
 msgid "Default font"
-msgstr ""
+msgstr "шрифт по умолчанию"
 
 #: src/pref_dialog.vala:189
 msgid "Fresh statuses color"
@@ -296,7 +290,7 @@ msgstr "Главные настройки"
 
 #: src/pref_dialog.vala:208
 msgid "Desktop"
-msgstr ""
+msgstr "Настройки рабочего стола"
 
 #: src/pref_dialog.vala:210
 msgid "Appearance"
@@ -304,17 +298,15 @@ msgstr "Внешний вид"
 
 #: src/re_tweet.vala:88
 msgid "Shorten URLs..."
-msgstr ""
+msgstr "Сокращённые URL"
 
 #: src/re_tweet.vala:93
-#, fuzzy
 msgid "Shortening URLs..."
-msgstr "отправка статуса..."
+msgstr "Сокращение URL"
 
 #: src/re_tweet.vala:98
-#, fuzzy
 msgid "URLs was shortened successfully"
-msgstr "Ваш статус успешно удален"
+msgstr "Сокращение URL успешно завершено"
 
 #: src/re_tweet.vala:100
 msgid "Nothing to shorten"
@@ -334,13 +326,12 @@ msgid "Reply to <b>%s</b>:"
 msgstr "Ответить <b>%s</b>:"
 
 #: src/re_tweet.vala:229
-#, fuzzy
 msgid "Reply to"
 msgstr "Ответить"
 
 #: src/re_tweet.vala:242
 msgid "Direct message to"
-msgstr ""
+msgstr "Написать личное сообшение"
 
 #: src/re_tweet.vala:262
 msgid "Retweet:"
@@ -348,36 +339,36 @@ msgstr "Ретвит:"
 
 #: src/re_tweet.vala:291
 msgid "Your status is too long"
-msgstr ""
+msgstr "Ваш статус слишком длинный"
 
 #: src/re_tweet.vala:315
 msgid "Type something first"
 msgstr "Введите что-нибудь сначала"
 
 #: src/re_tweet.vala:357
-#, fuzzy
 msgid "Sending status..."
-msgstr "отправка статуса..."
+msgstr "Отправка статуса..."
 
 #: src/re_tweet.vala:374
 msgid "Your status has been sent successfully"
-msgstr ""
+msgstr "Ваш статус был успешно отправлен"
 
 #: src/re_tweet.vala:380
 msgid "Sending direct message..."
-msgstr ""
+msgstr "Отправка личного сообщения..."
 
 #: src/re_tweet.vala:394
 msgid "Your direct message has been sent successfully"
-msgstr ""
+msgstr "Личное сообщение было успешно отправлено"
 
 #: src/status_bar_smart.vala:101
 msgid "updating... "
 msgstr "обновление..."
 
 #: src/status_view_dialog.vala:33
+#, fuzzy
 msgid "Conversation"
-msgstr ""
+msgstr "Беседа"
 
 #: src/template.vala:144 src/template.vala:204
 msgid "Reply"
@@ -423,7 +414,7 @@ msgstr "где-то %i часов назад"
 
 #: src/timeline_direct_list.vala:151
 msgid "Your direct message has been deleted successfully"
-msgstr ""
+msgstr "Личное сообщение от вас было удалено"
 
 #: src/timeline_list.vala:177
 msgid "Your status has been deleted successfully"
@@ -431,7 +422,7 @@ msgstr "Ваш статус успешно удален"
 
 #: src/timeline_list_abstract.vala:173
 msgid "Empty"
-msgstr ""
+msgstr "Пусто"
 
 #: src/timeline_list_abstract.vala:205
 msgid "Connecting..."
