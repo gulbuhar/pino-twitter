@@ -40,7 +40,7 @@ public class RestAPITimeline : RestAPIAbstract {
 	/* destroy status */
 	public override void destroy_status(string id) throws RestError {
 		string req_url = urls.destroy_status().printf(id);
-		make_request(req_url, "DELETE");
+		make_request(req_url, "POST");
 	}
 	
 	/* for timelines (home, mentions, public etc.) */

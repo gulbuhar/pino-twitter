@@ -67,13 +67,14 @@ public class AccountWidget : HBox {
 		pack_end(btn_box, false, false, 0);
 		
 		//list model setup
-		model = new ListStore(2, typeof(string), typeof(string));
+		model = new ListStore(3, typeof(string), typeof(string), typeof(string));
 		table.set_model(model);
 		table.get_selection().set_mode(SelectionMode.SINGLE);
 		select_first();
 		
-		table.insert_column_with_attributes(-1, "Login", new CellRendererText(), "text", 0);
-		table.insert_column_with_attributes(-1, "Service", new CellRendererText(), "text", 1);
+		table.insert_column_with_attributes(-1, _("Login"), new CellRendererText(), "text", 0);
+		table.insert_column_with_attributes(-1, _("Service"), new CellRendererText(), "text", 1);
+		table.insert_column_with_attributes(-1, _("API proxy"), new CellRendererText(), "text", 2);
 		
 		table_setup();
 		
@@ -102,11 +103,13 @@ public class AccountWidget : HBox {
 		
 		Value login;
 		Value service;
+		Value proxy;
 		
 		tmp_model.get_value(iter, 0, out login);
 		tmp_model.get_value(iter, 1, out service);
+		tmp_model.get_value(iter, 2, out proxy);
 		
-		var acc = accounts.get_by_hash((string)login + (string)service);
+		var acc = accounts.get_by_hash((string)login + (string)service + (string)proxy);
 		
 		var edit_dialog = new EditAccount.with_acc(parent, acc);
 		edit_dialog.destroy.connect(() => {
@@ -114,8 +117,11 @@ public class AccountWidget : HBox {
 				warning(edit_dialog.acc.login);
 				model.set_value(iter, 0, acc.login);
 				model.set_value(iter, 1, acc.service);
+				model.set_value(iter, 2, acc.proxy);
 				
-				accounts.changed();
+				string hash = acc.login + acc.password + acc.proxy;
+				
+				accounts.changed(hash);
 				
 				accounts.write();
 			}
@@ -137,7 +143,7 @@ public class AccountWidget : HBox {
 				table.get_selection().select_iter(iter);
 				table.cursor_changed();
 				
-				accounts.changed();
+				//accounts.changed();
 				
 				if(accounts.accounts.size == 1)
 					accounts.active_changed();
@@ -165,11 +171,13 @@ public class AccountWidget : HBox {
 		
 		Value login;
 		Value service;
+		Value proxy;
 		
 		tmp_model.get_value(iter, 0, out login);
 		tmp_model.get_value(iter, 1, out service);
+		tmp_model.get_value(iter, 2, out proxy);
 		
-		string hash = (string)login + (string)service;
+		string hash = (string)login + (string)service + (string)proxy;
 		var acc = accounts.get_by_hash(hash);
 		bool was_active = acc.active; //if we delete active account
 		
@@ -180,7 +188,7 @@ public class AccountWidget : HBox {
 		
 		select_first();
 		
-		accounts.changed();
+		//accounts.changed(hash);
 		
 		if(was_active)
 			accounts.active_changed();
@@ -192,7 +200,7 @@ public class AccountWidget : HBox {
 		
 		foreach(Account acc in accounts.accounts) {
 			model.append(out iter);
-			model.set(iter, 0, acc.login, 1, acc.service);
+			model.set(iter, 0, acc.login, 1, acc.service, 2, acc.proxy);
 		}
 	}
 }

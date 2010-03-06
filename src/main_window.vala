@@ -77,23 +77,15 @@ public class MainWindow : Window {
 		
 		accounts = new Accounts();
 		accounts.active_changed.connect(() => {
-			updateAct.set_sensitive(false);
-			statusbar.set_status(StatusbarSmart.StatusType.UPDATING);
+			refresh_auth();
+		});
+		
+		accounts.changed.connect((hash) => {
+			var acc = accounts.get_current_account();
+			string cur_hash = acc.login + acc.password + acc.proxy;
 			
-			re_tweet.update_auth();
-			home.update_auth();
-			mentions.update_auth();
-			direct.update_auth();
-			user_info.update_auth();
-			
-			/*
-			home.items_count = prefs.numberStatuses;
-			mentions.items_count = prefs.numberStatuses;
-			direct.items_count = prefs.numberStatuses;
-			*/
-			
-			statusbar.set_status(StatusbarSmart.StatusType.FINISH_OK);
-			updateAct.set_sensitive(true);
+			if(cur_hash == hash)
+				refresh_auth();
 		});
 		
 		set_default_size (prefs.width, prefs.height);
@@ -354,6 +346,20 @@ public class MainWindow : Window {
 			menubar.hide();
 		if(!prefs.toolbarShow)
 			toolbar.hide();
+	}
+	
+	private void refresh_auth() {
+		updateAct.set_sensitive(false);
+		statusbar.set_status(StatusbarSmart.StatusType.UPDATING);
+		
+		re_tweet.update_auth();
+		home.update_auth();
+		mentions.update_auth();
+		direct.update_auth();
+		user_info.update_auth();
+		
+		statusbar.set_status(StatusbarSmart.StatusType.FINISH_OK);
+		updateAct.set_sensitive(true);
 	}
 	
 	private void menu_init() {	

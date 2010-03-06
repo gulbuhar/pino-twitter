@@ -76,7 +76,7 @@ public class AccountAction : Action {
 			
 			item.toggled.connect(() => {
 				if(item.active) {
-					accounts.set_active_account(acc.login + acc.service);
+					accounts.set_active_account(acc.login + acc.service + acc.proxy);
 					accounts.write();
 				}
 			});
