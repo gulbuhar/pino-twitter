@@ -199,23 +199,23 @@ msgstr "Servizio di accorciamento URL"
 
 #: src/pref_dialog.vala:80
 msgid "Starting up in tray"
-msgstr "Avvio nel vassoio"
+msgstr "Avvia nell'area di notifica"
 
 #: src/pref_dialog.vala:83
 msgid "Show tray icon"
-msgstr "Mostra icona nella tray"
+msgstr "Mostra icona nell'area di notifica"
 
 #: src/pref_dialog.vala:86
 msgid "For timeline"
-msgstr "Per la timeline"
+msgstr "Riguardo la timeline"
 
 #: src/pref_dialog.vala:87
 msgid "For mentions"
-msgstr "Per le citazioni"
+msgstr "Riguardo le citazioni"
 
 #: src/pref_dialog.vala:88
 msgid "For direct messages"
-msgstr "Per i messaggi diretti"
+msgstr "Riguardo i messaggi diretti"
 
 #: src/pref_dialog.vala:97
 msgid "Retweets style"
@@ -275,7 +275,7 @@ msgstr "Carattere predefinito"
 
 #: src/pref_dialog.vala:189
 msgid "Fresh statuses color"
-msgstr "Colore stati recenti"
+msgstr "Colore aggiornamenti recenti"
 
 #: src/pref_dialog.vala:194
 msgid "Opacity"
@@ -295,7 +295,7 @@ msgstr "Aspetto"
 
 #: src/re_tweet.vala:88
 msgid "Shorten URLs..."
-msgstr "URL accorciati..."
+msgstr "Accorcia URL..."
 
 #: src/re_tweet.vala:93
 msgid "Shortening URLs..."

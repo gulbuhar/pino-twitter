@@ -1,33 +1,29 @@
 # Galician Translation of Pino.
 # Copyright (C) 2010
 # This file is distributed under the same license as the Pino package.
-#
 # Gonçalo Cordeiro <gzcordeiro@gmail.com>, 2010.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: Pino 0.1.3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-02-20 18:38+0200\n"
-"PO-Revision-Date: 2010-02-03 21:29+0200\n"
+"PO-Revision-Date: 2010-02-26 01:34+0200\n"
 "Last-Translator: Gonçalo Cordeiro <gzcordeiro@gmail.com>\n"
-"Language-Team: Galician <proxecto@trasno.net>\n"
+"Language-Team: Galician [gl] <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: gl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: WordForge 0.7 RC1\n"
 
 #: src/account_action.vala:42
-#, fuzzy
 msgid "Accounts"
-msgstr "Conta"
+msgstr "Contas"
 
 # traducir como «chíos» ou equivalente?
 #: src/account_widget.vala:153
-#, fuzzy
 msgid "Sure you want to delete this account?"
-msgstr "Está segura/o de que quere eliminar este estado?"
+msgstr "Está segura/o de que quere eliminar esta conta?"
 
 #: src/dm_entry.vala:35
 msgid ""
@@ -49,14 +45,12 @@ msgid "Checking..."
 msgstr "Verificando..."
 
 #: src/edit_account.vala:65
-#, fuzzy
 msgid "Edit account"
-msgstr "Conta"
+msgstr "Editar unha conta"
 
 #: src/edit_account.vala:67
-#, fuzzy
 msgid "Create new account"
-msgstr "Crear unha conta nova..."
+msgstr "Crear unha conta nova"
 
 #: src/edit_account.vala:69
 msgid "Login"
@@ -68,7 +62,7 @@ msgstr "Contrasinal"
 
 #: src/edit_account.vala:78
 msgid "Service"
-msgstr ""
+msgstr "Servizo"
 
 #: src/edit_account.vala:84 src/pref_dialog.vala:209
 msgid "Account"
@@ -76,7 +70,7 @@ msgstr "Conta"
 
 #: src/edit_account.vala:153
 msgid "You must fill in all fields"
-msgstr ""
+msgstr "Debe encher todos os campos"
 
 #: src/main_window.vala:130
 msgid "Home timeline"
@@ -176,7 +170,7 @@ msgstr "Mensaxe directa"
 
 #: src/popups.vala:75
 msgid "from"
-msgstr ""
+msgstr "de"
 
 #: src/popups.vala:92
 msgid "Updates"
@@ -207,16 +201,15 @@ msgstr "Número predeterminado de estados"
 
 #: src/pref_dialog.vala:74
 msgid "URL shortening service"
-msgstr ""
+msgstr "Servizo de abreviación de URL"
 
 #: src/pref_dialog.vala:80
 msgid "Starting up in tray"
-msgstr ""
+msgstr "Iniciando na bandexa"
 
 #: src/pref_dialog.vala:83
-#, fuzzy
 msgid "Show tray icon"
-msgstr "Mostrar as mencións"
+msgstr "Mostrar a icona da bandexa"
 
 #: src/pref_dialog.vala:86
 msgid "For timeline"
@@ -239,9 +232,8 @@ msgid "Clear now"
 msgstr "Limpar agora"
 
 #: src/pref_dialog.vala:111
-#, fuzzy
 msgid "General"
-msgstr "Intervalo de tempo"
+msgstr "Xeral"
 
 #: src/pref_dialog.vala:116
 msgid "Retweets"
@@ -252,9 +244,8 @@ msgid "Cache"
 msgstr "Caché"
 
 #: src/pref_dialog.vala:130
-#, fuzzy
 msgid "Notification area"
-msgstr "Notificación"
+msgstr "Área de notificación"
 
 #: src/pref_dialog.vala:134
 msgid "Notification"
@@ -270,7 +261,7 @@ msgstr "Crear unha conta nova..."
 
 #: src/pref_dialog.vala:171
 msgid "Statuses"
-msgstr ""
+msgstr "Estados"
 
 #: src/pref_dialog.vala:174
 msgid "Rounded corners"
@@ -282,15 +273,15 @@ msgstr "Detección de idiomas «dereita a esquerda»"
 
 #: src/pref_dialog.vala:180
 msgid "Full names instead of nicknames"
-msgstr ""
+msgstr "Nomes completos en vez de alcumes"
 
 #: src/pref_dialog.vala:183
 msgid "Default font"
-msgstr ""
+msgstr "Tipo de letra predeterminado"
 
 #: src/pref_dialog.vala:189
 msgid "Fresh statuses color"
-msgstr ""
+msgstr "Cor dos estados novos"
 
 #: src/pref_dialog.vala:194
 msgid "Opacity"
@@ -302,7 +293,7 @@ msgstr "Principal"
 
 #: src/pref_dialog.vala:208
 msgid "Desktop"
-msgstr ""
+msgstr "Escritorio"
 
 #: src/pref_dialog.vala:210
 msgid "Appearance"
@@ -310,21 +301,19 @@ msgstr "Aparencia"
 
 #: src/re_tweet.vala:88
 msgid "Shorten URLs..."
-msgstr ""
+msgstr "URL abreviadas..."
 
 #: src/re_tweet.vala:93
-#, fuzzy
 msgid "Shortening URLs..."
-msgstr "Enviando o estado..."
+msgstr "Abreviación de URL..."
 
 #: src/re_tweet.vala:98
-#, fuzzy
 msgid "URLs was shortened successfully"
-msgstr "O seu estado foi eliminado correctamente"
+msgstr "O seu URL foi abreviado correctamente"
 
 #: src/re_tweet.vala:100
 msgid "Nothing to shorten"
-msgstr ""
+msgstr "Non hai nada que abreviar"
 
 #: src/re_tweet.vala:123 src/re_tweet.vala:216
 msgid "New status:"
@@ -345,7 +334,7 @@ msgstr "Responder a"
 
 #: src/re_tweet.vala:242
 msgid "Direct message to"
-msgstr "Mensaxe diirecta para"
+msgstr "Mensaxe directa para"
 
 #: src/re_tweet.vala:262
 msgid "Retweet:"
@@ -353,7 +342,7 @@ msgstr "Retweet:"
 
 #: src/re_tweet.vala:291
 msgid "Your status is too long"
-msgstr ""
+msgstr "O seu estado é demasiado longo"
 
 #: src/re_tweet.vala:315
 msgid "Type something first"
@@ -365,7 +354,7 @@ msgstr "Enviando o estado..."
 
 #: src/re_tweet.vala:374
 msgid "Your status has been sent successfully"
-msgstr "O seu estado foi actualizado correctamente"
+msgstr "O seu estado foi enviado correctamente"
 
 #: src/re_tweet.vala:380
 msgid "Sending direct message..."
@@ -381,7 +370,7 @@ msgstr "actualizando..."
 
 #: src/status_view_dialog.vala:33
 msgid "Conversation"
-msgstr ""
+msgstr "Conversa"
 
 #: src/template.vala:144 src/template.vala:204
 msgid "Reply"

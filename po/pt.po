@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -16,21 +16,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/account_action.vala:42
-#, fuzzy
 msgid "Accounts"
-msgstr "Conta"
+msgstr "Contas"
 
 #: src/account_widget.vala:153
-#, fuzzy
 msgid "Sure you want to delete this account?"
-msgstr "Tem a certeza que deseja apagar este Estado?"
+msgstr "Tem a certeza que deseja apagar esta Conta?"
 
 #: src/dm_entry.vala:35
-msgid ""
-"You can't send direct message to this user. He (or she) must follow you too"
-msgstr ""
-"Não pode enviar uma Mensagem Directa a este utilizador. Ele (ou ela) têm que "
-"o seguir também."
+msgid "You can't send direct message to this user. He (or she) must follow you too"
+msgstr "Não pode enviar uma Mensagem Directa a este utilizador. Ele (ou ela) têm que o seguir também."
 
 #: src/dm_entry.vala:42
 msgid "Check"
@@ -45,14 +40,12 @@ msgid "Checking..."
 msgstr "A verificar..."
 
 #: src/edit_account.vala:65
-#, fuzzy
 msgid "Edit account"
-msgstr "Conta"
+msgstr "Editar Conta"
 
 #: src/edit_account.vala:67
-#, fuzzy
 msgid "Create new account"
-msgstr "Criar Nova Conta..."
+msgstr "Criar Nova Conta"
 
 #: src/edit_account.vala:69
 msgid "Login"
@@ -64,7 +57,7 @@ msgstr "Palavra-passe"
 
 #: src/edit_account.vala:78
 msgid "Service"
-msgstr ""
+msgstr "Serviço"
 
 #: src/edit_account.vala:84 src/pref_dialog.vala:209
 msgid "Account"
@@ -72,7 +65,7 @@ msgstr "Conta"
 
 #: src/edit_account.vala:153
 msgid "You must fill in all fields"
-msgstr ""
+msgstr "Precisa de preencher todos os campos"
 
 #: src/main_window.vala:130
 msgid "Home timeline"
@@ -209,9 +202,8 @@ msgid "Starting up in tray"
 msgstr "Iniciar na Área de Notificação"
 
 #: src/pref_dialog.vala:83
-#, fuzzy
 msgid "Show tray icon"
-msgstr "Mostrar menções"
+msgstr "Mostrar Ícone na Área de Notificação "
 
 #: src/pref_dialog.vala:86
 msgid "For timeline"
@@ -246,9 +238,8 @@ msgid "Cache"
 msgstr "Cache"
 
 #: src/pref_dialog.vala:130
-#, fuzzy
 msgid "Notification area"
-msgstr "Notificações"
+msgstr "Área de Notificação"
 
 #: src/pref_dialog.vala:134
 msgid "Notification"
@@ -296,7 +287,7 @@ msgstr "Principal"
 
 #: src/pref_dialog.vala:208
 msgid "Desktop"
-msgstr ""
+msgstr "Área de Trabalho"
 
 #: src/pref_dialog.vala:210
 msgid "Appearance"
@@ -304,7 +295,7 @@ msgstr "Aparência"
 
 #: src/re_tweet.vala:88
 msgid "Shorten URLs..."
-msgstr "URL abreviados..."
+msgstr "Abreviar URL..."
 
 #: src/re_tweet.vala:93
 msgid "Shortening URLs..."
@@ -373,7 +364,7 @@ msgstr "A actualizar... "
 
 #: src/status_view_dialog.vala:33
 msgid "Conversation"
-msgstr ""
+msgstr "Conversação"
 
 #: src/template.vala:144 src/template.vala:204
 msgid "Reply"
