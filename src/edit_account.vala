@@ -30,6 +30,7 @@ public class EditAccount : Dialog {
 	public Entry login;
 	public Entry password;
 	public ComboBox service;
+	public Entry proxy;
 	
 	private bool edit_mode;
 	public bool ok = false;
@@ -79,12 +80,33 @@ public class EditAccount : Dialog {
 		service = new ComboBox.text();
 		service.append_text("twitter.com"); //0
 		service.append_text("identi.ca"); //1
+		service.append_text("other"); //2
+		service.changed.connect(() => {
+			if(service.active == 2) //other
+				proxy.set_sensitive(true);
+			else
+				proxy.set_sensitive(false);
+		});
+		
 		service.set_active(0);
+		
+		var proxy_label = new Label(_("API proxy or other service"));
+		var help_label = new Label("");
+		help_label.set_markup("<small>(http://example.com/api/)</small>");
+		proxy = new Entry();
+		proxy.set_sensitive(false);
+		proxy.key_press_event.connect(on_enter);
+		var vp = new VBox(false, 0);
+		vp.pack_start(proxy, false, false, 0);
+		vp.pack_start(help_label, false, false, 0);
+		var lp = new VBox(false, 0);
+		lp.pack_start(proxy_label, false, false, 0);
 		
 		HigTable table = new HigTable(_("Account"));
 		table.add_two_widgets(login_label, login);
 		table.add_two_widgets(password_label, password);
 		table.add_two_widgets(service_label, service);
+		table.add_two_widgets(lp, vp);
 		
 		vbox.pack_start(table, true, true, 10);
 		
@@ -112,7 +134,13 @@ public class EditAccount : Dialog {
 			case "identi.ca":
 				service.set_active(1);
 				break;
+			
+			case "other":
+				service.set_active(2);
+				break;
 		}
+		
+		proxy.set_text(acc.proxy);
 	}
 	
 	/* when user pressed Enter key */
@@ -132,6 +160,9 @@ public class EditAccount : Dialog {
 			case 1:
 				return "identi.ca";
 			
+			case 2:
+				return "other";
+			
 			default:
 				return "twitter.com";
 		}
@@ -141,9 +172,20 @@ public class EditAccount : Dialog {
 		switch(resp_id) {
 			case ResponseType.OK:
 				if(login.text.length > 0 && password.text.length > 0) {
+					if(service.active == 2 && proxy.text.length < 12) {
+						var message_dialog = new MessageDialog(parent,
+						Gtk.DialogFlags.DESTROY_WITH_PARENT | Gtk.DialogFlags.MODAL,
+						Gtk.MessageType.INFO, Gtk.ButtonsType.OK, (_("You must enter a proxy address")));
+		
+						message_dialog.run();
+						message_dialog.destroy();
+						break;
+					}
+					
 					acc.login = login.text;
 					acc.password = password.text;
 					acc.service = service_from_box(service.active);
+					acc.proxy = proxy.text;
 					
 					ok = true;
 					close();

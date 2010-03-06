@@ -44,6 +44,12 @@ public class Account : Object {
 		set { _service = value; }
 	}
 	
+	private string _proxy = "";
+	public string proxy {
+		get { return _proxy; }
+		set { _proxy = value; }
+	}
+	
 	private bool _active;
 	public bool active {
 		get { return _active; }
@@ -69,7 +75,7 @@ public class Accounts : Object {
 	private string acc_file_path;
 	public bool is_new;
 	
-	public signal void changed();
+	public signal void changed(string hash);
 	public signal void active_changed();
 	
 	public Accounts() {
@@ -142,7 +148,11 @@ public class Accounts : Object {
 				    			case "service":
 				    				acc.service = iter_in->get_content();
 				    				break;
-				    				
+				    			
+				    			case "proxy":
+				    				acc.proxy = iter_in->get_content();
+				    				break;
+				    			
 				    			case "active":
 				    				acc.active = iter_in->get_content().to_bool();
 				    				break;
@@ -176,6 +186,8 @@ public class Accounts : Object {
 			iter->new_text_child(ns, "password", acc.password);
 			iter->add_content("\n\t");
 			iter->new_text_child(ns, "service", acc.service);
+			iter->add_content("\n\t");
+			iter->new_text_child(ns, "proxy", acc.proxy);
 			iter->add_content("\n\t");
 			iter->new_text_child(ns, "active", acc.active.to_string());
 			iter->add_content("\n");
@@ -232,10 +244,10 @@ public class Accounts : Object {
 		acc_lst.set(index, acc);
 	}
 	
-	/* get account by login+service */
+	/* get account by login+service+proxy */
 	public Account get_by_hash(string hash) {
 		foreach(Account acc in acc_lst) {
-			if(acc.login + acc.service == hash)
+			if(acc.login + acc.service + acc.proxy == hash)
 				return acc;
 		}
 		

@@ -107,6 +107,14 @@ public abstract class RestAPIAbstract : Object {
 				urls.set_prefix(ServiceType.IDENTICA);
 				break;
 			
+			case "other":
+				string proxy = "http://api.twitter.com/";
+				if(account.proxy != "")
+					proxy = account.proxy;
+				
+				urls.set_prefix(ServiceType.UNKNOWN, proxy);
+				break;
+			
 			default:
 				urls.set_prefix(ServiceType.TWITTER);
 				break;
