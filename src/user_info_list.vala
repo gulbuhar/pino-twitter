@@ -45,9 +45,9 @@ public class UserInfoList : TimelineListAbstract {
 	FullStatus? full_status = null;
 	
 	private string username_text = "<b><big>(%s) @%s</big></b>";
-	private string followers_text = _("Followers:  <b>%s</b>");
-	private string friends_text = _("Friends:  <b>%s</b>");
-	private string statuses_text = _("Statuses:  <b>%s</b>");
+	private string followers_text = _("Followers:") + "  <b>%s</b>";
+	private string friends_text = _("Friends:") + "  <b>%s</b>";
+	private string statuses_text = _("Statuses:") + "  <b>%s</b>";
 	private string homepage_text;
 	
 	public signal void start_fetch();
@@ -66,7 +66,7 @@ public class UserInfoList : TimelineListAbstract {
 		var acc = accounts.get_current_account();
 		api = new RestAPIUserInfo(acc);
 		
-		homepage_text = _("Web:  <a href='%s'><span foreground='" + template.gtk_style.sl_color + "'>%s</span></a>");
+		homepage_text = _("Web:") + "  <a href='%s'><span foreground='" + template.gtk_style.sl_color + "'>%s</span></a>";
 		
 		accounts.active_changed.connect(() => {
 			set_empty();

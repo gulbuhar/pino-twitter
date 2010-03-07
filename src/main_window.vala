@@ -171,6 +171,7 @@ public class MainWindow : Window {
 		home.popup = popup;
 		mentions.popup = popup;
 		direct.popup = popup;
+		user_info.popup = popup;
 		
 		//tray setup
 		tray = new TrayIcon(this, logo, logo_fresh);
@@ -366,7 +367,7 @@ public class MainWindow : Window {
 		var actGroup = new ActionGroup("main");
 		
 		//file menu
-		var fileMenu = new Action("FileMenu", _("Pino"), null, null);
+		var fileMenu = new Action("FileMenu", "Pino", null, null);
 		
 		var createAct = new Action("FileCreate", _("New status"),
 			_("Create new status"), STOCK_EDIT);
