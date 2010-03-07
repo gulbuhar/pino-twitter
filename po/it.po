@@ -2,12 +2,12 @@
 # Copyright (C) 2009 the Free Software Foundation, Inc.
 # This file is distributed under the same license as the pino package.
 # Daniele Napolitano <dnax88@gmail.com>, 2009.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: pino\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-20 18:38+0200\n"
+"POT-Creation-Date: 2010-03-07 11:29+0200\n"
 "PO-Revision-Date: 2009-12-21 01:11+0100\n"
 "Last-Translator: Daniele Napolitano <dnax88@gmail.com>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
@@ -19,13 +19,28 @@ msgstr ""
 msgid "Accounts"
 msgstr "Account"
 
-#: src/account_widget.vala:153
+#: src/account_widget.vala:75 src/edit_account.vala:74
+msgid "Login"
+msgstr "Login"
+
+#: src/account_widget.vala:76 src/edit_account.vala:83
+msgid "Service"
+msgstr "Servizio"
+
+#: src/account_widget.vala:77
+msgid "API proxy"
+msgstr ""
+
+#: src/account_widget.vala:159
 msgid "Sure you want to delete this account?"
 msgstr "Si è sicuri di voler eliminare questo account?"
 
 #: src/dm_entry.vala:35
-msgid "You can't send direct message to this user. He (or she) must follow you too"
-msgstr "Non è possibile inviare un messaggio diretto a questo utente. Anche lui (o lei) deve seguirti"
+msgid ""
+"You can't send direct message to this user. He (or she) must follow you too"
+msgstr ""
+"Non è possibile inviare un messaggio diretto a questo utente. Anche lui (o "
+"lei) deve seguirti"
 
 #: src/dm_entry.vala:42
 msgid "Check"
@@ -39,116 +54,133 @@ msgstr "È possibile inviare un messaggio diretto a questo utente"
 msgid "Checking..."
 msgstr "Verifica in corso..."
 
-#: src/edit_account.vala:65
+#: src/edit_account.vala:70
 msgid "Edit account"
 msgstr "Modifica account"
 
-#: src/edit_account.vala:67
+#: src/edit_account.vala:72
 msgid "Create new account"
 msgstr "Crea nuovo account"
 
-#: src/edit_account.vala:69
-msgid "Login"
-msgstr "Login"
-
-#: src/edit_account.vala:73
+#: src/edit_account.vala:78
 msgid "Password"
 msgstr "Password"
 
-#: src/edit_account.vala:78
-msgid "Service"
-msgstr "Servizio"
+#: src/edit_account.vala:97
+msgid "API proxy or other service"
+msgstr ""
 
-#: src/edit_account.vala:84 src/pref_dialog.vala:209
+#: src/edit_account.vala:109 src/pref_dialog.vala:209
 msgid "Account"
 msgstr "Account"
 
-#: src/edit_account.vala:153
+#: src/edit_account.vala:183
+msgid "You must enter a proxy address"
+msgstr ""
+
+#: src/edit_account.vala:198
+msgid "Proxy address must contain a valid url"
+msgstr ""
+
+#: src/edit_account.vala:216
 msgid "You must fill in all fields"
 msgstr "Devono essere riempiti tutti i campi"
 
-#: src/main_window.vala:130
+#: src/main_window.vala:127
 msgid "Home timeline"
 msgstr "Timeline principale"
 
-#: src/main_window.vala:131
+#: src/main_window.vala:128
 msgid "Show your home timeline"
 msgstr "Mostra la timeline principale"
 
-#: src/main_window.vala:137
+#: src/main_window.vala:134
 msgid "Mentions"
 msgstr "Citazioni"
 
-#: src/main_window.vala:138
+#: src/main_window.vala:135
 msgid "Show mentions"
 msgstr "Mostra citazioni"
 
-#: src/main_window.vala:144
+#: src/main_window.vala:141
 msgid "Direct messages"
 msgstr "Messaggi diretti"
 
-#: src/main_window.vala:145
+#: src/main_window.vala:142
 msgid "Show direct messages"
 msgstr "Mostra messaggi diretti"
 
-#: src/main_window.vala:249 src/main_window.vala:250 src/main_window.vala:251
+#: src/main_window.vala:147
+msgid "User info"
+msgstr ""
+
+#: src/main_window.vala:147
+msgid "Show information about user"
+msgstr ""
+
+#: src/main_window.vala:273 src/main_window.vala:274 src/main_window.vala:275
 #: src/status_bar_smart.vala:93 src/status_bar_smart.vala:96
 msgid "updated "
 msgstr "aggiornato "
 
-#: src/main_window.vala:325
-msgid "Twitter"
-msgstr "Twitter"
-
-#: src/main_window.vala:327
+#: src/main_window.vala:371
 msgid "New status"
 msgstr "Nuovo status"
 
-#: src/main_window.vala:328
+#: src/main_window.vala:372
 msgid "Create new status"
 msgstr "Crea un nuovo status"
 
-#: src/main_window.vala:331
+#: src/main_window.vala:375
 msgid "New direct message"
 msgstr "Nuovo messaggio diretto"
 
-#: src/main_window.vala:332
+#: src/main_window.vala:376
 msgid "Create new direct message"
 msgstr "Crea un nuovo messaggio diretto"
 
-#: src/main_window.vala:338
+#: src/main_window.vala:382
+#, fuzzy
+msgid "Show user"
+msgstr "Mostra menù"
+
+#: src/main_window.vala:383
+msgid "Show information about specified user"
+msgstr ""
+
+#: src/main_window.vala:389
 msgid "Update timeline"
 msgstr "Aggiorna timeline"
 
-#: src/main_window.vala:341
+#: src/main_window.vala:392
 msgid "Quit"
 msgstr "Esci"
 
-#: src/main_window.vala:346
+#: src/main_window.vala:397
 msgid "Edit"
 msgstr "Modifica"
 
-#: src/main_window.vala:349 src/pref_dialog.vala:57
+#: src/main_window.vala:400 src/pref_dialog.vala:57
 msgid "Preferences"
 msgstr "Preferenze"
 
-#: src/main_window.vala:354
+#: src/main_window.vala:405
 msgid "View"
 msgstr "Visualizza"
 
-#: src/main_window.vala:356
+#: src/main_window.vala:407
 msgid "Show menu"
 msgstr "Mostra menù"
 
-#: src/main_window.vala:366
+#: src/main_window.vala:417
 msgid "Show toolbar"
 msgstr "Mostra barra degli strumenti"
 
-#: src/main_window.vala:378
+#: src/main_window.vala:429
 msgid "Help"
 msgstr "Aiuto"
 
-#: src/main_window.vala:379
+#: src/main_window.vala:430
 #, c-format
 msgid "About %s"
 msgstr "Informazioni su %s"
@@ -157,7 +189,7 @@ msgstr "Informazioni su %s"
 msgid "Get older entries"
 msgstr "Ricevi vecchi tweet"
 
-#: src/popups.vala:75 src/template.vala:146 src/template.vala:207
+#: src/popups.vala:75 src/template.vala:166 src/template.vala:227
 #, c-format
 msgid "Direct message"
 msgstr "Massaggio diretto"
@@ -309,7 +341,7 @@ msgstr "URL accorciati con successo"
 msgid "Nothing to shorten"
 msgstr "Niente da accorciare"
 
-#: src/re_tweet.vala:123 src/re_tweet.vala:216
+#: src/re_tweet.vala:123 src/re_tweet.vala:215
 msgid "New status:"
 msgstr "Nuovo stato:"
 
@@ -317,44 +349,44 @@ msgstr "Nuovo stato:"
 msgid "Hide"
 msgstr "Nascondi"
 
-#: src/re_tweet.vala:189
+#: src/re_tweet.vala:188
 #, c-format
 msgid "Reply to <b>%s</b>:"
 msgstr "Rispondi a <b>%s</b>:"
 
-#: src/re_tweet.vala:229
+#: src/re_tweet.vala:228
 msgid "Reply to"
 msgstr "Rispondi a"
 
-#: src/re_tweet.vala:242
+#: src/re_tweet.vala:241
 msgid "Direct message to"
 msgstr "Messaggio diretto a"
 
-#: src/re_tweet.vala:262
+#: src/re_tweet.vala:261
 msgid "Retweet:"
 msgstr "Retweet:"
 
-#: src/re_tweet.vala:291
+#: src/re_tweet.vala:290
 msgid "Your status is too long"
 msgstr "Il tuo status è troppo lungo"
 
-#: src/re_tweet.vala:315
+#: src/re_tweet.vala:314
 msgid "Type something first"
 msgstr "Scrivi prima qualcosa"
 
-#: src/re_tweet.vala:357
+#: src/re_tweet.vala:356
 msgid "Sending status..."
 msgstr "Invio status... "
 
-#: src/re_tweet.vala:374
+#: src/re_tweet.vala:373
 msgid "Your status has been sent successfully"
 msgstr "Il tuo stato è stato inviato con successo"
 
-#: src/re_tweet.vala:380
+#: src/re_tweet.vala:379
 msgid "Sending direct message..."
 msgstr "Invio messaggio diretto..."
 
-#: src/re_tweet.vala:394
+#: src/re_tweet.vala:393
 msgid "Your direct message has been sent successfully"
 msgstr "Il tuo massaggio diretto è stato inviato con successo"
 
@@ -362,48 +394,52 @@ msgstr "Il tuo massaggio diretto è stato inviato con successo"
 msgid "updating... "
 msgstr "in aggiornamento... "
 
-#: src/status_view_dialog.vala:33
+#: src/status_view_dialog.vala:35
 msgid "Conversation"
 msgstr "Conversazione"
 
-#: src/template.vala:144 src/template.vala:204
+#: src/status_view_dialog.vala:63
+msgid "go to the web page"
+msgstr ""
+
+#: src/template.vala:164 src/template.vala:224
 msgid "Reply"
 msgstr "Rispondi"
 
-#: src/template.vala:145 src/template.vala:205
+#: src/template.vala:165 src/template.vala:225
 msgid "Delete"
 msgstr "Elimina"
 
-#: src/template.vala:206
+#: src/template.vala:226
 msgid "Retweet"
 msgstr "Retweet"
 
-#: src/template.vala:228
+#: src/template.vala:248
 msgid "you"
 msgstr "te"
 
-#: src/template.vala:230
+#: src/template.vala:250
 msgid "in reply to"
 msgstr "in risposta a"
 
-#: src/template.vala:355
+#: src/template.vala:375
 msgid "a few seconds ago"
 msgstr "qualche secondo fa"
 
-#: src/template.vala:357
+#: src/template.vala:377
 msgid "1 minute ago"
 msgstr "un minuto fa"
 
-#: src/template.vala:359
+#: src/template.vala:379
 #, c-format
 msgid "%i minutes ago"
 msgstr "%i minuti fa"
 
-#: src/template.vala:361
+#: src/template.vala:381
 msgid "about 1 hour ago"
 msgstr "circa un'ora fa"
 
-#: src/template.vala:363
+#: src/template.vala:383
 #, c-format
 msgid "about %i hours ago"
 msgstr "circa %i ore fa"
@@ -416,15 +452,15 @@ msgstr "Il tuo messaggio diretto è stato eliminato con successo"
 msgid "Your status has been deleted successfully"
 msgstr "Il tuo status è stato eliminato con successo"
 
-#: src/timeline_list_abstract.vala:173
+#: src/timeline_list_abstract.vala:202
 msgid "Empty"
 msgstr "Vuoto"
 
-#: src/timeline_list_abstract.vala:205
+#: src/timeline_list_abstract.vala:235
 msgid "Connecting..."
 msgstr "Connessione..."
 
-#: src/timeline_list_abstract.vala:267
+#: src/timeline_list_abstract.vala:308
 msgid "Sure you want to delete this status?"
 msgstr "Si è sicuri di voler eliminare questo status?"
 
@@ -432,6 +468,51 @@ msgstr "Si è sicuri di voler eliminare questo status?"
 #, c-format
 msgid "%s - a twitter client"
 msgstr "%s - un client twitter"
+
+#: src/user_info_list.vala:48
+#, fuzzy
+msgid "Followers:"
+msgstr "Rispondi a <b>%s</b>:"
+
+#: src/user_info_list.vala:49
+msgid "Friends:"
+msgstr ""
+
+#: src/user_info_list.vala:50
+#, fuzzy
+msgid "Statuses:"
+msgstr "Stati"
+
+#: src/user_info_list.vala:69
+msgid "Web:"
+msgstr ""
+
+#: src/user_info_list.vala:90
+msgid "follow"
+msgstr ""
+
+#: src/user_info_list.vala:183
+msgid "This user does not exist"
+msgstr ""
+
+#: src/user_info_list.vala:300
+msgid "Now you follow this user"
+msgstr ""
+
+#: src/user_info_list.vala:302
+msgid "User was unfollowed"
+msgstr ""
+
+#, fuzzy
+#~ msgid "Friends:  <b>%s</b>"
+#~ msgstr "Rispondi a <b>%s</b>:"
+
+#, fuzzy
+#~ msgid "Statuses:  <b>%s</b>"
+#~ msgstr "Rispondi a <b>%s</b>:"
+
+#~ msgid "Twitter"
+#~ msgstr "Twitter"
 
 #~ msgid "Remember password"
 #~ msgstr "Ricorda password"
