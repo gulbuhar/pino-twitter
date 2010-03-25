@@ -443,7 +443,7 @@ public class Template : Object {
 	private string strip_tags_plus(owned string content) {
 		content = content.replace("\\", "&#92;");
 		content = content.replace("<", "&lt;");
-		content = content.replace(">", "&lt;");
+		content = content.replace(">", "&gt;");
 		
 		return content;
 	}
