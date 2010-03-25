@@ -503,7 +503,7 @@ public class MainWindow : Window {
 			about_dlg.set_version(Config.APP_VERSION);
 			about_dlg.set_website("http://pino-app.appspot.com/");
 			about_dlg.set_authors({Config.AUTHORS});
-			about_dlg.set_copyright("© 2009 troorl");
+			about_dlg.set_copyright("© 2009-2010 troorl");
 			
 			about_dlg.set_transient_for(this);
 			about_dlg.run();

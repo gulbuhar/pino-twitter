@@ -168,11 +168,11 @@ public abstract class TimelineListAbstract : HBox {
 		parent = _parent;
 		parent.focus_in_event.connect((w, e) => {
 			parent_focus = true;
-			return true;
+			return false;
 		});
 		parent.focus_out_event.connect((w, e) => {
 			parent_focus = false;
-			return true;
+			return false;
 		});
 		
 		//create new action
