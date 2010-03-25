@@ -202,7 +202,7 @@ public class Template : Object {
 			if(prefs.rtlSupport && is_rtl(clear_notice.replace(text, -1, 0, "")))
 				map["rtl_class"] = "rtl-notice";
 			else
-				map["rtl_class"] = "";
+				map["rtl_class"] = "norm-notice";
 			
 			map["delete_text"] = delete_text;
 			map["dm_text"] = dm_text;
@@ -271,7 +271,7 @@ public class Template : Object {
 				if(prefs.rtlSupport && is_rtl(clear_notice.replace(text, -1, 0, "")))
 					map["rtl_class"] = "rtl-notice";
 				else
-					map["rtl_class"] = "";
+					map["rtl_class"] = "norm-notice";
 				
 				map["delete_text"] = delete_text;
 				map["delete"] = Config.DELETE_PATH;
@@ -312,7 +312,7 @@ public class Template : Object {
 				if(prefs.rtlSupport && is_rtl(clear_notice.replace(text, -1, 0, "")))
 					map["rtl_class"] = "rtl-notice";
 				else
-					map["rtl_class"] = "";
+					map["rtl_class"] = "norm-notice";
 				
 				map["by_who"] = by_who;
 				map["retweet_text"] = retweet_text;

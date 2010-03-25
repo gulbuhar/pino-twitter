@@ -24,6 +24,7 @@ a.tags{text-decoration: none; font-weight: bold;}
 .footer {margin-top: 4px;}
 .footer-right {text-align:right;float:right;}
 .footer img {margin-left: 8px;}
+.norm-notice, .rtl-notice {word-wrap: break-word;}
 .rtl-notice {direction: rtl; text-align: right;}
 h2 {color: {{lt_color}};}
 td {font-size: {{font_size}}pt;}
