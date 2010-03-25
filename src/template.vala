@@ -291,7 +291,7 @@ public class Template : Object {
 					name = i.re_user_name;
 					screen_name = i.re_user_screen_name;
 					user_avatar = i.re_user_avatar;
-					//text = strip_tags_plus(i.re_text);
+					text = strip_tags_plus(i.re_text);
 				}
 				
 				var map = new HashMap<string, string>();
