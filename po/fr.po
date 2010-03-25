@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Dorian JAMINAIS <dorian.jaminais@gmail.com>, 2009.
 # Frederic Bezies <fredbezies@gmail.com>, 2010.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -30,18 +30,15 @@ msgstr "Service"
 
 #: src/account_widget.vala:77
 msgid "API proxy"
-msgstr ""
+msgstr "Proxy API"
 
 #: src/account_widget.vala:159
 msgid "Sure you want to delete this account?"
 msgstr "Êtes vous sûr de vouloir supprimer ce compte ?"
 
 #: src/dm_entry.vala:35
-msgid ""
-"You can't send direct message to this user. He (or she) must follow you too"
-msgstr ""
-"Vous ne pouvez pas envoyer de messages directs à cet utilisateur. Lui (ou "
-"elle) doit aussi vous suivre"
+msgid "You can't send direct message to this user. He (or she) must follow you too"
+msgstr "Vous ne pouvez pas envoyer de messages directs à cet utilisateur. Lui (ou elle) doit aussi vous suivre"
 
 #: src/dm_entry.vala:42
 msgid "Check"
@@ -69,7 +66,7 @@ msgstr "Mot de passe"
 
 #: src/edit_account.vala:97
 msgid "API proxy or other service"
-msgstr ""
+msgstr "Proxy API ou autre service"
 
 #: src/edit_account.vala:109 src/pref_dialog.vala:209
 msgid "Account"
@@ -77,11 +74,11 @@ msgstr "Compte"
 
 #: src/edit_account.vala:183
 msgid "You must enter a proxy address"
-msgstr ""
+msgstr "Vous devez entrer une adresse de proxy"
 
 #: src/edit_account.vala:198
 msgid "Proxy address must contain a valid url"
-msgstr ""
+msgstr "L'adresse du proxy doit contenir une URL valide"
 
 #: src/edit_account.vala:216
 msgid "You must fill in all fields"
@@ -113,11 +110,11 @@ msgstr "Afficher les messages directs"
 
 #: src/main_window.vala:147
 msgid "User info"
-msgstr ""
+msgstr "Information utilisateur"
 
 #: src/main_window.vala:147
 msgid "Show information about user"
-msgstr ""
+msgstr "Affiche les informations sur l'utilisateur"
 
 #: src/main_window.vala:273 src/main_window.vala:274 src/main_window.vala:275
 #: src/status_bar_smart.vala:93 src/status_bar_smart.vala:96
@@ -141,13 +138,12 @@ msgid "Create new direct message"
 msgstr "Creer un nouveau status"
 
 #: src/main_window.vala:382
-#, fuzzy
 msgid "Show user"
-msgstr "Afficher le menu"
+msgstr "Afficher l'utilisateur"
 
 #: src/main_window.vala:383
 msgid "Show information about specified user"
-msgstr ""
+msgstr "Affiche les informations d'un utilisateur donné"
 
 #: src/main_window.vala:389
 msgid "Update timeline"
@@ -401,7 +397,7 @@ msgstr "Discussion"
 
 #: src/status_view_dialog.vala:63
 msgid "go to the web page"
-msgstr ""
+msgstr "Aller à la page web"
 
 #: src/template.vala:164 src/template.vala:224
 msgid "Reply"
@@ -471,44 +467,40 @@ msgid "%s - a twitter client"
 msgstr "%s - un client twitter"
 
 #: src/user_info_list.vala:48
-#, fuzzy
 msgid "Followers:"
-msgstr "Réponse à <b>%s</b>"
+msgstr "Suiveurs"
 
 #: src/user_info_list.vala:49
 msgid "Friends:"
-msgstr ""
+msgstr "Amis"
 
 #: src/user_info_list.vala:50
-#, fuzzy
 msgid "Statuses:"
 msgstr "Statuts"
 
 #: src/user_info_list.vala:69
 msgid "Web:"
-msgstr ""
+msgstr "Web"
 
 #: src/user_info_list.vala:90
 msgid "follow"
-msgstr ""
+msgstr "Suit"
 
 #: src/user_info_list.vala:183
 msgid "This user does not exist"
-msgstr ""
+msgstr "Cet utilisateur n'existe pas"
 
 #: src/user_info_list.vala:300
 msgid "Now you follow this user"
-msgstr ""
+msgstr "Maintenant vous suivez cet utilisateur"
 
 #: src/user_info_list.vala:302
 msgid "User was unfollowed"
-msgstr ""
+msgstr "Cet utilisateur n'était pas suivi"
 
-#, fuzzy
 #~ msgid "Friends:  <b>%s</b>"
 #~ msgstr "Réponse à <b>%s</b>"
 
-#, fuzzy
 #~ msgid "Statuses:  <b>%s</b>"
 #~ msgstr "Réponse à <b>%s</b>"
 

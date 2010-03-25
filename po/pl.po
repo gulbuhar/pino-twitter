@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-03-07 11:29+0200\n"
-"PO-Revision-Date: 2010-02-21 23:37+0100\n"
+"PO-Revision-Date: 2010-03-08 13:05+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <trans-pl@lists.fedoraproject.org>\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr "Usługa"
 
 #: src/account_widget.vala:77
 msgid "API proxy"
-msgstr ""
+msgstr "Pośrednik API"
 
 #: src/account_widget.vala:159
 msgid "Sure you want to delete this account?"
@@ -66,7 +66,7 @@ msgstr "Hasło"
 
 #: src/edit_account.vala:97
 msgid "API proxy or other service"
-msgstr ""
+msgstr "Pośrednik API lub inny serwis"
 
 #: src/edit_account.vala:109 src/pref_dialog.vala:209
 msgid "Account"
@@ -74,11 +74,11 @@ msgstr "Konto"
 
 #: src/edit_account.vala:183
 msgid "You must enter a proxy address"
-msgstr ""
+msgstr "Należy podać adres pośrednika"
 
 #: src/edit_account.vala:198
 msgid "Proxy address must contain a valid url"
-msgstr ""
+msgstr "Adres pośrednika musi zawierać prawidłowy adres URL"
 
 #: src/edit_account.vala:216
 msgid "You must fill in all fields"
@@ -110,11 +110,11 @@ msgstr "Wyświetlanie bezpośrednich wiadomości"
 
 #: src/main_window.vala:147
 msgid "User info"
-msgstr ""
+msgstr "Informacje o użytkowniku"
 
 #: src/main_window.vala:147
 msgid "Show information about user"
-msgstr ""
+msgstr "Wyświetlanie informacji o użytkowniku"
 
 #: src/main_window.vala:273 src/main_window.vala:274 src/main_window.vala:275
 #: src/status_bar_smart.vala:93 src/status_bar_smart.vala:96
@@ -138,13 +138,12 @@ msgid "Create new direct message"
 msgstr "Utwórz nową bezpośrednią wiadomość"
 
 #: src/main_window.vala:382
-#, fuzzy
 msgid "Show user"
-msgstr "Wyświetlanie menu"
+msgstr "Wyświetlanie użytkownika"
 
 #: src/main_window.vala:383
 msgid "Show information about specified user"
-msgstr ""
+msgstr "Wyświetlanie informacji o podanym użytkowniku"
 
 #: src/main_window.vala:389
 msgid "Update timeline"
@@ -398,7 +397,7 @@ msgstr "Rozmowa"
 
 #: src/status_view_dialog.vala:63
 msgid "go to the web page"
-msgstr ""
+msgstr "przejdź na stronę WWW"
 
 #: src/template.vala:164 src/template.vala:224
 msgid "Reply"
@@ -468,49 +467,33 @@ msgid "%s - a twitter client"
 msgstr "%s - klient serwisu Twitter"
 
 #: src/user_info_list.vala:48
-#, fuzzy
 msgid "Followers:"
-msgstr "Odpowiedź na <b>%s</b>:"
+msgstr "Obserwujący:"
 
 #: src/user_info_list.vala:49
 msgid "Friends:"
-msgstr ""
+msgstr "Przyjaciele:"
 
 #: src/user_info_list.vala:50
-#, fuzzy
 msgid "Statuses:"
-msgstr "Stany"
+msgstr "Stany:"
 
 #: src/user_info_list.vala:69
 msgid "Web:"
-msgstr ""
+msgstr "WWW:"
 
 #: src/user_info_list.vala:90
 msgid "follow"
-msgstr ""
+msgstr "obserwuj"
 
 #: src/user_info_list.vala:183
 msgid "This user does not exist"
-msgstr ""
+msgstr "Ten użytkownik nie istnieje"
 
 #: src/user_info_list.vala:300
 msgid "Now you follow this user"
-msgstr ""
+msgstr "Ten użytkownik jest teraz obserwowany"
 
 #: src/user_info_list.vala:302
 msgid "User was unfollowed"
-msgstr ""
-
-#, fuzzy
-#~ msgid "Friends:  <b>%s</b>"
-#~ msgstr "Odpowiedź na <b>%s</b>:"
-
-#, fuzzy
-#~ msgid "Statuses:  <b>%s</b>"
-#~ msgstr "Odpowiedź na <b>%s</b>:"
-
-#~ msgid "Twitter"
-#~ msgstr "Twitter"
-
-#~ msgid "Remember password"
-#~ msgstr "Zapamiętanie hasła"
+msgstr "Użytkownik nie jest już obserwowany"

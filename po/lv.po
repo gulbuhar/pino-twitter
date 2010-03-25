@@ -13,32 +13,30 @@ msgstr ""
 "X-Poedit-Country: LATVIA\n"
 
 #: src/account_action.vala:42
-#, fuzzy
 msgid "Accounts"
-msgstr "Konts"
+msgstr "Konti"
 
-#: src/account_widget.vala:75 src/edit_account.vala:74
+#: src/account_widget.vala:75
+#: src/edit_account.vala:74
 msgid "Login"
 msgstr "Lietotājvārds"
 
-#: src/account_widget.vala:76 src/edit_account.vala:83
+#: src/account_widget.vala:76
+#: src/edit_account.vala:83
 msgid "Service"
-msgstr ""
+msgstr "Serviss"
 
 #: src/account_widget.vala:77
 msgid "API proxy"
-msgstr ""
+msgstr "API starpserveris"
 
 #: src/account_widget.vala:159
-#, fuzzy
 msgid "Sure you want to delete this account?"
-msgstr "Vai jūs tiešām vēlaties dzēst šo ziņojumu?"
+msgstr "Vai jūs tiešām vēlaties dzēst šo kontu?"
 
 #: src/dm_entry.vala:35
-msgid ""
-"You can't send direct message to this user. He (or she) must follow you too"
-msgstr ""
-"Jūs nevarat sūtīt vēstuli šim lietotājam. Viņam (vai viņai) jāseko jums."
+msgid "You can't send direct message to this user. He (or she) must follow you too"
+msgstr "Jūs nevarat sūtīt vēstuli šim lietotājam. Viņam (vai viņai) jāseko jums."
 
 #: src/dm_entry.vala:42
 msgid "Check"
@@ -53,14 +51,12 @@ msgid "Checking..."
 msgstr "Pārbauda..."
 
 #: src/edit_account.vala:70
-#, fuzzy
 msgid "Edit account"
-msgstr "Konts"
+msgstr "Labot kontu"
 
 #: src/edit_account.vala:72
-#, fuzzy
 msgid "Create new account"
-msgstr "Izveidot jaunu kontu..."
+msgstr "Izveidot jaunu kontu"
 
 #: src/edit_account.vala:78
 msgid "Password"
@@ -68,23 +64,24 @@ msgstr "Parole"
 
 #: src/edit_account.vala:97
 msgid "API proxy or other service"
-msgstr ""
+msgstr "API starpserveris vai cits serviss"
 
-#: src/edit_account.vala:109 src/pref_dialog.vala:209
+#: src/edit_account.vala:109
+#: src/pref_dialog.vala:209
 msgid "Account"
 msgstr "Konts"
 
 #: src/edit_account.vala:183
 msgid "You must enter a proxy address"
-msgstr ""
+msgstr "Jums jāievada starpservera adrese"
 
 #: src/edit_account.vala:198
 msgid "Proxy address must contain a valid url"
-msgstr ""
+msgstr "Starpservera adresei jābūt derīgai"
 
 #: src/edit_account.vala:216
 msgid "You must fill in all fields"
-msgstr ""
+msgstr "Jums jāaizpilda visi lauki"
 
 #: src/main_window.vala:127
 msgid "Home timeline"
@@ -112,14 +109,17 @@ msgstr "Rādīt vēstules"
 
 #: src/main_window.vala:147
 msgid "User info"
-msgstr ""
+msgstr "Lietotāja informācija"
 
 #: src/main_window.vala:147
 msgid "Show information about user"
-msgstr ""
+msgstr "Rādīt informāciju par lietotāju"
 
-#: src/main_window.vala:273 src/main_window.vala:274 src/main_window.vala:275
-#: src/status_bar_smart.vala:93 src/status_bar_smart.vala:96
+#: src/main_window.vala:273
+#: src/main_window.vala:274
+#: src/main_window.vala:275
+#: src/status_bar_smart.vala:93
+#: src/status_bar_smart.vala:96
 msgid "updated "
 msgstr "atjaunots"
 
@@ -140,13 +140,12 @@ msgid "Create new direct message"
 msgstr "Izveidot jaunu vēstuli"
 
 #: src/main_window.vala:382
-#, fuzzy
 msgid "Show user"
-msgstr "Rādīt izvēlni"
+msgstr "Rādīt lietotāju"
 
 #: src/main_window.vala:383
 msgid "Show information about specified user"
-msgstr ""
+msgstr "Rādīt informāciju par izvēlēto lietotāju"
 
 #: src/main_window.vala:389
 msgid "Update timeline"
@@ -158,9 +157,10 @@ msgstr "Iziet"
 
 #: src/main_window.vala:397
 msgid "Edit"
-msgstr "Rediģēt"
+msgstr "Labot"
 
-#: src/main_window.vala:400 src/pref_dialog.vala:57
+#: src/main_window.vala:400
+#: src/pref_dialog.vala:57
 msgid "Preferences"
 msgstr "Iestatījumi"
 
@@ -189,7 +189,9 @@ msgstr "Par %s"
 msgid "Get older entries"
 msgstr "Iegūt vecākus ierakstus"
 
-#: src/popups.vala:75 src/template.vala:166 src/template.vala:227
+#: src/popups.vala:75
+#: src/template.vala:166
+#: src/template.vala:227
 #, c-format
 msgid "Direct message"
 msgstr "Vēstule"
@@ -231,12 +233,11 @@ msgstr "Adrešu saīsināšanas serviss"
 
 #: src/pref_dialog.vala:80
 msgid "Starting up in tray"
-msgstr "Sākt sistēmas ikonu joslā"
+msgstr "Sākt sistēmjoslā"
 
 #: src/pref_dialog.vala:83
-#, fuzzy
 msgid "Show tray icon"
-msgstr "Rādīt atsauksmes"
+msgstr "Rādīt sistēmjoslas ikonu"
 
 #: src/pref_dialog.vala:86
 msgid "For timeline"
@@ -271,9 +272,8 @@ msgid "Cache"
 msgstr "Kešatmiņa"
 
 #: src/pref_dialog.vala:130
-#, fuzzy
 msgid "Notification area"
-msgstr "Paziņojumi"
+msgstr "Paziņojumu lauks"
 
 #: src/pref_dialog.vala:134
 msgid "Notification"
@@ -297,7 +297,7 @@ msgstr "Noapaļoti stūri"
 
 #: src/pref_dialog.vala:177
 msgid "Right-to-left languages detection"
-msgstr "RTL valodu noteikšana"
+msgstr "No labās uz kreiso valodu noteikšana"
 
 #: src/pref_dialog.vala:180
 msgid "Full names instead of nicknames"
@@ -321,7 +321,7 @@ msgstr "Galvenais"
 
 #: src/pref_dialog.vala:208
 msgid "Desktop"
-msgstr ""
+msgstr "Darbvirsma"
 
 #: src/pref_dialog.vala:210
 msgid "Appearance"
@@ -343,7 +343,8 @@ msgstr "Adreses tika veiksmīgi saīsinātas"
 msgid "Nothing to shorten"
 msgstr "Nav ko īsināt"
 
-#: src/re_tweet.vala:123 src/re_tweet.vala:215
+#: src/re_tweet.vala:123
+#: src/re_tweet.vala:215
 msgid "New status:"
 msgstr "Jauns ziņojums:"
 
@@ -398,17 +399,19 @@ msgstr "atjauno..."
 
 #: src/status_view_dialog.vala:35
 msgid "Conversation"
-msgstr ""
+msgstr "Saruna"
 
 #: src/status_view_dialog.vala:63
 msgid "go to the web page"
-msgstr ""
+msgstr "doties uz mājaslapu"
 
-#: src/template.vala:164 src/template.vala:224
+#: src/template.vala:164
+#: src/template.vala:224
 msgid "Reply"
 msgstr "Atbildēt"
 
-#: src/template.vala:165 src/template.vala:225
+#: src/template.vala:165
+#: src/template.vala:225
 msgid "Delete"
 msgstr "Dzēst"
 
@@ -472,38 +475,36 @@ msgid "%s - a twitter client"
 msgstr "%s - twitter klients"
 
 #: src/user_info_list.vala:48
-#, fuzzy
 msgid "Followers:"
-msgstr "Atbilde <b>%s</b>:"
+msgstr "Sekotāji:"
 
 #: src/user_info_list.vala:49
 msgid "Friends:"
-msgstr ""
+msgstr "Draugi:"
 
 #: src/user_info_list.vala:50
-#, fuzzy
 msgid "Statuses:"
-msgstr "Ziņojumi"
+msgstr "Ziņojumi:"
 
 #: src/user_info_list.vala:69
 msgid "Web:"
-msgstr ""
+msgstr "Mājaslapa:"
 
 #: src/user_info_list.vala:90
 msgid "follow"
-msgstr ""
+msgstr "sekot"
 
 #: src/user_info_list.vala:183
 msgid "This user does not exist"
-msgstr ""
+msgstr "Šāds lietotājs neeksistē"
 
 #: src/user_info_list.vala:300
 msgid "Now you follow this user"
-msgstr ""
+msgstr "Tagad jūs sekojat šim lietotājam"
 
 #: src/user_info_list.vala:302
 msgid "User was unfollowed"
-msgstr ""
+msgstr "Jūs vairs nesekojat lietotājam"
 
 #, fuzzy
 #~ msgid "Friends:  <b>%s</b>"
@@ -512,9 +513,8 @@ msgstr ""
 #, fuzzy
 #~ msgid "Statuses:  <b>%s</b>"
 #~ msgstr "Atbilde <b>%s</b>:"
-
 #~ msgid "Twitter"
 #~ msgstr "Twitter"
-
 #~ msgid "Remember password"
 #~ msgstr "Atcerēties paroli"
+

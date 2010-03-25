@@ -30,7 +30,7 @@ msgstr "Serviço"
 
 #: src/account_widget.vala:77
 msgid "API proxy"
-msgstr ""
+msgstr "Proxy API"
 
 #: src/account_widget.vala:159
 msgid "Sure you want to delete this account?"
@@ -69,7 +69,7 @@ msgstr "Senha"
 
 #: src/edit_account.vala:97
 msgid "API proxy or other service"
-msgstr ""
+msgstr "Proxy API ou outro serviço"
 
 #: src/edit_account.vala:109 src/pref_dialog.vala:209
 msgid "Account"
@@ -77,11 +77,11 @@ msgstr "Conta"
 
 #: src/edit_account.vala:183
 msgid "You must enter a proxy address"
-msgstr ""
+msgstr "Você tem de introduzir um endereço proxy"
 
 #: src/edit_account.vala:198
 msgid "Proxy address must contain a valid url"
-msgstr ""
+msgstr "O endereço proxy tem de conter um url válido"
 
 #: src/edit_account.vala:216
 msgid "You must fill in all fields"
@@ -113,11 +113,11 @@ msgstr "Mostrar mensagens diretas"
 
 #: src/main_window.vala:147
 msgid "User info"
-msgstr ""
+msgstr "Info de usuário"
 
 #: src/main_window.vala:147
 msgid "Show information about user"
-msgstr ""
+msgstr "Mostrar informação sobre o usuário"
 
 #: src/main_window.vala:273 src/main_window.vala:274 src/main_window.vala:275
 #: src/status_bar_smart.vala:93 src/status_bar_smart.vala:96
@@ -141,13 +141,12 @@ msgid "Create new direct message"
 msgstr "Criar nova mensagem direta"
 
 #: src/main_window.vala:382
-#, fuzzy
 msgid "Show user"
-msgstr "Mostrar menu"
+msgstr "Mostrar utilizador"
 
 #: src/main_window.vala:383
 msgid "Show information about specified user"
-msgstr ""
+msgstr "Mostrar informação sobre o usuário especificado"
 
 #: src/main_window.vala:389
 msgid "Update timeline"
@@ -236,7 +235,7 @@ msgstr "Iniciar na bandeija"
 
 #: src/pref_dialog.vala:83
 msgid "Show tray icon"
-msgstr "Mostrar menções"
+msgstr "Mostrar icon de bandeja"
 
 #: src/pref_dialog.vala:86
 msgid "For timeline"
@@ -401,7 +400,7 @@ msgstr "Conversa"
 
 #: src/status_view_dialog.vala:63
 msgid "go to the web page"
-msgstr ""
+msgstr "ir para a página web"
 
 #: src/template.vala:164 src/template.vala:224
 msgid "Reply"
@@ -471,38 +470,36 @@ msgid "%s - a twitter client"
 msgstr "%s - Um cliente para o Twitter"
 
 #: src/user_info_list.vala:48
-#, fuzzy
 msgid "Followers:"
-msgstr "Responder para <b>%s</b>"
+msgstr "Seguidores:"
 
 #: src/user_info_list.vala:49
 msgid "Friends:"
-msgstr ""
+msgstr "Amigos:"
 
 #: src/user_info_list.vala:50
-#, fuzzy
 msgid "Statuses:"
 msgstr "Status"
 
 #: src/user_info_list.vala:69
 msgid "Web:"
-msgstr ""
+msgstr "Web:"
 
 #: src/user_info_list.vala:90
 msgid "follow"
-msgstr ""
+msgstr "seguir"
 
 #: src/user_info_list.vala:183
 msgid "This user does not exist"
-msgstr ""
+msgstr "Este usuário não existe"
 
 #: src/user_info_list.vala:300
 msgid "Now you follow this user"
-msgstr ""
+msgstr "Agora você segue este usuário"
 
 #: src/user_info_list.vala:302
 msgid "User was unfollowed"
-msgstr ""
+msgstr "Usuário foi des-seguido"
 
 #, fuzzy
 #~ msgid "Friends:  <b>%s</b>"
