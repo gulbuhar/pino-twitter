@@ -289,6 +289,9 @@ public class MainWindow : Window {
 		mentions.retweet.connect((status) => {
 			re_tweet.set_state_retweet(status);
 		});
+		user_info.retweet.connect((status) => {
+			re_tweet.set_state_retweet(status);
+		});
 		home.directreply.connect((screen_name) => {
 			re_tweet.set_state_directreply(screen_name);
 		});
@@ -298,10 +301,16 @@ public class MainWindow : Window {
 		direct.directreply.connect((screen_name) => {
 			re_tweet.set_state_directreply(screen_name);
 		});
+		user_info.directreply.connect((screen_name) => {
+			re_tweet.set_state_directreply(screen_name);
+		});
 		home.replyto.connect((status) => {
 			re_tweet.set_state_reply(status);
 		});
 		mentions.replyto.connect((status) => {
+			re_tweet.set_state_reply(status);
+		});
+		user_info.replyto.connect((status) => {
 			re_tweet.set_state_reply(status);
 		});
 		home.deleted.connect((msg) => {
