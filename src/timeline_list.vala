@@ -61,7 +61,7 @@ public class TimelineList : TimelineListAbstract {
 				no_fresh();
 			}
 		}
-	} 
+	}
 	
 	public signal void fresh();
 	public signal void no_fresh();
@@ -94,6 +94,14 @@ public class TimelineList : TimelineListAbstract {
 		ArrayList<Status> result = null;
 		string since_id = "";
 		bool first_time = true;
+		
+		//clearing temporary statuses
+		for(int i = 0; i < lst.size; i++) {
+			if(lst.get(i).tmp) {
+				lst.remove_at(i);
+				i--;
+			}
+		}
 		
 		if(lst.size > 0) {
 			since_id = lst.get(0).id;
@@ -147,9 +155,10 @@ public class TimelineList : TimelineListAbstract {
 	/* insert new status */
 	public void insert_status(Status status) {
 		lst.insert(0, status);
-		delete_extra();
+		//tmp_lst.add(status);
+		//delete_extra();
 		
-		last_focused = (int)lst.get(0).created_at.mktime();
+		//last_focused = (int)lst.get(0).created_at.mktime();
 		
 		refresh();
 	}

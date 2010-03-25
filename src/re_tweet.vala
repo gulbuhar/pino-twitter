@@ -365,6 +365,7 @@ public class ReTweet : VBox {
 			return;
 		}
 		
+		status.tmp = true;
 		status_updated(status); //signal
 		
 		hide();

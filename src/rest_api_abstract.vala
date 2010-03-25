@@ -45,6 +45,8 @@ public class Status : Object {
 	public string to_status_id = "";
 	
 	public bool is_retweet = false;
+	
+	public bool tmp = false;
 }
 
 public class FullStatus : Status {
