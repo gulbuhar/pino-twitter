@@ -42,5 +42,15 @@ namespace Config
 	public const string USERPIC_PATH;
 	public const string TEMPLATES_PATH;
 	public const string AUTHORS;
+	
+	public const string CONS_KEY;
+	public const string CONS_SEC;
 }
-
+/*
+[CCode (cheader_filename = "sha1.h")]
+namespace SHA1
+{
+  [CCode (cname = "_oauth_hmac_sha1")]
+  public void hmac (string key, string message, out uchar[] output);
+}
+*/

@@ -171,6 +171,8 @@ public class Template : Object {
 			rounded_str = "-webkit-border-radius:5px;";
 		
 		foreach(Status i in friends) {
+			string text = strip_tags_plus(i.text);
+			
 			//checking for new statuses
 			var fresh = "old";
 			if(last_focused > 0 && (int)i.created_at.mktime() > last_focused)
@@ -182,7 +184,6 @@ public class Template : Object {
 			var user_avatar = i.user_avatar;
 			var name = i.user_screen_name;
 			var screen_name = i.user_screen_name;
-			var text = i.text;
 			
 			var map = new HashMap<string, string>();
 			map["avatar"] = cache.get_or_download(user_avatar, Cache.Method.ASYNC, false);
@@ -198,7 +199,7 @@ public class Template : Object {
 			map["time"] = time;
 			map["content"] = making_links(text);
 			
-			if(prefs.rtlSupport && is_rtl(clear_notice.replace(i.text, -1, 0, "")))
+			if(prefs.rtlSupport && is_rtl(clear_notice.replace(text, -1, 0, "")))
 				map["rtl_class"] = "rtl-notice";
 			else
 				map["rtl_class"] = "";
@@ -232,6 +233,8 @@ public class Template : Object {
 			rounded_str = "-webkit-border-radius:5px;";
 		
 		foreach(Status i in friends) {
+			string text = strip_tags_plus(i.text);
+			
 			//checking for new statuses
 			var fresh = "old";
 			if(last_focused > 0 && (int)i.created_at.mktime() > last_focused)
@@ -263,9 +266,9 @@ public class Template : Object {
 				else
 					map["name"] = i.user_screen_name;
 			
-				map["content"] = making_links(i.text);
+				map["content"] = making_links(strip_tags_plus(text));
 
-				if(prefs.rtlSupport && is_rtl(clear_notice.replace(i.text, -1, 0, "")))
+				if(prefs.rtlSupport && is_rtl(clear_notice.replace(text, -1, 0, "")))
 					map["rtl_class"] = "rtl-notice";
 				else
 					map["rtl_class"] = "";
@@ -280,7 +283,7 @@ public class Template : Object {
 				var user_avatar = i.user_avatar;
 				var name = i.user_name;
 				var screen_name = i.user_screen_name;
-				var text = i.text;
+				//var text = i.text;
 				
 				if(i.is_retweet) {
 					re_icon = "<span class='re'>Rt:</span> ";
@@ -288,7 +291,7 @@ public class Template : Object {
 					name = i.re_user_name;
 					screen_name = i.re_user_screen_name;
 					user_avatar = i.re_user_avatar;
-					text = i.re_text;
+					//text = strip_tags_plus(i.re_text);
 				}
 				
 				var map = new HashMap<string, string>();
@@ -306,7 +309,7 @@ public class Template : Object {
 				map["time"] = time;
 				map["content"] = making_links(text);
 				
-				if(prefs.rtlSupport && is_rtl(clear_notice.replace(i.text, -1, 0, "")))
+				if(prefs.rtlSupport && is_rtl(clear_notice.replace(text, -1, 0, "")))
 					map["rtl_class"] = "rtl-notice";
 				else
 					map["rtl_class"] = "";
@@ -434,5 +437,14 @@ public class Template : Object {
 		if(cc>=11568 && cc<=11647) // Tifinagh
 			return true;
 		return false;
+	}
+	
+	/* Performaing to show in html context */
+	private string strip_tags_plus(owned string content) {
+		content = content.replace("\\", "&#92;");
+		content = content.replace("<", "&lt;");
+		content = content.replace(">", "&lt;");
+		
+		return content;
 	}
 }

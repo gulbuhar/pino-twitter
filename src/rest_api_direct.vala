@@ -46,7 +46,7 @@ public class RestAPIDirect : RestAPIAbstract {
 		if(account == null)
 			no_account();
 		
-		var map = new HashTable<string, string>(null, null);
+		var map = new HashTable<string, string>(str_hash, str_equal);
 		if(count != 0)
 			map.insert("count", count.to_string());
 		if(since_id != "")

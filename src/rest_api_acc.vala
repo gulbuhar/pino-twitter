@@ -41,7 +41,7 @@ public class RestAPIAcc : RestAPIAbstract {
 		
 		string req_url = urls.user().printf(account.login);
 		string data = make_request(req_url, "GET",
-			new HashTable<string, string>(null, null), false);
+			new HashTable<string, string>(str_hash, str_equal), false);
 		
 		return parse_userpic_url(data);
 	}

@@ -23,6 +23,8 @@ using Gtk;
 using WebKit;
 using RestAPI;
 using Auth;
+//using OAuth;
+using Soup;
 
 public class MainWindow : Window {
 	
@@ -71,6 +73,60 @@ public class MainWindow : Window {
 	public MainWindow() {
 		logo = new Gdk.Pixbuf.from_file(Config.LOGO_PATH);
 		logo_fresh = new Gdk.Pixbuf.from_file(Config.LOGO_FRESH_PATH);
+		
+		/** testing oauth
+		string cons_key = "k6R1A0PPkmpRcThEdPF1Q";
+		string cons_sec = "TKneXwqslxkbaR3RQGcvvvGU4Qk01qh8HAhRIMN74";
+		string request_token_url = "https://api.twitter.com/oauth/request_token";
+		string access_token_url = "https://twitter.com/oauth/access_token";
+		string auth_url = "http://api.twitter.com/oauth/authorize?oauth_token=%s";
+		
+		Soup.SessionSync session = new Soup.SessionSync();
+		Client client = new Client(Config.CONS_KEY, Config.CONS_SEC,
+		SignatureMethod.HMAC_SHA1, session);
+		
+		/*
+		client.fetch_request_token ("POST", request_token_url);
+		warning(auth_url, client.request_token.lookup("oauth_token"));
+		warning("input PIN");
+		string? pin = stdin.read_line();
+		warning(pin);
+		client.fetch_access_token("POST", access_token_url, pin);
+		warning("%s, %s", client.request_token.lookup("oauth_token"),
+			client.request_token.lookup("oauth_token_secret"));
+		
+		string oauth_token = "18604056-PlBJS2DNHgixESyaW2bo99qD3iwIysec1ANB8QpBr";
+		string oauth_token_secret = "9LGC6VqPrEfYqu5WByANcyr391oBaWcM2ubiKeSPjM";
+		
+		client.request_token.replace("oauth_token", oauth_token);
+		client.request_token.replace("oauth_token_secret", oauth_token_secret);
+		
+		var table = new HashTable<string, string>(str_hash, str_equal);
+		string signature = client.generate_signature("GET", "http://api.twitter.com/statuses/home_timeline.xml",
+			oauth_token_secret, table);
+		//signature = signature.substring(0, signature.length - 1);
+		
+		warning(signature);
+		
+		string auth_header = """OAuth realm="%s",oauth_consumer_key="%s",oauth_token="%s",oauth_signature_method="HMAC-SHA1",oauth_signature="%s",oauth_timestamp="%s",oauth_nonce="%s",oauth_version="1.0"""".printf("http://api.twitter.com/",
+                Config.CONS_KEY, oauth_token, signature, client.timestamp,
+                client.nonce);
+        
+        warning(auth_header);
+        
+        string h = client.generate_authorization("GET", "http://api.twitter.com/statuses/home_timeline.xml", "http://api.twitter.com");
+        warning(h);
+        
+        Message message = new Message("GET", "http://api.twitter.com/statuses/home_timeline.xml");
+        message.set_http_version (HTTPVersion.1_1);
+        MessageHeaders headers = new MessageHeaders(MessageHeadersType.MULTIPART);
+        headers.append("Authorization", h);
+        
+        message.request_headers = headers;
+        
+        session.send_message(message);
+        warning((string)message.response_body.flatten().data);
+		 end of testing */
 		
 		//getting settings
 		prefs = new Prefs();
@@ -543,18 +599,21 @@ public class MainWindow : Window {
 	}
 	
 	public void refresh_action() {
+		warning("refresh_action 1");
 		updateAct.set_sensitive(false);
 		
 		statusbar.set_status(StatusbarSmart.StatusType.UPDATING);
 		
 		var home_list = home.update();
+		warning("refresh_action 2");
 		var mentions_list = mentions.update();
+		warning("refresh_action 3");
 		var direct_list = direct.update();
-		
+		warning("refresh_action 4");
 		statusbar.set_status(StatusbarSmart.StatusType.FINISH_OK);
-		
+		warning("refresh_action 5");
 		notify.start(home_list, mentions_list, direct_list);
-		
+		warning("refresh_action 6");
 		updateAct.set_sensitive(true);
 	}
 	
