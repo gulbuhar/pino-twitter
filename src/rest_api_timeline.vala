@@ -131,33 +131,34 @@ public class RestAPITimeline : RestAPIAbstract {
 				    				Xml.Node *iter_retweet;
 				    				
 				    				for(iter_retweet = iter_in->children->next; iter_retweet != null; iter_retweet = iter_retweet->next) {
-				    					switch(iter_retweet->name) {
-				    						case "user":
-				    							Xml.Node *iter_re_user;
-				    							
-				    							for(iter_re_user = iter_retweet->children->next; iter_re_user != null; iter_re_user = iter_re_user->next) {
-				    								switch(iter_re_user->name) {
-				    									case "name":
-				    										status.re_user_name = iter_re_user->get_content();
-				    										break;
-				    									
-				    									case "screen_name":
-				    										status.re_user_screen_name = iter_re_user->get_content();
-				    										break;
-				    									
-				    									case "profile_image_url":
-				    										status.re_user_avatar = iter_re_user->get_content();
-				    										break;
-				    								}
-				    							}
-				    							delete iter_re_user;
-				    							break;
+				    					if(iter_retweet->is_text() != 1) {
 				    						
-				    						case "text":
-				    							if(iter_retweet->get_content().substring(0, 3) != "\n  " ) {
-				    								status.re_text = iter_retweet->get_content();
-				    							}
-				    							break;
+											switch(iter_retweet->name) {
+												case "text":
+													status.re_text = iter_retweet->get_content();
+													break;
+												
+												case "user":
+													Xml.Node *iter_re_user;
+													
+													for(iter_re_user = iter_retweet->children->next; iter_re_user != null; iter_re_user = iter_re_user->next) {
+														switch(iter_re_user->name) {
+															case "name":
+																status.re_user_name = iter_re_user->get_content();
+																break;
+															
+															case "screen_name":
+																status.re_user_screen_name = iter_re_user->get_content();
+																break;
+															
+															case "profile_image_url":
+																status.re_user_avatar = iter_re_user->get_content();
+																break;
+														}
+													}
+													delete iter_re_user;
+													break;
+											}
 				    					}
 				    				}
 				    				
