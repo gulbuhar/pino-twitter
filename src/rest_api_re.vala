@@ -44,7 +44,7 @@ public class RestAPIRe : RestAPIAbstract {
 		
 		string req_url = urls.direct_new();
 		
-		var map = new HashTable<string, string>(null, null);
+		var map = new HashTable<string, string>(str_hash, str_equal);
 		map.insert("screen_name", user);
 		map.insert("text", text);
 		
@@ -63,7 +63,7 @@ public class RestAPIRe : RestAPIAbstract {
 		
 		string req_url = urls.status_update();
 		
-		var map = new HashTable<string, string>(null, null);
+		var map = new HashTable<string, string>(str_hash, str_equal);
 		map.insert("status", text);
 		
 		if(account != null && account.service == "identi.ca") //client name for identi.ca

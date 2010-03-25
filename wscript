@@ -38,6 +38,8 @@ def configure(conf):
 	conf.check_cfg(package='unique-1.0', uselib_store='LIBUNIQUE',
 		atleast_version='1.0', mandatory=True, args='--cflags --libs')
 
+	conf.env.append_value('CCFLAGS', '-std=c99')
+	
 	conf.define('PACKAGE', APPNAME)
 	conf.define('PACKAGE_NAME', APPNAME)
 	conf.define('PACKAGE_STRING', APPNAME + '-' + VERSION)
@@ -63,6 +65,8 @@ def configure(conf):
 	conf.define('LOCALE_DIR', conf.env.PREFIX + '/share/locale/')
 	conf.define('GETTEXT_PACKAGE', APPNAME)
 	conf.define('APPNAME', APPNAME)
+	conf.define('CONS_KEY', 'k6R1A0PPkmpRcThEdPF1Q')
+	conf.define('CONS_SEC', 'TKneXwqslxkbaR3RQGcvvvGU4Qk01qh8HAhRIMN74')
 	
 	# AUTHORS --> About dialog
 	f = open('AUTHORS', 'r')
@@ -88,6 +92,7 @@ def init_defs(prefix):
 
 def build(bld):
 	bld.add_subdirs('src')
+	#bld.add_subdirs('liboauth-client')
 	bld.add_subdirs('templates')
 	bld.add_subdirs('po')
 	

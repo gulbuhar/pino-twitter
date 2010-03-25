@@ -172,7 +172,7 @@ public abstract class RestAPIAbstract : Object {
 	}
 	
 	public string make_request(owned string req_url, string method,
-		HashTable<string, string> params = new HashTable<string, string>(null, null),
+		HashTable<string, string> params = new HashTable<string, string>(str_hash, str_equal),
 		bool async = true, int retry = 3) throws RestError {
 		
 		if(account == null)
@@ -180,23 +180,17 @@ public abstract class RestAPIAbstract : Object {
 		
 		if(method == "GET") { //set get-parameters
 			string query = "";
-		
+			warning(params.size().to_string());
 			if(params.size() > 0) {
 				query = "?";
 				
-				//Very dirty. HashTable.loockup() doesn't work. Bug?
 				int tmp_iter = 0;
 				foreach(string key in params.get_keys()) {
-					int tmp_iter2 = 0;
-					foreach(string val in params.get_values()) {
-						if(tmp_iter2 == tmp_iter) {
-							query += Soup.form_encode(key, val);
-							if(tmp_iter < params.size() - 1)
-								query += "&";
-							break;
-						}
-						tmp_iter2++;
-					}
+					query += Soup.form_encode(key, params.lookup(key));
+					
+					if(tmp_iter < params.size() - 1)
+						query += "&";
+					
 					tmp_iter++;
 				}
 			}
@@ -214,7 +208,7 @@ public abstract class RestAPIAbstract : Object {
 			session = new SessionSync();
 		
         Message message = new Message(method, req_url);
-        message.set_http_version (HTTPVersion.1_1);
+        message.set_http_version(HTTPVersion.1_1);
         
         MessageHeaders headers = new MessageHeaders(MessageHeadersType.MULTIPART);
         headers.append("User-Agent", "%s/%s".printf(Config.APPNAME, Config.APP_VERSION));
@@ -252,7 +246,7 @@ public abstract class RestAPIAbstract : Object {
 		
 		string req_url = urls.friendship();
 		
-		HashTable map = new HashTable<string, string>(null, null);
+		HashTable map = new HashTable<string, string>(str_hash, str_equal);
 		map.insert("source_screen_name", account.login);
 		map.insert("target_screen_name", screen_name);
 		warning(req_url);
