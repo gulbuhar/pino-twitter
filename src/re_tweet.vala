@@ -158,7 +158,7 @@ public class ReTweet : VBox {
 		
 		nicks = new Regex("(^|\\s)@([A-Za-z0-9_]+)");
 		urls = new Regex("((http|https|ftp)://([\\S]+)\\.([\\S]+))");
-		tags = new Regex("((^|\\s)\\#[A-Za-z0-9_]+)");
+		tags = new Regex("((^|\\s)\\#[A-Za-z0-9_äëḧïöüẅẍÿ]+)");
 		
 		var scroll = new ScrolledWindow(null, null);
         scroll.set_policy(PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);

@@ -59,8 +59,8 @@ public class Template : Object {
 		reload();
 		
 		//compile regex
-		nicks = new Regex("@([A-Za-z0-9_]+)");
-		tags = new Regex("((^|\\s)\\#[A-Za-z0-9_]+)");
+		nicks = new Regex("(^|\\s)@([A-Za-z0-9_]+)");
+		tags = new Regex("((^|\\s)\\#[A-Za-z0-9_äëḧïöüẅẍÿ]+)");
 		groups = new Regex("(^|\\s)!([A-Za-z0-9_]+)"); //for identi.ca groups
 		urls = new Regex("((http|https|ftp)://([\\S]+))"); //need something better
 		
@@ -363,7 +363,7 @@ public class Template : Object {
 			} else break;
 		}
 		
-		result = nicks.replace(result, -1, 0, "@<a class='re_nick' href='userinfo://\\1'>\\1</a>");
+		result = nicks.replace(result, -1, 0, "\\1@<a class='re_nick' href='userinfo://\\2'>\\2</a>");
 		result = tags.replace(result, -1, 0, "<a class='tags' href='%s\\1'>\\1</a>".printf(search_url));
 		
 		if(service == "identi.ca") //for identi.ca only
