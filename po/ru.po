@@ -29,16 +29,15 @@ msgstr "Сервис"
 
 #: src/account_widget.vala:77
 msgid "API proxy"
-msgstr ""
+msgstr "API прокси"
 
 #: src/account_widget.vala:159
 msgid "Sure you want to delete this account?"
 msgstr "Уверены, что хотите удалить эту учётную запись?"
 
 #: src/dm_entry.vala:35
-#, fuzzy
 msgid "You can't send direct message to this user. He (or she) must follow you too"
-msgstr "Вы не можете послать сообщение этому пользователю. Он (она) должен последовать за Вами"
+msgstr "Вы не можете послать личное сообщение этому пользователю. Он (она) должен подписаться на ваш микроблог"
 
 #: src/dm_entry.vala:42
 msgid "Check"
@@ -66,7 +65,7 @@ msgstr "Пароль"
 
 #: src/edit_account.vala:97
 msgid "API proxy or other service"
-msgstr ""
+msgstr "Адрес другого сервиса"
 
 #: src/edit_account.vala:109 src/pref_dialog.vala:209
 msgid "Account"
@@ -74,11 +73,11 @@ msgstr "Учетная запись"
 
 #: src/edit_account.vala:183
 msgid "You must enter a proxy address"
-msgstr ""
+msgstr "Вы должны ввести адрес сервиса"
 
 #: src/edit_account.vala:198
 msgid "Proxy address must contain a valid url"
-msgstr ""
+msgstr "Адрес прокси должен быть рабочим"
 
 #: src/edit_account.vala:216
 msgid "You must fill in all fields"
@@ -102,19 +101,19 @@ msgstr "Показать упоминания"
 
 #: src/main_window.vala:141
 msgid "Direct messages"
-msgstr "Сообщения от пользователей"
+msgstr "Ответы"
 
 #: src/main_window.vala:142
 msgid "Show direct messages"
-msgstr "Показать личные сообщения от пользователей"
+msgstr "Показать личные сообщения"
 
 #: src/main_window.vala:147
 msgid "User info"
-msgstr ""
+msgstr "Информация о пользователе"
 
 #: src/main_window.vala:147
 msgid "Show information about user"
-msgstr ""
+msgstr "Показать информацию о пользователе"
 
 #: src/main_window.vala:273 src/main_window.vala:274 src/main_window.vala:275
 #: src/status_bar_smart.vala:93 src/status_bar_smart.vala:96
@@ -131,21 +130,19 @@ msgstr "Создать новый статус"
 
 #: src/main_window.vala:375
 msgid "New direct message"
-msgstr "Написать определённому пользователю"
+msgstr "Написать другу"
 
 #: src/main_window.vala:376
-#, fuzzy
 msgid "Create new direct message"
-msgstr "Создать новый статус"
+msgstr "Создать новое сообщение другу"
 
 #: src/main_window.vala:382
-#, fuzzy
 msgid "Show user"
-msgstr "Показать меню"
+msgstr "Найти пользователя"
 
 #: src/main_window.vala:383
 msgid "Show information about specified user"
-msgstr ""
+msgstr "Показать информацию об указанном пользователе"
 
 #: src/main_window.vala:389
 msgid "Update timeline"
@@ -202,7 +199,7 @@ msgid "Updates"
 msgstr "Обновления"
 
 #: src/popups.vala:140
-#, fuzzy, c-format
+#, c-format
 msgid "in the home timeline: %d\n"
 msgstr "в домашней ленте новостей: %d\n"
 
@@ -214,7 +211,7 @@ msgstr "в упоминаниях: %d\n"
 #: src/popups.vala:146
 #, c-format
 msgid "in direct messages: %d"
-msgstr ""
+msgstr "в личных сообщениях: %d"
 
 #: src/pref_dialog.vala:66
 msgid "Update interval (in minutes)"
@@ -222,7 +219,7 @@ msgstr "Интервал обновления (в минутах)"
 
 #: src/pref_dialog.vala:70
 msgid "Default number of statuses"
-msgstr "Количество статусов по умолчанию"
+msgstr "Количество отображаемых статусов статусов"
 
 #: src/pref_dialog.vala:74
 msgid "URL shortening service"
@@ -246,7 +243,7 @@ msgstr "Для упоминаний"
 
 #: src/pref_dialog.vala:88
 msgid "For direct messages"
-msgstr ""
+msgstr "Для личных сообщений"
 
 #: src/pref_dialog.vala:97
 msgid "Retweets style"
@@ -257,9 +254,8 @@ msgid "Clear now"
 msgstr "Очистить сейчас"
 
 #: src/pref_dialog.vala:111
-#, fuzzy
 msgid "General"
-msgstr "Интервал обновления"
+msgstr "Основные"
 
 #: src/pref_dialog.vala:116
 msgid "Retweets"
@@ -303,11 +299,11 @@ msgstr "Показывать полные имена"
 
 #: src/pref_dialog.vala:183
 msgid "Default font"
-msgstr "шрифт по умолчанию"
+msgstr "Шрифт по умолчанию"
 
 #: src/pref_dialog.vala:189
 msgid "Fresh statuses color"
-msgstr ""
+msgstr "Выделять новые статусы цветом"
 
 #: src/pref_dialog.vala:194
 msgid "Opacity"
@@ -327,11 +323,11 @@ msgstr "Внешний вид"
 
 #: src/re_tweet.vala:88
 msgid "Shorten URLs..."
-msgstr "Сокращённые URL"
+msgstr "Сократить URL..."
 
 #: src/re_tweet.vala:93
 msgid "Shortening URLs..."
-msgstr "Сокращение URL"
+msgstr "Сокращение URL..."
 
 #: src/re_tweet.vala:98
 msgid "URLs was shortened successfully"
@@ -339,7 +335,7 @@ msgstr "Сокращение URL успешно завершено"
 
 #: src/re_tweet.vala:100
 msgid "Nothing to shorten"
-msgstr ""
+msgstr "Нет адресов для сокращения"
 
 #: src/re_tweet.vala:123 src/re_tweet.vala:215
 msgid "New status:"
@@ -395,13 +391,12 @@ msgid "updating... "
 msgstr "обновление..."
 
 #: src/status_view_dialog.vala:35
-#, fuzzy
 msgid "Conversation"
 msgstr "Беседа"
 
 #: src/status_view_dialog.vala:63
 msgid "go to the web page"
-msgstr ""
+msgstr "Перейти к странице"
 
 #: src/template.vala:164 src/template.vala:224
 msgid "Reply"
@@ -471,38 +466,36 @@ msgid "%s - a twitter client"
 msgstr "%s - твиттер клиент"
 
 #: src/user_info_list.vala:48
-#, fuzzy
 msgid "Followers:"
-msgstr "Ответить <b>%s</b>:"
+msgstr "Подписчиков:"
 
 #: src/user_info_list.vala:49
 msgid "Friends:"
-msgstr ""
+msgstr "Друзей:"
 
 #: src/user_info_list.vala:50
-#, fuzzy
 msgid "Statuses:"
-msgstr "Статусы"
+msgstr "Сообщений:"
 
 #: src/user_info_list.vala:69
 msgid "Web:"
-msgstr ""
+msgstr "Страница:"
 
 #: src/user_info_list.vala:90
 msgid "follow"
-msgstr ""
+msgstr "подписаться"
 
 #: src/user_info_list.vala:183
 msgid "This user does not exist"
-msgstr ""
+msgstr "Не существует такого пользователя"
 
 #: src/user_info_list.vala:300
 msgid "Now you follow this user"
-msgstr ""
+msgstr "Теперь Вы подписаны на этот микроблог"
 
 #: src/user_info_list.vala:302
 msgid "User was unfollowed"
-msgstr ""
+msgstr "Вы больше не подписаны на этот микроблог"
 
 #~ msgid "Friends:  <b>%s</b>"
 #~ msgstr "Ответить <b>%s</b>:"

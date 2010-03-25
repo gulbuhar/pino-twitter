@@ -2,8 +2,8 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Athasiri Laohavanich <athasiri@gmail.com>, 2009.
-#
-#
+# 
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -17,7 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/account_action.vala:42
-#, fuzzy
 msgid "Accounts"
 msgstr "บัญชีผู้ใช้"
 
@@ -27,20 +26,18 @@ msgstr "ชื่อบัญชีผู้ใช้"
 
 #: src/account_widget.vala:76 src/edit_account.vala:83
 msgid "Service"
-msgstr ""
+msgstr "บริการ"
 
 #: src/account_widget.vala:77
 msgid "API proxy"
 msgstr ""
 
 #: src/account_widget.vala:159
-#, fuzzy
 msgid "Sure you want to delete this account?"
-msgstr "คุณแน่ใจหรือไม่ว่าคุณต้องการลบสถานะนี้?"
+msgstr "คุณแน่ใจหรือไม่ว่าคุณต้องการลบบัญชีผู้ใช้นี้?"
 
 #: src/dm_entry.vala:35
-msgid ""
-"You can't send direct message to this user. He (or she) must follow you too"
+msgid "You can't send direct message to this user. He (or she) must follow you too"
 msgstr "คุณไม่สามารถส่งข้อความส่วนตัวถึงผู้ใช้นี้ได้ เขาหรือเธอต้อง follow คุณด้วย"
 
 #: src/dm_entry.vala:42
@@ -56,12 +53,10 @@ msgid "Checking..."
 msgstr "กำลังตรวจสอบ..."
 
 #: src/edit_account.vala:70
-#, fuzzy
 msgid "Edit account"
-msgstr "บัญชีผู้ใช้"
+msgstr "แก้ไขบัญชีผู้ใช้"
 
 #: src/edit_account.vala:72
-#, fuzzy
 msgid "Create new account"
 msgstr "สร้างบัญชีใหม่..."
 
@@ -90,14 +85,12 @@ msgid "You must fill in all fields"
 msgstr ""
 
 #: src/main_window.vala:127
-#, fuzzy
 msgid "Home timeline"
-msgstr "สำหรับเส้นเวลา"
+msgstr "Home timeline"
 
 #: src/main_window.vala:128
-#, fuzzy
 msgid "Show your home timeline"
-msgstr "แสดงตามเส้นเวลา"
+msgstr "แสดง home timeline"
 
 #: src/main_window.vala:134
 msgid "Mentions"
@@ -117,11 +110,11 @@ msgstr "แสดงข้อความส่วนตัว"
 
 #: src/main_window.vala:147
 msgid "User info"
-msgstr ""
+msgstr "ข้อมูลผู้ใช้"
 
 #: src/main_window.vala:147
 msgid "Show information about user"
-msgstr ""
+msgstr "แสดงข้อมูลเกี่ยวกับผู้ใช้"
 
 #: src/main_window.vala:273 src/main_window.vala:274 src/main_window.vala:275
 #: src/status_bar_smart.vala:93 src/status_bar_smart.vala:96
@@ -145,13 +138,12 @@ msgid "Create new direct message"
 msgstr "สร้างข้อความส่วนตัวใหม่"
 
 #: src/main_window.vala:382
-#, fuzzy
 msgid "Show user"
-msgstr "แสดงเมนู"
+msgstr "แสดงผู้ใช้"
 
 #: src/main_window.vala:383
 msgid "Show information about specified user"
-msgstr ""
+msgstr "แสดงข้อมูลเกี่ยวกับผู้ใช้นี้"
 
 #: src/main_window.vala:389
 msgid "Update timeline"
@@ -210,7 +202,7 @@ msgstr "อัพเดต"
 #: src/popups.vala:140
 #, c-format
 msgid "in the home timeline: %d\n"
-msgstr ""
+msgstr "ใน home timeline: %d\n"
 
 #: src/popups.vala:143
 #, c-format
@@ -264,9 +256,8 @@ msgid "Clear now"
 msgstr "ล้างข้อมูล"
 
 #: src/pref_dialog.vala:111
-#, fuzzy
 msgid "General"
-msgstr "ช่วงเวลา"
+msgstr "ทั่วไป"
 
 #: src/pref_dialog.vala:116
 msgid "Retweets"
@@ -327,7 +318,7 @@ msgstr "หลัก"
 
 #: src/pref_dialog.vala:208
 msgid "Desktop"
-msgstr ""
+msgstr "Desktop"
 
 #: src/pref_dialog.vala:210
 msgid "Appearance"
@@ -404,11 +395,11 @@ msgstr "กำลังอัพเดต... "
 
 #: src/status_view_dialog.vala:35
 msgid "Conversation"
-msgstr ""
+msgstr "ข้อความ"
 
 #: src/status_view_dialog.vala:63
 msgid "go to the web page"
-msgstr ""
+msgstr "ไปที่หน้าเว็บเพจ"
 
 #: src/template.vala:164 src/template.vala:224
 msgid "Reply"
@@ -478,44 +469,40 @@ msgid "%s - a twitter client"
 msgstr "%s - โปรแกรม twitter"
 
 #: src/user_info_list.vala:48
-#, fuzzy
 msgid "Followers:"
-msgstr "ตอบกลับถึง <b>%s</b>:"
+msgstr "ผู้ติดตาม:"
 
 #: src/user_info_list.vala:49
 msgid "Friends:"
-msgstr ""
+msgstr "เพื่อน"
 
 #: src/user_info_list.vala:50
-#, fuzzy
 msgid "Statuses:"
 msgstr "สถานะ"
 
 #: src/user_info_list.vala:69
 msgid "Web:"
-msgstr ""
+msgstr "เว็บ:"
 
 #: src/user_info_list.vala:90
 msgid "follow"
-msgstr ""
+msgstr "ติดตาม"
 
 #: src/user_info_list.vala:183
 msgid "This user does not exist"
-msgstr ""
+msgstr "ผู้ใช้นี้ไม่มีตัวตน"
 
 #: src/user_info_list.vala:300
 msgid "Now you follow this user"
-msgstr ""
+msgstr "คุณได้ติดตามผู้ใช้นี้"
 
 #: src/user_info_list.vala:302
 msgid "User was unfollowed"
-msgstr ""
+msgstr "ผู้ใช้ยกเลิกการติดตาม"
 
-#, fuzzy
 #~ msgid "Friends:  <b>%s</b>"
 #~ msgstr "ตอบกลับถึง <b>%s</b>:"
 
-#, fuzzy
 #~ msgid "Statuses:  <b>%s</b>"
 #~ msgstr "ตอบกลับถึง <b>%s</b>:"
 
