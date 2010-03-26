@@ -156,7 +156,16 @@ public class ReTweet : VBox {
 		entry.buffer.create_tag("tag", "foreground", gtk_style.sl_color,
 			"weight", Pango.Weight.BOLD);
 		
-		Spell spell = new Spell.attach(entry, null);
+		try {
+			Spell spell = new Spell.attach(entry, null);
+		} catch(Error e) {
+			try {
+				Spell spell = new Spell.attach(entry, "en_US");
+			} catch(Error e) {
+				warning(e.message);
+			}
+			warning(e.message);
+		}
 		
 		nicks = new Regex("(^|\\s)@([A-Za-z0-9_]+)");
 		urls = new Regex("((http|https|ftp)://([\\S]+)\\.([\\S]+))");
