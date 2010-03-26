@@ -60,7 +60,7 @@ public class Template : Object {
 		
 		//compile regex
 		nicks = new Regex("(^|\\s)@([A-Za-z0-9_]+)");
-		tags = new Regex("((^|\\s)\\#[A-Za-z0-9_äëḧïöüẅẍÿ]+)");
+		tags = new Regex("((^|\\s)\\#[A-Za-z0-9_äëḧïöüẅẍÿÄÖÜßéèáàÉÈÁÀ]+)");
 		groups = new Regex("(^|\\s)!([A-Za-z0-9_]+)"); //for identi.ca groups
 		urls = new Regex("((http|https|ftp)://([\\S]+))"); //need something better
 		
