@@ -57,13 +57,14 @@ public class Popups : Object {
 	
 	public void start(ArrayList<Status>? home, ArrayList<Status>? mentions,
 		ArrayList<Status>? direct) {
-		if(home == null)
-			return;
 		
-		if(home.size > 3 || mentions.size > 3 || direct.size > 3)
+		if((home != null && home.size > 3) || (mentions != null && mentions.size > 3)
+			|| (direct != null && direct.size > 3)) {
+			
 			low_notify(home, mentions, direct);
-		else
+		} else {
 			full_notify(home, mentions, direct);
+		}
 	}
 	
 	private void show_popup(Status status, bool direct = false) {
@@ -98,12 +99,12 @@ public class Popups : Object {
 	}
 	
 	/* one popup for each new status or DM */
-	private void full_notify(ArrayList<Status> home, ArrayList<Status> mentions,
-		ArrayList<Status> direct) {
+	private void full_notify(ArrayList<Status>? home, ArrayList<Status>? mentions,
+		ArrayList<Status>? direct) {
 		
 		ArrayList<string> ids = new ArrayList<string>();
 		
-		if(prefs.showTimelineNotify) {
+		if(prefs.showTimelineNotify && home != null) {
 			for(int i = home.size -1; i > -1; i--) {
 				var status = home.get(i);
 				if(status.user_screen_name != login) {
@@ -113,7 +114,7 @@ public class Popups : Object {
 			}
 		}
 		
-		if(prefs.showMentionsNotify) {
+		if(prefs.showMentionsNotify && mentions != null) {
 			for(int i = mentions.size -1; i > -1; i--) {
 				var status = mentions.get(i);
 				if(!(status.id in ids))
@@ -121,7 +122,7 @@ public class Popups : Object {
 			}
 		}
 		
-		if(prefs.showDirectNotify) {
+		if(prefs.showDirectNotify && direct != null) {
 			for(int i = direct.size -1; i > -1; i--) {
 				var status = direct.get(i);
 				show_popup(status, true);
@@ -131,18 +132,18 @@ public class Popups : Object {
 	}
 	
 	/* one popup on all updates */
-	private void low_notify(ArrayList<Status> home, ArrayList<Status> mentions,
-		ArrayList<Status> direct) {
+	private void low_notify(ArrayList<Status>? home, ArrayList<Status>? mentions,
+		ArrayList<Status>? direct) {
 		
 		string result = "";
 		
-		if(prefs.showTimelineNotify && home.size > 0)
+		if(home != null && prefs.showTimelineNotify && home.size > 0)
 			result += _("in the home timeline: %d\n").printf(home.size);
 		
-		if(prefs.showMentionsNotify && mentions.size > 0)
+		if(mentions != null && prefs.showMentionsNotify && mentions.size > 0)
 			result += _("in mentions: %d\n").printf(mentions.size);
 		
-		if(prefs.showDirectNotify && direct.size > 0)
+		if(direct != null && prefs.showDirectNotify && direct.size > 0)
 			result += _("in direct messages: %d").printf(direct.size);
 		
 		if(result != "")
