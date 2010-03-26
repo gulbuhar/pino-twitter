@@ -108,7 +108,7 @@ public class UrlShort : Object {
 	
 	/* shorten with http://goo.gl */
 	private string shorter_google(string url) throws RestError {
-		var map = new HashTable<string, string>(null, null);
+		var map = new HashTable<string, string>(str_hash, str_equal);
 		map.insert("url", url);
 		
 		string req_url = "http://ggl-shortener.appspot.com/";
@@ -120,7 +120,7 @@ public class UrlShort : Object {
 	
 	/* shorten with http://is.gd */
 	private string shorter_isgd(string url) throws RestError {
-		var map = new HashTable<string, string>(null, null);
+		var map = new HashTable<string, string>(str_hash, str_equal);
 		map.insert("longurl", url);
 		
 		string req_url = "http://is.gd/api.php";

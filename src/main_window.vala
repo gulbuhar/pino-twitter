@@ -614,15 +614,11 @@ public class MainWindow : Window {
 		statusbar.set_status(StatusbarSmart.StatusType.UPDATING);
 		
 		var home_list = home.update();
-		warning("refresh_action 2");
 		var mentions_list = mentions.update();
-		warning("refresh_action 3");
 		var direct_list = direct.update();
-		warning("refresh_action 4");
 		statusbar.set_status(StatusbarSmart.StatusType.FINISH_OK);
-		warning("refresh_action 5");
 		notify.start(home_list, mentions_list, direct_list);
-		warning("refresh_action 6");
+		warning("notofication is ok");
 		updateAct.set_sensitive(true);
 	}
 	
