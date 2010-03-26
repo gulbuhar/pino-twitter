@@ -37,6 +37,8 @@ def configure(conf):
 		atleast_version='1.0', mandatory=True, args='--cflags --libs')
 	conf.check_cfg(package='unique-1.0', uselib_store='LIBUNIQUE',
 		atleast_version='1.0', mandatory=True, args='--cflags --libs')
+	conf.check_cfg(package='gtkspell-2.0', uselib_store='GTKSPELL',
+		atleast_version='2.0', mandatory=True, args='--cflags --libs')
 
 	conf.env.append_value('CCFLAGS', '-std=c99')
 	
