@@ -85,15 +85,17 @@ public class Accounts : Object {
 	
 	/* load accounts from file */
 	private void load() {
-		string conf_dir = Environment.get_home_dir() + "/.config/";
+		//string conf_dir = Environment.get_home_dir() + "/.config/";
+		string pino_dir = Environment.get_user_config_dir() + "/%s".printf(Config.APPNAME);
 		
-		var dir = File.new_for_path(conf_dir);
+		/*var dir = File.new_for_path(conf_dir);
 		if(!dir.query_exists(null))
 			dir.make_directory(null);
 		
 		string pino_dir = conf_dir + "/pino";
 		
-		dir = File.new_for_path(pino_dir);
+		dir = File.new_for_path(pino_dir);*/
+		var dir = File.new_for_path(pino_dir);
 		if(!dir.query_exists(null))
 			dir.make_directory(null);
 		
