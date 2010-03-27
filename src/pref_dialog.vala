@@ -29,6 +29,7 @@ public class PrefDialog : Dialog {
 	private SpinButton updateInterval;
 	private SpinButton numberStatuses;
 	private ComboBox urlShorten;
+	private CheckButton enableSpell;
 	private CheckButton startMin;
 	private CheckButton showTray;
 	private CheckButton showTimelineNotify;
@@ -76,6 +77,9 @@ public class PrefDialog : Dialog {
 		urlShorten.append_text("goo.gl");
 		urlShorten.append_text("is.gd");
 		
+		//enabling spell checking
+		enableSpell = new CheckButton.with_label(_("Enable spell checking"));
+		
 		//start in tray
 		startMin = new CheckButton.with_label(_("Starting up in tray"));
 		
@@ -112,6 +116,7 @@ public class PrefDialog : Dialog {
 		table_int.add_two_widgets(updateLabel, updateInterval);
 		table_int.add_two_widgets(numberStatusesLabel, numberStatuses);
 		table_int.add_two_widgets(urlShortenLabel, urlShorten);
+		table_int.add_widget(enableSpell);
 		
 		var table_re = new HigTable(_("Retweets"));
 		table_re.add_two_widgets(reLabel, retweetStyle);
@@ -271,6 +276,7 @@ public class PrefDialog : Dialog {
 		updateInterval.value = prefs.updateInterval;
 		numberStatuses.value = prefs.numberStatuses;
 		setup_urlshorten(prefs);
+		enableSpell.active = prefs.enableSpell;
 		startMin.active = prefs.startMin;
 		showTray.active = prefs.showTray;
 		showTimelineNotify.active = prefs.showTimelineNotify;
@@ -316,6 +322,10 @@ public class PrefDialog : Dialog {
 					prefs.urlShorten = "is.gd";
 					break;
 			}
+		});
+		
+		enableSpell.toggled.connect(() => {
+			prefs.enableSpell = enableSpell.active;
 		});
 		
 		startMin.toggled.connect(() => {
