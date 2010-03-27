@@ -105,9 +105,11 @@ public class Cache : Object {
 	}
 	
 	private void check_cache_dir() {
-		string conf_dir = Environment.get_home_dir() + "/.config/pino/";
+		//string conf_dir = Environment.get_home_dir() + "/.config/pino/";
 		
-		cache_path = conf_dir + "/cache";
+		//cache_path = conf_dir + "/cache";
+		cache_path = Environment.get_user_cache_dir() + "/%s".printf(Config.APPNAME);
+		
 		var cache_dir = File.new_for_path(cache_path);
 		if(!cache_dir.query_exists(null))
 			cache_dir.make_directory(null);
