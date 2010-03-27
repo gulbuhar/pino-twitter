@@ -44,6 +44,16 @@ public class Prefs : Object {
 		set{ _urlShorten = value; }
 	}
 	
+	public signal void enableSpellChanged();
+	private bool _enableSpell = true;
+	public bool enableSpell {
+		get{ return _enableSpell; }
+		set{
+			_enableSpell = value;
+			enableSpellChanged();
+		}
+	}
+	
 	private bool _showTimelineNotify = true;
 	public bool showTimelineNotify {
 		get{ return _showTimelineNotify; }
@@ -314,6 +324,10 @@ public class Prefs : Object {
 					_urlShorten = iter->get_content();
 					break;
 				
+				case "enableSpell":
+					_enableSpell = iter->get_content().to_bool();
+					break;
+				
 				case "showTimelineNotify":
 					_showTimelineNotify = iter->get_content().to_bool();
 					break;
@@ -414,6 +428,8 @@ public class Prefs : Object {
         root->new_text_child(ns, "numberStatuses", _numberStatuses.to_string());
         root->add_content("\n");
         root->new_text_child(ns, "urlShorten", _urlShorten);
+        root->add_content("\n");
+        root->new_text_child(ns, "enableSpell", _enableSpell.to_string());
         root->add_content("\n");
         root->new_text_child(ns, "showTimelineNotify", _showTimelineNotify.to_string());
         root->add_content("\n");

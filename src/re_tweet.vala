@@ -156,16 +156,9 @@ public class ReTweet : VBox {
 		entry.buffer.create_tag("tag", "foreground", gtk_style.sl_color,
 			"weight", Pango.Weight.BOLD);
 		
-		try {
-			Spell spell = new Spell.attach(entry, null);
-		} catch(Error e) {
-			try {
-				Spell spell = new Spell.attach(entry, "en_US");
-			} catch(Error e) {
-				warning(e.message);
-			}
-			warning(e.message);
-		}
+		prefs.enableSpellChanged.connect(spellEnabling);
+		spellEnabling();
+		
 		
 		nicks = new Regex("(^|\\s)@([A-Za-z0-9_]+)");
 		urls = new Regex("((http|https|ftp)://([\\S]+)\\.([\\S]+))");
@@ -187,6 +180,27 @@ public class ReTweet : VBox {
 		pack_start(sep, false, false, 0);
 		pack_start(l_box, false, false, 0);
 		pack_start(frame, false, true, 0);
+	}
+	
+	private void spellEnabling() {
+		if(prefs.enableSpell) {
+			if(prefs.enableSpell) {
+				try {
+					Spell spell = new Spell.attach(entry, null);
+				} catch(Error e) {
+					try {
+						Spell spell = new Spell.attach(entry, "en_US");
+					} catch(Error e) {
+						warning(e.message);
+					}
+					warning(e.message);
+				}
+			}
+		} else {
+			Spell spell = Spell.get_from_text_view(entry);
+			if(spell != null)
+				spell.detach();
+		}
 	}
 	
 	public void update_auth() {
