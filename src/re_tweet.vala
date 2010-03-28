@@ -458,6 +458,7 @@ public class ReTweet : VBox {
 		entry.buffer.get_bounds(out start_pos, out end_pos);
 		
 		//entry.buffer.remove_all_tags(start_pos, end_pos);
+		entry.buffer.remove_tag_by_name("red_bg", start_pos, end_pos);
 		
 		tagging(start_pos, text, urls, "url");
 		tagging(start_pos, text, nicks, "nick");
