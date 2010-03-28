@@ -153,10 +153,14 @@ public class MainWindow : Window {
 		
 		configure_event.connect((widget, event) => {
 			//saving window size and position
+			int x;
+			int y;
+			get_position(out x, out y);
+			
 			prefs.width = event.width;
 			prefs.height = event.height;
-			prefs.left = event.x;
-			prefs.top = event.y;
+			prefs.left = x;
+			prefs.top = y;
 			
 			return false;
 		});
@@ -230,7 +234,7 @@ public class MainWindow : Window {
 		user_info.popup = popup;
 		
 		//tray setup
-		tray = new TrayIcon(this, logo, logo_fresh);
+		tray = new TrayIcon(this, prefs, logo, logo_fresh);
 		tray.set_visible(prefs.showTray);
 		
 		tray.popup = popup;

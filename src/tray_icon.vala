@@ -24,6 +24,7 @@ using Gtk;
 public class TrayIcon : StatusIcon {
 	
 	private MainWindow parent;
+	private Prefs prefs;
 	private Gdk.Pixbuf logo;
 	private Gdk.Pixbuf logo_fresh;
 	
@@ -33,10 +34,13 @@ public class TrayIcon : StatusIcon {
 		set{ _popup = value; }
 	}
 	
-	public TrayIcon(MainWindow _parent, Gdk.Pixbuf _logo, Gdk.Pixbuf _logo_fresh) {
+	public TrayIcon(MainWindow _parent, Prefs _prefs, Gdk.Pixbuf _logo,
+		Gdk.Pixbuf _logo_fresh) {
+		
 		base;
 		
 		parent = _parent;
+		prefs = _prefs;
 		logo = _logo;
 		logo_fresh = _logo_fresh;
 		set_from_pixbuf(logo);
@@ -59,6 +63,7 @@ public class TrayIcon : StatusIcon {
 				}
 				
 				parent.show();
+				parent.move(prefs.left, prefs.top);
 			}
 		});
 	}
