@@ -11,6 +11,7 @@ body{background-color: {{bg_color}}; color: {{fg_color}}; font-size: {{font_size
 .content_me{margin-left: 0px; margin-right: 60px;}
 .content_fresh{background-color: {{fresh_color}}; border-color: {{fresh_color}};}
 .date{float: right; font-size: {{font_size_small}}pt; color: {{lt_color}};}
+.favorite{float: right; margin-left: 5px;}
 .content_me .date{float: none;}
 .content_me .nick{cursor: default;}
 a, a.tags{color: {{sl_color}};}

@@ -219,4 +219,47 @@ public class TimelineList : TimelineListAbstract {
 		
 		refresh();
 	}
+	
+	/** add/remove to favorites */
+	private override void favorited(string id) {
+		Status? status = null;
+		
+		foreach(Status s in lst) {
+			if(s.id == id) {
+				status = s;
+				break;
+			}
+		}
+		
+		if(status == null)
+			return;
+		
+		try {
+			if(!status.is_favorite) //add to favorites
+				api.favorite_create(id);
+			else
+				api.favorite_destroy(id);
+		} catch(RestError e) {
+			updating_error(e.message);
+			return;
+		}
+		
+		status.is_favorite = !status.is_favorite;
+		
+		string img_path;
+		if(status.is_favorite) {
+			img_path = Config.FAVORITE_PATH;
+			deleted(_("Message was added to favorites")); //signal
+		}
+		else {
+			img_path = Config.FAVORITE_NO_PATH;
+			deleted(_("Message was removed from favorites")); //signal
+		}
+		
+		string script = """var m = document.getElementById('fav_%s');
+			m.src = '%s';""".printf(status.id, img_path);
+		view.execute_script(script);
+		
+		warning("ok");
+	}
 }

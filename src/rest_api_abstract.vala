@@ -45,6 +45,7 @@ public class Status : Object {
 	public string to_status_id = "";
 	
 	public bool is_retweet = false;
+	public bool is_favorite = false;
 	
 	public bool tmp = false;
 }
@@ -141,6 +142,9 @@ public abstract class RestAPIAbstract : Object {
 	public virtual Status get_status(string id) throws RestError, ParseError {
 		return new Status();
 	}
+	
+	public virtual void favorite_create(string id) throws RestError {}
+	public virtual void favorite_destroy(string id) throws RestError {}
 	
 	public virtual void follow_create(string screen_name) throws RestError {}
 	public virtual void follow_destroy(string screen_name) throws RestError {}

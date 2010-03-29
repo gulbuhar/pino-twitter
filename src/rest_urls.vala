@@ -80,6 +80,14 @@ public class RestUrls : Object {
 		return prefix + "friendships/destroy/%s.xml";
 	}
 	
+	public string favorite_create() {
+		return prefix + "favorites/create/%s.xml";
+	}
+	
+	public string favorite_destroy() {
+		return prefix + "favorites/destroy/%s.xml";
+	}
+		
 	public RestUrls(ServiceType _stype, string _prefix = "") {
 		set_prefix(_stype, _prefix);
 	}

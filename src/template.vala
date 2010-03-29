@@ -283,7 +283,8 @@ public class Template : Object {
 				var user_avatar = i.user_avatar;
 				var name = i.user_name;
 				var screen_name = i.user_screen_name;
-				//var text = i.text;
+				var favorite_text = _("Add to favorite");
+				var defavorite_text = _("Remove from favorite");
 				
 				if(i.is_retweet) {
 					re_icon = "<span class='re'>Rt:</span> ";
@@ -307,6 +308,13 @@ public class Template : Object {
 					map["name"] = screen_name;
 			
 				map["time"] = time;
+				
+				if(i.is_favorite) {
+					map["favorite_path"] = Config.FAVORITE_PATH;
+				} else {
+					map["favorite_path"] = Config.FAVORITE_NO_PATH;
+				}
+				
 				map["content"] = making_links(text);
 				
 				if(prefs.rtlSupport && is_rtl(clear_notice.replace(text, -1, 0, "")))
