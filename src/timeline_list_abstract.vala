@@ -243,6 +243,8 @@ public abstract class TimelineListAbstract : HBox {
 	
 	protected virtual void destroy_status(string id) {}
 	
+	private virtual void favorited(string id) {}
+	
 	protected abstract void get_older();
 	
 	public virtual void refresh() {
@@ -299,6 +301,11 @@ public abstract class TimelineListAbstract : HBox {
 			case "retweet":
 				string status_id = params;
 				retweet(find_status(status_id));
+				return true;
+			
+			case "favorited":
+				string status_id = params;
+				favorited(status_id);
 				return true;
 			
 			case "delete":

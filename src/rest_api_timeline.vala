@@ -43,6 +43,18 @@ public class RestAPITimeline : RestAPIAbstract {
 		make_request(req_url, "POST");
 	}
 	
+	/* add to favorites */
+	public override void favorite_create(string id) throws RestError {
+		string req_url = urls.favorite_create().printf(id);
+		make_request(req_url, "POST");
+	}
+	
+	/* remove from favorites */
+	public override void favorite_destroy(string id) throws RestError {
+		string req_url = urls.favorite_destroy().printf(id);
+		make_request(req_url, "POST");
+	}
+	
 	/* for timelines (home, mentions, public etc.) */
 	public override ArrayList<Status>? get_timeline(int count = 0, FullStatus? fstatus = null,
 		string since_id = "", string max_id = "") throws RestError, ParseError {
@@ -123,6 +135,10 @@ public class RestAPITimeline : RestAPIAbstract {
 				    			
 				    			case "in_reply_to_status_id":
 				    				status.to_status_id = iter_in->get_content();
+				    				break;
+				    			
+				    			case "favorited":
+				    				status.is_favorite = iter_in->get_content().to_bool();
 				    				break;
 				    			
 				    			case "retweeted_status":

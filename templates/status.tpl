@@ -3,7 +3,7 @@
 	<div class="content_{{fresh}}" id="{{id}}">
 		<div class="header">
 			{{re_icon}}<a class="nick" href="nickto://{{screen_name}}">{{name}}</a>
-			<span class="date">{{time}}</span>
+			<a class="favorite" href="favorited://{{id}}"><img id="fav_{{id}}" src="{{favorite_path}}" /></a><span class="date">{{time}}</span>
 		</div>
 		<div class="{{rtl_class}}">
 			{{content}}
