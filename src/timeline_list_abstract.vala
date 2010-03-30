@@ -148,7 +148,6 @@ public abstract class TimelineListAbstract : HBox {
 				more.show_at(ax, ay);
 				//warning("motion: %fx%f", ax, ay);
 				//warning("root: %fx%f", event.x_root, event.y_root);
-				warning(need_more_button.to_string());
 			} else {
 				if(more.visible)
 					more.hide();

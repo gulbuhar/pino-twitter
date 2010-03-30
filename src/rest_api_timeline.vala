@@ -74,6 +74,9 @@ public class RestAPITimeline : RestAPIAbstract {
 			case TimelineType.USER:
 				req_url = urls.users_timeline().printf(fstatus.user_screen_name);
 				break;
+			case TimelineType.FAVORITES:
+				req_url = urls.favorites();
+				break;
 		}
 		
 		var map = new HashTable<string, string>(str_hash, str_equal);
