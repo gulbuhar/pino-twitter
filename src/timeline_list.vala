@@ -114,6 +114,8 @@ public class TimelineList : TimelineListAbstract {
 			return result;
 		}
 		
+		warning("SIZE: %d", result.size);
+		
 		if(result.size > 0) { //if we got some statuses
 			if((!_parent_focus || !act.active) && lst.size > 0) { //if this list is not visible and we have updates
 				
@@ -133,8 +135,6 @@ public class TimelineList : TimelineListAbstract {
 		
 		if(!parent_focus) //delete only if main window out of focus
 			delete_extra();
-		
-		warning("SIZE: %d", lst.size);
 		
 		refresh(true);
 		

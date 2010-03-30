@@ -87,7 +87,8 @@ errordomain ParseError {
 public static enum TimelineType {
 	HOME,
 	MENTIONS,
-	USER
+	USER,
+	FAVORITES
 }
 
 public abstract class RestAPIAbstract : Object {

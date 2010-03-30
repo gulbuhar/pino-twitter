@@ -460,6 +460,13 @@ public class MainWindow : Window {
 			user_info.act.activate();
 		});
 		
+		var showFavoritesAct = new Action("ShowFavorites", _("Show favorites..."),
+			null, null);
+		showFavoritesAct.set_gicon(Icon.new_for_string(Config.FAVORITE_PATH));
+		showFavoritesAct.activate.connect(() => {
+			new FavoritesViewDialog(this, accounts, template);
+		});
+		
 		updateAct = new Action("FileUpdate", _("Update timeline"),
 			null, STOCK_REFRESH);
 		updateAct.activate.connect(refresh_action);
@@ -522,6 +529,7 @@ public class MainWindow : Window {
 		actGroup.add_action_with_accel(createAct, "<Ctrl>N");
 		actGroup.add_action_with_accel(createDirectAct, "<Ctrl>D");
 		actGroup.add_action(showUserAct);
+		actGroup.add_action(showFavoritesAct);
 		actGroup.add_action_with_accel(updateAct, "<Ctrl>R");
 		actGroup.add_action_with_accel(quitAct, "<Ctrl>Q");
 		actGroup.add_action(editMenu);
@@ -550,6 +558,7 @@ public class MainWindow : Window {
 					<menuitem action="FileCreateDirect" />
 					<separator />
 					<menuitem action="ShowUser" />
+					<menuitem action="ShowFavorites" />
 					<separator />
 					<menuitem action="FileUpdate" />
 					<separator />

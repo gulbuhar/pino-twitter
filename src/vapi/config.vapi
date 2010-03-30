@@ -36,6 +36,7 @@ namespace Config
 	public const string DIRECT_FRESH_PATH;
 	public const string FAVORITE_PATH;
 	public const string FAVORITE_NO_PATH;
+	//public const string FAVORITE_MENU_PATH;
 	public const string PROGRESS_PATH;
 	public const string DIRECT_REPLY_PATH;
 	public const string REPLY_PATH;
