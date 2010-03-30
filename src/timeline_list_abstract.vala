@@ -73,6 +73,7 @@ public abstract class TimelineListAbstract : HBox {
 	public signal void replyto(Status status);
 	public signal void retweet(Status status);
 	public signal void directreply(string screen_name);
+	public signal void deleted(string message);
 	
 	protected signal void need_more();
 	
@@ -196,6 +197,12 @@ public abstract class TimelineListAbstract : HBox {
 			set_empty();
 	}
 	
+	public virtual void stop() {
+		api.stop();
+		if(lst.size == 0)
+			update_content(template.generate_message(_("Canceled")));
+	}
+	
 	public virtual void set_empty(bool full = true) {
 		lst.clear();
 		last_focused = 0;
@@ -243,15 +250,13 @@ public abstract class TimelineListAbstract : HBox {
 	
 	protected virtual void destroy_status(string id) {}
 	
-	private virtual void favorited(string id) {}
-	
 	protected abstract void get_older();
 	
-	public virtual void refresh() {
+	public virtual void refresh(bool with_favorites = false) {
 		if(lst.size == 0)
 			set_empty();
 		else
-			update_content(template.generate_timeline(lst, last_focused));
+			update_content(template.generate_timeline(lst, last_focused, with_favorites));
 	}
 	
 	/* removing extra statuses or messages */
@@ -299,6 +304,7 @@ public abstract class TimelineListAbstract : HBox {
 				return true;
 			
 			case "retweet":
+				warning("start");
 				string status_id = params;
 				retweet(find_status(status_id));
 				return true;
@@ -352,6 +358,50 @@ public abstract class TimelineListAbstract : HBox {
 			}
 		}
 		return st;
+	}
+	
+	/** add/remove to favorites */
+	protected virtual void favorited(string id) {
+		warning("start favorite");
+		Status? status = null;
+		
+		foreach(Status s in lst) {
+			if(s.id == id) {
+				status = s;
+				break;
+			}
+		}
+		
+		if(status == null)
+			return;
+		
+		try {
+			if(!status.is_favorite) //add to favorites
+				api.favorite_create(id);
+			else
+				api.favorite_destroy(id);
+		} catch(RestError e) {
+			updating_error(e.message);
+			return;
+		}
+		
+		status.is_favorite = !status.is_favorite;
+		
+		string img_path;
+		if(status.is_favorite) {
+			img_path = Config.FAVORITE_PATH;
+			deleted(_("Message was added to favorites")); //signal
+		}
+		else {
+			img_path = Config.FAVORITE_NO_PATH;
+			deleted(_("Message was removed from favorites")); //signal
+		}
+		
+		string script = """var m = document.getElementById('fav_%s');
+			m.src = '%s';""".printf(status.id, img_path);
+		view.execute_script(script);
+		
+		warning("ok");
 	}
 	
 	/* show popup menu */

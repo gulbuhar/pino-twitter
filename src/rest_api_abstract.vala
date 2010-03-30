@@ -95,6 +95,8 @@ public abstract class RestAPIAbstract : Object {
 	protected RestUrls urls;
 	public Account? account;
 	
+	private Session? session = null;
+	
 	public RestAPIAbstract(Account? _account) {
 		urls = new RestUrls(ServiceType.UNKNOWN);
 		set_auth(_account);
@@ -177,6 +179,12 @@ public abstract class RestAPIAbstract : Object {
 		throw new RestError.CODE("Account is not found");
 	}
 	
+	public void stop() {
+		if(session != null) {
+			session.abort();
+		}
+	}
+	
 	public string make_request(owned string req_url, string method,
 		HashTable<string, string> params = new HashTable<string, string>(str_hash, str_equal),
 		bool async = true, int retry = 3) throws RestError {
@@ -206,7 +214,7 @@ public abstract class RestAPIAbstract : Object {
 		//send signal about all requests
         request("%s: %s".printf(method, req_url));
         
-        Session session;
+        //Session session;
         
 		if(async)
 			session = new SessionAsync();
