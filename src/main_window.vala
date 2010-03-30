@@ -69,6 +69,7 @@ public class MainWindow : Window {
 	private Popups notify;
 	
 	public bool first_show = true;
+	private bool updating = false;
 	
 	public MainWindow() {
 		logo = new Gdk.Pixbuf.from_file(Config.LOGO_PATH);
@@ -318,6 +319,9 @@ public class MainWindow : Window {
 			re_tweet.set_state_reply(status);
 		});
 		home.deleted.connect((msg) => {
+			statusbar.set_status(StatusbarSmart.StatusType.DATA_SENT, msg);
+		});
+		mentions.deleted.connect((msg) => {
 			statusbar.set_status(StatusbarSmart.StatusType.DATA_SENT, msg);
 		});
 		direct.deleted.connect((msg) => {
@@ -622,7 +626,7 @@ public class MainWindow : Window {
 		var direct_list = direct.update();
 		statusbar.set_status(StatusbarSmart.StatusType.FINISH_OK);
 		notify.start(home_list, mentions_list, direct_list);
-		warning("notofication is ok");
+		warning("notification is ok");
 		updateAct.set_sensitive(true);
 	}
 	

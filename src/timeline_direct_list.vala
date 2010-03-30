@@ -39,7 +39,7 @@ public class TimelineDirectList : TimelineList {
 	}
 	
 	/* refresh timeline */
-	public override void refresh() {
+	public override void refresh(bool with_favorites = false) {
 		if(lst.size == 0)
 			set_empty();
 		else

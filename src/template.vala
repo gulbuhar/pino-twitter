@@ -215,7 +215,8 @@ public class Template : Object {
 	}
 	
 	/* render timeline, mentions */
-	public string generate_timeline(Gee.ArrayList<Status> friends, int last_focused) {
+	public string generate_timeline(Gee.ArrayList<Status> friends,
+		int last_focused, bool with_favorites = false) {
 		login_changed();
 		
 		string content = "";
@@ -233,6 +234,7 @@ public class Template : Object {
 			rounded_str = "-webkit-border-radius:5px;";
 		
 		foreach(Status i in friends) {
+			//warning(i.is_favorite.to_string());
 			string text = strip_tags_plus(i.text);
 			
 			//checking for new statuses
@@ -309,10 +311,14 @@ public class Template : Object {
 			
 				map["time"] = time;
 				
-				if(i.is_favorite) {
-					map["favorite_path"] = Config.FAVORITE_PATH;
+				if(with_favorites) {
+					if(i.is_favorite) {
+						map["favorite"] = """<a class="favorite" href="favorited://%s"><img id="fav_%s" src="%s" />""".printf(i.id, i.id, Config.FAVORITE_PATH);
+					} else {
+						map["favorite"] = """<a class="favorite" href="favorited://%s"><img id="fav_%s" src="%s" />""".printf(i.id, i.id, Config.FAVORITE_NO_PATH);
+					}
 				} else {
-					map["favorite_path"] = Config.FAVORITE_NO_PATH;
+					map["favorite"] = "";
 				}
 				
 				map["content"] = making_links(text);
