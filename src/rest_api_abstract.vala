@@ -159,6 +159,9 @@ public abstract class RestAPIAbstract : Object {
 			case 2:
 				throw new RestError.CODE("Connection problems: can't connect to the server.");
 			
+			case 400:
+				throw new RestError.CODE("%d Rate limiting: you have reached the limit requests.".printf(status_code));
+			
 			case 401:
 				throw new RestError.CODE("%d Unauthorized: the request requires user authentication.".printf(status_code));
 			
