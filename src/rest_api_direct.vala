@@ -41,7 +41,7 @@ public class RestAPIDirect : RestAPIAbstract {
 	
 	/* get direct messages (inbox) */
 	public override ArrayList<Status>? get_timeline(int count = 0, FullStatus? fstatus = null,
-		string since_id = "", string max_id = "") throws RestError, ParseError {
+		string since_id = "", string max_id = "", bool sync = true) throws RestError, ParseError {
 		
 		if(account == null)
 			no_account();

@@ -189,6 +189,7 @@ public class TimelineList : TimelineListAbstract {
 	
 	/* get older statuses */
 	protected override void get_older() {
+		warning("more");
 		if(lst.size < 1)
 			return;
 		

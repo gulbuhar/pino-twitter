@@ -57,7 +57,7 @@ public class RestAPITimeline : RestAPIAbstract {
 	
 	/* for timelines (home, mentions, public etc.) */
 	public override ArrayList<Status>? get_timeline(int count = 0, FullStatus? fstatus = null,
-		string since_id = "", string max_id = "") throws RestError, ParseError {
+		string since_id = "", string max_id = "", bool async = true) throws RestError, ParseError {
 		
 		if(account == null)
 			no_account();
@@ -87,7 +87,8 @@ public class RestAPITimeline : RestAPIAbstract {
 		if(max_id != "")
 			map.insert("max_id", max_id);
 		warning(req_url);
-		string data = make_request(req_url, "GET", map);
+		
+		string data = make_request(req_url, "GET", map, async);
 		
 		return parse_timeline(data, fstatus);
 	}
