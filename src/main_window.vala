@@ -625,15 +625,18 @@ public class MainWindow : Window {
 	}
 	
 	public void refresh_action() {
-		warning("refresh_action 1");
 		updateAct.set_sensitive(false);
 		
 		statusbar.set_status(StatusbarSmart.StatusType.UPDATING);
 		
+		warning("start home");
 		var home_list = home.update();
+		warning("start mentions");
 		var mentions_list = mentions.update();
+		warning("start direct");
 		var direct_list = direct.update();
 		statusbar.set_status(StatusbarSmart.StatusType.FINISH_OK);
+		warning("end of update, starting notification");
 		notify.start(home_list, mentions_list, direct_list);
 		warning("notification is ok");
 		updateAct.set_sensitive(true);
