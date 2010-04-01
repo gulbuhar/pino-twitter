@@ -64,9 +64,9 @@ public class FullStatus : Status {
 }
 
 public struct AuthData {
-	public string login = "";
-	public string password = "";
-	public string service = "";
+	public string login;
+	public string password;
+	public string service;
 } 
 
 public static enum ServiceType {
@@ -137,7 +137,7 @@ public abstract class RestAPIAbstract : Object {
 	public signal void request(string req);
 	
 	public virtual ArrayList<Status>? get_timeline(int count = 0, FullStatus? fstatus = null,
-		string since_id = "", string max_id = "") throws RestError, ParseError {
+		string since_id = "", string max_id = "", bool sync = true) throws RestError, ParseError {
 		
 		return null;
 	}
@@ -261,7 +261,7 @@ public abstract class RestAPIAbstract : Object {
 		
 		string req_url = urls.friendship();
 		
-		HashTable map = new HashTable<string, string>(str_hash, str_equal);
+		var map = new HashTable<string, string>(str_hash, str_equal);
 		map.insert("source_screen_name", account.login);
 		map.insert("target_screen_name", screen_name);
 		warning(req_url);

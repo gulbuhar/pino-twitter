@@ -122,16 +122,17 @@ public abstract class TimelineListAbstract : HBox {
 				need_more(); //emit signal
 			}
 		});
-		*/
 		
+		this.need_more.connect(() => {
+			mb.show();
+
+		});
+		*/
 		var event_view = new EventBox();
 		event_view.add(scroll);
 		
-		
 		vbox = new VBox(false, 0);
 		vbox.pack_end(event_view, true, true, 0);
-		
-		
 		
 		more = new MoreWindow();
 		more.moar_event.connect(get_older);
@@ -146,6 +147,7 @@ public abstract class TimelineListAbstract : HBox {
 				int ax = (int)(event.x_root - event.x + 20);
 				int ay = (int)(event.y_root + height - event.y - 60);
 				more.show_at(ax, ay);
+				
 				//warning("motion: %fx%f", ax, ay);
 				//warning("root: %fx%f", event.x_root, event.y_root);
 			} else {
