@@ -42,7 +42,6 @@ public class SmartTimer : Object {
 		if(elapsed >= interval) {
 			elapsed = 0;
 			timeout();
-			warning("timeout!");
 		}
 		
 		return true;
