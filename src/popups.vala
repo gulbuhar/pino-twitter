@@ -75,7 +75,8 @@ public class Popups : Object {
 		if(direct)
 			head = "%s %s %s".printf(_("Direct message"), _("from"), head);
 		
-		Notification popup = new Notification(head, status.text, null, null);
+		Notification popup = new Notification(head,
+			GLib.Markup.escape_text(status.text), null, null);
 		
 		string av_path = cache.get_or_download(status.user_avatar,
 			Cache.Method.ASYNC, false);
