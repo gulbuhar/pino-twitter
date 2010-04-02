@@ -47,7 +47,7 @@ namespace TimeUtils {
 		var tmp = Time.local(tt);
 		int delta = tz_delta(tmp);
 		int int_t = (int)tt + delta;
-		warning(delta.to_string());
+		
 		return Time.local((time_t)int_t);
 	}
 }

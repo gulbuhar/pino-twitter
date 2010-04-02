@@ -256,7 +256,6 @@ public class Template : Object {
 			
 			//making human-readable time/date
 			string time = time_to_human_delta(i.created_at_s, i.created_at);
-			warning(i.created_at_s);
 			
 			var by_who = "";
 				

@@ -76,6 +76,7 @@ public class PrefDialog : Dialog {
 		urlShorten = new ComboBox.text();
 		urlShorten.append_text("goo.gl");
 		urlShorten.append_text("is.gd");
+		urlShorten.append_text("ur1.ca");
 		
 		//enabling spell checking
 		enableSpell = new CheckButton.with_label(_("Enable spell checking"));
@@ -250,6 +251,10 @@ public class PrefDialog : Dialog {
 				urlShorten.set_active(1);
 				break;
 			
+			case "ur1.ca":
+				urlShorten.set_active(2);
+				break;
+			
 			default:
 				urlShorten.set_active(0);
 				break;
@@ -320,6 +325,10 @@ public class PrefDialog : Dialog {
 				
 				case 1:
 					prefs.urlShorten = "is.gd";
+					break;
+				
+				case 2:
+					prefs.urlShorten = "ur1.ca";
 					break;
 			}
 		});
