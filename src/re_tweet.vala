@@ -103,6 +103,8 @@ public class ReTweet : VBox {
 			
 			shortAct.set_sensitive(true);
 			set_sensitive(true);
+			
+			parent.set_focus(entry);
 		});
 		
 		//enable or disable shrten url action
