@@ -99,6 +99,7 @@ public class RestAPIRe : RestAPIAbstract {
 				
 				case "created_at":
 					status.created_at = str_to_time(iter->get_content());
+					status.created_at_s = iter->get_content();
 					break;
 				
 				case "text":

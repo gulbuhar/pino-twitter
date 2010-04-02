@@ -91,6 +91,7 @@ public class RestAPIDirect : RestAPIAbstract {
 				    			
 				    			case "created_at":
 				    				status.created_at = str_to_time(iter_in->get_content());
+				    				status.created_at_s = iter_in->get_content();
 				    				break;
 				    			
 				    			case "text":
