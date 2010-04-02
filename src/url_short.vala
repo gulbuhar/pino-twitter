@@ -65,6 +65,10 @@ public class UrlShort : Object {
 					case "is.gd":
 						new_url = shorter_isgd(url);
 						break;
+					
+					case "ur1.ca":
+						new_url = shorter_ur1(url);
+						break;
 				}
 				
 				warning(new_url);
@@ -126,5 +130,20 @@ public class UrlShort : Object {
 		string req_url = "http://is.gd/api.php";
 		
 		return api.make_request(req_url, "GET", map);
+	}
+	
+	/* shorten with http://ur1.ca via Behrooz Shabani <everplays@gmail.com> */
+	private string shorter_ur1(string url) throws RestError {
+		var map = new HashTable<string, string>(str_hash, str_equal);
+		map.insert("longurl", url);
+		map.insert("submit", "Make it an ur1!");
+
+		string response = api.make_request("http://ur1.ca/", "POST", map);
+		MatchInfo ur1_match;
+		var ur1_regex = new Regex("Your ur1 is: <a href=\"([^\"]+)\">");
+		if(ur1_regex.match(response, 0, out ur1_match))
+			return (string) ur1_match.fetch(1);
+		else
+			return url;
 	}
 }
