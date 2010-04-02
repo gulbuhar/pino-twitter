@@ -32,6 +32,7 @@ public class Status : Object {
 	public string id;
 	public string text;
 	public Time created_at = Time();
+	public string created_at_s = "";
 	public string user_name;
 	public string user_screen_name;
 	public string user_avatar;

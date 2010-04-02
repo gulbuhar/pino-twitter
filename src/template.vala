@@ -155,6 +155,10 @@ public class Template : Object {
 	
 	/* render direct inbox */
 	public string generate_direct(Gee.ArrayList<Status> friends, int last_focused) {
+		//changing locale to C
+		string currentLocale = GLib.Intl.setlocale(GLib.LocaleCategory.TIME, null);
+		GLib.Intl.setlocale(GLib.LocaleCategory.TIME, "C");
+		
 		login_changed();
 		
 		string content = "";
@@ -179,7 +183,7 @@ public class Template : Object {
 				fresh = "fresh";
 			
 			//making human-readable time/date
-			string time = time_to_human_delta(now, i.created_at);
+			string time = time_to_human_delta(i.created_at_s, i.created_at);
 			
 			var user_avatar = i.user_avatar;
 			var name = i.user_screen_name;
@@ -211,12 +215,20 @@ public class Template : Object {
 			content += render(status_direct_template, map);
 		}
 		
+		//back to the normal locale
+		GLib.Intl.setlocale(GLib.LocaleCategory.TIME, currentLocale);
+		
 		return generate(content);
 	}
 	
 	/* render timeline, mentions */
 	public string generate_timeline(Gee.ArrayList<Status> friends,
 		int last_focused, bool with_favorites = false) {
+		
+		//changing locale to C
+		string currentLocale = GLib.Intl.setlocale(GLib.LocaleCategory.TIME, null);
+		GLib.Intl.setlocale(GLib.LocaleCategory.TIME, "C");
+		
 		login_changed();
 		
 		string content = "";
@@ -243,7 +255,8 @@ public class Template : Object {
 				fresh = "fresh";
 			
 			//making human-readable time/date
-			string time = time_to_human_delta(now, i.created_at);
+			string time = time_to_human_delta(i.created_at_s, i.created_at);
+			warning(i.created_at_s);
 			
 			var by_who = "";
 				
@@ -339,6 +352,9 @@ public class Template : Object {
 			}
 		}
 		
+		//back to the normal locale
+		GLib.Intl.setlocale(GLib.LocaleCategory.TIME, currentLocale);
+		
 		return generate(content);
 	}
 	
@@ -386,8 +402,9 @@ public class Template : Object {
 		return result;
 	}
 	
-	private string time_to_human_delta(Time now, Time t) {
-		var delta = (int)(now.mktime() - t.mktime());
+	private string time_to_human_delta(string created_at_s, Time t) {
+		int delta = TimeParser.time_to_diff(created_at_s);//(int)(now.mktime() - t.mktime());
+		
 		if(delta < 30)
 			return _("a few seconds ago");
 		if(delta < 120)
@@ -399,7 +416,7 @@ public class Template : Object {
 		if(delta < 86400)
 			return _("about %i hours ago").printf(delta / 3600);
 		
-		return t.format("%k:%M %b %d %Y");
+		return str_to_time(created_at_s).format("%k:%M %b %d %Y");
 	}
 	
 	public void reload() {

@@ -75,6 +75,12 @@ namespace Gtk
   }
 }
 
+[CCode (cheader_filename = "time_parser.h")]
+namespace TimeParser {
+	[CCode (cname = "time_to_diff")]
+	public int time_to_diff(string datetime);
+}
+
 /*
 [CCode (cheader_filename = "sha1.h")]
 namespace SHA1
