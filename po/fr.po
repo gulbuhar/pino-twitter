@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Dorian JAMINAIS <dorian.jaminais@gmail.com>, 2009.
 # Frederic Bezies <fredbezies@gmail.com>, 2010.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -37,8 +37,11 @@ msgid "Sure you want to delete this account?"
 msgstr "Êtes vous sûr de vouloir supprimer ce compte ?"
 
 #: src/dm_entry.vala:35
-msgid "You can't send direct message to this user. He (or she) must follow you too"
-msgstr "Vous ne pouvez pas envoyer de messages directs à cet utilisateur. Lui (ou elle) doit aussi vous suivre"
+msgid ""
+"You can't send direct message to this user. He (or she) must follow you too"
+msgstr ""
+"Vous ne pouvez pas envoyer de messages directs à cet utilisateur. Lui (ou "
+"elle) doit aussi vous suivre"
 
 #: src/dm_entry.vala:42
 msgid "Check"
@@ -123,11 +126,11 @@ msgstr "Mis à jour "
 
 #: src/main_window.vala:371
 msgid "New status"
-msgstr "Nouveau status"
+msgstr "Nouveau statut"
 
 #: src/main_window.vala:372
 msgid "Create new status"
-msgstr "Créer un nouveau status"
+msgstr "Créer un nouveau statut"
 
 #: src/main_window.vala:375
 msgid "New direct message"
@@ -135,7 +138,7 @@ msgstr "Nouveau message direct"
 
 #: src/main_window.vala:376
 msgid "Create new direct message"
-msgstr "Creer un nouveau status"
+msgstr "Creer un nouveau message direct"
 
 #: src/main_window.vala:382
 msgid "Show user"
@@ -220,7 +223,7 @@ msgstr "Intervalle de mise à jour (en minutes)"
 
 #: src/pref_dialog.vala:70
 msgid "Default number of statuses"
-msgstr "Nombre de status par défaut"
+msgstr "Nombre de statuts par défaut"
 
 #: src/pref_dialog.vala:74
 msgid "URL shortening service"
@@ -268,7 +271,7 @@ msgstr "Cache"
 
 #: src/pref_dialog.vala:130
 msgid "Notification area"
-msgstr "Aire de notification"
+msgstr "Zone de notification"
 
 #: src/pref_dialog.vala:134
 msgid "Notification"
@@ -373,7 +376,7 @@ msgstr "Entrez d'abord quelque chose"
 
 #: src/re_tweet.vala:356
 msgid "Sending status..."
-msgstr "Envoi du status..."
+msgstr "Envoi du statut..."
 
 #: src/re_tweet.vala:373
 msgid "Your status has been sent successfully"
@@ -484,7 +487,7 @@ msgstr "Web"
 
 #: src/user_info_list.vala:90
 msgid "follow"
-msgstr "Suit"
+msgstr "suivi"
 
 #: src/user_info_list.vala:183
 msgid "This user does not exist"
