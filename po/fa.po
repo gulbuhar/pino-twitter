@@ -1,365 +1,364 @@
-# Galician Translation of Pino.
-# Copyright (C) 2010
-# This file is distributed under the same license as the Pino package.
-# Gonçalo Cordeiro <gzcordeiro@gmail.com>, 2010.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Anmad Sufi Mahmudi <ahmad.pub@gmail.com>, 2010.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Pino 0.1.3\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-03-07 11:29+0200\n"
-"PO-Revision-Date: 2010-02-26 01:34+0200\n"
-"Last-Translator: Gonçalo Cordeiro <gzcordeiro@gmail.com>\n"
-"Language-Team: Galician [gl] <proxecto@trasno.net>\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Ahmad Sufi Mahmudi <ahmad.pub@gmail.com>\n"
+"Language-Team: Persian <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: WordForge 0.7 RC1\n"
 
 #: src/account_action.vala:42
 msgid "Accounts"
-msgstr "Contas"
+msgstr "حساب‌ها"
 
 #: src/account_widget.vala:75 src/edit_account.vala:74
 msgid "Login"
-msgstr "Nome de inicio"
+msgstr "ورود"
 
 #: src/account_widget.vala:76 src/edit_account.vala:83
 msgid "Service"
-msgstr "Servizo"
+msgstr "خدمات"
 
 #: src/account_widget.vala:77
 msgid "API proxy"
-msgstr "Proxy API"
+msgstr "پیشکار API"
 
-# traducir como «chíos» ou equivalente?
 #: src/account_widget.vala:159
 msgid "Sure you want to delete this account?"
-msgstr "Está segura/o de que quere eliminar esta conta?"
+msgstr "آیا مطمئن هستید که می‌خواهید این حساب را پاک کنید؟"
 
 #: src/dm_entry.vala:35
-msgid "You can't send direct message to this user. He (or she) must follow you too"
-msgstr "Non lle pode enviar unha mensaxe directa a esta persoa usuaria. Ela ou el tamén o debe seguir"
+msgid ""
+"You can't send direct message to this user. He (or she) must follow you too"
+msgstr ""
+"شما نمی‌توانید به این کاربر پیام مستقیم ارسال کنید. او نیز می‌بایست شما را دنبال کند"
 
 #: src/dm_entry.vala:42
 msgid "Check"
-msgstr "Verificar"
+msgstr "بررسی"
 
 #: src/dm_entry.vala:58
 msgid "You can send direct message to this user"
-msgstr "Pódelle enviar unha mensaxe directa a esta persoa usuaria"
+msgstr "شما می‌توانید به این کاربر پیام مستقیم بفرستید"
 
 #: src/dm_entry.vala:77
 msgid "Checking..."
-msgstr "Verificando..."
+msgstr "در حال بررسی کردن..."
 
 #: src/edit_account.vala:70
 msgid "Edit account"
-msgstr "Editar unha conta"
+msgstr "ویرایش حساب کاربری"
 
 #: src/edit_account.vala:72
 msgid "Create new account"
-msgstr "Crear unha conta nova"
+msgstr "ساختن حساب جدید"
 
 #: src/edit_account.vala:78
 msgid "Password"
-msgstr "Contrasinal"
+msgstr "گذرواژه"
 
 #: src/edit_account.vala:97
 msgid "API proxy or other service"
-msgstr "Proxy API ou outro servizo"
+msgstr "پیشکار API یا سرویس‌های دیگر"
 
 #: src/edit_account.vala:109 src/pref_dialog.vala:209
 msgid "Account"
-msgstr "Conta"
+msgstr "حساب‌کاربری"
 
 #: src/edit_account.vala:183
 msgid "You must enter a proxy address"
-msgstr "Debe introducir un enderezo de proxy"
+msgstr "شما باید یک نشانی پیشکار را بنویسید"
 
 #: src/edit_account.vala:198
 msgid "Proxy address must contain a valid url"
-msgstr "O enderezo de proxy debe conter un URL válido"
+msgstr "نشانی پیشکار باید دارای نشانی اینترنتی درست باشد"
 
 #: src/edit_account.vala:216
 msgid "You must fill in all fields"
-msgstr "Debe encher todos os campos"
+msgstr "شما باید تمام جاها را پر کنید"
 
 #: src/main_window.vala:127
 msgid "Home timeline"
-msgstr "Liña do tempo principal"
+msgstr "خط‌زمانی خانگی"
 
 #: src/main_window.vala:128
 msgid "Show your home timeline"
-msgstr "Mostra a súa liña do tempo principal"
+msgstr "نشان‌دادن خط‌زمانی خانگی شما"
 
 #: src/main_window.vala:134
 msgid "Mentions"
-msgstr "Mencións"
+msgstr "پاسخ‌ها"
 
 #: src/main_window.vala:135
 msgid "Show mentions"
-msgstr "Mostrar as mencións"
+msgstr "نشان‌دادن پاسخ‌ها"
 
 #: src/main_window.vala:141
 msgid "Direct messages"
-msgstr "Mensaxes directas"
+msgstr "پیام‌های مستقیم"
 
 #: src/main_window.vala:142
 msgid "Show direct messages"
-msgstr "Mostrar as mensaxes directas"
+msgstr "نشان‌دادن پیام‌های مستقیم"
 
 #: src/main_window.vala:147
 msgid "User info"
-msgstr "Información de usuario/a"
+msgstr "اطلاعات کاربر"
 
 #: src/main_window.vala:147
 msgid "Show information about user"
-msgstr "Mostrar información sobre o/a usuario/a"
+msgstr "نشان‌دادن اطلاعات دربارهٔ کاربر"
 
 #: src/main_window.vala:273 src/main_window.vala:274 src/main_window.vala:275
 #: src/status_bar_smart.vala:93 src/status_bar_smart.vala:96
 msgid "updated "
-msgstr "actualizado"
+msgstr "به‌روزرسانی شد "
 
 #: src/main_window.vala:371
 msgid "New status"
-msgstr "Estado novo"
+msgstr "وضعیت تازه"
 
 #: src/main_window.vala:372
 msgid "Create new status"
-msgstr "Crear un estado novo"
+msgstr "ساختن وضعیت تازه"
 
 #: src/main_window.vala:375
 msgid "New direct message"
-msgstr "Mensaxe directa nova"
+msgstr "پیام مستقیم تازه"
 
 #: src/main_window.vala:376
 msgid "Create new direct message"
-msgstr "Crear mensaxe directa nova"
+msgstr "ساختن پیام مستقیم تازه"
 
 #: src/main_window.vala:382
 msgid "Show user"
-msgstr "Mostrar o/a usuario/a"
+msgstr "نشان‌دادن کاربر"
 
 #: src/main_window.vala:383
 msgid "Show information about specified user"
-msgstr "Mostrar información sobre a persoa usuaria especificada"
+msgstr "نشان‌دادن اطلاعات دربارهٔ کاربر مشخص‌شده"
 
 #: src/main_window.vala:389
 msgid "Update timeline"
-msgstr "Actualizar a liña do tempo"
+msgstr "به‌روزرسانی خط‌زمانی"
 
 #: src/main_window.vala:392
 msgid "Quit"
-msgstr "Saír"
+msgstr "خروج"
 
-# preferido sobre o calco «editar»
 #: src/main_window.vala:397
 msgid "Edit"
-msgstr "Modificar"
+msgstr "ویرایش"
 
 #: src/main_window.vala:400 src/pref_dialog.vala:57
 msgid "Preferences"
-msgstr "Preferencias"
+msgstr "ترجیحات"
 
 #: src/main_window.vala:405
 msgid "View"
-msgstr "Ver"
+msgstr "نمایش"
 
 #: src/main_window.vala:407
 msgid "Show menu"
-msgstr "Mostrar o menú"
+msgstr "نمایش فهرست"
 
 #: src/main_window.vala:417
 msgid "Show toolbar"
-msgstr "Mostrar a barra de ferramentas"
+msgstr "نمایش نوار ابزار"
 
 #: src/main_window.vala:429
 msgid "Help"
-msgstr "Axuda"
+msgstr "کمک"
 
 #: src/main_window.vala:430
 #, c-format
 msgid "About %s"
-msgstr "Sobre o %s"
+msgstr "دربارهٔ %s"
 
 #: src/more_window.vala:36
 msgid "Get older entries"
-msgstr "Obter entradas máis antigas"
+msgstr "گرفتن ورودی‌های قدیمی‌تر"
 
 #: src/popups.vala:75 src/template.vala:166 src/template.vala:227
 #, c-format
 msgid "Direct message"
-msgstr "Mensaxe directa"
+msgstr "پیام مستقیم"
 
 #: src/popups.vala:75
 msgid "from"
-msgstr "de"
+msgstr "از"
 
 #: src/popups.vala:92
 msgid "Updates"
-msgstr "Actualizacións"
+msgstr "به‌روزرسانی‌ها"
 
 #: src/popups.vala:140
 #, c-format
 msgid "in the home timeline: %d\n"
-msgstr "na liña do tempo principal: %d\n"
+msgstr "در خط‌زمانی خانگی: %d\n"
 
 #: src/popups.vala:143
 #, c-format
 msgid "in mentions: %d\n"
-msgstr "nas mencións: %d\n"
+msgstr "در پاسخ‌ها %d\n"
 
 #: src/popups.vala:146
 #, c-format
 msgid "in direct messages: %d"
-msgstr "nas mensaxes directas: %d"
+msgstr "در پیام‌های مستقیم: %d"
 
 #: src/pref_dialog.vala:66
 msgid "Update interval (in minutes)"
-msgstr "Intervalo de actualización (en minutos)"
+msgstr "فاصله‌زمانی به‌روزرسانی (به دقیقه)"
 
 #: src/pref_dialog.vala:70
 msgid "Default number of statuses"
-msgstr "Número predeterminado de estados"
+msgstr "تعداد پیش‌فرض وضعیت‌ها"
 
 #: src/pref_dialog.vala:74
 msgid "URL shortening service"
-msgstr "Servizo de abreviación de URL"
+msgstr "سرویس کوتاه‌سازی نشانی اینترنتی"
 
 #: src/pref_dialog.vala:80
 msgid "Starting up in tray"
-msgstr "Iniciando na bandexa"
+msgstr "راه‌اندازی در سینی"
 
 #: src/pref_dialog.vala:83
 msgid "Show tray icon"
-msgstr "Mostrar a icona da bandexa"
+msgstr "نشان‌دادن نماد سینی"
 
 #: src/pref_dialog.vala:86
 msgid "For timeline"
-msgstr "Da liña do tempo"
+msgstr "برای خط‌زمانی"
 
 #: src/pref_dialog.vala:87
 msgid "For mentions"
-msgstr "Das mencións"
+msgstr "برای پاسخ‌ها"
 
 #: src/pref_dialog.vala:88
 msgid "For direct messages"
-msgstr "Das mensaxes directas"
+msgstr "برای پیام‌های مستقیم"
 
 #: src/pref_dialog.vala:97
 msgid "Retweets style"
-msgstr "Estilo de retweets"
+msgstr "شیوهٔ دوباره فرستادن"
 
 #: src/pref_dialog.vala:104
 msgid "Clear now"
-msgstr "Limpar agora"
+msgstr "اکنون پاک کن"
 
 #: src/pref_dialog.vala:111
 msgid "General"
-msgstr "Xeral"
+msgstr "کلی"
 
 #: src/pref_dialog.vala:116
 msgid "Retweets"
-msgstr "Retweets"
+msgstr "دوباره فرستاده شده‌ها"
 
 #: src/pref_dialog.vala:119
 msgid "Cache"
-msgstr "Caché"
+msgstr "حافظهٔ نهان"
 
 #: src/pref_dialog.vala:130
 msgid "Notification area"
-msgstr "Área de notificación"
+msgstr "ناحیهٔ آگاه‌سازی"
 
 #: src/pref_dialog.vala:134
 msgid "Notification"
-msgstr "Notificación"
+msgstr "آگاه‌سازی"
 
 #: src/pref_dialog.vala:148
 msgid "Authorization"
-msgstr "Autorización"
+msgstr "اجازه"
 
 #: src/pref_dialog.vala:155
 msgid "Create new account..."
-msgstr "Crear unha conta nova..."
+msgstr "ساختن حساب کاربری تازه"
 
 #: src/pref_dialog.vala:171
 msgid "Statuses"
-msgstr "Estados"
+msgstr "وضعیت‌ها"
 
 #: src/pref_dialog.vala:174
 msgid "Rounded corners"
-msgstr "Cantos arredondados"
+msgstr "گوشه‌های گرد شده"
 
 #: src/pref_dialog.vala:177
 msgid "Right-to-left languages detection"
-msgstr "Detección de idiomas «dereita a esquerda»"
+msgstr "شناسایی زبان‌های راست به چپ"
 
 #: src/pref_dialog.vala:180
 msgid "Full names instead of nicknames"
-msgstr "Nomes completos en vez de alcumes"
+msgstr "نام‌های کامل به‌جای نام‌های مستعار"
 
 #: src/pref_dialog.vala:183
 msgid "Default font"
-msgstr "Tipo de letra predeterminado"
+msgstr "قلم پیش‌فرض"
 
 #: src/pref_dialog.vala:189
 msgid "Fresh statuses color"
-msgstr "Cor dos estados novos"
+msgstr "رنگ وضعیت‌های تازه"
 
 #: src/pref_dialog.vala:194
 msgid "Opacity"
-msgstr "Opacidade"
+msgstr "تیرگی"
 
 #: src/pref_dialog.vala:207
 msgid "Main"
-msgstr "Principal"
+msgstr "اصلی"
 
 #: src/pref_dialog.vala:208
 msgid "Desktop"
-msgstr "Escritorio"
+msgstr "میزکار"
 
 #: src/pref_dialog.vala:210
 msgid "Appearance"
-msgstr "Aparencia"
+msgstr "نما"
 
 #: src/re_tweet.vala:88
 msgid "Shorten URLs..."
-msgstr "URL abreviadas..."
+msgstr "کوتاه‌کردن نشانی‌های اینترنتی..."
 
 #: src/re_tweet.vala:93
 msgid "Shortening URLs..."
-msgstr "Abreviación de URL..."
+msgstr "درحال کوتاه‌کردن نشانی‌های اینترنتی..."
 
 #: src/re_tweet.vala:98
 msgid "URLs was shortened successfully"
-msgstr "O seu URL foi abreviado correctamente"
+msgstr "نشانی‌های اینترنتی با موفقیت کوتاه شد"
 
 #: src/re_tweet.vala:100
 msgid "Nothing to shorten"
-msgstr "Non hai nada que abreviar"
+msgstr "چیزی برای کوتاه‌کردن وجود ندارد"
 
 #: src/re_tweet.vala:123 src/re_tweet.vala:215
 msgid "New status:"
-msgstr "Estado novo:"
+msgstr "وضعیت جدید:"
 
 #: src/re_tweet.vala:132
 msgid "Hide"
-msgstr "Ocultar"
+msgstr "پنهان‌کردن"
 
 #: src/re_tweet.vala:188
 #, c-format
 msgid "Reply to <b>%s</b>:"
-msgstr "Responder a <b>%s</b>:"
+msgstr "پاسخ به <b>%s</b>:"
 
 #: src/re_tweet.vala:228
 msgid "Reply to"
-msgstr "Responder a"
+msgstr "پاسخ به"
 
 #: src/re_tweet.vala:241
 msgid "Direct message to"
-msgstr "Mensaxe directa para"
+msgstr "پیام مستقیم به"
 
 #: src/re_tweet.vala:261
 msgid "Retweet:"
@@ -367,172 +366,144 @@ msgstr "Retweet:"
 
 #: src/re_tweet.vala:290
 msgid "Your status is too long"
-msgstr "O seu estado é demasiado longo"
+msgstr "وضعیت شما خیلی بلند است"
 
 #: src/re_tweet.vala:314
 msgid "Type something first"
-msgstr "Primeiro escriba algo"
+msgstr "ابتدا چیزی بنویسید"
 
 #: src/re_tweet.vala:356
 msgid "Sending status..."
-msgstr "Enviando o estado..."
+msgstr "درحال فرستادن وضعیت..."
 
 #: src/re_tweet.vala:373
 msgid "Your status has been sent successfully"
-msgstr "O seu estado foi enviado correctamente"
+msgstr "وضعیت شما با موفقیت فرستاده‌شد"
 
 #: src/re_tweet.vala:379
 msgid "Sending direct message..."
-msgstr "Enviando a mensaxe directa..."
+msgstr "درحال فرستادن پیام مستقیم..."
 
 #: src/re_tweet.vala:393
 msgid "Your direct message has been sent successfully"
-msgstr "A súa mensaxe directa foi enviada correctamente"
+msgstr "پیام مستقیم شما با موفقیت ارسال شد"
 
 #: src/status_bar_smart.vala:101
 msgid "updating... "
-msgstr "actualizando..."
+msgstr "درحال به‌روزرسانی..."
 
 #: src/status_view_dialog.vala:35
 msgid "Conversation"
-msgstr "Conversa"
+msgstr "گفت‌وگو"
 
 #: src/status_view_dialog.vala:63
 msgid "go to the web page"
-msgstr "ir á páxina web"
+msgstr "رفتن به صفحهٔ وب"
 
 #: src/template.vala:164 src/template.vala:224
 msgid "Reply"
-msgstr "Responder"
+msgstr "پاسخ"
 
 #: src/template.vala:165 src/template.vala:225
 msgid "Delete"
-msgstr "Eliminar"
+msgstr "پاک‌کردن"
 
 #: src/template.vala:226
 msgid "Retweet"
-msgstr "Retweet"
+msgstr "دوباره فرستادن"
 
 #: src/template.vala:248
 msgid "you"
-msgstr "vostede"
+msgstr "شما"
 
 #: src/template.vala:250
 msgid "in reply to"
-msgstr "en resposta a"
+msgstr "در پاسخ به"
 
 #: src/template.vala:375
 msgid "a few seconds ago"
-msgstr "hai uns segundos"
+msgstr "چند ثانیه پیش"
 
 #: src/template.vala:377
 msgid "1 minute ago"
-msgstr "hai 1 minuto"
+msgstr "۱ دقیقه پیش"
 
 #: src/template.vala:379
 #, c-format
 msgid "%i minutes ago"
-msgstr "hai %i minutos"
+msgstr "%i دقیقه پیش"
 
 #: src/template.vala:381
 msgid "about 1 hour ago"
-msgstr "hai aproximadamente unha hora"
+msgstr "حدود ۱ ساعت پیش"
 
 #: src/template.vala:383
 #, c-format
 msgid "about %i hours ago"
-msgstr "hai aproximadamente %i horas"
+msgstr "حدود %i ساعت پیش"
 
 #: src/timeline_direct_list.vala:151
 msgid "Your direct message has been deleted successfully"
-msgstr "A súa mensaxe directa foi eliminada correctamente"
+msgstr "پیام مستقیم شما با موفقیت پاک شد"
 
 #: src/timeline_list.vala:177
 msgid "Your status has been deleted successfully"
-msgstr "O seu estado foi eliminado correctamente"
+msgstr "وضعیت شما با موفقیت پاک شد"
 
 #: src/timeline_list_abstract.vala:202
 msgid "Empty"
-msgstr "Baleira"
+msgstr "خالی"
 
 #: src/timeline_list_abstract.vala:235
 msgid "Connecting..."
-msgstr "Conectando..."
+msgstr "درحال وصل‌شدن..."
 
-# traducir como «chíos» ou equivalente?
 #: src/timeline_list_abstract.vala:308
 msgid "Sure you want to delete this status?"
-msgstr "Está segura/o de que quere eliminar este estado?"
+msgstr "آیا مطمئن هستید که می‌خواهید این وضعیت را پاک کنید؟"
 
 #: src/tray_icon.vala:44
 #, c-format
 msgid "%s - a twitter client"
-msgstr "%s - un cliente de twitter"
+msgstr "%s - یک کارخواه توییتر"
 
 #: src/user_info_list.vala:48
 msgid "Followers:"
-msgstr "Seguidores:"
+msgstr "دنبال‌کننده‌ها:"
 
 #: src/user_info_list.vala:49
 msgid "Friends:"
-msgstr "Amigos:"
+msgstr "دوستان:"
 
 #: src/user_info_list.vala:50
 msgid "Statuses:"
-msgstr "Estados:"
+msgstr "وضعیت‌ها:"
 
 #: src/user_info_list.vala:69
 msgid "Web:"
-msgstr "Web:"
+msgstr "وب:"
 
 #: src/user_info_list.vala:90
 msgid "follow"
-msgstr "seguir"
+msgstr "دنبال‌کردن"
 
 #: src/user_info_list.vala:183
 msgid "This user does not exist"
-msgstr "Esta persoa usuaria non existe"
+msgstr "این کاربر وجود ندارد"
 
 #: src/user_info_list.vala:300
 msgid "Now you follow this user"
-msgstr "Agora está a seguir a esta persoa usuaria"
+msgstr "اکنون شما این کاربر را دنبال می‌کنید"
 
 #: src/user_info_list.vala:302
 msgid "User was unfollowed"
-msgstr "O/a usuario/a non se estaba seguindo"
+msgstr "کاربر دنبال‌نشده شد"
 
 #~ msgid "Friends:  <b>%s</b>"
-#~ msgstr "Responder a <b>%s</b>:"
+#~ msgstr "دوستان: <b>%s</b>"
 
 #~ msgid "Statuses:  <b>%s</b>"
-#~ msgstr "Responder a <b>%s</b>:"
+#~ msgstr "وضعیت‌ها: <b>%s</b>"
 
 #~ msgid "Twitter"
 #~ msgstr "Twitter"
-
-#~ msgid "Remember password"
-#~ msgstr "Lembrar o contrasinal"
-
-#~ msgid "Show notification for each status"
-#~ msgstr "Mostrar unha notificación para cada estado"
-
-#~ msgid "Show overall notification"
-#~ msgstr "Mostrar unha notificación global"
-
-#~ msgid "REST API options"
-#~ msgstr "Opcións da API REST"
-
-#~ msgid "Tweets"
-#~ msgstr "Tweets"
-
-#~ msgid "Timeline"
-#~ msgstr "Liña do tempo"
-
-#~ msgid "wrong login or password "
-#~ msgstr "nome de inicio ou contrasinal incorrecto"
-
-#~ msgid "problems with connection "
-#~ msgstr "problemas coa conexión"
-
-#~ msgid "some strange error "
-#~ msgstr "algún erro estraño"
