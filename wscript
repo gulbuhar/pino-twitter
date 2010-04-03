@@ -120,6 +120,7 @@ def build(bld):
 	bld.install_files('${PREFIX}/share/pino/icons', 'img/userpic.svg')
 	bld.install_files('${PREFIX}/share/applications', 'pino.desktop')
 	bld.install_files('${PREFIX}/share/doc/pino', 'COPYING README AUTHORS INSTALL')
+	bld.install_files('${PREFIX}/share/indicators/messages/applications', 'indicator/pino')
 	
 	#import subprocess
 	#subprocess.Popen(['desktop-file-install', '--rebuild-mime-info-cache', bld.env.PREFIX + '/share/applications/pino.desktop'], stdout=subprocess.PIPE)
