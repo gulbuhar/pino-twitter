@@ -118,8 +118,14 @@ public class TimelineList : TimelineListAbstract {
 		
 		if(result.size > 0) { //if we got some statuses
 			if((!_parent_focus || !act.active) && lst.size > 0) { //if this list is not visible and we have updates
+				int self_count = 0;
+				foreach(Status status in result) {
+					if(status.user_screen_name == api.account.login)
+						self_count++;
+				}
 				
-				have_fresh = true;
+				if(self_count < result.size) //if we got not only our tweets
+					have_fresh = true;
 			}
 			
 			if(lst.size == 0) {
