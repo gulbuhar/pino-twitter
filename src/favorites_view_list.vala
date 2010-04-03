@@ -30,7 +30,7 @@ public class FavoritesViewList : TimelineList {
 	public FavoritesViewList(Window _parent, Accounts _accounts, Template _template) {
 		base(_parent, _accounts, TimelineType.FAVORITES, _template, 0, null);
 		
-		//need_more_button = true; //no "more" button
+		need_more_button = false; //no "more" button
 	}
 	
 	//private override void get_older(){}
@@ -75,5 +75,38 @@ public class FavoritesViewList : TimelineList {
 			result.clear();
 		
 		return result;
+	}
+	
+	public void get_older_public() {
+		get_older();
+	}
+	
+	/* get older statuses */
+	protected override void get_older() {
+		warning("more");
+		if(lst.size == 0)
+			return;
+		
+		ArrayList<RestAPI.Status> result;
+		string max_id = lst.get(lst.size - 1).id;
+		
+		try {
+			result = api.get_timeline(_items_count, null, "", max_id);
+		} catch(RestError e) {
+			more.set_enabled(true);
+			updating_error(e.message);
+			return;
+		}
+		
+		if(result.size < 2) {
+			more.set_enabled(true);
+			return;
+		}
+		
+		lst.add_all(result.slice(1, result.size -1));
+		
+		finish_update(); //send signal
+		
+		refresh(true);
 	}
 }

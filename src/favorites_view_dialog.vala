@@ -27,6 +27,8 @@ using RestAPI;
 public class FavoritesViewDialog : Dialog {
 	
 	private Image img;
+	private Button more_btn;
+	private FavoritesViewList view;
 	
 	public FavoritesViewDialog(Window parent, Accounts _accounts, Template template) {
 		set_transient_for(parent);
@@ -40,13 +42,14 @@ public class FavoritesViewDialog : Dialog {
 		img = new Image();
 		img.set_from_animation(anima);
 		
-		var view = new FavoritesViewList(this, _accounts, template);
+		view = new FavoritesViewList(this, _accounts, template);
 		vbox.pack_start(view, true, true, 0);
 		
 		var vb = new VBox(false, 0);
 		vb.pack_end(img, false, false, 5);
 		
 		add_action_widget(vb, -1);
+		more_btn = (Button) add_button(_("More"), 9000);
 		add_button(STOCK_CLOSE, ResponseType.CLOSE);
 		response.connect(response_act);
 		
@@ -85,6 +88,17 @@ public class FavoritesViewDialog : Dialog {
 		switch(resp_id) {
 			case ResponseType.CLOSE:
 				close();
+				break;
+			
+			case 9000:
+				more_btn.set_sensitive(false);
+				Gdk.PixbufAnimation anima = new Gdk.PixbufAnimation.from_file(Config.PROGRESS_PATH);
+				img.set_from_animation(anima);
+				
+				view.get_older_public();
+				
+				more_btn.set_sensitive(true);
+				img.set_from_stock("gtk-apply", Gtk.IconSize.MENU);
 				break;
 		}
 	}

@@ -364,6 +364,7 @@ public abstract class TimelineListAbstract : HBox {
 	/** add/remove to favorites */
 	protected virtual void favorited(string id) {
 		warning("start favorite");
+		view.set_sensitive(false);
 		Status? status = null;
 		
 		foreach(Status s in lst) {
@@ -373,8 +374,10 @@ public abstract class TimelineListAbstract : HBox {
 			}
 		}
 		
-		if(status == null)
+		if(status == null) {
+			view.set_sensitive(true);
 			return;
+		}
 		
 		try {
 			if(!status.is_favorite) //add to favorites
@@ -383,6 +386,7 @@ public abstract class TimelineListAbstract : HBox {
 				api.favorite_destroy(id);
 		} catch(RestError e) {
 			updating_error(e.message);
+			view.set_sensitive(true);
 			return;
 		}
 		
@@ -402,6 +406,7 @@ public abstract class TimelineListAbstract : HBox {
 			m.src = '%s';""".printf(status.id, img_path);
 		view.execute_script(script);
 		
+		view.set_sensitive(true);
 		warning("ok");
 	}
 	
