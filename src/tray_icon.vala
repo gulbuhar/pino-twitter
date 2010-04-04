@@ -45,7 +45,7 @@ public class TrayIcon : StatusIcon {
 		logo_fresh = _logo_fresh;
 		set_from_pixbuf(logo);
 		
-		set_tooltip_text(_("%s - a twitter client").printf(Config.APPNAME));
+		set_tooltip_text(_("%s - not only a twitter client").printf(Config.APPNAME));
 		
 		popup_menu.connect((button, activate_time) => {
 			_popup.popup(null, null, null, button, activate_time);
