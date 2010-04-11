@@ -12,8 +12,8 @@ blddir = '_build_'
 def set_options(opt):
 	opt.tool_options('compiler_cc')
 	opt.tool_options('gnu_dirs')
-	opt.add_option('--indicator', action = 'store_true', default = False,
-		help = 'Messaging menu support')
+	opt.add_option('--ubuntuicons', action = 'store_true', default = False,
+		help = 'Install icons for Ubuntu mono themes')
 
 def configure(conf):
 	conf.check_tool('compiler_cc vala gnu_dirs intltool')
@@ -78,9 +78,7 @@ def configure(conf):
 	conf.define('APPNAME', APPNAME)
 
 	import Options
-	conf.env.INDICATOR = Options.options.indicator
-	if(conf.env.INDICATOR):
-		conf.define('USE_INDICATOR', 'true')
+	conf.env.UBUNTUICONS = Options.options.ubuntuicons
 	
 	conf.define('CONS_KEY', 'k6R1A0PPkmpRcThEdPF1Q')
 	conf.define('CONS_SEC', 'TKneXwqslxkbaR3RQGcvvvGU4Qk01qh8HAhRIMN74')
@@ -133,7 +131,12 @@ def build(bld):
 	bld.install_files('${PREFIX}/share/applications', 'pino.desktop')
 	bld.install_files('${PREFIX}/share/doc/pino', 'COPYING README AUTHORS INSTALL')
 	bld.install_files('${PREFIX}/share/indicators/messages/applications', 'indicator/pino')
-	
+
+	if bld.env['UBUNTUICONS']:
+		bld.install_files('${PREFIX}/share/icons/ubuntu-mono-dark/apps/22', 'img/ubuntu-mono-dark/pino-tray-icon.svg')
+		bld.install_files('${PREFIX}/share/icons/ubuntu-mono-dark/apps/22', 'img/ubuntu-mono-dark/pino-tray-icon-fresh.svg')
+		bld.install_files('${PREFIX}/share/icons/ubuntu-mono-light/apps/22', 'img/ubuntu-mono-light/pino-tray-icon.svg')
+		bld.install_files('${PREFIX}/share/icons/ubuntu-mono-light/apps/22', 'img/ubuntu-mono-light/pino-tray-icon-fresh.svg')
 	#import subprocess
 	#subprocess.Popen(['desktop-file-install', '--rebuild-mime-info-cache', bld.env.PREFIX + '/share/applications/pino.desktop'], stdout=subprocess.PIPE)
 
