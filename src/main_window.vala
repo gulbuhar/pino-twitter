@@ -26,6 +26,10 @@ using Auth;
 //using OAuth;
 using Soup;
 
+#if(LIBINDICATE)
+	using Indicate;
+#endif
+
 public class MainWindow : Window {
 	
 	unowned SList<RadioAction> list_group;
@@ -671,5 +675,5 @@ public class MainWindow : Window {
 	private void check_fresh() {
 		if(!(home.have_fresh || mentions.have_fresh || direct.have_fresh))
 			tray.new_tweets(false);
-	}	
+	}
 }
