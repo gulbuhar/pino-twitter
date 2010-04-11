@@ -170,7 +170,6 @@ public class MainWindow : Window {
 			return false;
 		});
 		
-		set_icon(logo);
 		set_title(Config.APPNAME);
 		
 		destroy.connect(() => before_close());

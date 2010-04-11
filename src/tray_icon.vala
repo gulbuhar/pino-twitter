@@ -41,9 +41,28 @@ public class TrayIcon : StatusIcon {
 		
 		parent = _parent;
 		prefs = _prefs;
-		logo = _logo;
-		logo_fresh = _logo_fresh;
+
+		var theme = IconTheme.get_default();
+		
+		if(!theme.has_icon("pino-tray-icon")) {
+			warning("no!!!!!!!!");
+			logo = _logo;
+		} else {
+			var info = theme.lookup_icon("pino-tray-icon", 22, IconLookupFlags.USE_BUILTIN);
+			logo = info.load_icon();
+		}
+		
+		if(!theme.has_icon("pino-tray-icon")) {
+			warning("no!!!!!!!!");
+			logo_fresh = _logo_fresh;
+		} else {
+			var info = theme.lookup_icon("pino-tray-icon-fresh", 22, IconLookupFlags.USE_BUILTIN);
+			logo_fresh = info.load_icon();
+		}
+		
+		
 		set_from_pixbuf(logo);
+		parent.set_icon(logo);
 		
 		set_tooltip_text(_("%s - not only a twitter client").printf(Config.APPNAME));
 		
