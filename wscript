@@ -12,6 +12,8 @@ blddir = '_build_'
 def set_options(opt):
 	opt.tool_options('compiler_cc')
 	opt.tool_options('gnu_dirs')
+	opt.add_option('--indicator', action = 'store_true', default = False,
+		help = 'Messaging menu support')
 
 def configure(conf):
 	conf.check_tool('compiler_cc vala gnu_dirs intltool')
@@ -39,6 +41,8 @@ def configure(conf):
 		atleast_version='1.0', mandatory=True, args='--cflags --libs')
 	conf.check_cfg(package='gtkspell-2.0', uselib_store='GTKSPELL',
 		atleast_version='2.0', mandatory=True, args='--cflags --libs')
+	conf.check_cfg(package='indicate', uselib_store='LIBINDICATE',
+		atleast_version='0.3', mandatory=False, args='--cflags --libs')
 
 	conf.env.append_value('CCFLAGS', '-std=c99')
 	
@@ -48,6 +52,8 @@ def configure(conf):
 	conf.define('PACKAGE_VERSION', APPNAME + '-' + VERSION)
 
 	conf.define('APP_VERSION', VERSION)
+	conf.define('DESKTOP_FILE_PATH', conf.env.PREFIX + '/share/applications/pino.desktop')
+	conf.define('APP_PATH', conf.env.PREFIX + '/bin/pino')
 	conf.define('LOGO_PATH', conf.env.PREFIX + '/share/icons/hicolor/scalable/apps/pino.svg')
 	conf.define('LOGO_FRESH_PATH', conf.env.PREFIX + '/share/icons/hicolor/scalable/apps/pino_fresh.svg')
 	conf.define('MENTIONS_PATH', conf.env.PREFIX + '/share/pino/icons/mentions.svg')
@@ -70,6 +76,12 @@ def configure(conf):
 	conf.define('LOCALE_DIR', conf.env.PREFIX + '/share/locale/')
 	conf.define('GETTEXT_PACKAGE', APPNAME)
 	conf.define('APPNAME', APPNAME)
+
+	import Options
+	conf.env.INDICATOR = Options.options.indicator
+	if(conf.env.INDICATOR):
+		conf.define('USE_INDICATOR', 'true')
+	
 	conf.define('CONS_KEY', 'k6R1A0PPkmpRcThEdPF1Q')
 	conf.define('CONS_SEC', 'TKneXwqslxkbaR3RQGcvvvGU4Qk01qh8HAhRIMN74')
 	

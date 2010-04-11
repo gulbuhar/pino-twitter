@@ -103,13 +103,17 @@ public class RestAPITimeline : RestAPIAbstract {
 		//changing locale to C
 		string currentLocale = GLib.Intl.setlocale(GLib.LocaleCategory.TIME, null);
 		GLib.Intl.setlocale(GLib.LocaleCategory.TIME, "C");
-		
+		//warning(data);
 		ArrayList<Status> lst = new ArrayList<Status>();
-		
+		warning("start parsing");
 		for(Xml.Node* iter = rootNode->children; iter != null; iter = iter->next) {
+			if(iter == null)
+				warning("hoho! iter is null!");
+			
+			//warning("we in the loop");
 			if(iter->type != ElementType.ELEMENT_NODE)
 				continue;
-			
+			//warning("And here we go");
 			if(iter->name == "status") {
 				
 				if(iter->children != null) {

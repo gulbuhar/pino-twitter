@@ -66,6 +66,30 @@ public class TrayIcon : StatusIcon {
 				parent.move(prefs.left, prefs.top);
 			}
 		});
+		
+		#if(LIBINDICATE)
+			var server = Indicate.Server.ref_default();
+			
+			server.set_type("message.pino");
+			server.set_desktop_file(Config.DESKTOP_FILE_PATH);
+			server.server_display.connect(dirty_activate);
+			server.show();
+			
+			/*
+			indicator = new Indicate.Indicator();
+			indicator.set_property("subtype", "pino");
+			indicator.set_property("sender", "troorl");
+			indicator.set_property("body", "bla bla bla");
+			indicator.user_display.connect(dirty_activate);
+			indicator.show();
+			*/
+		#endif
+		
+	}
+
+	private void dirty_activate() {
+		Process.spawn_async(null, {Config.APP_PATH, "/"}, null,
+			GLib.SpawnFlags.STDERR_TO_DEV_NULL, null, null);
 	}
 	
 	public void new_tweets(bool y) {

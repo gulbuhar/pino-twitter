@@ -12,5 +12,9 @@ def build(bld):
 		source = bld.path.ant_glob(excl = 'oauth-client.vala', incl = 'vapi/*.c *.vala'),
 		threading = True
 	)
+	if bld.env['HAVE_LIBINDICATE']:
+		prog.env.append_value('VALAFLAGS', '-D LIBINDICATE')
+		prog.uselib += ' LIBINDICATE'
+	
 	prog.install_path = '${PREFIX}/bin'
 	prog.includes = 'vapi/'
