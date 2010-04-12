@@ -1,35 +1,31 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Johan Eriksson <hund@ubuntu.com>, 2010.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-04-03 14:34+0300\n"
-"PO-Revision-Date: 2010-04-06 16:01+0100\n"
-"Last-Translator: Johan Eriksson <hund@lathund.nu>\n"
-"Language-Team: \n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: bognarandras <bognarandras.mail@gmail.com>\n"
+"Language-Team: hu <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: Swedish\n"
-"X-Poedit-Country: SWEDEN\n"
 
 #: src/account_action.vala:42
 msgid "Accounts"
-msgstr "Konton"
+msgstr "Fiókok"
 
-#: src/account_widget.vala:75
-#: src/edit_account.vala:74
+#: src/account_widget.vala:75 src/edit_account.vala:74
 msgid "Login"
-msgstr "Användarnamn"
+msgstr "Felhasználónév"
 
-#: src/account_widget.vala:76
-#: src/edit_account.vala:83
+#: src/account_widget.vala:76 src/edit_account.vala:83
 msgid "Service"
-msgstr "Tjänst"
+msgstr "Szolgáltatás"
 
 #: src/account_widget.vala:77
 msgid "API proxy"
@@ -37,256 +33,249 @@ msgstr "API proxy"
 
 #: src/account_widget.vala:159
 msgid "Sure you want to delete this account?"
-msgstr "Är du säker på att du vill ta bort det här kontot?"
+msgstr "Biztos benne, hogy törli ezt a fiókot?"
 
 #: src/dm_entry.vala:35
 msgid "You can't send direct message to this user. He (or she) must follow you too"
-msgstr "Du kan inte skicka direktmeddelanden till denna användare. Han/hon måste följa dig"
+msgstr "Nem tud ennek a felhasználónak közvetlen üzenetet küldeni. Nincs rá feliratkozva."
 
 #: src/dm_entry.vala:42
 msgid "Check"
-msgstr "Kontrollera"
+msgstr "Ellenőrzés"
 
 #: src/dm_entry.vala:58
 msgid "You can send direct message to this user"
-msgstr "Du kan skicka direktmeddelanden till denna användaren"
+msgstr "Ennek a felhasználónak küldhet közvetlen üzenetet"
 
 #: src/dm_entry.vala:77
 msgid "Checking..."
-msgstr "Kontrollerar..."
+msgstr "Ellenőrzés..."
 
 #: src/edit_account.vala:70
 msgid "Edit account"
-msgstr "Redigera konto"
+msgstr "Fiók szerkesztése"
 
 #: src/edit_account.vala:72
 msgid "Create new account"
-msgstr "Skapa nytt konto"
+msgstr "Új fiók létrehozása"
 
 #: src/edit_account.vala:78
 msgid "Password"
-msgstr "Lösenord"
+msgstr "Jelszó"
 
 #: src/edit_account.vala:97
 msgid "API proxy or other service"
-msgstr "API proxy eller annan tjänst"
+msgstr "API proxy vagy egyéb szolgáltatás"
 
-#: src/edit_account.vala:109
-#: src/pref_dialog.vala:215
+#: src/edit_account.vala:109 src/pref_dialog.vala:215
 msgid "Account"
-msgstr "Konto"
+msgstr "Fiók"
 
 #: src/edit_account.vala:183
 msgid "You must enter a proxy address"
-msgstr "Du måste ange en proxy-adress"
+msgstr "Mindenképpen meg kell adni egy proxy címet"
 
 #: src/edit_account.vala:198
 msgid "Proxy address must contain a valid url"
-msgstr "Proxy-adressen måste innehålla en giltig URL"
+msgstr ""
 
 #: src/edit_account.vala:216
 msgid "You must fill in all fields"
-msgstr "Du måste fylla i alla fält"
+msgstr "Minden mezőt ki kell töltenie"
 
 #: src/favorites_view_dialog.vala:36
 msgid "Favorites"
-msgstr "Favoriter"
+msgstr "Kedvencek"
 
 #: src/favorites_view_dialog.vala:52
 msgid "More"
-msgstr "Mer"
+msgstr "Többi"
 
 #: src/main_window.vala:188
 msgid "Home timeline"
-msgstr "Tidslinje"
+msgstr "Saját idővonal"
 
 #: src/main_window.vala:189
 msgid "Show your home timeline"
-msgstr "Visa din tidslinje"
+msgstr "Saját idővonal megjelenítése"
 
 #: src/main_window.vala:195
 msgid "Mentions"
-msgstr "Omnämningar"
+msgstr "Említések"
 
 #: src/main_window.vala:196
 msgid "Show mentions"
-msgstr "Visa omnämningar"
+msgstr "Említések megjelenítése"
 
 #: src/main_window.vala:202
 msgid "Direct messages"
-msgstr "Direktmeddelanden"
+msgstr "Közvetlen üzenetek"
 
 #: src/main_window.vala:203
 msgid "Show direct messages"
-msgstr "Visa direktmeddelanden"
+msgstr "Közvetlen üzenetek megjelenítése"
 
 #: src/main_window.vala:208
 msgid "User info"
-msgstr "Användarinfo"
+msgstr "Felhasználói infomráció"
 
 #: src/main_window.vala:208
 msgid "Show information about user"
-msgstr "Visa information om användaren"
+msgstr "Információk megjelenítése egy felhasználóról"
 
-#: src/main_window.vala:347
-#: src/main_window.vala:348
-#: src/main_window.vala:349
-#: src/status_bar_smart.vala:93
-#: src/status_bar_smart.vala:96
+#: src/main_window.vala:347 src/main_window.vala:348 src/main_window.vala:349
+#: src/status_bar_smart.vala:93 src/status_bar_smart.vala:96
 msgid "updated "
-msgstr "uppdaterad"
+msgstr "frissítve"
 
 #: src/main_window.vala:445
 msgid "New status"
-msgstr "Ny status"
+msgstr "Új állapot"
 
 #: src/main_window.vala:446
 msgid "Create new status"
-msgstr "Skapa ny status"
+msgstr "Új állapot létrehozása"
 
 #: src/main_window.vala:449
 msgid "New direct message"
-msgstr "Nytt direktmeddelande"
+msgstr "Új közvetlen üzenet"
 
 #: src/main_window.vala:450
 msgid "Create new direct message"
-msgstr "Skapa nytt direktmeddelande"
+msgstr "Új közvetlen üzenet létrehozása"
 
 #: src/main_window.vala:456
 msgid "Show user"
-msgstr "Visa användare"
+msgstr "Felhasználó megjelenítése"
 
 #: src/main_window.vala:457
 msgid "Show information about specified user"
-msgstr "Visa information om specifik användare"
+msgstr "Információk megjelenítése egy adott felhasználóról"
 
 #: src/main_window.vala:463
 msgid "Show favorites..."
-msgstr "Visa favoriter..."
+msgstr "Kedvencek megjelenítése..."
 
 #: src/main_window.vala:470
 msgid "Update timeline"
-msgstr "Uppdatera tidslinje"
+msgstr "Idővonal frissítése"
 
 #: src/main_window.vala:473
 msgid "Quit"
-msgstr "Avsluta"
+msgstr "Kilépés"
 
 #: src/main_window.vala:478
 msgid "Edit"
-msgstr "Redigera"
+msgstr "Szerkesztés"
 
-#: src/main_window.vala:481
-#: src/pref_dialog.vala:58
+#: src/main_window.vala:481 src/pref_dialog.vala:58
 msgid "Preferences"
-msgstr "Inställningar"
+msgstr "Beállítások"
 
 #: src/main_window.vala:486
 msgid "View"
-msgstr "Visa"
+msgstr "Nézet"
 
 #: src/main_window.vala:488
 msgid "Show menu"
-msgstr "Visa meny"
+msgstr "Menü megjelenítése"
 
 #: src/main_window.vala:498
 msgid "Show toolbar"
-msgstr "Visa verktygsfält"
+msgstr "Eszköztár megjelenítése"
 
 #: src/main_window.vala:510
 msgid "Help"
-msgstr "Hjälp"
+msgstr "Sugó"
 
 #: src/main_window.vala:511
 #, c-format
 msgid "About %s"
-msgstr "Om %s"
+msgstr "%s névjegye"
 
 #: src/more_window.vala:36
 msgid "Get older entries"
-msgstr "Hämta äldre inlägg"
+msgstr "Régebbi bejegyzések"
 
-#: src/popups.vala:76
-#: src/template.vala:170
-#: src/template.vala:241
+#: src/popups.vala:76 src/template.vala:170 src/template.vala:241
 #, c-format
 msgid "Direct message"
-msgstr "Direktmeddelande"
+msgstr "Közvetlen üzenetek"
 
 #: src/popups.vala:76
 msgid "from"
-msgstr "från"
+msgstr ""
 
 #: src/popups.vala:94
 msgid "Updates"
-msgstr "Uppdateringar"
+msgstr "Frissítések"
 
 #: src/popups.vala:142
 #, c-format
 msgid "in the home timeline: %d\n"
-msgstr "i tidslinjen: %d\n"
+msgstr ""
 
 #: src/popups.vala:145
 #, c-format
 msgid "in mentions: %d\n"
-msgstr "i omnämningar:  %d\n"
+msgstr ""
 
 #: src/popups.vala:148
 #, c-format
 msgid "in direct messages: %d"
-msgstr "i direktmeddelanden: %d"
+msgstr ""
 
 #: src/pref_dialog.vala:67
 msgid "Update interval (in minutes)"
-msgstr "Uppdateringsintervall (i minuter)"
+msgstr "Frissítési időköz (percekben)"
 
 #: src/pref_dialog.vala:71
 msgid "Default number of statuses"
-msgstr "Standardvärde för antal nya uppdateringar som ska visas"
+msgstr "Állapotok száma"
 
 #: src/pref_dialog.vala:75
 msgid "URL shortening service"
-msgstr "URL förkortningstjänst"
+msgstr "URL-rövidítő szolgáltatás"
 
 #: src/pref_dialog.vala:82
 msgid "Enable spell checking"
-msgstr "Aktivera stavningskontroll"
+msgstr "Helyesírás-ellenőrző engedélyezése"
 
 #: src/pref_dialog.vala:85
 msgid "Starting up in tray"
-msgstr "Starta i notifieringsfältet"
+msgstr "Indítás a tálcán"
 
 #: src/pref_dialog.vala:88
 msgid "Show tray icon"
-msgstr "Visa panelikon"
+msgstr "Tálcaikon megjelenítése"
 
 #: src/pref_dialog.vala:91
 msgid "For timeline"
-msgstr "För tidslinjen"
+msgstr ""
 
 #: src/pref_dialog.vala:92
 msgid "For mentions"
-msgstr "För omnämningar"
+msgstr ""
 
 #: src/pref_dialog.vala:93
 msgid "For direct messages"
-msgstr "För direktmeddelanden"
+msgstr ""
 
 #: src/pref_dialog.vala:102
 msgid "Retweets style"
-msgstr "Retweet stil"
+msgstr "Továbbküldés stílusa"
 
 #: src/pref_dialog.vala:109
 msgid "Clear now"
-msgstr "Rensa nu"
+msgstr "Törlés most"
 
 #: src/pref_dialog.vala:116
 msgid "General"
-msgstr "Allmänt"
+msgstr ""
 
 #: src/pref_dialog.vala:122
 msgid "Retweets"
-msgstr "Retweets"
+msgstr "Továbbküldések"
 
 #: src/pref_dialog.vala:125
 msgid "Cache"
@@ -294,296 +283,252 @@ msgstr "Cache"
 
 #: src/pref_dialog.vala:136
 msgid "Notification area"
-msgstr "Notifikationsområde"
+msgstr "Értesítési terület"
 
 #: src/pref_dialog.vala:140
 msgid "Notification"
-msgstr "Notifikation"
+msgstr "Értesítések"
 
 #: src/pref_dialog.vala:154
 msgid "Authorization"
-msgstr "Auktorisering"
+msgstr "Engedélyezés"
 
 #: src/pref_dialog.vala:161
 msgid "Create new account..."
-msgstr "Skapa nytt konto..."
+msgstr "Új fiók létrehozása..."
 
 #: src/pref_dialog.vala:177
 msgid "Statuses"
-msgstr "Statusar"
+msgstr "Állapotok"
 
 #: src/pref_dialog.vala:180
 msgid "Rounded corners"
-msgstr "Rundade hörn"
+msgstr "Lekerekített sarkok"
 
 #: src/pref_dialog.vala:183
 msgid "Right-to-left languages detection"
-msgstr "Höger-till-vänster språkigenkänning"
+msgstr "Jobbról balra író nyelvek felismerése"
 
 #: src/pref_dialog.vala:186
 msgid "Full names instead of nicknames"
-msgstr "Fullständiga namn istället för användarnamn"
+msgstr "Teljes nevek a becenevek helyett"
 
 #: src/pref_dialog.vala:189
 msgid "Default font"
-msgstr "Standardtypsnitt"
+msgstr "Alapértelmezett betűtípus"
 
 #: src/pref_dialog.vala:195
 msgid "Fresh statuses color"
-msgstr "Fräscha statusfärger"
+msgstr "Új állapot színe"
 
 #: src/pref_dialog.vala:200
 msgid "Opacity"
-msgstr "Genomskinlighet"
+msgstr "Áttetszőség"
 
 #: src/pref_dialog.vala:213
 msgid "Main"
-msgstr "Allmänt"
+msgstr "Saját"
 
 #: src/pref_dialog.vala:214
 msgid "Desktop"
-msgstr "Skrivbord"
+msgstr "Asztal"
 
 #: src/pref_dialog.vala:216
 msgid "Appearance"
-msgstr "Utseende"
+msgstr "Megjelenítés"
 
 #: src/re_tweet.vala:88
 msgid "Shorten URLs..."
-msgstr "Förkorta URL:er"
+msgstr "URL rövidítése..."
 
 #: src/re_tweet.vala:93
 msgid "Shortening URLs..."
-msgstr "Förkortar URL:er..."
+msgstr "URL rövidítése.."
 
 #: src/re_tweet.vala:98
 msgid "URLs was shortened successfully"
-msgstr "URL:en förkortades framgångsrikt"
+msgstr "URL sikeresen rövidítve"
 
 #: src/re_tweet.vala:100
 msgid "Nothing to shorten"
-msgstr "Inget att förkorta"
+msgstr "Nincs mit rövidíteni"
 
-#: src/re_tweet.vala:125
-#: src/re_tweet.vala:242
+#: src/re_tweet.vala:125 src/re_tweet.vala:242
 msgid "New status:"
-msgstr "Ny status:"
+msgstr "Új állapot:"
 
 #: src/re_tweet.vala:134
 msgid "Hide"
-msgstr "Dölj"
+msgstr "Rejtés"
 
 #: src/re_tweet.vala:215
 #, c-format
 msgid "Reply to <b>%s</b>:"
-msgstr "Svara till <b>%s</b>:"
+msgstr "Válasz neki: <b>%s</b>"
 
 #: src/re_tweet.vala:255
 msgid "Reply to"
-msgstr "Svara"
+msgstr ""
 
 #: src/re_tweet.vala:268
 msgid "Direct message to"
-msgstr "Direktmeddelande till"
+msgstr "Közvetlen üzenet"
 
 #: src/re_tweet.vala:288
 msgid "Retweet:"
-msgstr "Retweet:"
+msgstr "Továbbküldés:"
 
 #: src/re_tweet.vala:317
 msgid "Your status is too long"
-msgstr "Din status är för lång"
+msgstr "Túl hosszú az állapota"
 
 #: src/re_tweet.vala:341
 msgid "Type something first"
-msgstr "Skriv något först"
+msgstr "Először írjon valamit"
 
 #: src/re_tweet.vala:383
 msgid "Sending status..."
-msgstr "Skickar status..."
+msgstr "Állapot küldése..."
 
 #: src/re_tweet.vala:401
 msgid "Your status has been sent successfully"
-msgstr "Din status har skickats"
+msgstr "Az állapota sikeresen elküldve"
 
 #: src/re_tweet.vala:407
 msgid "Sending direct message..."
-msgstr "Skickar direktmeddelande..."
+msgstr "Közvetlen üzenet küldése..."
 
 #: src/re_tweet.vala:421
 msgid "Your direct message has been sent successfully"
-msgstr "Ditt direktmeddelande har skickats"
+msgstr "A közvetlen üzenete sikeresen elküldve"
 
 #: src/status_bar_smart.vala:101
 msgid "updating... "
-msgstr "uppdaterar..."
+msgstr "frissítés..."
 
 #: src/status_view_dialog.vala:36
 msgid "Conversation"
-msgstr "Konversation"
+msgstr "Párbeszéd"
 
 #: src/status_view_dialog.vala:64
 msgid "go to the web page"
-msgstr "gå till webbadressen"
+msgstr "weboldal megnyitása"
 
-#: src/template.vala:168
-#: src/template.vala:238
+#: src/template.vala:168 src/template.vala:238
 msgid "Reply"
-msgstr "Svara"
+msgstr "Válasz"
 
-#: src/template.vala:169
-#: src/template.vala:239
+#: src/template.vala:169 src/template.vala:239
 msgid "Delete"
-msgstr "Radera"
+msgstr "Törlés"
 
 #: src/template.vala:240
 msgid "Retweet"
-msgstr "Retweet"
+msgstr "Továbbküldés"
 
 #: src/template.vala:265
 msgid "you"
-msgstr "du"
+msgstr "ön"
 
 #: src/template.vala:267
 msgid "in reply to"
-msgstr "svar till"
+msgstr ""
 
 #: src/template.vala:300
 msgid "Add to favorite"
-msgstr "Lägg till i favoriter"
+msgstr "Hozzáadás a kedvencekhez"
 
 #: src/template.vala:301
 msgid "Remove from favorite"
-msgstr "Ta bort från favoriter"
+msgstr "Eltávolítás a kedvencek közül"
 
 #: src/template.vala:408
 msgid "a few seconds ago"
-msgstr "några sekunder sedan"
+msgstr "néhány másodperce"
 
 #: src/template.vala:410
 msgid "1 minute ago"
-msgstr "1 minut sedan"
+msgstr "1 perce"
 
 #: src/template.vala:412
 #, c-format
 msgid "%i minutes ago"
-msgstr "%i minuter sedan"
+msgstr "%i perce"
 
 #: src/template.vala:414
 msgid "about 1 hour ago"
-msgstr "omkring 1 timme sedan"
+msgstr "körülbelül 1 órája"
 
 #: src/template.vala:416
 #, c-format
 msgid "about %i hours ago"
-msgstr "omkring %i timmar sedan"
+msgstr "körülbelül %i órája"
 
 #: src/timeline_direct_list.vala:153
 msgid "Your direct message has been deleted successfully"
-msgstr "Ditt direktmeddelande har tagits bort"
+msgstr "A közvetlen üzenete sikeresen törlésre került"
 
 #: src/timeline_list.vala:193
 msgid "Your status has been deleted successfully"
-msgstr "Din status har tagits bort"
+msgstr "Az állapota sikeresen törlésre került"
 
 #: src/timeline_list_abstract.vala:204
 msgid "Canceled"
-msgstr "Avbruten"
+msgstr "Törölve"
 
 #: src/timeline_list_abstract.vala:210
 msgid "Empty"
-msgstr "Tom"
+msgstr "Üres"
 
 #: src/timeline_list_abstract.vala:243
 msgid "Connecting..."
-msgstr "Ansluter..."
+msgstr "Kapcsolódás..."
 
 #: src/timeline_list_abstract.vala:322
 msgid "Sure you want to delete this status?"
-msgstr "Är du säker på att du vill ta bort det här meddelandet?"
+msgstr "Biztos benne, hogy törli ezt az állapotot?"
 
 #: src/timeline_list_abstract.vala:398
 msgid "Message was added to favorites"
-msgstr "Meddelande tilllagt i favoriter"
+msgstr "Üzenet hozzáadva a kedvencekhez"
 
 #: src/timeline_list_abstract.vala:402
 msgid "Message was removed from favorites"
-msgstr "Meddelande borttaget från favoriter"
+msgstr "Üzenet törölve a kedvencek közül"
 
 #: src/tray_icon.vala:48
 #, c-format
 msgid "%s - a twitter client"
-msgstr "%s - en twitterklient"
+msgstr "%s - egy twitter kliens"
 
 #: src/user_info_list.vala:48
 msgid "Followers:"
-msgstr "Följare"
+msgstr "Követők:"
 
 #: src/user_info_list.vala:49
 msgid "Friends:"
-msgstr "Vänner:"
+msgstr "Barátok:"
 
 #: src/user_info_list.vala:50
 msgid "Statuses:"
-msgstr "Statusar"
+msgstr "Állapotok:"
 
 #: src/user_info_list.vala:69
 msgid "Web:"
-msgstr "Webb:"
+msgstr "Weboldal:"
 
 #: src/user_info_list.vala:90
 msgid "follow"
-msgstr "följ"
+msgstr "követés"
 
 #: src/user_info_list.vala:183
 msgid "This user does not exist"
-msgstr "Användaren existerar inte"
+msgstr "Nincs ilyen felhasználó"
 
 #: src/user_info_list.vala:300
 msgid "Now you follow this user"
-msgstr "Du följer nu användaren"
+msgstr "Mostantól ennek a felhasználónak a követője"
 
 #: src/user_info_list.vala:302
 msgid "User was unfollowed"
-msgstr "Användaren följs inte längre"
-
-#, fuzzy
-#~ msgid "Friends:  <b>%s</b>"
-#~ msgstr "Svara till <b>%s</b>:"
-
-#, fuzzy
-#~ msgid "Statuses:  <b>%s</b>"
-#~ msgstr "Svara till <b>%s</b>:"
-
-#~ msgid "Twitter"
-#~ msgstr "Twitter"
-
-#~ msgid "Remember password"
-#~ msgstr "Kom ihåg lösenordet"
-
-#~ msgid "Show notification for each status"
-#~ msgstr "Visa notifikation för varje status"
-
-#~ msgid "Show overall notification"
-#~ msgstr "Visa övergripande notifikation"
-
-#~ msgid "REST API options"
-#~ msgstr "REST API val"
-
-#~ msgid "Tweets"
-#~ msgstr "Tweets"
-
-#~ msgid "Timeline"
-#~ msgstr "Tidslinje"
-
-#~ msgid "wrong login or password "
-#~ msgstr "felaktigt användarnamn eller lösenord"
-
-#~ msgid "problems with connection "
-#~ msgstr "problem med anslutningen"
-
-#~ msgid "some strange error "
-#~ msgstr "något konstigt fel"
-
-#~ msgid "Main developer and project owner:"
-#~ msgstr "Головний розробник і власник проекту:"
+msgstr "Már nem követi ezt a felhasználót"

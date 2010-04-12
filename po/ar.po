@@ -2,7 +2,7 @@
 # Copyright (C) 2009 the Free Software Foundation, Inc.
 # This file is distributed under the same license as the pino package.
 # MaXeR <mmaxer@gmail.com>, 2009.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: pino 0.1.0b4\n"
@@ -37,8 +37,7 @@ msgid "Sure you want to delete this account?"
 msgstr "متأكد أنك تريد حذف هذا الحساب؟"
 
 #: src/dm_entry.vala:35
-msgid ""
-"You can't send direct message to this user. He (or she) must follow you too"
+msgid "You can't send direct message to this user. He (or she) must follow you too"
 msgstr "لايمكنك إرسال رسالة مباشرة إلى هذا المستخدم. هو يجب أن يتابعك أولاً"
 
 #: src/dm_entry.vala:42
@@ -87,11 +86,11 @@ msgstr "يجب ملء كل الحقول"
 
 #: src/favorites_view_dialog.vala:36
 msgid "Favorites"
-msgstr ""
+msgstr "المُفضّلات"
 
 #: src/favorites_view_dialog.vala:52
 msgid "More"
-msgstr ""
+msgstr "أكثر"
 
 #: src/main_window.vala:188
 msgid "Home timeline"
@@ -155,9 +154,8 @@ msgid "Show information about specified user"
 msgstr "إظهار معلومات عن مستخدم محدد"
 
 #: src/main_window.vala:463
-#, fuzzy
 msgid "Show favorites..."
-msgstr "تقصير الروابط"
+msgstr "عرض المُفضّلات..."
 
 #: src/main_window.vala:470
 msgid "Update timeline"
@@ -242,7 +240,7 @@ msgstr "خدمة تقصير الروابط"
 
 #: src/pref_dialog.vala:82
 msgid "Enable spell checking"
-msgstr ""
+msgstr "تفعيل التدقيق الإملائي"
 
 #: src/pref_dialog.vala:85
 msgid "Starting up in tray"
@@ -439,11 +437,11 @@ msgstr "في رد على"
 
 #: src/template.vala:300
 msgid "Add to favorite"
-msgstr ""
+msgstr "أضف للمُفضّلة"
 
 #: src/template.vala:301
 msgid "Remove from favorite"
-msgstr ""
+msgstr "حذف من المُفضّلات"
 
 #: src/template.vala:408
 msgid "a few seconds ago"
@@ -476,9 +474,8 @@ msgid "Your status has been deleted successfully"
 msgstr "حُذفت الحالة بنجاح"
 
 #: src/timeline_list_abstract.vala:204
-#, fuzzy
 msgid "Canceled"
-msgstr "ذاكرة مؤقتة"
+msgstr "مُلغى"
 
 #: src/timeline_list_abstract.vala:210
 msgid "Empty"
@@ -494,11 +491,11 @@ msgstr "متأكد أنك تريد حذف هذه الحالة؟"
 
 #: src/timeline_list_abstract.vala:398
 msgid "Message was added to favorites"
-msgstr ""
+msgstr "أُضيفت الرسالة للمُفضّلة"
 
 #: src/timeline_list_abstract.vala:402
 msgid "Message was removed from favorites"
-msgstr ""
+msgstr "حُذفت الرسالة من المُفضّلات"
 
 #: src/tray_icon.vala:48
 #, c-format
