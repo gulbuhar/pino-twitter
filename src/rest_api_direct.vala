@@ -41,7 +41,8 @@ public class RestAPIDirect : RestAPIAbstract {
 	
 	/* get direct messages (inbox) */
 	public override ArrayList<Status>? get_timeline(int count = 0, FullStatus? fstatus = null,
-		string since_id = "", string max_id = "", bool sync = true) throws RestError, ParseError {
+		string since_id = "",
+		string max_id = "", bool sync = true) throws RestError, ParseError {
 		
 		if(account == null)
 			no_account();
@@ -55,13 +56,20 @@ public class RestAPIDirect : RestAPIAbstract {
 			map.insert("max_id", max_id);
 		
 		string data = make_request(urls.direct_in(), "GET", map);
-		
-		return parse_direct(data);
+
+		Parser.init();
+		var result = parse_direct(data);
+		Parser.cleanup();
+
+		return result;
 	}
 	
 	/* parsing direct messages */
-	private ArrayList<Status> parse_direct(string data) {
+	private ArrayList<Status> parse_direct(string data) throws ParseError {
 		Xml.Doc* xmlDoc = Parser.parse_memory(data, (int)data.size());
+		if(xmlDoc == null)
+			throw new ParseError.CODE("Invalid XML data");
+		
 		Xml.Node* rootNode = xmlDoc->get_root_element();
 		
 		//changing locale to C

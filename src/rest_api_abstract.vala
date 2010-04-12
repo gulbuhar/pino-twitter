@@ -261,7 +261,7 @@ public abstract class RestAPIAbstract : Object {
 	
 	/* check user for DM availability */
 	public bool check_friendship(string screen_name,
-		bool just_friend_check = false) throws RestError {
+		bool just_friend_check = false) throws RestError, ParseError {
 		
 		string req_url = urls.friendship();
 		
@@ -270,15 +270,24 @@ public abstract class RestAPIAbstract : Object {
 		map.insert("target_screen_name", screen_name);
 		warning(req_url);
 		string data = make_request(req_url, "GET", map);
-		
-		return parse_friendship(data, just_friend_check);
+
+		Parser.init();
+		bool result = parse_friendship(data, just_friend_check);
+		Parser.cleanup();
+
+		return result;
 	}
 	
-	private bool parse_friendship(string data, bool just_friend_check = false) {
+	private bool parse_friendship(string data,
+		bool just_friend_check = false) throws ParseError {
+
 		bool followed_by = false;
 		bool following = false;
 		
 		Xml.Doc* xmlDoc = Xml.Parser.parse_memory(data, (int)data.size());
+		if(xmlDoc == null)
+			throw new ParseError.CODE("Invalid XML data");
+		
 		Xml.Node* rootNode = xmlDoc->get_root_element();
 		
 		Xml.Node* iter;

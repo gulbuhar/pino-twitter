@@ -50,6 +50,9 @@ public class FavoritesViewList : TimelineList {
 		} catch(RestError e) {
 			updating_error(e.message);
 			return result;
+		} catch(ParseError e) {
+			updating_error(e.message);
+			return result;
 		}
 		
 		warning("SIZE: %d", result.size);
@@ -93,6 +96,10 @@ public class FavoritesViewList : TimelineList {
 		try {
 			result = api.get_timeline(_items_count, null, "", max_id);
 		} catch(RestError e) {
+			more.set_enabled(true);
+			updating_error(e.message);
+			return;
+		} catch(ParseError e) {
 			more.set_enabled(true);
 			updating_error(e.message);
 			return;

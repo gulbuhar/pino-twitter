@@ -73,13 +73,20 @@ public class RestAPIRe : RestAPIAbstract {
 			map.insert("in_reply_to_status_id", reply_id);
 		
 		string data = make_request(req_url, "POST", map);
-		
-		return parse_status(data);
+
+		Parser.init();
+		var result = parse_status(data);
+		Parser.cleanup();
+
+		return result;
 	}
 	
-	private Status parse_status(string data) {
+	private Status parse_status(string data) throws ParseError {
 		Status status = new Status();
 		Xml.Doc* xmlDoc = Parser.parse_memory(data, (int)data.size());
+		if(xmlDoc == null)
+			throw new ParseError.CODE("Invalid XML data");
+		
 		Xml.Node* rootNode = xmlDoc->get_root_element();
 		string result = "";
 		

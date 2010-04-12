@@ -35,19 +35,26 @@ public class RestAPIAcc : RestAPIAbstract {
 	}
 	
 	/* get userpic url of a current user */
-	public string? get_userpic_url() {
+	public string? get_userpic_url() throws RestError, ParseError {
 		if(account == null)
 			return null;
 		
 		string req_url = urls.user().printf(account.login);
 		string data = make_request(req_url, "GET",
 			new HashTable<string, string>(str_hash, str_equal), false);
-		
-		return parse_userpic_url(data);
+
+		Parser.init();
+		var result = parse_userpic_url(data);
+		Parser.cleanup();
+
+		return result;
 	}
 	
-	private string parse_userpic_url(string data) {
+	private string parse_userpic_url(string data) throws ParseError {
 		Xml.Doc* xmlDoc = Parser.parse_memory(data, (int)data.size());
+		if(xmlDoc == null)
+			throw new ParseError.CODE("Invalid XML data");
+		
 		Xml.Node* rootNode = xmlDoc->get_root_element();
 		
 		string result = "";

@@ -657,9 +657,6 @@ public class MainWindow : Window {
 			timer.set_interval(prefs.updateInterval * 60);
 			prefs.write();
 		});
-		
-		//pref_dialog.set_transient_for(this);
-		//pref_dialog.show();
 	}
 	
 	/* saving settings */

@@ -151,6 +151,9 @@ public class UserInfoList : TimelineListAbstract {
 		} catch(RestError e) {
 			updating_error(e.message);
 			return;
+		} catch(ParseError e) {
+			updating_error(e.message);
+			return;
 		}
 		
 		full_status.following = follow_him;
@@ -187,6 +190,11 @@ public class UserInfoList : TimelineListAbstract {
 			set_empty();
 			updating_error(e.message); //signal
 			
+			return;
+		} catch(ParseError e) {
+			set_empty();
+			updating_error(e.message);
+
 			return;
 		}
 		
