@@ -126,7 +126,15 @@ public class AccountAction : Action {
 	}
 	
 	private void *get_userpic() {
-		string? url = api.get_userpic_url();
+		string? url = null;
+		
+		try {
+			url = api.get_userpic_url();
+		} catch(RestError e) {
+			return null;
+		} catch(ParseError e) {
+			return null;
+		}
 		
 		if(url == null) {
 			set_gicon(default_icon);

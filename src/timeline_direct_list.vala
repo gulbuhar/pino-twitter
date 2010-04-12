@@ -62,6 +62,9 @@ public class TimelineDirectList : TimelineList {
 		} catch(RestError e) {
 			updating_error(e.message);
 			return result;
+		} catch(ParseError e) {
+			updating_error(e.message);
+			return result;
 		}
 		
 		if(result.size > 0) { //if we get some statuses
@@ -117,6 +120,10 @@ public class TimelineDirectList : TimelineList {
 			more.set_enabled(true);
 			updating_error(e.message);
 			return;
+		} catch(ParseError e) {
+			more.set_enabled(true);
+			updating_error(e.message);
+			return;
 		}
 		
 		if(result.size < 2) {
@@ -136,6 +143,9 @@ public class TimelineDirectList : TimelineList {
 		try {
 			api.destroy_status(id);
 		} catch(RestError e) {
+			updating_error(e.message);
+			return;
+		} catch(ParseError e) {
 			updating_error(e.message);
 			return;
 		}

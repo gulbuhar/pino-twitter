@@ -89,8 +89,11 @@ public class RestAPITimeline : RestAPIAbstract {
 		warning(req_url);
 		
 		string data = make_request(req_url, "GET", map, async);
-		
-		return parse_timeline(data, fstatus);
+
+		Parser.init();
+		ArrayList<Status> result = parse_timeline(data, fstatus);
+		Parser.cleanup();
+		return result;
 	}
 	
 	/* parsing timeline */
@@ -98,6 +101,9 @@ public class RestAPITimeline : RestAPIAbstract {
 		FullStatus? fstatus) throws ParseError {
 		
 		Xml.Doc* xmlDoc = Parser.parse_memory(data, (int)data.size());
+		if(xmlDoc == null)
+			throw new ParseError.CODE("Invalid XML data");
+		
 		Xml.Node* rootNode = xmlDoc->get_root_element();
 		
 		//changing locale to C

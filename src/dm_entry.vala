@@ -83,6 +83,9 @@ public class DmEntry : Entry {
 		} catch(RestError e) {
 			set_warning();
 			return;
+		} catch(ParseError e) {
+			set_warning();
+			return;
 		}
 		
 		if(answer) {

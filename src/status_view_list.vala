@@ -52,6 +52,9 @@ public class StatusViewList : TimelineList {
 			} catch(RestError e) {
 				updating_error(e.message);
 				return lst;
+			} catch(ParseError e) {
+				updating_error(e.message);
+				return lst;
 			}
 			
 			refresh();

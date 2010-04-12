@@ -390,6 +390,11 @@ public class ReTweet : VBox {
 			
 			data_error_sent(e.message);
 			return;
+		} catch(ParseError e) {
+			set_sensitive(true);
+			
+			data_error_sent(e.message);
+			return;
 		}
 		
 		status.tmp = true;

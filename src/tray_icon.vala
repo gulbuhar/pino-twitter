@@ -107,8 +107,12 @@ public class TrayIcon : StatusIcon {
 	}
 
 	private void dirty_activate() {
-		Process.spawn_async(null, {Config.APP_PATH, "/"}, null,
-			GLib.SpawnFlags.STDERR_TO_DEV_NULL, null, null);
+		try {
+			Process.spawn_async(null, {Config.APP_PATH, "/"}, null,
+				GLib.SpawnFlags.STDERR_TO_DEV_NULL, null, null);
+		} catch(GLib.SpawnError e) {
+			warning(e.message);
+		}
 	}
 	
 	public void new_tweets(bool y) {

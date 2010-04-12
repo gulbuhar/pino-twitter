@@ -112,6 +112,9 @@ public class TimelineList : TimelineListAbstract {
 		} catch(RestError e) {
 			updating_error(e.message);
 			return result;
+		} catch(ParseError e) {
+			updating_error(e.message);
+			return result;
 		}
 		
 		warning("SIZE: %d", result.size);
@@ -201,13 +204,16 @@ public class TimelineList : TimelineListAbstract {
 		
 		more.set_enabled(false);
 		
-		ArrayList<RestAPI.Status> result;
+		ArrayList<RestAPI.Status>? result = null;
 		string max_id = lst.get(lst.size - 1).id;
 		
 		try {
 			result = api.get_timeline(_items_count, null, "", max_id);
 		} catch(RestError e) {
 			more.set_enabled(true);
+			updating_error(e.message);
+			return;
+		} catch(ParseError e) {
 			updating_error(e.message);
 			return;
 		}
