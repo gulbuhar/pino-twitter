@@ -21,25 +21,23 @@ msgstr "حساب‌ها"
 
 #: src/account_widget.vala:75 src/edit_account.vala:74
 msgid "Login"
-msgstr "ورود"
+msgstr "نام‌کاربری"
 
 #: src/account_widget.vala:76 src/edit_account.vala:83
 msgid "Service"
-msgstr "خدمات"
+msgstr "سرویس"
 
 #: src/account_widget.vala:77
 msgid "API proxy"
-msgstr "پیشکار API"
+msgstr "پیش‌کار API"
 
 #: src/account_widget.vala:159
 msgid "Sure you want to delete this account?"
 msgstr "آیا مطمئن هستید که می‌خواهید این حساب را پاک کنید؟"
 
 #: src/dm_entry.vala:35
-msgid ""
-"You can't send direct message to this user. He (or she) must follow you too"
-msgstr ""
-"شما نمی‌توانید به این کاربر پیام مستقیم ارسال کنید. او نیز می‌بایست شما را "
+msgid "You can't send direct message to this user. He (or she) must follow you too"
+msgstr "شما نمی‌توانید به این کاربر پیام مستقیم ارسال کنید. او نیز می‌بایست شما را "
 "دنبال کند"
 
 #: src/dm_entry.vala:42
@@ -68,7 +66,7 @@ msgstr "گذرواژه"
 
 #: src/edit_account.vala:97
 msgid "API proxy or other service"
-msgstr "پیشکار API یا سرویس‌های دیگر"
+msgstr "پیش‌کار API یا سرویس‌های دیگر"
 
 #: src/edit_account.vala:109 src/pref_dialog.vala:215
 msgid "Account"
@@ -76,11 +74,11 @@ msgstr "حساب‌کاربری"
 
 #: src/edit_account.vala:183
 msgid "You must enter a proxy address"
-msgstr "شما باید یک نشانی پیشکار را بنویسید"
+msgstr "شما باید یک نشانی پیش‌کار را بنویسید"
 
 #: src/edit_account.vala:198
 msgid "Proxy address must contain a valid url"
-msgstr "نشانی پیشکار باید دارای نشانی اینترنتی درست باشد"
+msgstr "نشانی پیش‌کار باید دارای نشانی اینترنتی درست باشد"
 
 #: src/edit_account.vala:216
 msgid "You must fill in all fields"
@@ -88,11 +86,11 @@ msgstr "شما باید تمام جاها را پر کنید"
 
 #: src/favorites_view_dialog.vala:36
 msgid "Favorites"
-msgstr ""
+msgstr "برگزیده‌ها"
 
 #: src/favorites_view_dialog.vala:52
 msgid "More"
-msgstr ""
+msgstr "بیش‌تر"
 
 #: src/main_window.vala:188
 msgid "Home timeline"
@@ -156,9 +154,8 @@ msgid "Show information about specified user"
 msgstr "نشان‌دادن اطلاعات دربارهٔ کاربر مشخص‌شده"
 
 #: src/main_window.vala:463
-#, fuzzy
 msgid "Show favorites..."
-msgstr "کوتاه‌کردن نشانی‌های اینترنتی..."
+msgstr "نشان‌دادن برگزیده‌ها..."
 
 #: src/main_window.vala:470
 msgid "Update timeline"
@@ -243,7 +240,7 @@ msgstr "سرویس کوتاه‌سازی نشانی اینترنتی"
 
 #: src/pref_dialog.vala:82
 msgid "Enable spell checking"
-msgstr ""
+msgstr "به‌کارانداختن غلط‌یاب املایی"
 
 #: src/pref_dialog.vala:85
 msgid "Starting up in tray"
@@ -440,11 +437,11 @@ msgstr "در پاسخ به"
 
 #: src/template.vala:300
 msgid "Add to favorite"
-msgstr ""
+msgstr "اضافه‌کردن به برگزیده‌ها"
 
 #: src/template.vala:301
 msgid "Remove from favorite"
-msgstr ""
+msgstr "پاک‌کردن از برگزیده‌ها"
 
 #: src/template.vala:408
 msgid "a few seconds ago"
@@ -477,9 +474,8 @@ msgid "Your status has been deleted successfully"
 msgstr "وضعیت شما با موفقیت پاک شد"
 
 #: src/timeline_list_abstract.vala:204
-#, fuzzy
 msgid "Canceled"
-msgstr "حافظهٔ نهان"
+msgstr "لغو کردن"
 
 #: src/timeline_list_abstract.vala:210
 msgid "Empty"
@@ -495,11 +491,11 @@ msgstr "آیا مطمئن هستید که می‌خواهید این وضعیت 
 
 #: src/timeline_list_abstract.vala:398
 msgid "Message was added to favorites"
-msgstr ""
+msgstr "پیام به برگزیده‌ها افزوده شد"
 
 #: src/timeline_list_abstract.vala:402
 msgid "Message was removed from favorites"
-msgstr ""
+msgstr "پیام از برگزیده‌ها پاک شد"
 
 #: src/tray_icon.vala:48
 #, c-format

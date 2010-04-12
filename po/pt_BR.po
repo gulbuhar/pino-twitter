@@ -89,11 +89,11 @@ msgstr "Você tem de preencher todos os campos"
 
 #: src/favorites_view_dialog.vala:36
 msgid "Favorites"
-msgstr ""
+msgstr "Favoritos"
 
 #: src/favorites_view_dialog.vala:52
 msgid "More"
-msgstr ""
+msgstr "Mais"
 
 #: src/main_window.vala:188
 msgid "Home timeline"
@@ -157,9 +157,8 @@ msgid "Show information about specified user"
 msgstr "Mostrar informação sobre o usuário especificado"
 
 #: src/main_window.vala:463
-#, fuzzy
 msgid "Show favorites..."
-msgstr "Encurtar URL..."
+msgstr "Mostrar favoritos..."
 
 #: src/main_window.vala:470
 msgid "Update timeline"
@@ -244,7 +243,7 @@ msgstr "Serviço de encurtamento de URL"
 
 #: src/pref_dialog.vala:82
 msgid "Enable spell checking"
-msgstr ""
+msgstr "Ativar verificação de escrita"
 
 #: src/pref_dialog.vala:85
 msgid "Starting up in tray"
@@ -441,11 +440,11 @@ msgstr "em resposta a"
 
 #: src/template.vala:300
 msgid "Add to favorite"
-msgstr ""
+msgstr "Adicionar aos favoritos"
 
 #: src/template.vala:301
 msgid "Remove from favorite"
-msgstr ""
+msgstr "Remover dos favoritos"
 
 #: src/template.vala:408
 msgid "a few seconds ago"
@@ -478,9 +477,8 @@ msgid "Your status has been deleted successfully"
 msgstr "O seu status foi apagado com sucesso"
 
 #: src/timeline_list_abstract.vala:204
-#, fuzzy
 msgid "Canceled"
-msgstr "Cache"
+msgstr "Cancelado"
 
 #: src/timeline_list_abstract.vala:210
 msgid "Empty"
@@ -488,7 +486,7 @@ msgstr "Vazio"
 
 #: src/timeline_list_abstract.vala:243
 msgid "Connecting..."
-msgstr "Conectando..."
+msgstr "Conetando..."
 
 #: src/timeline_list_abstract.vala:322
 msgid "Sure you want to delete this status?"
@@ -496,11 +494,11 @@ msgstr "Você tem certeza que deseja apagar este status?"
 
 #: src/timeline_list_abstract.vala:398
 msgid "Message was added to favorites"
-msgstr ""
+msgstr "Mensagem foi adicionada aos favoritos"
 
 #: src/timeline_list_abstract.vala:402
 msgid "Message was removed from favorites"
-msgstr ""
+msgstr "Mensagem foi removida dos favoritos"
 
 #: src/tray_icon.vala:48
 #, c-format

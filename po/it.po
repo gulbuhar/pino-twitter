@@ -88,9 +88,8 @@ msgid "Favorites"
 msgstr "Preferiti"
 
 #: src/favorites_view_dialog.vala:52
-#, fuzzy
 msgid "More"
-msgstr "Di più"
+msgstr "Ancora"
 
 #: src/main_window.vala:188
 msgid "Home timeline"

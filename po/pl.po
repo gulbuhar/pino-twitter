@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-04-03 14:34+0300\n"
-"PO-Revision-Date: 2010-03-08 13:05+0100\n"
+"PO-Revision-Date: 2010-04-10 00:07+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <trans-pl@lists.fedoraproject.org>\n"
 "MIME-Version: 1.0\n"
@@ -86,11 +86,11 @@ msgstr "Należy wypełnić wszystkie pola"
 
 #: src/favorites_view_dialog.vala:36
 msgid "Favorites"
-msgstr ""
+msgstr "Ulubione"
 
 #: src/favorites_view_dialog.vala:52
 msgid "More"
-msgstr ""
+msgstr "Więcej"
 
 #: src/main_window.vala:188
 msgid "Home timeline"
@@ -154,9 +154,8 @@ msgid "Show information about specified user"
 msgstr "Wyświetlanie informacji o podanym użytkowniku"
 
 #: src/main_window.vala:463
-#, fuzzy
 msgid "Show favorites..."
-msgstr "Skróć adresy URL..."
+msgstr "Wyświetl ulubione..."
 
 #: src/main_window.vala:470
 msgid "Update timeline"
@@ -241,7 +240,7 @@ msgstr "Usługa skracania adresów URL"
 
 #: src/pref_dialog.vala:82
 msgid "Enable spell checking"
-msgstr ""
+msgstr "Sprawdzanie pisowni"
 
 #: src/pref_dialog.vala:85
 msgid "Starting up in tray"
@@ -249,7 +248,7 @@ msgstr "Uruchamianie w obszarze powiadamiania"
 
 #: src/pref_dialog.vala:88
 msgid "Show tray icon"
-msgstr "Wyświetlanie ikony powiadamiania"
+msgstr "Ikona obszaru powiadamiania"
 
 #: src/pref_dialog.vala:91
 msgid "For timeline"
@@ -438,11 +437,11 @@ msgstr "w odpowiedzi na"
 
 #: src/template.vala:300
 msgid "Add to favorite"
-msgstr ""
+msgstr "Dodaj do ulubionych"
 
 #: src/template.vala:301
 msgid "Remove from favorite"
-msgstr ""
+msgstr "Usuń z ulubionych"
 
 #: src/template.vala:408
 msgid "a few seconds ago"
@@ -475,9 +474,8 @@ msgid "Your status has been deleted successfully"
 msgstr "Stan został pomyślnie usunięty"
 
 #: src/timeline_list_abstract.vala:204
-#, fuzzy
 msgid "Canceled"
-msgstr "Pamięć podręczna"
+msgstr "Anulowano"
 
 #: src/timeline_list_abstract.vala:210
 msgid "Empty"
@@ -493,11 +491,11 @@ msgstr "Na pewno usunąć ten stan?"
 
 #: src/timeline_list_abstract.vala:398
 msgid "Message was added to favorites"
-msgstr ""
+msgstr "Wiadomość została dodano do ulubionych"
 
 #: src/timeline_list_abstract.vala:402
 msgid "Message was removed from favorites"
-msgstr ""
+msgstr "Wiadomość została usunięta z ulubionych"
 
 #: src/tray_icon.vala:48
 #, c-format
