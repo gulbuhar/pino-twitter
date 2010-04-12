@@ -21,6 +21,10 @@
 
 using Unique;
 
+#if (!HAS_DEBUG)
+public void debug(string s, ...){}
+#endif
+
 public class Main {
 	
   	public static int main (string[] args) {

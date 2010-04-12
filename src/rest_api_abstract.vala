@@ -199,7 +199,7 @@ public abstract class RestAPIAbstract : Object {
 		
 		if(method == "GET") { //set get-parameters
 			string query = "";
-			warning(params.size().to_string());
+			debug(params.size().to_string());
 			if(params.size() > 0) {
 				query = "?";
 				
@@ -268,7 +268,7 @@ public abstract class RestAPIAbstract : Object {
 		var map = new HashTable<string, string>(str_hash, str_equal);
 		map.insert("source_screen_name", account.login);
 		map.insert("target_screen_name", screen_name);
-		warning(req_url);
+		debug(req_url);
 		string data = make_request(req_url, "GET", map);
 
 		Parser.init();

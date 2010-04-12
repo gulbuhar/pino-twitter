@@ -14,6 +14,8 @@ def set_options(opt):
 	opt.tool_options('gnu_dirs')
 	opt.add_option('--ubuntuicons', action = 'store_true', default = False,
 		help = 'Install icons for Ubuntu mono themes')
+	opt.add_option('--debug', action = 'store_true', default = False,
+		help = 'Enable debug messages')
 
 def configure(conf):
 	conf.check_tool('compiler_cc vala gnu_dirs intltool')
@@ -79,7 +81,7 @@ def configure(conf):
 
 	import Options
 	conf.env.UBUNTUICONS = Options.options.ubuntuicons
-	
+	conf.env.DEBUG = Options.options.debug
 	conf.define('CONS_KEY', 'k6R1A0PPkmpRcThEdPF1Q')
 	conf.define('CONS_SEC', 'TKneXwqslxkbaR3RQGcvvvGU4Qk01qh8HAhRIMN74')
 	

@@ -92,12 +92,12 @@ public class MainWindow : Window {
 		
 		/*
 		client.fetch_request_token ("POST", request_token_url);
-		warning(auth_url, client.request_token.lookup("oauth_token"));
-		warning("input PIN");
+		debug(auth_url, client.request_token.lookup("oauth_token"));
+		debug("input PIN");
 		string? pin = stdin.read_line();
-		warning(pin);
+		debug(pin);
 		client.fetch_access_token("POST", access_token_url, pin);
-		warning("%s, %s", client.request_token.lookup("oauth_token"),
+		debug("%s, %s", client.request_token.lookup("oauth_token"),
 			client.request_token.lookup("oauth_token_secret"));
 		
 		string oauth_token = "18604056-PlBJS2DNHgixESyaW2bo99qD3iwIysec1ANB8QpBr";
@@ -111,16 +111,16 @@ public class MainWindow : Window {
 			oauth_token_secret, table);
 		//signature = signature.substring(0, signature.length - 1);
 		
-		warning(signature);
+		debug(signature);
 		
 		string auth_header = """OAuth realm="%s",oauth_consumer_key="%s",oauth_token="%s",oauth_signature_method="HMAC-SHA1",oauth_signature="%s",oauth_timestamp="%s",oauth_nonce="%s",oauth_version="1.0"""".printf("http://api.twitter.com/",
                 Config.CONS_KEY, oauth_token, signature, client.timestamp,
                 client.nonce);
         
-        warning(auth_header);
+        debug(auth_header);
         
         string h = client.generate_authorization("GET", "http://api.twitter.com/statuses/home_timeline.xml", "http://api.twitter.com");
-        warning(h);
+        debug(h);
         
         Message message = new Message("GET", "http://api.twitter.com/statuses/home_timeline.xml");
         message.set_http_version (HTTPVersion.1_1);
@@ -130,7 +130,7 @@ public class MainWindow : Window {
         message.request_headers = headers;
         
         session.send_message(message);
-        warning((string)message.response_body.flatten().data);
+        debug((string)message.response_body.flatten().data);
 		 end of testing */
 		
 		//getting settings
@@ -632,16 +632,16 @@ public class MainWindow : Window {
 		
 		statusbar.set_status(StatusbarSmart.StatusType.UPDATING);
 		
-		warning("start home");
+		debug("start home");
 		var home_list = home.update();
-		warning("start mentions");
+		debug("start mentions");
 		var mentions_list = mentions.update();
-		warning("start direct");
+		debug("start direct");
 		var direct_list = direct.update();
 		statusbar.set_status(StatusbarSmart.StatusType.FINISH_OK);
-		warning("end of update, starting notification");
+		debug("end of update, starting notification");
 		notify.start(home_list, mentions_list, direct_list);
-		warning("notification is ok");
+		debug("notification is ok");
 		updateAct.set_sensitive(true);
 	}
 	

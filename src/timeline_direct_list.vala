@@ -87,7 +87,7 @@ public class TimelineDirectList : TimelineList {
 		if(!parent_focus) //delete only if main window out of focus
 			delete_extra();
 		
-		warning("SIZE: %d", lst.size);
+		debug("SIZE: %d", lst.size);
 		
 		refresh();
 		

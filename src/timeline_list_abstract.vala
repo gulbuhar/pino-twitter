@@ -118,7 +118,7 @@ public abstract class TimelineListAbstract : HBox {
 			double scroll_size = slider.adjustment.page_size;
 			
 			if(current + scroll_size == max) {
-				warning("need more");
+				debug("need more");
 				need_more(); //emit signal
 			}
 		});
@@ -148,8 +148,8 @@ public abstract class TimelineListAbstract : HBox {
 				int ay = (int)(event.y_root + height - event.y - 60);
 				more.show_at(ax, ay);
 				
-				//warning("motion: %fx%f", ax, ay);
-				//warning("root: %fx%f", event.x_root, event.y_root);
+				//debug("motion: %fx%f", ax, ay);
+				//debug("root: %fx%f", event.x_root, event.y_root);
 			} else {
 				if(more.visible)
 					more.hide();
@@ -305,7 +305,7 @@ public abstract class TimelineListAbstract : HBox {
 				return true;
 			
 			case "retweet":
-				warning("start");
+				debug("start");
 				string status_id = params;
 				retweet(find_status(status_id));
 				return true;
@@ -325,7 +325,7 @@ public abstract class TimelineListAbstract : HBox {
 				if(response == ResponseType.YES) {
 					message_dialog.destroy();
 					var status_id = params;
-					warning(status_id);
+					debug(status_id);
 					destroy_status(status_id);
 				}
 				message_dialog.destroy();
@@ -334,7 +334,7 @@ public abstract class TimelineListAbstract : HBox {
 			
 			case "showtree":
 				string status_id = params;
-				warning(status_id);
+				debug(status_id);
 				var d = new StatusViewDialog(parent, accounts, template,
 					find_status(status_id));
 				//dialog.run();
@@ -363,7 +363,7 @@ public abstract class TimelineListAbstract : HBox {
 	
 	/** add/remove to favorites */
 	protected virtual void favorited(string id) {
-		warning("start favorite");
+		debug("start favorite");
 		view.set_sensitive(false);
 		Status? status = null;
 		
@@ -407,7 +407,7 @@ public abstract class TimelineListAbstract : HBox {
 		view.execute_script(script);
 		
 		view.set_sensitive(true);
-		warning("ok");
+		debug("ok");
 	}
 	
 	/* show popup menu */

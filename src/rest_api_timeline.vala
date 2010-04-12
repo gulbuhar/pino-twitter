@@ -86,7 +86,7 @@ public class RestAPITimeline : RestAPIAbstract {
 			map.insert("since_id", since_id);
 		if(max_id != "")
 			map.insert("max_id", max_id);
-		warning(req_url);
+		debug(req_url);
 		
 		string data = make_request(req_url, "GET", map, async);
 
@@ -109,17 +109,17 @@ public class RestAPITimeline : RestAPIAbstract {
 		//changing locale to C
 		string currentLocale = GLib.Intl.setlocale(GLib.LocaleCategory.TIME, null);
 		GLib.Intl.setlocale(GLib.LocaleCategory.TIME, "C");
-		//warning(data);
+		//debug(data);
 		ArrayList<Status> lst = new ArrayList<Status>();
-		warning("start parsing");
+		debug("start parsing");
 		for(Xml.Node* iter = rootNode->children; iter != null; iter = iter->next) {
 			if(iter == null)
-				warning("hoho! iter is null!");
+				debug("hoho! iter is null!");
 			
-			//warning("we in the loop");
+			//debug("we in the loop");
 			if(iter->type != ElementType.ELEMENT_NODE)
 				continue;
-			//warning("And here we go");
+			//debug("And here we go");
 			if(iter->name == "status") {
 				
 				if(iter->children != null) {
@@ -138,7 +138,7 @@ public class RestAPITimeline : RestAPIAbstract {
 				    			case "created_at":
 				    				status.created_at = str_to_time(iter_in->get_content());
 				    				status.created_at_s = iter_in->get_content();
-				    				//warning(iter_in->get_content());
+				    				//debug(iter_in->get_content());
 				    				break;
 				    			
 				    			case "text":
@@ -209,7 +209,7 @@ public class RestAPITimeline : RestAPIAbstract {
 													break;
 											
 												case "screen_name":
-													warning("This is %s", iter_user->get_content());
+													debug("This is %s", iter_user->get_content());
 													status.user_screen_name = iter_user->get_content();
 													fstatus.user_screen_name = iter_user->get_content();
 													break;
