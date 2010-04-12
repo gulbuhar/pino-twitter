@@ -117,7 +117,7 @@ public class TimelineList : TimelineListAbstract {
 			return result;
 		}
 		
-		warning("SIZE: %d", result.size);
+		debug("SIZE: %d", result.size);
 		
 		if(result.size > 0) { //if we got some statuses
 			if((!_parent_focus || !act.active) && lst.size > 0) { //if this list is not visible and we have updates
@@ -176,7 +176,7 @@ public class TimelineList : TimelineListAbstract {
 		try {
 			api.destroy_status(id);
 		} catch(RestError e) {
-			warning(e.message);
+			debug(e.message);
 			updating_error(e.message);
 			return;
 		}
@@ -198,7 +198,7 @@ public class TimelineList : TimelineListAbstract {
 	
 	/* get older statuses */
 	protected override void get_older() {
-		warning("more");
+		debug("more");
 		if(lst.size < 1)
 			return;
 		

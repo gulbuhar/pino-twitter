@@ -7,14 +7,18 @@ def build(bld):
 		target = 'pino',
 		uselib = 'GTK+ GOBJECT LIBXML GEE LIBNOTIFY LIBSOUP WEBKIT GTHREAD LIBUNIQUE GTKSPELL',
 		packages = 'gtk+-2.0 gee-1.0 gio-2.0 libnotify libsoup-2.4 libxml-2.0 webkit-1.0 config unique-1.0',
-		ccflags = ['-include', 'config.h', '-DYAML_DECLARE_STATIC'],
+		ccflags = ['-include', 'config.h', '-DYAML_DECLARE_STATIC',],
 		vapi_dirs = 'vapi/',
 		source = bld.path.ant_glob(excl = 'oauth-client.vala', incl = 'vapi/*.c *.vala'),
 		threading = True
 	)
 	if bld.env['HAVE_LIBINDICATE']:
 		prog.env.append_value('VALAFLAGS', '-D LIBINDICATE')
+		#prog.env.append_value('VALAFLAGS', '--disable-assert')
 		prog.uselib += ' LIBINDICATE'
+
+	if bld.env['DEBUG']:
+		prog.env.append_value('VALAFLAGS', '-D HAS_DEBUG')
 	
 	prog.install_path = '${PREFIX}/bin'
 	prog.includes = 'vapi/'
