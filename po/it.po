@@ -130,11 +130,11 @@ msgstr "aggiornato "
 
 #: src/main_window.vala:445
 msgid "New status"
-msgstr "Nuovo status"
+msgstr "Nuovo stato"
 
 #: src/main_window.vala:446
 msgid "Create new status"
-msgstr "Crea un nuovo status"
+msgstr "Crea un nuovo stato"
 
 #: src/main_window.vala:449
 msgid "New direct message"
@@ -231,7 +231,7 @@ msgstr "Intervallo di aggiornamento (in minuti)"
 
 #: src/pref_dialog.vala:71
 msgid "Default number of statuses"
-msgstr "Numero predefinito di aggiornamenti"
+msgstr "Numero predefinito di stati"
 
 #: src/pref_dialog.vala:75
 msgid "URL shortening service"
@@ -319,7 +319,7 @@ msgstr "Carattere predefinito"
 
 #: src/pref_dialog.vala:195
 msgid "Fresh statuses color"
-msgstr "Colore aggiornamenti recenti"
+msgstr "Colore stati recenti"
 
 #: src/pref_dialog.vala:200
 msgid "Opacity"
@@ -355,7 +355,7 @@ msgstr "Niente da accorciare"
 
 #: src/re_tweet.vala:125 src/re_tweet.vala:242
 msgid "New status:"
-msgstr "Nuovo status:"
+msgstr "Nuovo stato:"
 
 #: src/re_tweet.vala:134
 msgid "Hide"
@@ -380,7 +380,7 @@ msgstr "Retweet:"
 
 #: src/re_tweet.vala:317
 msgid "Your status is too long"
-msgstr "Il tuo status è troppo lungo"
+msgstr "Il proprio stato è troppo lungo"
 
 #: src/re_tweet.vala:341
 msgid "Type something first"
@@ -388,11 +388,11 @@ msgstr "Scrivi prima qualcosa"
 
 #: src/re_tweet.vala:383
 msgid "Sending status..."
-msgstr "Invio status... "
+msgstr "Invio stato... "
 
 #: src/re_tweet.vala:401
 msgid "Your status has been sent successfully"
-msgstr "Il tuo stato è stato inviato con successo"
+msgstr "Messaggio di stato trasmesso con successo"
 
 #: src/re_tweet.vala:407
 msgid "Sending direct message..."
@@ -400,7 +400,7 @@ msgstr "Invio messaggio diretto..."
 
 #: src/re_tweet.vala:421
 msgid "Your direct message has been sent successfully"
-msgstr "Il tuo massaggio diretto è stato inviato con successo"
+msgstr "Il tuo messaggio diretto è stato inviato con successo"
 
 #: src/status_bar_smart.vala:101
 msgid "updating... "
@@ -470,7 +470,7 @@ msgstr "Il tuo messaggio diretto è stato eliminato con successo"
 
 #: src/timeline_list.vala:193
 msgid "Your status has been deleted successfully"
-msgstr "Il tuo status è stato eliminato con successo"
+msgstr "Messaggio di stato eliminato con successo"
 
 #: src/timeline_list_abstract.vala:204
 msgid "Canceled"
@@ -486,7 +486,7 @@ msgstr "Connessione..."
 
 #: src/timeline_list_abstract.vala:322
 msgid "Sure you want to delete this status?"
-msgstr "Si è sicuri di voler eliminare questo status?"
+msgstr "Si è sicuri di voler eliminare questo stato?"
 
 #: src/timeline_list_abstract.vala:398
 msgid "Message was added to favorites"
@@ -519,7 +519,7 @@ msgstr "Web:"
 
 #: src/user_info_list.vala:90
 msgid "follow"
-msgstr "segue"
+msgstr "segui"
 
 #: src/user_info_list.vala:183
 msgid "This user does not exist"

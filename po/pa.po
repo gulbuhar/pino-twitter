@@ -1,578 +1,537 @@
-# translation of PACKAGE.
-# Copyright (C) 2010 THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# sospartan <sospartan@gmail.com>, 2009.
-# yongjun   <tang423@gmail.com>, 2010.
-# 
+#
+# A S Alam <aalam@users.sf.net>, 2010.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-04-03 14:34+0300\n"
-"PO-Revision-Date: 2010-04-06 15:42+0800\n"
-"Last-Translator: sospartan <sospartan@gmail.com>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2010-04-26 17:59+0530\n"
+"Last-Translator: A S Alam <aalam@users.sf.net>\n"
+"Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: src/account_action.vala:42
 msgid "Accounts"
-msgstr "账户"
+msgstr "ਅਕਾਊਂਟ"
 
 #: src/account_widget.vala:75 src/edit_account.vala:74
 msgid "Login"
-msgstr "登陆"
+msgstr "ਲਾਗਇਨ"
 
 #: src/account_widget.vala:76 src/edit_account.vala:83
 msgid "Service"
-msgstr "服务"
+msgstr "ਸਰਵਿਸ"
 
 #: src/account_widget.vala:77
 msgid "API proxy"
-msgstr "API代理"
+msgstr "API ਪਰਾਕਸੀ"
 
 #: src/account_widget.vala:159
 msgid "Sure you want to delete this account?"
-msgstr "确定要删除这条消息么?"
+msgstr "ਕੀ ਤੁਸੀਂ ਇਹ ਅਕਾਊਂਟ ਹਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
 
 #: src/dm_entry.vala:35
 msgid ""
 "You can't send direct message to this user. He (or she) must follow you too"
-msgstr "在他（她）关注你之前，不能够向该用户发送私信"
+msgstr ""
 
 #: src/dm_entry.vala:42
 msgid "Check"
-msgstr "检查"
+msgstr "ਚੈੱਕ ਕਰੋ"
 
 #: src/dm_entry.vala:58
 msgid "You can send direct message to this user"
-msgstr "你可以向该用户发送私信"
+msgstr ""
 
 #: src/dm_entry.vala:77
 msgid "Checking..."
-msgstr "正在检查"
+msgstr "ਚੈੱਕ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ..."
 
 #: src/edit_account.vala:70
 msgid "Edit account"
-msgstr "编辑账户"
+msgstr "ਅਕਾਊਂਟ ਸੋਧ"
 
 #: src/edit_account.vala:72
 msgid "Create new account"
-msgstr "创建新账号"
+msgstr "ਨਵਾਂ ਅਕਾਊਂਟ ਬਣਾਓ"
 
 #: src/edit_account.vala:78
 msgid "Password"
-msgstr "密码"
+msgstr "ਪਾਸਵਰਡ"
 
 #: src/edit_account.vala:97
 msgid "API proxy or other service"
-msgstr "API代理或其他服务"
+msgstr "API ਪਰਾਕਸੀ ਜਾਂ ਹੋਰ ਸਰਵਿਸ"
 
 #: src/edit_account.vala:109 src/pref_dialog.vala:215
 msgid "Account"
-msgstr "账户"
+msgstr "ਅਕਾਊਂਟ"
 
 #: src/edit_account.vala:183
 msgid "You must enter a proxy address"
-msgstr "你必须输入一个代理地址"
+msgstr "ਤੁਹਾਨੂੰ ਪਰਾਕਸੀ ਐਡਰੈੱਸ ਦੇਣਾ ਪਵੇਗਾ"
 
 #: src/edit_account.vala:198
 msgid "Proxy address must contain a valid url"
-msgstr "代理地址不是合法的url"
+msgstr ""
 
 #: src/edit_account.vala:216
 msgid "You must fill in all fields"
-msgstr "所有内容必须填写"
+msgstr ""
 
 #: src/favorites_view_dialog.vala:36
 msgid "Favorites"
-msgstr "收藏"
+msgstr "ਪਸੰਦੀਦਾ"
 
 #: src/favorites_view_dialog.vala:52
 msgid "More"
-msgstr "更多"
+msgstr "ਹੋਰ"
 
 #: src/main_window.vala:188
 msgid "Home timeline"
-msgstr "主页"
+msgstr "ਘਰ ਟਾਈਮ-ਲਾਈਨ"
 
 #: src/main_window.vala:189
 msgid "Show your home timeline"
-msgstr "显示主页"
+msgstr "ਆਪਣਾ ਘਰ ਟਾਈਮ-ਲਾਈਨ ਵੇਖੋ"
 
 #: src/main_window.vala:195
 msgid "Mentions"
-msgstr "提到你的消息"
+msgstr ""
 
 #: src/main_window.vala:196
 msgid "Show mentions"
-msgstr "显示提到你的"
+msgstr ""
 
 #: src/main_window.vala:202
 msgid "Direct messages"
-msgstr "私信"
+msgstr "ਸਿੱਧੇ ਸੁਨੇਹੇ"
 
 #: src/main_window.vala:203
 msgid "Show direct messages"
-msgstr "显示私信"
+msgstr "ਸਿੱਧੇ ਸੁਨੇਹੇ ਵੇਖੋ"
 
 #: src/main_window.vala:208
 msgid "User info"
-msgstr "用户信息"
+msgstr "ਯੂਜ਼ਰ ਜਾਣਕਾਰੀ"
 
 #: src/main_window.vala:208
 msgid "Show information about user"
-msgstr "显示用户的信息"
+msgstr "ਯੂਜ਼ਰ ਬਾਰੇ ਜਾਣਕਾਰੀ ਵੇਖੋ"
 
 #: src/main_window.vala:347 src/main_window.vala:348 src/main_window.vala:349
 #: src/status_bar_smart.vala:93 src/status_bar_smart.vala:96
 msgid "updated "
-msgstr "已更新 "
+msgstr "ਅੱਪਡੇਟ ਕੀਤੇ "
 
 #: src/main_window.vala:445
 msgid "New status"
-msgstr "新消息"
+msgstr "ਨਵੀਂ ਹਾਲਤ"
 
 #: src/main_window.vala:446
 msgid "Create new status"
-msgstr "创建新消息"
+msgstr "ਨਵੀਂ ਹਾਲਤ ਬਣਾਓ"
 
 #: src/main_window.vala:449
 msgid "New direct message"
-msgstr "新私信"
+msgstr "ਨਵਾਂ ਸਿੱਧਾ ਸੁਨੇਹਾ"
 
 #: src/main_window.vala:450
 msgid "Create new direct message"
-msgstr "创建私信"
+msgstr "ਨਵਾਂ ਸਿੱਧਾ ਸੁਨੇਹਾ ਲਿਖੋ"
 
 #: src/main_window.vala:456
 msgid "Show user"
-msgstr "显示用户"
+msgstr "ਯੂਜ਼ਰ ਵੇਖੋ"
 
 #: src/main_window.vala:457
 msgid "Show information about specified user"
-msgstr "显示关于特定用户的信息"
+msgstr "ਦਿੱਤੇ ਯੂਜ਼ਰ ਬਾਰੇ ਜਾਣਕਾਰੀ ਵੇਖੋ"
 
 #: src/main_window.vala:463
 msgid "Show favorites..."
-msgstr "显示收藏夹..."
+msgstr "ਪਸੰਦੀਦਾ ਵੇਖੋ..."
 
 #: src/main_window.vala:470
 msgid "Update timeline"
-msgstr "更新消息"
+msgstr "ਟਾਈਮ-ਲਾਈਨ ਅੱਪਡੇਟ"
 
 #: src/main_window.vala:473
 msgid "Quit"
-msgstr "退出"
+msgstr "ਬਾਹਰ"
 
 #: src/main_window.vala:478
 msgid "Edit"
-msgstr "编辑"
+msgstr "ਸੋਧ"
 
 #: src/main_window.vala:481 src/pref_dialog.vala:58
 msgid "Preferences"
-msgstr "配置"
+msgstr "ਪਸੰਦ"
 
 #: src/main_window.vala:486
 msgid "View"
-msgstr "视图"
+msgstr "ਵੇਖੋ"
 
 #: src/main_window.vala:488
 msgid "Show menu"
-msgstr "显示菜单"
+msgstr "ਮੇਨੂ ਵੇਖੋ"
 
 #: src/main_window.vala:498
 msgid "Show toolbar"
-msgstr "显示工具栏"
+msgstr "ਟੂਲਬਾਰ"
 
 #: src/main_window.vala:510
 msgid "Help"
-msgstr "帮助"
+msgstr "ਮੱਦਦ"
 
 #: src/main_window.vala:511
 #, c-format
 msgid "About %s"
-msgstr "关于 %s"
+msgstr "%s ਬਾਰੇ"
 
 #: src/more_window.vala:36
 msgid "Get older entries"
-msgstr "获取之前的"
+msgstr "ਪੁਰਾਣੀਆਂ ਐਂਟਰੀਆਂ ਲਵੋ"
 
 #: src/popups.vala:76 src/template.vala:170 src/template.vala:241
 #, c-format
 msgid "Direct message"
-msgstr "私信"
+msgstr "ਸਿੱਧਾ ਸੁਨੇਹਾ"
 
 #: src/popups.vala:76
 msgid "from"
-msgstr "通过"
+msgstr "ਵਲੋਂ"
 
 #: src/popups.vala:94
 msgid "Updates"
-msgstr "已更新 "
+msgstr "ਅੱਪਡੇਟ"
 
 #: src/popups.vala:142
 #, c-format
 msgid "in the home timeline: %d\n"
 msgstr ""
-" \t\r\n"
-"\r\n"
-"在主页里: %d\n"
 
 #: src/popups.vala:145
 #, c-format
 msgid "in mentions: %d\n"
-msgstr "回复: %d\n"
+msgstr ""
 
 #: src/popups.vala:148
 #, c-format
 msgid "in direct messages: %d"
-msgstr "在私信里: %d"
+msgstr ""
 
 #: src/pref_dialog.vala:67
 msgid "Update interval (in minutes)"
-msgstr "更新频率(分钟)"
+msgstr "ਅੱਪਡੇਟ ਅੰਤਰਾਲ (ਮਿੰਟਾਂ 'ਚ)"
 
 #: src/pref_dialog.vala:71
 msgid "Default number of statuses"
-msgstr "默认消息个数"
+msgstr "ਹਾਲਤ ਲਈ ਡਿਫਾਲਟ ਨੰਬਰ"
 
 #: src/pref_dialog.vala:75
 msgid "URL shortening service"
-msgstr "短链接服务"
+msgstr ""
 
 #: src/pref_dialog.vala:82
 msgid "Enable spell checking"
-msgstr "启用拼写检查"
+msgstr "ਸਪੈੱਲ ਚੈੱਕ ਚਾਲੂ"
 
 #: src/pref_dialog.vala:85
 msgid "Starting up in tray"
-msgstr "启动后最小化到托盘"
+msgstr "ਟਰੇ 'ਚ ਸ਼ੁਰੂ ਕਰੋ"
 
 #: src/pref_dialog.vala:88
 msgid "Show tray icon"
-msgstr "显示系统托盘图标"
+msgstr "ਸਿਸਟਮ ਟਰੇ 'ਚ ਵੇਖੋ"
 
 #: src/pref_dialog.vala:91
 msgid "For timeline"
-msgstr "你的消息"
+msgstr "ਟਾਈਮ-ਲਾਈਨ ਲਈ"
 
 #: src/pref_dialog.vala:92
 msgid "For mentions"
-msgstr "回复"
+msgstr ""
 
 #: src/pref_dialog.vala:93
 msgid "For direct messages"
-msgstr "私信"
+msgstr "ਸਿੱਧੇ ਸੁਨੇਹੇ ਲਈ"
 
 #: src/pref_dialog.vala:102
 msgid "Retweets style"
-msgstr "锐推样式"
+msgstr ""
 
 #: src/pref_dialog.vala:109
 msgid "Clear now"
-msgstr "清理"
+msgstr "ਹੁਣੇ ਸਾਫ਼ ਕਰੋ"
 
 #: src/pref_dialog.vala:116
 msgid "General"
-msgstr "主要的"
+msgstr "ਆਮ"
 
 #: src/pref_dialog.vala:122
 msgid "Retweets"
-msgstr "锐推"
+msgstr "ਰੀ-ਟਵੀਟ"
 
 #: src/pref_dialog.vala:125
 msgid "Cache"
-msgstr "缓存"
+msgstr "ਕੈਸ਼"
 
 #: src/pref_dialog.vala:136
 msgid "Notification area"
-msgstr "通知区"
+msgstr "ਨੋਟੀਫਿਕੇਸ਼ਨ ਏਰੀਆ"
 
 #: src/pref_dialog.vala:140
 msgid "Notification"
-msgstr "通知"
+msgstr "ਨੋਟੀਫਿਕੇਸ਼ਨ"
 
 #: src/pref_dialog.vala:154
 msgid "Authorization"
-msgstr "帐号验证"
+msgstr "ਪਰਮਾਣਕਿਤਾ"
 
 #: src/pref_dialog.vala:161
 msgid "Create new account..."
-msgstr "创建新账号..."
+msgstr "ਨਵਾਂ ਅਕਾਊਂਟ ਬਣਾਓ..."
 
 #: src/pref_dialog.vala:177
 msgid "Statuses"
-msgstr "消息"
+msgstr "ਹਾਲਤ"
 
 #: src/pref_dialog.vala:180
 msgid "Rounded corners"
-msgstr "圆角"
+msgstr "ਗੋਲ ਕੋਨੇ"
 
 #: src/pref_dialog.vala:183
 msgid "Right-to-left languages detection"
-msgstr "文字按从左到右的顺序"
+msgstr ""
 
 #: src/pref_dialog.vala:186
 msgid "Full names instead of nicknames"
-msgstr "全名替代昵称"
+msgstr ""
 
 #: src/pref_dialog.vala:189
 msgid "Default font"
-msgstr "默认字体"
+msgstr "ਡਿਫਾਲਟ ਫੋਂਟ"
 
 #: src/pref_dialog.vala:195
 msgid "Fresh statuses color"
-msgstr "刷新消息配色"
+msgstr ""
 
 #: src/pref_dialog.vala:200
 msgid "Opacity"
-msgstr "透明"
+msgstr "ਧੁੰਦਲਾਪਨ"
 
 #: src/pref_dialog.vala:213
 msgid "Main"
-msgstr "主菜单"
+msgstr "ਮੇਨ"
 
 #: src/pref_dialog.vala:214
 msgid "Desktop"
-msgstr "桌面"
+msgstr "ਡੈਸਕਟਾਪ"
 
 #: src/pref_dialog.vala:216
 msgid "Appearance"
-msgstr "外观"
+msgstr "ਦਿੱਖ"
 
 #: src/re_tweet.vala:88
 msgid "Shorten URLs..."
-msgstr "短链接"
+msgstr "ਛੋਟੇ URL..."
 
 #: src/re_tweet.vala:93
 msgid "Shortening URLs..."
-msgstr "正在缩短链接"
+msgstr ""
 
 #: src/re_tweet.vala:98
 msgid "URLs was shortened successfully"
-msgstr "链接缩短成功"
+msgstr "URL ਠੀਕ ਤਰ੍ਹਾਂ ਛੋਟਾ ਹੋ ਗਿਆ"
 
 #: src/re_tweet.vala:100
 msgid "Nothing to shorten"
-msgstr "没有内容可以缩短"
+msgstr "ਛੋਟਾ ਕਰਨ ਲਈ ਕੁਝ ਨਹੀਂ"
 
 #: src/re_tweet.vala:125 src/re_tweet.vala:242
 msgid "New status:"
-msgstr "新消息:"
+msgstr "ਨਵੀਂ ਹਾਲਤ:"
 
 #: src/re_tweet.vala:134
 msgid "Hide"
-msgstr "隐藏"
+msgstr "ਓਹਲੇ"
 
 #: src/re_tweet.vala:215
 #, c-format
 msgid "Reply to <b>%s</b>:"
-msgstr "回复给 <b>%s</b>:"
+msgstr "<b>%s</b> ਨੂੰ ਜਵਾਬ:"
 
 #: src/re_tweet.vala:255
 msgid "Reply to"
-msgstr "回复"
+msgstr "ਜਵਾਬ"
 
 #: src/re_tweet.vala:268
 msgid "Direct message to"
-msgstr "发送私信给"
+msgstr "ਸਿੱਧਾ ਸੁਨੇਹਾ"
 
 #: src/re_tweet.vala:288
 msgid "Retweet:"
-msgstr "锐推"
+msgstr "ਰੀਟਵੀਟ:"
 
 #: src/re_tweet.vala:317
 msgid "Your status is too long"
-msgstr "你的消息太长了"
+msgstr "ਤੁਹਾਡਾ ਹਾਲਤ ਸੁਨੇਹਾ ਬਹੁਤ ਲੰਮਾ ਹੈ"
 
 #: src/re_tweet.vala:341
 msgid "Type something first"
-msgstr "先输入一些内容"
+msgstr "ਪਹਿਲਾਂ ਕੁਝ ਲਿਖੋ"
 
 #: src/re_tweet.vala:383
 msgid "Sending status..."
-msgstr "正在发布消息... "
+msgstr "ਹਾਲਤ ਭੇਜੀ ਜਾ ਰਹੀ ਹੈ..."
 
 #: src/re_tweet.vala:401
 msgid "Your status has been sent successfully"
-msgstr "信息发送成功"
+msgstr "ਤੁਹਾਡੀ ਹਾਲਤ ਠੀਕ ਤਰ੍ਹਾਂ ਭੇਜੀ ਗਈ"
 
 #: src/re_tweet.vala:407
 msgid "Sending direct message..."
-msgstr "正在发送私信"
+msgstr "ਸਿੱਧਾ ਸੁਨੇਹਾ ਭੇਜਿਆ ਜਾ ਰਿਹਾ ਹੈ..."
 
 #: src/re_tweet.vala:421
 msgid "Your direct message has been sent successfully"
-msgstr "私信发送成功"
+msgstr "ਤੁਹਾਡਾ ਸਿੱਧਾ ਸੁਨੇਹਾ ਠੀਕ ਤਰ੍ਹਾਂ ਭੇਜਿਆ ਗਿਆ"
 
 #: src/status_bar_smart.vala:101
 msgid "updating... "
-msgstr "正在更新... "
+msgstr "ਅੱਪਡੇਟ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ... "
 
 #: src/status_view_dialog.vala:36
 msgid "Conversation"
-msgstr "对话"
+msgstr "ਚਰਚਾ"
 
 #: src/status_view_dialog.vala:64
 msgid "go to the web page"
-msgstr "跳转到网页"
+msgstr "ਵੈੱਬ ਪੇਜ਼ ਉੱਤੇ ਜਾਓ"
 
 #: src/template.vala:168 src/template.vala:238
 msgid "Reply"
-msgstr "回复"
+msgstr "ਜਵਾਬ"
 
 #: src/template.vala:169 src/template.vala:239
 msgid "Delete"
-msgstr "删除"
+msgstr "ਹਟਾਓ"
 
 #: src/template.vala:240
 msgid "Retweet"
-msgstr "锐推"
+msgstr "ਰੀ-ਟਵੀਟ"
 
 #: src/template.vala:265
 msgid "you"
-msgstr "你"
+msgstr "ਤੁਸੀਂ"
 
 #: src/template.vala:267
 msgid "in reply to"
-msgstr "回复"
+msgstr "ਜਵਾਬ 'ਚ"
 
 #: src/template.vala:300
 msgid "Add to favorite"
-msgstr "添加至收藏"
+msgstr "ਪਸੰਦੀਦਾ 'ਚ ਜੋੜ੍ਹੋ"
 
 #: src/template.vala:301
 msgid "Remove from favorite"
-msgstr "从收藏中移除"
+msgstr "ਪਸੰਦੀਦਾ 'ਚੋਂ ਹਟਾਓ"
 
 #: src/template.vala:408
 msgid "a few seconds ago"
-msgstr "几秒之前"
+msgstr "ਕੁਝ ਕੁ ਸਕਿੰਟ ਪਹਿਲਾਂ"
 
 #: src/template.vala:410
 msgid "1 minute ago"
-msgstr "1分钟前"
+msgstr "੧ ਮਿੰਟ ਪਹਿਲਾਂ"
 
 #: src/template.vala:412
 #, c-format
 msgid "%i minutes ago"
-msgstr "%i 分钟前"
+msgstr "%i ਮਿੰਟ ਪਹਿਲਾਂ"
 
 #: src/template.vala:414
 msgid "about 1 hour ago"
-msgstr "大概1小时前"
+msgstr "ਘੰਟਾ ਕੁ ਪਹਿਲਾਂ"
 
 #: src/template.vala:416
 #, c-format
 msgid "about %i hours ago"
-msgstr "大概 %i 小时前"
+msgstr "%i ਘੰਟੇ ਪਹਿਲਾਂ"
 
 #: src/timeline_direct_list.vala:153
 msgid "Your direct message has been deleted successfully"
-msgstr "消息删除成功"
+msgstr "ਤੁਹਾਡਾ ਸਿੱਧਾ ਸੁਨੇਹਾ ਠੀਕ ਤਰ੍ਹਾਂ ਹਟਾਇਆ ਗਿਆ"
 
 #: src/timeline_list.vala:193
 msgid "Your status has been deleted successfully"
-msgstr "消息删除成功"
+msgstr "ਤੁਹਾਡੀ ਹਾਲਤ ਠੀਕ ਤਰ੍ਹਾਂ ਹਟਾਈ ਗਈ"
 
 #: src/timeline_list_abstract.vala:204
 msgid "Canceled"
-msgstr "以取消"
+msgstr "ਰੱਦ ਕੀਤਾ"
 
 #: src/timeline_list_abstract.vala:210
 msgid "Empty"
-msgstr "空"
+msgstr "ਖਾਲੀ"
 
 #: src/timeline_list_abstract.vala:243
 msgid "Connecting..."
-msgstr "连接"
+msgstr "ਕੁਨੈਕਟ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ..."
 
 #: src/timeline_list_abstract.vala:322
 msgid "Sure you want to delete this status?"
-msgstr "你确定要删除这条消息么?"
+msgstr "ਕੀ ਤੁਸੀਂ ਇਹ ਹਾਲਤ ਹਟਾਉਣ ਲਈ ਸਹਿਮਤ ਹੋ?"
 
 #: src/timeline_list_abstract.vala:398
 msgid "Message was added to favorites"
-msgstr "信息已经被添加进收藏夹"
+msgstr "ਸੁਨੇਹਾ ਪਸੰਦੀਦਾ 'ਚ ਜੋੜਿਆ ਗਿਆ"
 
 #: src/timeline_list_abstract.vala:402
 msgid "Message was removed from favorites"
-msgstr "信息被移出收藏夹"
+msgstr "ਸੁਨੇਹਾ ਪਸੰਦੀਦਾ 'ਚੋਂ ਹਟਾਇਆ ਗਿਆ"
 
 #: src/tray_icon.vala:48
 #, c-format
 msgid "%s - a twitter client"
-msgstr "%s - twitter 客户端"
+msgstr "%s - ਟਵਿੱਟਰ ਕਲਾਇਟ"
 
 #: src/user_info_list.vala:48
 msgid "Followers:"
-msgstr "关注你的人:"
+msgstr ""
 
 #: src/user_info_list.vala:49
 msgid "Friends:"
-msgstr "好友:"
+msgstr "ਦੋਸਤ:"
 
 #: src/user_info_list.vala:50
 msgid "Statuses:"
-msgstr "消息:"
+msgstr "ਹਾਲਤ:"
 
 #: src/user_info_list.vala:69
 msgid "Web:"
-msgstr "网址:"
+msgstr "ਵੈੱਬ:"
 
 #: src/user_info_list.vala:90
 msgid "follow"
-msgstr "关注"
+msgstr ""
 
 #: src/user_info_list.vala:183
 msgid "This user does not exist"
-msgstr "这个用户不存在"
+msgstr "ਇਹ ਯੂਜ਼ਰ ਮੌਜੂਦ ਨਹੀਂ ਹੈ"
 
 #: src/user_info_list.vala:300
 msgid "Now you follow this user"
-msgstr "你已关注这个用户"
+msgstr ""
 
 #: src/user_info_list.vala:302
 msgid "User was unfollowed"
-msgstr "这个用户已不关注了"
+msgstr ""
 
-#~ msgid "Friends:  <b>%s</b>"
-#~ msgstr "回复给 <b>%s</b>:"
-
-#~ msgid "Statuses:  <b>%s</b>"
-#~ msgstr "回复给 <b>%s</b>:"
-
-#~ msgid "Twitter"
-#~ msgstr "Twitter"
-
-#~ msgid "Remember password"
-#~ msgstr "记住密码"
-
-#~ msgid "Show notification for each status"
-#~ msgstr "显示通知"
-
-#~ msgid "Show overall notification"
-#~ msgstr "总是显示通知"
-
-#~ msgid "REST API options"
-#~ msgstr "REST API 选项"
-
-#~ msgid "Tweets"
-#~ msgstr "消息"
-
-#~ msgid "Timeline"
-#~ msgstr "消息列表"
-
-#~ msgid "wrong login or password "
-#~ msgstr "账号或密码错误 "
-
-#~ msgid "problems with connection "
-#~ msgstr "网络连接故障 "
-
-#~ msgid "some strange error "
-#~ msgstr "未知错误 "
-
-#~ msgid "Main developer and project owner:"
-#~ msgstr "主要开发者和项目发起人:"

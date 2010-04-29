@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -36,11 +36,8 @@ msgid "Sure you want to delete this account?"
 msgstr "Уверены, что хотите удалить эту учётную запись?"
 
 #: src/dm_entry.vala:35
-msgid ""
-"You can't send direct message to this user. He (or she) must follow you too"
-msgstr ""
-"Вы не можете послать личное сообщение этому пользователю. Он (она) должен "
-"подписаться на ваш микроблог"
+msgid "You can't send direct message to this user. He (or she) must follow you too"
+msgstr "Вы не можете послать личное сообщение этому пользователю. Он (она) должен подписаться на ваш микроблог"
 
 #: src/dm_entry.vala:42
 msgid "Check"
@@ -88,11 +85,11 @@ msgstr "Вы должны заполнить все поля"
 
 #: src/favorites_view_dialog.vala:36
 msgid "Favorites"
-msgstr ""
+msgstr "Избранное"
 
 #: src/favorites_view_dialog.vala:52
 msgid "More"
-msgstr ""
+msgstr "Больше"
 
 #: src/main_window.vala:188
 msgid "Home timeline"
@@ -156,9 +153,8 @@ msgid "Show information about specified user"
 msgstr "Показать информацию об указанном пользователе"
 
 #: src/main_window.vala:463
-#, fuzzy
 msgid "Show favorites..."
-msgstr "Сократить URL..."
+msgstr "Показать избранное..."
 
 #: src/main_window.vala:470
 msgid "Update timeline"
@@ -243,7 +239,7 @@ msgstr "Служба сокращения URL"
 
 #: src/pref_dialog.vala:82
 msgid "Enable spell checking"
-msgstr ""
+msgstr "Включить проверку правописания"
 
 #: src/pref_dialog.vala:85
 msgid "Starting up in tray"
@@ -440,11 +436,11 @@ msgstr "в ответ к"
 
 #: src/template.vala:300
 msgid "Add to favorite"
-msgstr ""
+msgstr "Добавить в избранное"
 
 #: src/template.vala:301
 msgid "Remove from favorite"
-msgstr ""
+msgstr "Удалить из избранного"
 
 #: src/template.vala:408
 msgid "a few seconds ago"
@@ -477,9 +473,8 @@ msgid "Your status has been deleted successfully"
 msgstr "Ваш статус успешно удален"
 
 #: src/timeline_list_abstract.vala:204
-#, fuzzy
 msgid "Canceled"
-msgstr "Кеш"
+msgstr "Отменено"
 
 #: src/timeline_list_abstract.vala:210
 msgid "Empty"
@@ -495,11 +490,11 @@ msgstr "Уверены, что хотите удалить этот статус
 
 #: src/timeline_list_abstract.vala:398
 msgid "Message was added to favorites"
-msgstr ""
+msgstr "Сообщение было добавлено в избранное"
 
 #: src/timeline_list_abstract.vala:402
 msgid "Message was removed from favorites"
-msgstr ""
+msgstr "Собщение было удалено из избранного"
 
 #: src/tray_icon.vala:48
 #, c-format
