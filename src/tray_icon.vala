@@ -45,7 +45,7 @@ public class TrayIcon : StatusIcon {
 		var theme = IconTheme.get_default();
 		
 		if(!theme.has_icon("pino-tray-icon")) {
-			warning("no!!!!!!!!");
+			debug("no!!!!!!!!");
 			logo = _logo;
 		} else {
 			var info = theme.lookup_icon("pino-tray-icon", 22, IconLookupFlags.USE_BUILTIN);
@@ -53,7 +53,7 @@ public class TrayIcon : StatusIcon {
 		}
 		
 		if(!theme.has_icon("pino-tray-icon")) {
-			warning("no!!!!!!!!");
+			debug("no!!!!!!!!");
 			logo_fresh = _logo_fresh;
 		} else {
 			var info = theme.lookup_icon("pino-tray-icon-fresh", 22, IconLookupFlags.USE_BUILTIN);

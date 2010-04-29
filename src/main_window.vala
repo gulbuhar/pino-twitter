@@ -643,6 +643,7 @@ public class MainWindow : Window {
 		notify.start(home_list, mentions_list, direct_list);
 		debug("notification is ok");
 		updateAct.set_sensitive(true);
+		debug("refresh complete");
 	}
 	
 	private void run_prefs() {

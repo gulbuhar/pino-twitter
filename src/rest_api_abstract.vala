@@ -97,7 +97,7 @@ public abstract class RestAPIAbstract : Object {
 	protected RestUrls urls;
 	public Account? account;
 	
-	private Session? session = null;
+	//private Session? session = null;
 	
 	public RestAPIAbstract(Account? _account) {
 		urls = new RestUrls(ServiceType.UNKNOWN);
@@ -184,12 +184,6 @@ public abstract class RestAPIAbstract : Object {
 		throw new RestError.CODE("Account is not found");
 	}
 	
-	public void stop() {
-		if(session != null) {
-			session.abort();
-		}
-	}
-	
 	public string make_request(owned string req_url, string method,
 		HashTable<string, string> params = new HashTable<string, string>(str_hash, str_equal),
 		bool async = true, int retry = 3) throws RestError {
@@ -215,16 +209,18 @@ public abstract class RestAPIAbstract : Object {
 			}
 			req_url += query;
 		}
-		
+		debug("end of GET parameters setting");
 		//send signal about all requests
         request("%s: %s".printf(method, req_url));
         
-        //Session session;
+        Session session;
         
 		if(async)
 			session = new SessionAsync();
 		else
 			session = new SessionSync();
+
+		session.timeout = 30; //seconds
 		
         Message message = new Message(method, req_url);
         message.set_http_version(HTTPVersion.1_1);
@@ -233,28 +229,37 @@ public abstract class RestAPIAbstract : Object {
         headers.append("User-Agent", "%s/%s".printf(Config.APPNAME, Config.APP_VERSION));
         
         message.request_headers = headers;
-        
+        debug("just a control point");
         if(method != "GET") { //set post/delete-parameters
         	string body = form_encode_hash(params);
 			message.set_request("application/x-www-form-urlencoded",
 				MemoryUse.COPY, body, (int)body.size());
 		}
-		
+		debug("another control point");
 		//Basic HTTP authorization
         session.authenticate += (sess, msg, auth, retrying) => {
 			if (retrying) return;
 			auth.authenticate(account.login, account.password);
 		};
-		
+		debug("and one more");
 		int status_code = 0;
 		for(int i = 0; i < retry; i++) {
-			status_code = (int)session.send_message(message);
-			if(status_code == 200 || status_code == 401)
+			debug("go into loop");
+			try {
+				status_code = (int)session.send_message(message);
+			} catch(GLib.Error e) {
+				debug("we got some error: %s", e.message);
+				break;
+			}
+			debug("something recieve %d", status_code);
+			if(status_code == 200 || status_code == 401 || status_code == 7)
 				break;
 		}
-		
+		debug("...");
 		if(status_code != 200)
 			reply_tracking(status_code);
+
+		debug("end of make_request");
 		
 		return (string)message.response_body.flatten().data;
 	}

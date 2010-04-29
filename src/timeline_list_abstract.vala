@@ -198,12 +198,6 @@ public abstract class TimelineListAbstract : HBox {
 			set_empty();
 	}
 	
-	public virtual void stop() {
-		api.stop();
-		if(lst.size == 0)
-			update_content(template.generate_message(_("Canceled")));
-	}
-	
 	public virtual void set_empty(bool full = true) {
 		lst.clear();
 		last_focused = 0;
