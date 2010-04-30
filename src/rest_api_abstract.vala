@@ -160,6 +160,9 @@ public abstract class RestAPIAbstract : Object {
 			case 2:
 				throw new RestError.CODE("Connection problems: can't connect to the server.");
 			
+			case 4:
+				throw new RestError.CODE("Connection problems: timeout.");
+			
 			case 400:
 				throw new RestError.CODE("%d Rate limiting: you have reached the limit requests.".printf(status_code));
 			
@@ -252,7 +255,7 @@ public abstract class RestAPIAbstract : Object {
 				break;
 			}
 			debug("something recieve %d", status_code);
-			if(status_code == 200 || status_code == 401 || status_code == 7)
+			if(status_code == 200 || status_code == 401 || status_code == 4)
 				break;
 		}
 		debug("...");
