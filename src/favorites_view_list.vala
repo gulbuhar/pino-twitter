@@ -55,7 +55,7 @@ public class FavoritesViewList : TimelineList {
 			return result;
 		}
 		
-		warning("SIZE: %d", result.size);
+		debug("SIZE: %d", result.size);
 		
 		if(result.size > 0) { //if we got some statuses
 			
@@ -86,7 +86,7 @@ public class FavoritesViewList : TimelineList {
 	
 	/* get older statuses */
 	protected override void get_older() {
-		warning("more");
+		debug("more");
 		if(lst.size == 0)
 			return;
 		
