@@ -248,7 +248,13 @@ public class MainWindow : Window {
 		
 		//hiding on closing main window
 		delete_event.connect((event) => {
-			if(!tray.visible) { //close pino, if tray is hided
+			bool use_indicate = false;
+
+			#if(LIBINDICATE)
+				use_indicate = true;
+			#endif
+
+			if(!tray.visible && !use_indicate) { //close pino, if tray and indicator are not used
 				before_close();
 				return true;
 			}
