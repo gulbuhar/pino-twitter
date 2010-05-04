@@ -97,11 +97,29 @@ public abstract class RestAPIAbstract : Object {
 	protected RestUrls urls;
 	public Account? account;
 	
-	//private Session? session = null;
+	private SessionAsync session_async;
+	private SessionSync session_sync;
 	
 	public RestAPIAbstract(Account? _account) {
 		urls = new RestUrls(ServiceType.UNKNOWN);
 		set_auth(_account);
+
+		session_async = new SessionAsync();
+		session_sync = new SessionSync();
+
+		session_async.timeout = 30; //seconds
+		session_sync.timeout = 30; //seconds
+
+		//Basic HTTP authorization
+        session_async.authenticate.connect(http_auth);
+        session_sync.authenticate.connect(http_auth);
+	}
+
+	private void http_auth(Message msg, Soup.Auth auth, bool retrying) {
+		if(retrying)
+				return;
+
+		auth.authenticate(account.login, account.password);
 	}
 	
 	private void select_urls() {
@@ -194,56 +212,19 @@ public abstract class RestAPIAbstract : Object {
 		if(account == null)
 			no_account();
 		
-		if(method == "GET") { //set get-parameters
-			string query = "";
-			debug(params.size().to_string());
-			if(params.size() > 0) {
-				query = "?";
-				
-				int tmp_iter = 0;
-				foreach(string key in params.get_keys()) {
-					query += Soup.form_encode(key, params.lookup(key));
-					
-					if(tmp_iter < params.size() - 1)
-						query += "&";
-					
-					tmp_iter++;
-				}
-			}
-			req_url += query;
-		}
-		debug("end of GET parameters setting");
 		//send signal about all requests
         request("%s: %s".printf(method, req_url));
         
         Session session;
         
 		if(async)
-			session = new SessionAsync();
+			session = session_async;
 		else
-			session = new SessionSync();
-
-		session.timeout = 30; //seconds
+			session = session_sync;
 		
-        Message message = new Message(method, req_url);
-        message.set_http_version(HTTPVersion.1_1);
-        
-        MessageHeaders headers = new MessageHeaders(MessageHeadersType.MULTIPART);
-        headers.append("User-Agent", "%s/%s".printf(Config.APPNAME, Config.APP_VERSION));
-        
-        message.request_headers = headers;
-        debug("just a control point");
-        if(method != "GET") { //set post/delete-parameters
-        	string body = form_encode_hash(params);
-			message.set_request("application/x-www-form-urlencoded",
-				MemoryUse.COPY, body, (int)body.size());
-		}
-		debug("another control point");
-		//Basic HTTP authorization
-        session.authenticate += (sess, msg, auth, retrying) => {
-			if (retrying) return;
-			auth.authenticate(account.login, account.password);
-		};
+		Message message = form_request_new_from_hash(method, req_url, params);
+		message.request_headers.append("User-Agent", "%s/%s".printf(Config.APPNAME, Config.APP_VERSION));
+		
 		debug("and one more");
 		int status_code = 0;
 		for(int i = 0; i < retry; i++) {
@@ -264,7 +245,7 @@ public abstract class RestAPIAbstract : Object {
 
 		debug("end of make_request");
 		
-		return (string)message.response_body.flatten().data;
+		return (string)message.response_body.data;
 	}
 	
 	/* check user for DM availability */
