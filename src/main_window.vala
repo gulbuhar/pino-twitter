@@ -207,8 +207,8 @@ public class MainWindow : Window {
 		
 		//user info
 		user_info = new UserInfoList(this, accounts, template, prefs.numberStatuses,
-			Icon.new_for_string(Config.USERPIC_PATH), "UserInfoAct",
-			_("User info"), _("Show information about user"));
+			Icon.new_for_string(Config.USERPIC_PATH), prefs.nativeLinkColor,
+			"UserInfoAct", _("User info"), _("Show information about user"));
 		
 		home.fresh.connect(() => tray.new_tweets(true));
 		mentions.fresh.connect(() => tray.new_tweets(true));

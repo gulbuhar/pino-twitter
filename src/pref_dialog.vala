@@ -45,6 +45,7 @@ public class PrefDialog : Dialog {
 	private HScale opacityTweets;
 	private CheckButton rtlSupport;
 	private CheckButton fullNames;
+	private CheckButton nativeLinkColor;
 	private FontButton deFont;
 	private ColorButton freshColor;
 	private Entry login;
@@ -185,6 +186,9 @@ public class PrefDialog : Dialog {
 		//full names or nicks in tweets
 		fullNames = new CheckButton.with_label(_("Full names instead of nicknames"));
 		
+		//link color
+		nativeLinkColor = new CheckButton.with_label(_("Native links color"));
+		
 		//default font in statuses
 		var deFontLabel = new Label(_("Default font"));
 		deFont = new FontButton();
@@ -204,6 +208,7 @@ public class PrefDialog : Dialog {
 		table_tweets.add_widget(roundedAvatars);
 		table_tweets.add_widget(rtlSupport);
 		table_tweets.add_widget(fullNames);
+		table_tweets.add_widget(nativeLinkColor);
 		table_tweets.add_two_widgets(deFontLabel, deFont);
 		table_tweets.add_two_widgets(freshColorLabel, freshColor);
 		table_tweets.add_two_widgets(opacityTweetsLabel, opacityTweets);
@@ -298,6 +303,7 @@ public class PrefDialog : Dialog {
 		opacityTweets.set_value((int)(prefs.opacityTweets.to_double() * 100));
 		rtlSupport.active = prefs.rtlSupport;
 		fullNames.active = prefs.fullNames;
+		nativeLinkColor.active = prefs.nativeLinkColor;
 		deFont.set_font_name("%s %d".printf(prefs.deFontName, prefs.deFontSize));
 		
 		//colorFrsh setup
@@ -378,6 +384,10 @@ public class PrefDialog : Dialog {
 		
 		fullNames.toggled.connect(() => {
 			prefs.fullNames = fullNames.active;
+		});
+		
+		nativeLinkColor.toggled.connect(() => {
+			prefs.nativeLinkColor = nativeLinkColor.active;
 		});
 		
 		deFont.font_set.connect(() => {

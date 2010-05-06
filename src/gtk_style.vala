@@ -23,33 +23,27 @@ using ColorUtils;
 
 public class SystemStyle : Object {
 	
-	private string _bg_color;
-	public string bg_color{get{return _bg_color;}}
-	
-	private string _fg_color;
-	public string fg_color{get{return _fg_color;}}
-	
-	private string _sl_color;
-	public string sl_color{get{return _sl_color;}}
-	
-	private string _lg_color;
-	public string lg_color{get{return _lg_color;}}
-	
-	private string _lt_color;
-	public string lt_color{get{return _lt_color;}}
-	
-	private string _dr_color;
-	public string dr_color{get{return _dr_color;}}
+	public string bg_color {get; set;} //background
+	public string fg_color {get; set;} //foreground
+	public string sl_color {get; set;} //selected
+	public string lg_color {get; set;}
+	public string lt_color {get; set;}
+	public string dr_color {get; set;}
+	public string lk_color {get; set;} //link color
 	
 	public SystemStyle(Gtk.Style style) {
 		updateStyle(style);
 	}
 	
 	public void updateStyle(Gtk.Style style) {
-		_bg_color = rgb_to_hex(style.bg[Gtk.StateType.NORMAL]);
-		_lg_color = rgb_to_hex(style.light[Gtk.StateType.NORMAL]);
-		_fg_color = rgb_to_hex(style.fg[Gtk.StateType.NORMAL]);
-		_sl_color = rgb_to_hex(style.bg[Gtk.StateType.SELECTED]);
+		bg_color = rgb_to_hex(style.bg[Gtk.StateType.NORMAL]);
+		lg_color = rgb_to_hex(style.light[Gtk.StateType.NORMAL]);
+		fg_color = rgb_to_hex(style.fg[Gtk.StateType.NORMAL]);
+		sl_color = rgb_to_hex(style.bg[Gtk.StateType.SELECTED]);
+		
+		Value v = new Value(typeof(Gdk.Color));// = null;
+		style.get_style_property(typeof(Gtk.Widget), "link-color", v);
+		lk_color = rgb_to_hex((Gdk.Color) v);
 		
 		//working on light color (lt_color)
 		{
@@ -57,7 +51,7 @@ public class SystemStyle : Object {
 			light_color.red = lighter(style.fg[Gtk.StateType.NORMAL].red, 100*256);
 			light_color.green = lighter(style.fg[Gtk.StateType.NORMAL].green, 100*256);
 			light_color.blue = lighter(style.fg[Gtk.StateType.NORMAL].blue, 100*256);
-			_lt_color = rgb_to_hex(light_color);
+			lt_color = rgb_to_hex(light_color);
 			
 		}
 		
@@ -67,9 +61,9 @@ public class SystemStyle : Object {
 			dark_color.red = darker(style.bg[Gtk.StateType.NORMAL].red, 20*256);
 			dark_color.green = darker(style.bg[Gtk.StateType.NORMAL].green, 20*256);
 			dark_color.blue = darker(style.bg[Gtk.StateType.NORMAL].blue, 20*256);
-			_dr_color = rgb_to_hex(dark_color);
+			dr_color = rgb_to_hex(dark_color);
 		}
 		
-		//warning("New style");
+		debug("New style");
 	}
 }

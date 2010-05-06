@@ -19,6 +19,8 @@ def build(bld):
 
 	if bld.env['DEBUG']:
 		prog.env.append_value('VALAFLAGS', '-D HAS_DEBUG')
+	if bld.env['UBUNTUICONS']:
+		prog.env.append_value('VALAFLAGS', '-D HAS_UBUNTUICONS')
 	
 	prog.install_path = '${PREFIX}/bin'
 	prog.includes = 'vapi/'
