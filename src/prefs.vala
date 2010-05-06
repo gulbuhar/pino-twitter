@@ -164,6 +164,20 @@ public class Prefs : Object {
 		}
 	}
 	
+	public signal void nativeLinkColorChanged();
+	#if (HAS_UBUNTUICONS)
+		private bool _nativeLinkColor = true;
+	#else
+		private bool _nativeLinkColor = false;
+	#endif
+	public bool nativeLinkColor {
+		get { return _nativeLinkColor; }
+		set {
+			_nativeLinkColor = value;
+			nativeLinkColorChanged();
+		}
+	}
+	
 	public signal void fontChanged();
 	private int _deFontSize = 9;
 	public int deFontSize {
@@ -367,6 +381,10 @@ public class Prefs : Object {
 					_fullNames = iter->get_content().to_bool();
 					break;
 				
+				case "nativeLinkColor":
+					_nativeLinkColor = iter->get_content().to_bool();
+					break;
+				
 				case "deFontName":
 					_deFontName = iter->get_content();
 					break;
@@ -451,6 +469,8 @@ public class Prefs : Object {
         root->new_text_child(ns, "rtlSupport", _rtlSupport.to_string());
         root->add_content("\n");
         root->new_text_child(ns, "fullNames", _fullNames.to_string());
+        root->add_content("\n");
+        root->new_text_child(ns, "nativeLinkColor", _nativeLinkColor.to_string());
         root->add_content("\n");
         root->new_text_child(ns, "deFontName", _deFontName);
         root->add_content("\n");

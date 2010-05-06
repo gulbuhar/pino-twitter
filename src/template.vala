@@ -71,6 +71,7 @@ public class Template : Object {
 		prefs.opacityTweetsChanged.connect(() => emit_for_refresh());
 		prefs.rtlChanged.connect(() => emit_for_refresh());
 		prefs.fullNamesChanged.connect(() => emit_for_refresh());
+		prefs.nativeLinkColorChanged.connect(() => emit_for_refresh());
 		prefs.fontChanged.connect(() => emit_for_refresh());
 	}
 	
@@ -120,6 +121,12 @@ public class Template : Object {
 		map["font_size"] = prefs.deFontSize.to_string();
 		map["font_size_small"] = (prefs.deFontSize - 1).to_string();
 		map["fresh_color"] = prefs.freshColor;
+		
+		if(prefs.nativeLinkColor)
+			map["link_color"] = gtk_style.lk_color;
+		else
+			map["link_color"] = gtk_style.sl_color;
+		
 		map["font_name"] = prefs.deFontName;
 		map["main_content"] = content;
 		

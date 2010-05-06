@@ -55,7 +55,7 @@ public class UserInfoList : TimelineListAbstract {
 	public signal void follow_event(string msg);
 	
 	public UserInfoList(Window _parent, Accounts _accounts, Template _template,
-		int __items_count, Icon? _icon, string fname = "", string icon_name = "",
+		int __items_count, Icon? _icon, bool native_link_color, string fname = "", string icon_name = "",
 		string icon_desc = "") {
 		
 		base(_parent, _accounts, TimelineType.USER, _template, __items_count, 
@@ -66,7 +66,11 @@ public class UserInfoList : TimelineListAbstract {
 		var acc = accounts.get_current_account();
 		api = new RestAPIUserInfo(acc);
 		
-		homepage_text = _("Web:") + "  <a href='%s'><span foreground='" + template.gtk_style.sl_color + "'>%s</span></a>";
+		string link_color = template.gtk_style.sl_color;
+		if(native_link_color)
+			link_color = template.gtk_style.lk_color;
+		
+		homepage_text = _("Web:") + "  <a href='%s'><span foreground='" + link_color + "'>%s</span></a>";
 		
 		accounts.active_changed.connect(() => {
 			set_empty();

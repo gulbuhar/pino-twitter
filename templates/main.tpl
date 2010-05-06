@@ -14,7 +14,7 @@ body{background-color: {{bg_color}}; color: {{fg_color}}; font-size: {{font_size
 .favorite{float: right; margin-left: 5px;}
 .content_me .date{float: none;}
 .content_me .nick{cursor: default;}
-a, a.tags{color: {{sl_color}};}
+a, a.tags{color: {{link_color}};}
 a.tags{text-decoration: none; font-weight: bold;}
 .re_nick{color: {{fg_color}}; font-weight: bold; text-decoration: none;}
 .reply, .delete, .by_who{text-decoration: none; text-align: right; font-size: {{font_size_small}}pt; color: {{lt_color}};}
