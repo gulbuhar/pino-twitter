@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-03 14:34+0300\n"
+"POT-Creation-Date: 2010-05-06 13:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,7 +67,7 @@ msgstr "Пароль"
 msgid "API proxy or other service"
 msgstr "Адрес другого сервиса"
 
-#: src/edit_account.vala:109 src/pref_dialog.vala:215
+#: src/edit_account.vala:109 src/pref_dialog.vala:220
 msgid "Account"
 msgstr "Учетная запись"
 
@@ -91,104 +91,104 @@ msgstr "Избранное"
 msgid "More"
 msgstr "Больше"
 
-#: src/main_window.vala:188
+#: src/main_window.vala:191
 msgid "Home timeline"
 msgstr "Домашняя лента"
 
-#: src/main_window.vala:189
+#: src/main_window.vala:192
 msgid "Show your home timeline"
 msgstr "Показать вашу домашнюю ленту"
 
-#: src/main_window.vala:195
+#: src/main_window.vala:198
 msgid "Mentions"
 msgstr "Упоминания"
 
-#: src/main_window.vala:196
+#: src/main_window.vala:199
 msgid "Show mentions"
 msgstr "Показать упоминания"
 
-#: src/main_window.vala:202
+#: src/main_window.vala:205
 msgid "Direct messages"
 msgstr "Ответы"
 
-#: src/main_window.vala:203
+#: src/main_window.vala:206
 msgid "Show direct messages"
 msgstr "Показать личные сообщения"
 
-#: src/main_window.vala:208
+#: src/main_window.vala:211
 msgid "User info"
 msgstr "Информация о пользователе"
 
-#: src/main_window.vala:208
+#: src/main_window.vala:211
 msgid "Show information about user"
 msgstr "Показать информацию о пользователе"
 
-#: src/main_window.vala:347 src/main_window.vala:348 src/main_window.vala:349
+#: src/main_window.vala:356 src/main_window.vala:357 src/main_window.vala:358
 #: src/status_bar_smart.vala:93 src/status_bar_smart.vala:96
 msgid "updated "
 msgstr "обновлено "
 
-#: src/main_window.vala:445
+#: src/main_window.vala:454
 msgid "New status"
 msgstr "Новый статус"
 
-#: src/main_window.vala:446
+#: src/main_window.vala:455
 msgid "Create new status"
 msgstr "Создать новый статус"
 
-#: src/main_window.vala:449
+#: src/main_window.vala:458
 msgid "New direct message"
 msgstr "Написать другу"
 
-#: src/main_window.vala:450
+#: src/main_window.vala:459
 msgid "Create new direct message"
 msgstr "Создать новое сообщение другу"
 
-#: src/main_window.vala:456
+#: src/main_window.vala:465
 msgid "Show user"
 msgstr "Найти пользователя"
 
-#: src/main_window.vala:457
+#: src/main_window.vala:466
 msgid "Show information about specified user"
 msgstr "Показать информацию об указанном пользователе"
 
-#: src/main_window.vala:463
+#: src/main_window.vala:472
 msgid "Show favorites..."
 msgstr "Показать избранное..."
 
-#: src/main_window.vala:470
+#: src/main_window.vala:479
 msgid "Update timeline"
 msgstr "Обновить ленту сообщений"
 
-#: src/main_window.vala:473
+#: src/main_window.vala:482
 msgid "Quit"
 msgstr "Выйти"
 
-#: src/main_window.vala:478
+#: src/main_window.vala:487
 msgid "Edit"
 msgstr "Правка"
 
-#: src/main_window.vala:481 src/pref_dialog.vala:58
+#: src/main_window.vala:490 src/pref_dialog.vala:59
 msgid "Preferences"
 msgstr "Параметры"
 
-#: src/main_window.vala:486
+#: src/main_window.vala:495
 msgid "View"
 msgstr "Вид"
 
-#: src/main_window.vala:488
+#: src/main_window.vala:497
 msgid "Show menu"
 msgstr "Показать меню"
 
-#: src/main_window.vala:498
+#: src/main_window.vala:507
 msgid "Show toolbar"
 msgstr "Показать панель инструментов"
 
-#: src/main_window.vala:510
+#: src/main_window.vala:519
 msgid "Help"
 msgstr "Справка"
 
-#: src/main_window.vala:511
+#: src/main_window.vala:520
 #, c-format
 msgid "About %s"
 msgstr "О %s"
@@ -197,7 +197,7 @@ msgstr "О %s"
 msgid "Get older entries"
 msgstr "Получить более старые записи"
 
-#: src/popups.vala:76 src/template.vala:170 src/template.vala:241
+#: src/popups.vala:76 src/template.vala:177 src/template.vala:248
 #, c-format
 msgid "Direct message"
 msgstr "Личное сообщение"
@@ -225,115 +225,119 @@ msgstr "в упоминаниях: %d\n"
 msgid "in direct messages: %d"
 msgstr "в личных сообщениях: %d"
 
-#: src/pref_dialog.vala:67
+#: src/pref_dialog.vala:68
 msgid "Update interval (in minutes)"
 msgstr "Интервал обновления (в минутах)"
 
-#: src/pref_dialog.vala:71
+#: src/pref_dialog.vala:72
 msgid "Default number of statuses"
 msgstr "Количество отображаемых статусов статусов"
 
-#: src/pref_dialog.vala:75
+#: src/pref_dialog.vala:76
 msgid "URL shortening service"
 msgstr "Служба сокращения URL"
 
-#: src/pref_dialog.vala:82
+#: src/pref_dialog.vala:83
 msgid "Enable spell checking"
 msgstr "Включить проверку правописания"
 
-#: src/pref_dialog.vala:85
+#: src/pref_dialog.vala:86
 msgid "Starting up in tray"
 msgstr "Запускать в трее"
 
-#: src/pref_dialog.vala:88
+#: src/pref_dialog.vala:89
 msgid "Show tray icon"
 msgstr "Показать иконку в трее"
 
-#: src/pref_dialog.vala:91
+#: src/pref_dialog.vala:92
 msgid "For timeline"
 msgstr "Для ленты сообщений"
 
-#: src/pref_dialog.vala:92
+#: src/pref_dialog.vala:93
 msgid "For mentions"
 msgstr "Для упоминаний"
 
-#: src/pref_dialog.vala:93
+#: src/pref_dialog.vala:94
 msgid "For direct messages"
 msgstr "Для личных сообщений"
 
-#: src/pref_dialog.vala:102
+#: src/pref_dialog.vala:103
 msgid "Retweets style"
 msgstr "Стиль ретвитов"
 
-#: src/pref_dialog.vala:109
+#: src/pref_dialog.vala:110
 msgid "Clear now"
 msgstr "Очистить сейчас"
 
-#: src/pref_dialog.vala:116
+#: src/pref_dialog.vala:117
 msgid "General"
 msgstr "Основные"
 
-#: src/pref_dialog.vala:122
+#: src/pref_dialog.vala:123
 msgid "Retweets"
 msgstr "Ретвиты"
 
-#: src/pref_dialog.vala:125
+#: src/pref_dialog.vala:126
 msgid "Cache"
 msgstr "Кеш"
 
-#: src/pref_dialog.vala:136
+#: src/pref_dialog.vala:137
 msgid "Notification area"
 msgstr "Уведомления"
 
-#: src/pref_dialog.vala:140
+#: src/pref_dialog.vala:141
 msgid "Notification"
 msgstr "Уведомления"
 
-#: src/pref_dialog.vala:154
+#: src/pref_dialog.vala:155
 msgid "Authorization"
 msgstr "Автоиризация"
 
-#: src/pref_dialog.vala:161
+#: src/pref_dialog.vala:162
 msgid "Create new account..."
 msgstr "Создать новую учетную запись..."
 
-#: src/pref_dialog.vala:177
+#: src/pref_dialog.vala:178
 msgid "Statuses"
 msgstr "Статусы"
 
-#: src/pref_dialog.vala:180
+#: src/pref_dialog.vala:181
 msgid "Rounded corners"
 msgstr "Закругленные углы"
 
-#: src/pref_dialog.vala:183
+#: src/pref_dialog.vala:184
 msgid "Right-to-left languages detection"
 msgstr "Распознавание RTL (справа налево) языков"
 
-#: src/pref_dialog.vala:186
+#: src/pref_dialog.vala:187
 msgid "Full names instead of nicknames"
 msgstr "Показывать полные имена"
 
-#: src/pref_dialog.vala:189
+#: src/pref_dialog.vala:190
+msgid "Native links color"
+msgstr ""
+
+#: src/pref_dialog.vala:193
 msgid "Default font"
 msgstr "Шрифт по умолчанию"
 
-#: src/pref_dialog.vala:195
+#: src/pref_dialog.vala:199
 msgid "Fresh statuses color"
 msgstr "Выделять новые статусы цветом"
 
-#: src/pref_dialog.vala:200
+#: src/pref_dialog.vala:204
 msgid "Opacity"
 msgstr "Прозрачность"
 
-#: src/pref_dialog.vala:213
+#: src/pref_dialog.vala:218
 msgid "Main"
 msgstr "Главные настройки"
 
-#: src/pref_dialog.vala:214
+#: src/pref_dialog.vala:219
 msgid "Desktop"
 msgstr "Настройки рабочего стола"
 
-#: src/pref_dialog.vala:216
+#: src/pref_dialog.vala:221
 msgid "Appearance"
 msgstr "Внешний вид"
 
@@ -390,15 +394,15 @@ msgstr "Введите что-нибудь сначала"
 msgid "Sending status..."
 msgstr "Отправка статуса..."
 
-#: src/re_tweet.vala:401
+#: src/re_tweet.vala:406
 msgid "Your status has been sent successfully"
 msgstr "Ваш статус был успешно отправлен"
 
-#: src/re_tweet.vala:407
+#: src/re_tweet.vala:412
 msgid "Sending direct message..."
 msgstr "Отправка личного сообщения..."
 
-#: src/re_tweet.vala:421
+#: src/re_tweet.vala:426
 msgid "Your direct message has been sent successfully"
 msgstr "Личное сообщение было успешно отправлено"
 
@@ -414,92 +418,88 @@ msgstr "Беседа"
 msgid "go to the web page"
 msgstr "Перейти к странице"
 
-#: src/template.vala:168 src/template.vala:238
+#: src/template.vala:175 src/template.vala:245
 msgid "Reply"
 msgstr "Ответить"
 
-#: src/template.vala:169 src/template.vala:239
+#: src/template.vala:176 src/template.vala:246
 msgid "Delete"
 msgstr "Удалить"
 
-#: src/template.vala:240
+#: src/template.vala:247
 msgid "Retweet"
 msgstr "Ретвит"
 
-#: src/template.vala:265
+#: src/template.vala:272
 msgid "you"
 msgstr "тебе"
 
-#: src/template.vala:267
+#: src/template.vala:274
 msgid "in reply to"
 msgstr "в ответ к"
 
-#: src/template.vala:300
+#: src/template.vala:307
 msgid "Add to favorite"
 msgstr "Добавить в избранное"
 
-#: src/template.vala:301
+#: src/template.vala:308
 msgid "Remove from favorite"
 msgstr "Удалить из избранного"
 
-#: src/template.vala:408
+#: src/template.vala:415
 msgid "a few seconds ago"
 msgstr "пару секунд назад"
 
-#: src/template.vala:410
+#: src/template.vala:417
 msgid "1 minute ago"
 msgstr "минуту назад"
 
-#: src/template.vala:412
+#: src/template.vala:419
 #, c-format
 msgid "%i minutes ago"
 msgstr "%i минут назад"
 
-#: src/template.vala:414
+#: src/template.vala:421
 msgid "about 1 hour ago"
 msgstr "где-то час назад"
 
-#: src/template.vala:416
+#: src/template.vala:423
 #, c-format
 msgid "about %i hours ago"
 msgstr "где-то %i часов назад"
 
-#: src/timeline_direct_list.vala:153
+#: src/timeline_direct_list.vala:163
 msgid "Your direct message has been deleted successfully"
 msgstr "Личное сообщение от вас было удалено"
 
-#: src/timeline_list.vala:193
+#: src/timeline_list.vala:196
 msgid "Your status has been deleted successfully"
 msgstr "Ваш статус успешно удален"
 
 #: src/timeline_list_abstract.vala:204
-msgid "Canceled"
-msgstr "Отменено"
-
-#: src/timeline_list_abstract.vala:210
 msgid "Empty"
 msgstr "Пусто"
 
-#: src/timeline_list_abstract.vala:243
+#: src/timeline_list_abstract.vala:237
 msgid "Connecting..."
 msgstr "Соединяемся..."
 
-#: src/timeline_list_abstract.vala:322
+#: src/timeline_list_abstract.vala:316
 msgid "Sure you want to delete this status?"
 msgstr "Уверены, что хотите удалить этот статус?"
 
-#: src/timeline_list_abstract.vala:398
+#: src/timeline_list_abstract.vala:392
 msgid "Message was added to favorites"
 msgstr "Сообщение было добавлено в избранное"
 
-#: src/timeline_list_abstract.vala:402
+#: src/timeline_list_abstract.vala:396
 msgid "Message was removed from favorites"
 msgstr "Собщение было удалено из избранного"
 
-#: src/tray_icon.vala:48
-#, c-format
-msgid "%s - a twitter client"
-msgstr "%s - твиттер клиент"
+#: src/tray_icon.vala:67
+#, fuzzy, c-format
+msgid "%s - not only a twitter client"
+msgstr "%s - не только твиттер клиент"
 
 #: src/user_info_list.vala:48
 msgid "Followers:"
@@ -513,25 +513,28 @@ msgstr "Друзей:"
 msgid "Statuses:"
 msgstr "Сообщений:"
 
-#: src/user_info_list.vala:69
+#: src/user_info_list.vala:73
 msgid "Web:"
 msgstr "Страница:"
 
-#: src/user_info_list.vala:90
+#: src/user_info_list.vala:94
 msgid "follow"
 msgstr "подписаться"
 
-#: src/user_info_list.vala:183
+#: src/user_info_list.vala:190
 msgid "This user does not exist"
 msgstr "Не существует такого пользователя"
 
-#: src/user_info_list.vala:300
+#: src/user_info_list.vala:312
 msgid "Now you follow this user"
 msgstr "Теперь Вы подписаны на этот микроблог"
 
-#: src/user_info_list.vala:302
+#: src/user_info_list.vala:314
 msgid "User was unfollowed"
 msgstr "Вы больше не подписаны на этот микроблог"
+
+#~ msgid "Canceled"
+#~ msgstr "Отменено"
 
 #~ msgid "Friends:  <b>%s</b>"
 #~ msgstr "Ответить <b>%s</b>:"
