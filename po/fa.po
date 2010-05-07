@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-03 14:34+0300\n"
+"POT-Creation-Date: 2010-05-06 13:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Ahmad Sufi Mahmudi <ahmad.pub@gmail.com>\n"
 "Language-Team: Persian <LL@li.org>\n"
@@ -36,8 +36,10 @@ msgid "Sure you want to delete this account?"
 msgstr "آیا مطمئن هستید که می‌خواهید این حساب را پاک کنید؟"
 
 #: src/dm_entry.vala:35
-msgid "You can't send direct message to this user. He (or she) must follow you too"
-msgstr "شما نمی‌توانید به این کاربر پیام مستقیم ارسال کنید. او نیز می‌بایست شما را "
+msgid ""
+"You can't send direct message to this user. He (or she) must follow you too"
+msgstr ""
+"شما نمی‌توانید به این کاربر پیام مستقیم ارسال کنید. او نیز می‌بایست شما را "
 "دنبال کند"
 
 #: src/dm_entry.vala:42
@@ -68,7 +70,7 @@ msgstr "گذرواژه"
 msgid "API proxy or other service"
 msgstr "پیش‌کار API یا سرویس‌های دیگر"
 
-#: src/edit_account.vala:109 src/pref_dialog.vala:215
+#: src/edit_account.vala:109 src/pref_dialog.vala:220
 msgid "Account"
 msgstr "حساب‌کاربری"
 
@@ -92,104 +94,104 @@ msgstr "برگزیده‌ها"
 msgid "More"
 msgstr "بیش‌تر"
 
-#: src/main_window.vala:188
+#: src/main_window.vala:191
 msgid "Home timeline"
 msgstr "خط‌زمانی خانگی"
 
-#: src/main_window.vala:189
+#: src/main_window.vala:192
 msgid "Show your home timeline"
 msgstr "نشان‌دادن خط‌زمانی خانگی شما"
 
-#: src/main_window.vala:195
+#: src/main_window.vala:198
 msgid "Mentions"
 msgstr "پاسخ‌ها"
 
-#: src/main_window.vala:196
+#: src/main_window.vala:199
 msgid "Show mentions"
 msgstr "نشان‌دادن پاسخ‌ها"
 
-#: src/main_window.vala:202
+#: src/main_window.vala:205
 msgid "Direct messages"
 msgstr "پیام‌های مستقیم"
 
-#: src/main_window.vala:203
+#: src/main_window.vala:206
 msgid "Show direct messages"
 msgstr "نشان‌دادن پیام‌های مستقیم"
 
-#: src/main_window.vala:208
+#: src/main_window.vala:211
 msgid "User info"
 msgstr "اطلاعات کاربر"
 
-#: src/main_window.vala:208
+#: src/main_window.vala:211
 msgid "Show information about user"
 msgstr "نشان‌دادن اطلاعات دربارهٔ کاربر"
 
-#: src/main_window.vala:347 src/main_window.vala:348 src/main_window.vala:349
+#: src/main_window.vala:356 src/main_window.vala:357 src/main_window.vala:358
 #: src/status_bar_smart.vala:93 src/status_bar_smart.vala:96
 msgid "updated "
 msgstr "به‌روزرسانی شد "
 
-#: src/main_window.vala:445
+#: src/main_window.vala:454
 msgid "New status"
 msgstr "وضعیت تازه"
 
-#: src/main_window.vala:446
+#: src/main_window.vala:455
 msgid "Create new status"
 msgstr "ساختن وضعیت تازه"
 
-#: src/main_window.vala:449
+#: src/main_window.vala:458
 msgid "New direct message"
 msgstr "پیام مستقیم تازه"
 
-#: src/main_window.vala:450
+#: src/main_window.vala:459
 msgid "Create new direct message"
 msgstr "ساختن پیام مستقیم تازه"
 
-#: src/main_window.vala:456
+#: src/main_window.vala:465
 msgid "Show user"
 msgstr "نشان‌دادن کاربر"
 
-#: src/main_window.vala:457
+#: src/main_window.vala:466
 msgid "Show information about specified user"
 msgstr "نشان‌دادن اطلاعات دربارهٔ کاربر مشخص‌شده"
 
-#: src/main_window.vala:463
+#: src/main_window.vala:472
 msgid "Show favorites..."
 msgstr "نشان‌دادن برگزیده‌ها..."
 
-#: src/main_window.vala:470
+#: src/main_window.vala:479
 msgid "Update timeline"
 msgstr "به‌روزرسانی خط‌زمانی"
 
-#: src/main_window.vala:473
+#: src/main_window.vala:482
 msgid "Quit"
 msgstr "خروج"
 
-#: src/main_window.vala:478
+#: src/main_window.vala:487
 msgid "Edit"
 msgstr "ویرایش"
 
-#: src/main_window.vala:481 src/pref_dialog.vala:58
+#: src/main_window.vala:490 src/pref_dialog.vala:59
 msgid "Preferences"
 msgstr "ترجیحات"
 
-#: src/main_window.vala:486
+#: src/main_window.vala:495
 msgid "View"
 msgstr "نمایش"
 
-#: src/main_window.vala:488
+#: src/main_window.vala:497
 msgid "Show menu"
 msgstr "نمایش فهرست"
 
-#: src/main_window.vala:498
+#: src/main_window.vala:507
 msgid "Show toolbar"
 msgstr "نمایش نوار ابزار"
 
-#: src/main_window.vala:510
+#: src/main_window.vala:519
 msgid "Help"
 msgstr "کمک"
 
-#: src/main_window.vala:511
+#: src/main_window.vala:520
 #, c-format
 msgid "About %s"
 msgstr "دربارهٔ %s"
@@ -198,7 +200,7 @@ msgstr "دربارهٔ %s"
 msgid "Get older entries"
 msgstr "گرفتن ورودی‌های قدیمی‌تر"
 
-#: src/popups.vala:76 src/template.vala:170 src/template.vala:241
+#: src/popups.vala:76 src/template.vala:177 src/template.vala:248
 #, c-format
 msgid "Direct message"
 msgstr "پیام مستقیم"
@@ -226,115 +228,119 @@ msgstr "در پاسخ‌ها %d\n"
 msgid "in direct messages: %d"
 msgstr "در پیام‌های مستقیم: %d"
 
-#: src/pref_dialog.vala:67
+#: src/pref_dialog.vala:68
 msgid "Update interval (in minutes)"
 msgstr "فاصله‌زمانی به‌روزرسانی (به دقیقه)"
 
-#: src/pref_dialog.vala:71
+#: src/pref_dialog.vala:72
 msgid "Default number of statuses"
 msgstr "تعداد پیش‌فرض وضعیت‌ها"
 
-#: src/pref_dialog.vala:75
+#: src/pref_dialog.vala:76
 msgid "URL shortening service"
 msgstr "سرویس کوتاه‌سازی نشانی اینترنتی"
 
-#: src/pref_dialog.vala:82
+#: src/pref_dialog.vala:83
 msgid "Enable spell checking"
 msgstr "به‌کارانداختن غلط‌یاب املایی"
 
-#: src/pref_dialog.vala:85
+#: src/pref_dialog.vala:86
 msgid "Starting up in tray"
 msgstr "راه‌اندازی در سینی"
 
-#: src/pref_dialog.vala:88
+#: src/pref_dialog.vala:89
 msgid "Show tray icon"
 msgstr "نشان‌دادن نماد سینی"
 
-#: src/pref_dialog.vala:91
+#: src/pref_dialog.vala:92
 msgid "For timeline"
 msgstr "برای خط‌زمانی"
 
-#: src/pref_dialog.vala:92
+#: src/pref_dialog.vala:93
 msgid "For mentions"
 msgstr "برای پاسخ‌ها"
 
-#: src/pref_dialog.vala:93
+#: src/pref_dialog.vala:94
 msgid "For direct messages"
 msgstr "برای پیام‌های مستقیم"
 
-#: src/pref_dialog.vala:102
+#: src/pref_dialog.vala:103
 msgid "Retweets style"
 msgstr "شیوهٔ دوباره فرستادن"
 
-#: src/pref_dialog.vala:109
+#: src/pref_dialog.vala:110
 msgid "Clear now"
 msgstr "اکنون پاک کن"
 
-#: src/pref_dialog.vala:116
+#: src/pref_dialog.vala:117
 msgid "General"
 msgstr "کلی"
 
-#: src/pref_dialog.vala:122
+#: src/pref_dialog.vala:123
 msgid "Retweets"
 msgstr "دوباره فرستاده شده‌ها"
 
-#: src/pref_dialog.vala:125
+#: src/pref_dialog.vala:126
 msgid "Cache"
 msgstr "حافظهٔ نهان"
 
-#: src/pref_dialog.vala:136
+#: src/pref_dialog.vala:137
 msgid "Notification area"
 msgstr "ناحیهٔ آگاه‌سازی"
 
-#: src/pref_dialog.vala:140
+#: src/pref_dialog.vala:141
 msgid "Notification"
 msgstr "آگاه‌سازی"
 
-#: src/pref_dialog.vala:154
+#: src/pref_dialog.vala:155
 msgid "Authorization"
 msgstr "اجازه"
 
-#: src/pref_dialog.vala:161
+#: src/pref_dialog.vala:162
 msgid "Create new account..."
 msgstr "ساختن حساب کاربری تازه"
 
-#: src/pref_dialog.vala:177
+#: src/pref_dialog.vala:178
 msgid "Statuses"
 msgstr "وضعیت‌ها"
 
-#: src/pref_dialog.vala:180
+#: src/pref_dialog.vala:181
 msgid "Rounded corners"
 msgstr "گوشه‌های گرد شده"
 
-#: src/pref_dialog.vala:183
+#: src/pref_dialog.vala:184
 msgid "Right-to-left languages detection"
 msgstr "شناسایی زبان‌های راست به چپ"
 
-#: src/pref_dialog.vala:186
+#: src/pref_dialog.vala:187
 msgid "Full names instead of nicknames"
 msgstr "نام‌های کامل به‌جای نام‌های مستعار"
 
-#: src/pref_dialog.vala:189
+#: src/pref_dialog.vala:190
+msgid "Native links color"
+msgstr ""
+
+#: src/pref_dialog.vala:193
 msgid "Default font"
 msgstr "قلم پیش‌فرض"
 
-#: src/pref_dialog.vala:195
+#: src/pref_dialog.vala:199
 msgid "Fresh statuses color"
 msgstr "رنگ وضعیت‌های تازه"
 
-#: src/pref_dialog.vala:200
+#: src/pref_dialog.vala:204
 msgid "Opacity"
 msgstr "تیرگی"
 
-#: src/pref_dialog.vala:213
+#: src/pref_dialog.vala:218
 msgid "Main"
 msgstr "اصلی"
 
-#: src/pref_dialog.vala:214
+#: src/pref_dialog.vala:219
 msgid "Desktop"
 msgstr "میزکار"
 
-#: src/pref_dialog.vala:216
+#: src/pref_dialog.vala:221
 msgid "Appearance"
 msgstr "نما"
 
@@ -391,15 +397,15 @@ msgstr "ابتدا چیزی بنویسید"
 msgid "Sending status..."
 msgstr "درحال فرستادن وضعیت..."
 
-#: src/re_tweet.vala:401
+#: src/re_tweet.vala:406
 msgid "Your status has been sent successfully"
 msgstr "وضعیت شما با موفقیت فرستاده‌شد"
 
-#: src/re_tweet.vala:407
+#: src/re_tweet.vala:412
 msgid "Sending direct message..."
 msgstr "درحال فرستادن پیام مستقیم..."
 
-#: src/re_tweet.vala:421
+#: src/re_tweet.vala:426
 msgid "Your direct message has been sent successfully"
 msgstr "پیام مستقیم شما با موفقیت ارسال شد"
 
@@ -415,91 +421,87 @@ msgstr "گفت‌وگو"
 msgid "go to the web page"
 msgstr "رفتن به صفحهٔ وب"
 
-#: src/template.vala:168 src/template.vala:238
+#: src/template.vala:175 src/template.vala:245
 msgid "Reply"
 msgstr "پاسخ"
 
-#: src/template.vala:169 src/template.vala:239
+#: src/template.vala:176 src/template.vala:246
 msgid "Delete"
 msgstr "پاک‌کردن"
 
-#: src/template.vala:240
+#: src/template.vala:247
 msgid "Retweet"
 msgstr "دوباره فرستادن"
 
-#: src/template.vala:265
+#: src/template.vala:272
 msgid "you"
 msgstr "شما"
 
-#: src/template.vala:267
+#: src/template.vala:274
 msgid "in reply to"
 msgstr "در پاسخ به"
 
-#: src/template.vala:300
+#: src/template.vala:307
 msgid "Add to favorite"
 msgstr "اضافه‌کردن به برگزیده‌ها"
 
-#: src/template.vala:301
+#: src/template.vala:308
 msgid "Remove from favorite"
 msgstr "پاک‌کردن از برگزیده‌ها"
 
-#: src/template.vala:408
+#: src/template.vala:415
 msgid "a few seconds ago"
 msgstr "چند ثانیه پیش"
 
-#: src/template.vala:410
+#: src/template.vala:417
 msgid "1 minute ago"
 msgstr "۱ دقیقه پیش"
 
-#: src/template.vala:412
+#: src/template.vala:419
 #, c-format
 msgid "%i minutes ago"
 msgstr "%i دقیقه پیش"
 
-#: src/template.vala:414
+#: src/template.vala:421
 msgid "about 1 hour ago"
 msgstr "حدود ۱ ساعت پیش"
 
-#: src/template.vala:416
+#: src/template.vala:423
 #, c-format
 msgid "about %i hours ago"
 msgstr "حدود %i ساعت پیش"
 
-#: src/timeline_direct_list.vala:153
+#: src/timeline_direct_list.vala:163
 msgid "Your direct message has been deleted successfully"
 msgstr "پیام مستقیم شما با موفقیت پاک شد"
 
-#: src/timeline_list.vala:193
+#: src/timeline_list.vala:196
 msgid "Your status has been deleted successfully"
 msgstr "وضعیت شما با موفقیت پاک شد"
 
 #: src/timeline_list_abstract.vala:204
-msgid "Canceled"
-msgstr "لغو کردن"
-
-#: src/timeline_list_abstract.vala:210
 msgid "Empty"
 msgstr "خالی"
 
-#: src/timeline_list_abstract.vala:243
+#: src/timeline_list_abstract.vala:237
 msgid "Connecting..."
 msgstr "درحال وصل‌شدن..."
 
-#: src/timeline_list_abstract.vala:322
+#: src/timeline_list_abstract.vala:316
 msgid "Sure you want to delete this status?"
 msgstr "آیا مطمئن هستید که می‌خواهید این وضعیت را پاک کنید؟"
 
-#: src/timeline_list_abstract.vala:398
+#: src/timeline_list_abstract.vala:392
 msgid "Message was added to favorites"
 msgstr "پیام به برگزیده‌ها افزوده شد"
 
-#: src/timeline_list_abstract.vala:402
+#: src/timeline_list_abstract.vala:396
 msgid "Message was removed from favorites"
 msgstr "پیام از برگزیده‌ها پاک شد"
 
-#: src/tray_icon.vala:48
-#, c-format
-msgid "%s - a twitter client"
+#: src/tray_icon.vala:67
+#, fuzzy, c-format
+msgid "%s - not only a twitter client"
 msgstr "%s - یک کارخواه توییتر"
 
 #: src/user_info_list.vala:48
@@ -514,25 +516,28 @@ msgstr "دوستان:"
 msgid "Statuses:"
 msgstr "وضعیت‌ها:"
 
-#: src/user_info_list.vala:69
+#: src/user_info_list.vala:73
 msgid "Web:"
 msgstr "وب:"
 
-#: src/user_info_list.vala:90
+#: src/user_info_list.vala:94
 msgid "follow"
 msgstr "دنبال‌کردن"
 
-#: src/user_info_list.vala:183
+#: src/user_info_list.vala:190
 msgid "This user does not exist"
 msgstr "این کاربر وجود ندارد"
 
-#: src/user_info_list.vala:300
+#: src/user_info_list.vala:312
 msgid "Now you follow this user"
 msgstr "اکنون شما این کاربر را دنبال می‌کنید"
 
-#: src/user_info_list.vala:302
+#: src/user_info_list.vala:314
 msgid "User was unfollowed"
 msgstr "کاربر دنبال‌نشده شد"
+
+#~ msgid "Canceled"
+#~ msgstr "لغو کردن"
 
 #~ msgid "Friends:  <b>%s</b>"
 #~ msgstr "دوستان: <b>%s</b>"
