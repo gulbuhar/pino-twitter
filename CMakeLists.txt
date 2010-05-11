@@ -18,7 +18,10 @@ string(REGEX REPLACE "([0-9])\\.([0-9]).*" "\\1.\\2" VERSION_MAJOR_MINOR ${VERSI
 file(READ AUTHORS _AUTHORS)
 string(REPLACE "\n" "\\n" AUTHORS ${_AUTHORS})
 
-configure_file(config.h.in config.h)
+configure_file(
+  "${CMAKE_CURRENT_SOURCE_DIR}/config.h.in"
+  "${CMAKE_CURRENT_BINARY_DIR}/config.h"
+)
 add_definitions(-include config.h)
 
 
@@ -73,49 +76,8 @@ if(UBUNTU_ICONS)
 endif()
 
 
-set(pino_VALA_SOURCES
-  #src/account_action.vala
-  src/accounts.vala
-  src/account_widget.vala
-  src/cache.vala
-  src/color_utils.vala
-  src/dm_entry.vala
-  src/edit_account.vala
-  src/favorites_view_dialog.vala
-  src/favorites_view_list.vala
-  src/gtk_style.vala
-  src/hig_table.vala
-  src/log_window.vala
-  src/main.vala
-  src/main_window.vala
-  src/more_window.vala
-  #src/oauth-client.vala
-  src/popups.vala
-  src/pref_dialog.vala
-  src/prefs.vala
-  src/rest_api_abstract.vala
-  src/rest_api_acc.vala
-  src/rest_api_direct.vala
-  src/rest_api_re.vala
-  src/rest_api_timeline.vala
-  src/rest_api_user_info.vala
-  src/rest_urls.vala
-  src/re_tweet.vala
-  src/status_bar_smart.vala
-  src/status_view_dialog.vala
-  src/status_view_list.vala
-  src/template.vala
-  src/timeline_direct_list.vala
-  src/timeline_list_abstract.vala
-  src/timeline_list.vala
-  src/timer.vala
-  src/time_utils.vala
-  src/tray_icon.vala
-  src/url_short.vala
-  src/user_info_list.vala
-  src/userpic.vala
-  src/account_action.vala
-)
+file(GLOB pino_VALA_SOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "src/*.vala")
+list(REMOVE_ITEM pino_VALA_SOURCES "src/oauth-client.vala")
 
 
 vala_precompile(
