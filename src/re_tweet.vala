@@ -152,10 +152,16 @@ public class ReTweet : VBox {
 		entry.key_press_event.connect(hide_or_send);
 		entry.buffer.changed.connect(change);
 		
+		string tag_link_color;
+		if(prefs.nativeLinkColor)
+			tag_link_color = gtk_style.lk_color;
+		else
+			tag_link_color = gtk_style.sl_color;
+		
 		entry.buffer.create_tag("red_bg", "background", "#ffa4a4");
-		entry.buffer.create_tag("url", "foreground", gtk_style.sl_color);
+		entry.buffer.create_tag("url", "foreground", tag_link_color);
 		entry.buffer.create_tag("nick", "weight", Pango.Weight.BOLD);
-		entry.buffer.create_tag("tag", "foreground", gtk_style.sl_color,
+		entry.buffer.create_tag("tag", "foreground", tag_link_color,
 			"weight", Pango.Weight.BOLD);
 		
 		prefs.enableSpellChanged.connect(spellEnabling);
