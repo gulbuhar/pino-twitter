@@ -38,7 +38,7 @@ list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 include(ValaVersion)
 include(ValaPrecompile)
 find_package(Vala REQUIRED)
-ensure_vala_version("0.7" MINIMUM)
+ensure_vala_version("0.7.9" MINIMUM)
 
 
 option(ENABLE_DEBUG "Enable debug messages" OFF)
