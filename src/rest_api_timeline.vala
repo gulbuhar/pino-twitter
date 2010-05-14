@@ -284,7 +284,11 @@ public class RestAPITimeline : RestAPIAbstract {
 		string req_url = urls.status().printf(id);
 		string data = make_request(req_url, "GET");
 		
-		return parse_status(data);
+		Parser.init();
+		Status status = parse_status(data);
+		Parser.cleanup();
+		
+		return status;
 	}
 	
 	private Status parse_status(string data) throws ParseError {
@@ -308,6 +312,7 @@ public class RestAPITimeline : RestAPIAbstract {
     			
     			case "created_at":
     				status.created_at = str_to_time(iter->get_content());
+    				status.created_at_s = iter->get_content();
     				break;
     			
     			case "text":
