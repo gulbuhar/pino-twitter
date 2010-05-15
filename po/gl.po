@@ -38,11 +38,8 @@ msgid "Sure you want to delete this account?"
 msgstr "Está segura/o de que quere eliminar esta conta?"
 
 #: src/dm_entry.vala:35
-msgid ""
-"You can't send direct message to this user. He (or she) must follow you too"
-msgstr ""
-"Non lle pode enviar unha mensaxe directa a esta persoa usuaria. Ela ou el "
-"tamén o debe seguir"
+msgid "You can't send direct message to this user. He (or she) must follow you too"
+msgstr "Non lle pode enviar unha mensaxe directa a esta persoa usuaria. Ela ou el tamén o debe seguir"
 
 #: src/dm_entry.vala:42
 msgid "Check"
@@ -321,7 +318,7 @@ msgstr "Nomes completos en vez de alcumes"
 
 #: src/pref_dialog.vala:190
 msgid "Native links color"
-msgstr ""
+msgstr "Cor das ligaçons nativas"
 
 #: src/pref_dialog.vala:193
 msgid "Default font"
@@ -504,9 +501,9 @@ msgid "Message was removed from favorites"
 msgstr "A mensaxe foi eliminada dos favoritos"
 
 #: src/tray_icon.vala:67
-#, fuzzy, c-format
+#, c-format
 msgid "%s - not only a twitter client"
-msgstr "%s - un cliente de twitter"
+msgstr "%s - non só un cliente de Twitter"
 
 #: src/user_info_list.vala:48
 msgid "Followers:"

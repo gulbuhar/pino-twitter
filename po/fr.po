@@ -534,14 +534,4 @@ msgstr "Maintenant vous suivez cet utilisateur"
 msgid "User was unfollowed"
 msgstr "Cet utilisateur n'était pas suivi"
 
-#~ msgid "Canceled"
-#~ msgstr "Annulé"
 
-#~ msgid "Friends:  <b>%s</b>"
-#~ msgstr "Réponse à <b>%s</b>"
-
-#~ msgid "Statuses:  <b>%s</b>"
-#~ msgstr "Réponse à <b>%s</b>"
-
-#~ msgid "Twitter"
-#~ msgstr "Twitter"

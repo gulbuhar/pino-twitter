@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 2.6)
 
 project("pino" C)
 
-set(VERSION "0.2.8")
+set(VERSION "0.2.9")
 
 set(APPNAME "pino")
 set(PACKAGE "${APPNAME}")

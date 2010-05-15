@@ -314,9 +314,8 @@ msgid "Full names instead of nicknames"
 msgstr "Nomi completi invece del nickname"
 
 #: src/pref_dialog.vala:190
-#, fuzzy
 msgid "Native links color"
-msgstr "Colore predefinito dei link"
+msgstr "Colori predefiniti dei link"
 
 #: src/pref_dialog.vala:193
 msgid "Default font"

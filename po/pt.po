@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -36,11 +36,8 @@ msgid "Sure you want to delete this account?"
 msgstr "Tem a certeza que deseja apagar esta Conta?"
 
 #: src/dm_entry.vala:35
-msgid ""
-"You can't send direct message to this user. He (or she) must follow you too"
-msgstr ""
-"Não pode enviar uma Mensagem Directa a este utilizador. Ele (ou ela) têm que "
-"o seguir também."
+msgid "You can't send direct message to this user. He (or she) must follow you too"
+msgstr "Não pode enviar uma Mensagem Directa a este utilizador. Ele (ou ela) têm que o seguir também."
 
 #: src/dm_entry.vala:42
 msgid "Check"
@@ -318,7 +315,7 @@ msgstr "Nomes completos em vez de nomes de utilizador"
 
 #: src/pref_dialog.vala:190
 msgid "Native links color"
-msgstr ""
+msgstr "Cor normal das ligações"
 
 #: src/pref_dialog.vala:193
 msgid "Default font"
@@ -500,9 +497,9 @@ msgid "Message was removed from favorites"
 msgstr "A Mensagem foi removida dos Favoritos"
 
 #: src/tray_icon.vala:67
-#, fuzzy, c-format
+#, c-format
 msgid "%s - not only a twitter client"
-msgstr "%s - Um Cliente de Twitter"
+msgstr "%s - Não é apenas um Cliente de Twitter"
 
 #: src/user_info_list.vala:48
 msgid "Followers:"
