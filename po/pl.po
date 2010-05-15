@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-05-06 13:37+0300\n"
-"PO-Revision-Date: 2010-04-10 00:07+0200\n"
+"PO-Revision-Date: 2010-05-11 00:26+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <trans-pl@lists.fedoraproject.org>\n"
 "MIME-Version: 1.0\n"
@@ -316,7 +316,7 @@ msgstr "Imiona i nazwiska zamiast pseudonimów"
 
 #: src/pref_dialog.vala:190
 msgid "Native links color"
-msgstr ""
+msgstr "Natywne kolory odnośników"
 
 #: src/pref_dialog.vala:193
 msgid "Default font"
@@ -498,9 +498,9 @@ msgid "Message was removed from favorites"
 msgstr "Wiadomość została usunięta z ulubionych"
 
 #: src/tray_icon.vala:67
-#, fuzzy, c-format
+#, c-format
 msgid "%s - not only a twitter client"
-msgstr "%s - klient serwisu Twitter"
+msgstr "%s - więcej niż klient serwisu Twitter"
 
 #: src/user_info_list.vala:48
 msgid "Followers:"
@@ -533,6 +533,3 @@ msgstr "Ten użytkownik jest teraz obserwowany"
 #: src/user_info_list.vala:314
 msgid "User was unfollowed"
 msgstr "Użytkownik nie jest już obserwowany"
-
-#~ msgid "Canceled"
-#~ msgstr "Anulowano"

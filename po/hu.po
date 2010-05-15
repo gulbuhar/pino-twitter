@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pino\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-05-06 13:37+0300\n"
-"PO-Revision-Date: 2010-05-06 14:28+0100\n"
+"PO-Revision-Date: 2010-05-07 13:08+0100\n"
 "Last-Translator: csola48 <csola48@gmail.com>\n"
 "Language-Team: hu <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -513,7 +513,7 @@ msgstr "Üzenet törölve a kedvencek közül"
 #: src/tray_icon.vala:67
 #, c-format
 msgid "%s - not only a twitter client"
-msgstr "%s - nem csak egy twitter kliens"
+msgstr "%s - nem csak egy Twitter kliens"
 
 #: src/user_info_list.vala:48
 msgid "Followers:"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-05-06 13:37+0300\n"
-"PO-Revision-Date: 2010-05-07 00:11+0100\n"
+"PO-Revision-Date: 2010-05-14 02:15+0100\n"
 "Last-Translator: Johan Eriksson <hund@lathund.nu>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -325,9 +325,8 @@ msgid "Full names instead of nicknames"
 msgstr "Fullständiga namn istället för användarnamn"
 
 #: src/pref_dialog.vala:190
-#, fuzzy
 msgid "Native links color"
-msgstr "Native länkfärg"
+msgstr "Ursprunglig länkfärg"
 
 #: src/pref_dialog.vala:193
 msgid "Default font"

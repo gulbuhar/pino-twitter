@@ -235,7 +235,7 @@ public abstract class RestAPIAbstract : Object {
 				debug("we got some error: %s", e.message);
 				break;
 			}
-			debug("something recieve %d", status_code);
+			debug("something receive %d", status_code);
 			if(status_code == 200 || status_code == 401 || status_code == 4)
 				break;
 		}
