@@ -673,6 +673,9 @@ public class MainWindow : Window {
 		prefs.toolbarShow = toolbar.visible;
 		
 		prefs.write();
+		
+		Xml.Parser.cleanup();
+		
 		main_quit();
 	}
 	

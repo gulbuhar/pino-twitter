@@ -43,9 +43,7 @@ public class RestAPIAcc : RestAPIAbstract {
 		string data = make_request(req_url, "GET",
 			new HashTable<string, string>(str_hash, str_equal), false);
 
-		Parser.init();
 		var result = parse_userpic_url(data);
-		Parser.cleanup();
 
 		return result;
 	}
