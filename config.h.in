@@ -13,7 +13,7 @@
 #define APPNAME "${APPNAME}"
 #define AUTHORS "${AUTHORS}"
 
-#define APP_VERSION "0.2.9"
+#define APP_VERSION "0.2.10"
 #define DESKTOP_FILE_PATH "${CMAKE_INSTALL_PREFIX}/share/applications/pino.desktop"
 #define APP_PATH "${CMAKE_INSTALL_PREFIX}/bin/pino"
 #define LOGO_PATH "${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/scalable/apps/pino.svg"
