@@ -74,9 +74,7 @@ public class RestAPIRe : RestAPIAbstract {
 		
 		string data = make_request(req_url, "POST", map);
 
-		Parser.init();
 		var result = parse_status(data);
-		Parser.cleanup();
 
 		return result;
 	}

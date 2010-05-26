@@ -90,9 +90,7 @@ public class RestAPITimeline : RestAPIAbstract {
 		
 		string data = make_request(req_url, "GET", map, async);
 
-		Parser.init();
 		ArrayList<Status> result = parse_timeline(data, fstatus);
-		Parser.cleanup();
 		return result;
 	}
 	
@@ -284,9 +282,7 @@ public class RestAPITimeline : RestAPIAbstract {
 		string req_url = urls.status().printf(id);
 		string data = make_request(req_url, "GET");
 		
-		Parser.init();
 		Status status = parse_status(data);
-		Parser.cleanup();
 		
 		return status;
 	}

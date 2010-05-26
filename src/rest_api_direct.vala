@@ -57,9 +57,7 @@ public class RestAPIDirect : RestAPIAbstract {
 		
 		string data = make_request(urls.direct_in(), "GET", map);
 
-		Parser.init();
 		var result = parse_direct(data);
-		Parser.cleanup();
 
 		return result;
 	}

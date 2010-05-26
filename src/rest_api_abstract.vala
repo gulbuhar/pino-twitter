@@ -260,9 +260,7 @@ public abstract class RestAPIAbstract : Object {
 		debug(req_url);
 		string data = make_request(req_url, "GET", map);
 
-		Parser.init();
 		bool result = parse_friendship(data, just_friend_check);
-		Parser.cleanup();
 
 		return result;
 	}
