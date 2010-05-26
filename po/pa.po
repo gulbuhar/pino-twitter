@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-05-06 13:37+0300\n"
-"PO-Revision-Date: 2010-04-26 17:59+0530\n"
+"PO-Revision-Date: 2010-05-25 20:00+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
 "MIME-Version: 1.0\n"
@@ -40,6 +40,8 @@ msgstr "ਕੀ ਤੁਸੀਂ ਇਹ ਅਕਾਊਂਟ ਹਟਾਉਣਾ ਚ�
 msgid ""
 "You can't send direct message to this user. He (or she) must follow you too"
 msgstr ""
+"ਤੁਸੀਂ ਇਸ ਯੂਜ਼ਰ ਨੂੰ ਸਿੱਧਾ ਸੁਨੇਹਾ ਨਹੀਂ ਭੇਜ ਸਕਦੇ। ਉਸ ਵਲੋਂ ਤੁਹਾਨੂੰ ਫ਼ੌਲਉ ਕੀਤਾ "
+"ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ"
 
 #: src/dm_entry.vala:42
 msgid "Check"
@@ -47,7 +49,7 @@ msgstr "ਚੈੱਕ ਕਰੋ"
 
 #: src/dm_entry.vala:58
 msgid "You can send direct message to this user"
-msgstr ""
+msgstr "ਤੁਸੀਂ ਇਸ ਯੂਜ਼ਰ ਨੂੰ ਸਿੱਧਾ ਸੁਨੇਹਾ ਭੇਜ ਸਕਦੇ ਹੋ"
 
 #: src/dm_entry.vala:77
 msgid "Checking..."
@@ -79,11 +81,11 @@ msgstr "ਤੁਹਾਨੂੰ ਪਰਾਕਸੀ ਐਡਰੈੱਸ ਦੇਣਾ
 
 #: src/edit_account.vala:198
 msgid "Proxy address must contain a valid url"
-msgstr ""
+msgstr "ਪਰਾਕਸੀ ਐਡਰੈੱਸ ਲਈ ਢੁੱਕਵਾਂ url ਚਾਹੀਦਾ ਹੈ"
 
 #: src/edit_account.vala:216
 msgid "You must fill in all fields"
-msgstr ""
+msgstr "ਤੁਹਾਨੂੰ ਸਭ ਖੇਤਰ ਭਰਨ ਦੀ ਲੋੜ ਹੈ"
 
 #: src/favorites_view_dialog.vala:36
 msgid "Favorites"
@@ -103,11 +105,11 @@ msgstr "ਆਪਣਾ ਘਰ ਟਾਈਮ-ਲਾਈਨ ਵੇਖੋ"
 
 #: src/main_window.vala:198
 msgid "Mentions"
-msgstr ""
+msgstr "ਦਰਸਾਏ"
 
 #: src/main_window.vala:199
 msgid "Show mentions"
-msgstr ""
+msgstr "ਦਰਸਾਏ ਵੇਖੋ"
 
 #: src/main_window.vala:205
 msgid "Direct messages"
@@ -215,17 +217,17 @@ msgstr "ਅੱਪਡੇਟ"
 #: src/popups.vala:142
 #, c-format
 msgid "in the home timeline: %d\n"
-msgstr ""
+msgstr "ਘਰ ਟਾਈਮ-ਲਾਈਨ 'ਚ: %d\n"
 
 #: src/popups.vala:145
 #, c-format
 msgid "in mentions: %d\n"
-msgstr ""
+msgstr "ਦਰਸਾਉਣ ਵਿੱਚ: %d\n"
 
 #: src/popups.vala:148
 #, c-format
 msgid "in direct messages: %d"
-msgstr ""
+msgstr "ਸਿੱਧੇ ਸੁਨੇਹੇ ਵਿੱਚ: %d"
 
 #: src/pref_dialog.vala:68
 msgid "Update interval (in minutes)"
@@ -237,7 +239,7 @@ msgstr "ਹਾਲਤ ਲਈ ਡਿਫਾਲਟ ਨੰਬਰ"
 
 #: src/pref_dialog.vala:76
 msgid "URL shortening service"
-msgstr ""
+msgstr "URL ਛੋਟੇ ਕਰਨ ਦੀ ਸਰਵਿਸ"
 
 #: src/pref_dialog.vala:83
 msgid "Enable spell checking"
@@ -257,7 +259,7 @@ msgstr "ਟਾਈਮ-ਲਾਈਨ ਲਈ"
 
 #: src/pref_dialog.vala:93
 msgid "For mentions"
-msgstr ""
+msgstr "ਦਰਸਾਉਣ ਲਈ"
 
 #: src/pref_dialog.vala:94
 msgid "For direct messages"
@@ -265,7 +267,7 @@ msgstr "ਸਿੱਧੇ ਸੁਨੇਹੇ ਲਈ"
 
 #: src/pref_dialog.vala:103
 msgid "Retweets style"
-msgstr ""
+msgstr "ਰੀ-ਟਵੀਟ ਸਟਾਈਲ"
 
 #: src/pref_dialog.vala:110
 msgid "Clear now"
@@ -309,15 +311,15 @@ msgstr "ਗੋਲ ਕੋਨੇ"
 
 #: src/pref_dialog.vala:184
 msgid "Right-to-left languages detection"
-msgstr ""
+msgstr "ਸੱਜੇ-ਤੋਂ-ਖੱਬੇ ਭਾਸ਼ਾਵਾਂ ਦੀ ਖੋਜ"
 
 #: src/pref_dialog.vala:187
 msgid "Full names instead of nicknames"
-msgstr ""
+msgstr "ਛੋਟੇ ਨਾਂ ਦੀ ਬਜਾਏ ਪੂਰੇ ਨਾਂ"
 
 #: src/pref_dialog.vala:190
 msgid "Native links color"
-msgstr ""
+msgstr "ਨੇਟਿਵ ਲਿੰਕ ਰੰਗ"
 
 #: src/pref_dialog.vala:193
 msgid "Default font"
@@ -325,7 +327,7 @@ msgstr "ਡਿਫਾਲਟ ਫੋਂਟ"
 
 #: src/pref_dialog.vala:199
 msgid "Fresh statuses color"
-msgstr ""
+msgstr "ਹਾਲਤ ਰੰਗ ਤਾਜ਼ਾ ਕਰੋ"
 
 #: src/pref_dialog.vala:204
 msgid "Opacity"
@@ -349,7 +351,7 @@ msgstr "ਛੋਟੇ URL..."
 
 #: src/re_tweet.vala:93
 msgid "Shortening URLs..."
-msgstr ""
+msgstr "URL ਛੋਟੇ..."
 
 #: src/re_tweet.vala:98
 msgid "URLs was shortened successfully"
@@ -499,13 +501,13 @@ msgid "Message was removed from favorites"
 msgstr "ਸੁਨੇਹਾ ਪਸੰਦੀਦਾ 'ਚੋਂ ਹਟਾਇਆ ਗਿਆ"
 
 #: src/tray_icon.vala:67
-#, fuzzy, c-format
+#, c-format
 msgid "%s - not only a twitter client"
-msgstr "%s - ਟਵਿੱਟਰ ਕਲਾਇਟ"
+msgstr "%s - ਕੇਵਲ ਟਵਿੱਟਰ ਕਲਾਇਟ ਹੀ ਨਹੀਂ ਹੈ"
 
 #: src/user_info_list.vala:48
 msgid "Followers:"
-msgstr ""
+msgstr "ਫ਼ੌਲਅਰ"
 
 #: src/user_info_list.vala:49
 msgid "Friends:"
@@ -521,7 +523,7 @@ msgstr "ਵੈੱਬ:"
 
 #: src/user_info_list.vala:94
 msgid "follow"
-msgstr ""
+msgstr "ਫ਼ੌਲਉ ਕਰੋ"
 
 #: src/user_info_list.vala:190
 msgid "This user does not exist"
@@ -529,11 +531,11 @@ msgstr "ਇਹ ਯੂਜ਼ਰ ਮੌਜੂਦ ਨਹੀਂ ਹੈ"
 
 #: src/user_info_list.vala:312
 msgid "Now you follow this user"
-msgstr ""
+msgstr "ਹੁਣ ਤੁਸੀਂ ਇਹ ਯੂਜ਼ਰ ਨੂੰ ਫ਼ੌਲਉ ਕਰਦੇ ਹੋ"
 
 #: src/user_info_list.vala:314
 msgid "User was unfollowed"
-msgstr ""
+msgstr "ਯੂਜ਼ਰ ਨੂੰ ਅਣ-ਫ਼ੌਲਉ ਕੀਤਾ ਗਿਆ"
 
 #~ msgid "Canceled"
 #~ msgstr "ਰੱਦ ਕੀਤਾ"

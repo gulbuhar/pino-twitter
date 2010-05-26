@@ -1,3 +1,4 @@
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
@@ -33,8 +34,7 @@ msgid "Sure you want to delete this account?"
 msgstr "Bu hesabı silmek istediğinize emin misiniz?"
 
 #: src/dm_entry.vala:35
-msgid ""
-"You can't send direct message to this user. He (or she) must follow you too"
+msgid "You can't send direct message to this user. He (or she) must follow you too"
 msgstr "Bu kişiye doğrudan ileti gönderemezsiniz. Kişi sizi takip etmeli."
 
 #: src/dm_entry.vala:42
@@ -202,7 +202,7 @@ msgstr "Doğrudan ileti"
 
 #: src/popups.vala:76
 msgid "from"
-msgstr ""
+msgstr "Nereden:"
 
 #: src/popups.vala:94
 msgid "Updates"
@@ -273,7 +273,7 @@ msgstr "Genel"
 
 #: src/pref_dialog.vala:123
 msgid "Retweets"
-msgstr ""
+msgstr "Tekrar ötüşler"
 
 #: src/pref_dialog.vala:126
 msgid "Cache"
@@ -313,7 +313,7 @@ msgstr "Takma ad yerine tam isim göster"
 
 #: src/pref_dialog.vala:190
 msgid "Native links color"
-msgstr ""
+msgstr "Yerel bağlantı rengi"
 
 #: src/pref_dialog.vala:193
 msgid "Default font"
@@ -366,19 +366,19 @@ msgstr "Gizle"
 #: src/re_tweet.vala:215
 #, c-format
 msgid "Reply to <b>%s</b>:"
-msgstr ""
+msgstr "<b>%s</b>'e cevabı:"
 
 #: src/re_tweet.vala:255
 msgid "Reply to"
-msgstr ""
+msgstr "Cevap"
 
 #: src/re_tweet.vala:268
 msgid "Direct message to"
-msgstr ""
+msgstr "Doğrudan ileti"
 
 #: src/re_tweet.vala:288
 msgid "Retweet:"
-msgstr ""
+msgstr "Tekrar öt:"
 
 #: src/re_tweet.vala:317
 msgid "Your status is too long"
@@ -426,7 +426,7 @@ msgstr "Sil"
 
 #: src/template.vala:247
 msgid "Retweet"
-msgstr ""
+msgstr "Tekrar öt"
 
 #: src/template.vala:272
 msgid "you"
@@ -434,7 +434,7 @@ msgstr "sen"
 
 #: src/template.vala:274
 msgid "in reply to"
-msgstr ""
+msgstr "cevap olarak"
 
 #: src/template.vala:307
 msgid "Add to favorite"
@@ -495,9 +495,9 @@ msgid "Message was removed from favorites"
 msgstr "İleti favorilerden silindi"
 
 #: src/tray_icon.vala:67
-#, fuzzy, c-format
+#, c-format
 msgid "%s - not only a twitter client"
-msgstr "%s - twitter istemcisi"
+msgstr "%s - sadece twitter istemcisi değil"
 
 #: src/user_info_list.vala:48
 msgid "Followers:"
@@ -513,7 +513,7 @@ msgstr "Durum iletileri:"
 
 #: src/user_info_list.vala:73
 msgid "Web:"
-msgstr ""
+msgstr "Web:"
 
 #: src/user_info_list.vala:94
 msgid "follow"

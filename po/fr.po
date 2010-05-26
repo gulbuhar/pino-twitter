@@ -94,7 +94,7 @@ msgstr "Plus"
 
 #: src/main_window.vala:191
 msgid "Home timeline"
-msgstr "Ligne de temps"
+msgstr "Ligne de temps personnelle"
 
 #: src/main_window.vala:192
 msgid "Show your home timeline"
@@ -118,7 +118,7 @@ msgstr "Afficher les messages directs"
 
 #: src/main_window.vala:211
 msgid "User info"
-msgstr "Information utilisateur"
+msgstr "Information de l'utilisateur"
 
 #: src/main_window.vala:211
 msgid "Show information about user"
@@ -155,7 +155,7 @@ msgstr "Affiche les informations d'un utilisateur donné"
 
 #: src/main_window.vala:472
 msgid "Show favorites..."
-msgstr "Montrer les favoris"
+msgstr "Montrer les favoris..."
 
 #: src/main_window.vala:479
 msgid "Update timeline"
@@ -175,7 +175,7 @@ msgstr "Préférences"
 
 #: src/main_window.vala:495
 msgid "View"
-msgstr "Vue"
+msgstr "Affichage"
 
 #: src/main_window.vala:497
 msgid "Show menu"
@@ -348,7 +348,7 @@ msgstr "URLs raccourcies..."
 
 #: src/re_tweet.vala:93
 msgid "Shortening URLs..."
-msgstr "Raccourcissements des URLS..."
+msgstr "Raccourcissement des URLS..."
 
 #: src/re_tweet.vala:98
 msgid "URLs was shortened successfully"
@@ -409,7 +409,7 @@ msgstr "Votre message direct a bien été envoyé"
 
 #: src/status_bar_smart.vala:101
 msgid "updating... "
-msgstr "mise à jour..."
+msgstr "mis à jour..."
 
 #: src/status_view_dialog.vala:36
 msgid "Conversation"
@@ -533,5 +533,3 @@ msgstr "Maintenant vous suivez cet utilisateur"
 #: src/user_info_list.vala:314
 msgid "User was unfollowed"
 msgstr "Cet utilisateur n'était pas suivi"
-
-
