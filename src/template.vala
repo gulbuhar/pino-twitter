@@ -59,10 +59,16 @@ public class Template : Object {
 		reload();
 		
 		//compile regex
+		/*
 		nicks = new Regex("(^|\\s)@([A-Za-z0-9_]+)");
 		tags = new Regex("((^|\\s)\\#[A-Za-z0-9_\\p{Latin}\\p{Greek}]+)");
 		groups = new Regex("(^|\\s)!([A-Za-z0-9_]+)"); //for identi.ca groups
 		urls = new Regex("((http|https|ftp)://([\\S]+))"); //need something better
+		*/
+		nicks = new Regex("(^|\\s|['\"+&!/\\(-])@([A-Za-z0-9_]+)");
+		tags = new Regex("(^|\\s|['\"+&!/\\(-])#([A-Za-z0-9_.-\\p{Latin}\\p{Greek}]+)");
+		groups = new Regex("(^|\\s|['\"+&!/\\(-])!([A-Za-z0-9_]+)"); //for identi.ca groups
+		urls = new Regex("((https?|ftp)://([A-Za-z0-9+&@#/%?=~_|!:,.;-]*)([A-Za-z0-9+&@#/%=~_|$]))"); // still needs to be improved for urls containing () such as wikipedia's
 		
 		// characters must be cleared to know direction of text
 		clear_notice = new Regex("[: \n\t\r♻♺]+|@[^ ]+");
@@ -400,7 +406,8 @@ public class Template : Object {
 		}
 		
 		result = nicks.replace(result, -1, 0, "\\1@<a class='re_nick' href='userinfo://\\2'>\\2</a>");
-		result = tags.replace(result, -1, 0, "<a class='tags' href='%s\\1'>\\1</a>".printf(search_url));
+		//result = tags.replace(result, -1, 0, "<a class='tags' href='%s\\1'>\\1</a>".printf(search_url));
+		result = tags.replace(result, -1, 0, "\\1#<a class='tags' href='%s\\2'>\\2</a>".printf(search_url));
 		
 		if(service == "identi.ca") //for identi.ca only
 			result = groups.replace(result, -1, 0, "\\1!<a class='tags' href='http://identi.ca/group/\\2'>\\2</a>");
