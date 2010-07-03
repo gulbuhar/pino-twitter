@@ -13,3 +13,4 @@ GenericName=Twitter Client
 GenericName[ua]=Pino
 GenericName[ru]=Pino
 Terminal=false
+StartupNotify=true
