@@ -97,7 +97,7 @@ public class Template : Object {
 				
 				case "identi.ca":
 					status_url = "http://identi.ca/notice/%s";
-					search_url = "http://identi.ca/search/notice?q=";
+					search_url = "http://identi.ca/tag/";
 					nick_url = "http://identi.ca/";
 					break;
 			}
