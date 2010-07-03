@@ -60,6 +60,8 @@ pkg_check_modules(LIBUNIQUE REQUIRED "unique-1.0 >= 1.0")
 pkg_check_modules(GTKSPELL REQUIRED "gtkspell-2.0 >= 2.0")
 pkg_check_modules(LIBINDICATE "indicate >= 0.3")
 
+set(pino_VALA_OPTIONS ${pino_VALA_OPTIONS} --thread)
+
 if(${LIBINDICATE_FOUND})
   message(STATUS "libindicate found, support enabled...")
   set(pino_VALA_OPTIONS ${pino_VALA_OPTIONS} -D LIBINDICATE)
